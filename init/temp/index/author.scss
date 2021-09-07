@@ -1,0 +1,343 @@
+﻿#myDataPanel
+{
+    width:90%;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    padding-bottom:80px;
+    #myStoryContent
+    {
+        padding-top:120px;
+        width:100%;
+        position:relative;
+        margin-left:auto;
+        margin-right:auto;
+        border-bottom:1px solid #ddd;
+        color:#333;
+        font-size:12px;
+        max-width: 600px;
+        .clear
+        {/*阻斷 清除float*/
+            width:100%;
+            clear:both;
+        }
+
+        #meTitle
+        {
+            position:relative;
+            width:100%;
+            color:#333;
+            font-size:18px;
+            cursor:pointer;
+            padding-top:20px;
+            .clickimg
+            {
+                width:15px;padding-left:9px;position:relative;
+            }
+            .timg
+            {
+                height:25px;
+                padding-right:9px;
+                position:relative;
+                top:3px;
+            }
+        }
+
+        .MyLi{
+            position:relative;
+            width:94%;
+            padding-left:5%;
+            padding-top:6px;
+            padding-bottom:60px;
+            font-size:13px;
+            color:#666;
+            cursor:pointer;
+            .clickimg
+            {
+                width:15px;
+                padding-left:9px;
+                position:relative;
+            }
+            a
+            {
+                color:#666;
+            }
+            .Mycontent
+            {
+                font-size:12px;
+                width:100%;
+                padding-top:15px;
+                color:#AAA;
+            }
+        }
+    }
+    #AAPanel{
+        /*animate 定位*/
+        position:relative;
+        margin-left:auto;
+        margin-right:auto;
+        width:100%;
+        min-width:200px;
+        min-height:200px;
+        max-width:400px;
+        top:50px;
+        border-radius:30px;
+        background-color:#FF8800;
+        #meAn{/*main temp*/
+            position:relative;
+            width:100%;
+            overflow:hidden;
+            border-radius:30px;
+            #meAn_bk{   /*背景*/
+                position:relative;
+                top:0px;
+                width:100%;
+            }
+
+            #meAn_bk_wav{
+                /*背景 生命數*/
+                position:absolute;
+                top:0px;
+                left:0px;
+                width:100%;
+            }
+
+            #meAn_369{
+                /*背景 369字符*/
+                position:absolute;
+                top:0px;
+                left:0px;
+                width:100%;
+            }
+
+            #meAn_body
+            {
+                /*背景人物身體*/
+                position:absolute;
+                top:0px;
+                left:0px;
+                width:100%;  
+            }
+
+            #meAn_me{
+                /*背景臉*/
+                position:absolute;
+                top:0px;
+                left:0px;
+                width:100%;  
+            }
+
+            #meAn_dog_1{
+                /*狗狗 碰柑-臘長*/
+                position:absolute;
+                top:73%;
+                right:20%;
+                width:25%;
+            }
+
+            #meAn_dog_2{
+                /*狗狗 阿金-狐里*/
+                position:absolute;
+                top:40%;
+                right:1%;
+                width:25%;  
+            }
+
+            #meAn_dog_3{
+                /*狗狗 木柚-約克夏*/
+                position:absolute;
+                top:67%;
+                right:3%;
+                width:20%;  
+            }
+
+            #meAn_book
+            {
+                /*大查帳*/
+                cursor:pointer;
+                position:absolute;
+                top:65.1%;
+                left:5%;
+                width:30%;
+            }
+
+            #meAn_bookname
+            {
+                /*大查帳-psyl標籤*/
+                position:absolute;
+                top:78%;
+                left:31%;
+                width:3%;
+            }
+
+            #meAn_car
+            {
+                /*四驅車*/
+                cursor:pointer;
+                position:absolute;
+                top:86%;
+                left:25%;
+                width:20%;
+            }
+
+            #meAn_dgx_bk
+            {
+                /*數碼寶貝 傑斯獸-gx-背景*/
+                position:absolute;
+                top:79%;
+                left:39%;
+                width:17%;
+            }
+
+            #meAn_dgx
+            {
+                /*數碼寶貝 傑斯獸-gx*/
+                cursor:pointer;
+                position:absolute;
+                top:79.05%;
+                left:43.7%;
+                width:8%;
+            }
+
+            #meAn_mark
+            {
+                /*程式 三角涵數-斜率*/
+                position:absolute;
+                top:77%;
+                left:32%;
+                width:10%;
+            }
+
+            #meAn_vio
+            {
+                /*小提琴*/
+                cursor:pointer;
+                position:absolute;
+                top:94%;
+                left:46%;
+                width:10%;
+            }
+        }
+    }
+
+    #MyVideo
+    {//m3u8 影片-loading blance 更新專案
+        position:relative;
+        width:80%;
+        max-width:800px;margin-left:auto;margin-right:auto;
+        padding:50px;
+        padding-bottom:9px;
+        border:1px solid #AAA;
+        border-radius:6px;
+        background-color:#333;
+        .title
+        {
+            position:absolute;
+            width:400px;
+            top:0px;
+            left:20px;
+            color:#999;
+            font-size:12px;
+            img
+            {
+                position:relative;
+                top:9px;
+                width:30px;
+                padding:5px;
+                cursor:pointer;
+            }
+        }
+
+        #hls-video {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .bar
+        {
+            width:100%;
+            background-color:#AAA;
+            height:3px;
+            div
+            {
+                width:1px;
+                height:3px;
+                background-color:#FF8800;
+            }
+
+        }
+        .timeStr
+        {/* 時間題示 */
+            font-size:12px;
+            color:#666;
+            background-color:#000;
+            padding:2px;
+            border-radius:6px;position:relative;
+            top:-3px;
+        }
+    }
+    
+    .myCtrPanel{
+        width:100%;
+        max-width:600px;
+        position:relative;
+        margin-left:auto;
+        margin-right:auto;
+        padding-top:60px;
+        #meTitle
+        {
+            position:relative;
+            width:100%;
+            color:#333;
+            font-size:18px;
+            cursor:pointer;
+            .clickimg
+            {
+                width:15px;padding-left:9px;position:relative;
+            }
+            .timg
+            {
+                height:25px;
+                padding-right:9px;
+                position:relative;
+                top:3px;
+            }
+        }
+        .myDataTitle
+        {
+            position:relative;
+            width:100%;
+            color:#333;
+            font-size:15px;
+            padding-top:20px;
+        }
+
+        .MyLi{
+            position:relative;
+            width:90%;
+            padding-left:15px;
+            padding-top:6px;
+            font-size:13px;
+            color:#666;
+            cursor:pointer;
+            .clickimg
+            {
+                width:15px;
+                padding-left:9px;
+                position:relative;
+            }
+            a
+            {
+                color:#666;
+            }
+            .Mycontent
+            {
+                padding-left:30px;
+                font-size:12px;
+                width:80%;
+                padding-top:3px;
+                color:#AAA;
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+﻿<div id="pcPanel" >
+        <component v-bind:is="((openEditLoad)?v.MgPs:'')" v-show="openEdit"></component>
+        <!--商店主商品編緝-->
+        <div style="width:100%;" v-show="!openEdit">
+                <component v-bind:is="((showProtal)?v.productTemp:'')" v-show="!openPay && !showDetail"></component>
+                <component v-bind:is="((!openPay && showDetail)?v.pDetailTemp:'')"></component>
+                <component v-bind:is="((openPay)?v.payTemp:'')"></component>
+        </div>
+</div>

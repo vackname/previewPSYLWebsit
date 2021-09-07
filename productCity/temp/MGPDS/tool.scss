@@ -1,0 +1,67 @@
+﻿#pcPanel
+{/* 商城框架 */
+    #clientProductEditPanel
+    {/* 商店主 定位框架 */
+        #pSetTool
+        {/*設定、搜尋 tool panel*/
+            position:fixed;background-color:#FFF;width:100%;left:0px;z-index:189;box-shadow:2px 2px 5px #888888;top:60px;
+            #productSetErrorBorder
+            {/*分類 select 警告error塊*/
+                border:2px solid #FFF;
+            }
+
+            #ctr
+            {/*設定、搜尋 控制項l panel*/
+                max-width:330px;position:relative;margin-top:5px;margin-left:auto;margin-right:auto;width:95%;border-top:2px solid #DDD;padding-top:5px;
+                height:50px;
+                padding-top:5px;
+                .ctrLi
+                {/*設定、搜尋 控制項l list panel*/
+                    float:left;
+                    border-right:1px solid #AAA;
+                    padding-left:15px;
+                    .insertBt
+                    {/* 新增商品鈕 */
+                        border-radius:5px;cursor:pointer;background-color:#FFF;box-shadow:2px 2px 5px #888888;
+                        img
+                        {/* 圖片題示鈕*/
+                            width:15px;position:relative;top:3px;
+                        }
+                    }
+
+                    #tbBox
+                    {/* 搜尋功能 框架 */
+                        width: 220px;background-color:#EEE;position:relative;margin-left:auto;margin-right:auto;border-radius:6px;
+        
+                        #serBox
+                        {/* 搜尋欄位 panel */
+                            width:160px;text-align:right;
+                            input
+                            {/* 搜尋input */
+                                font-size:16px;height:25px;width:96%;
+                            }
+                        }
+        
+                        #serBt
+                        {/* 搜尋button panel */
+                            width:40px;text-align:center;color:#FFF;font-size:16px;font-weight:bold;background-color:#FFF;cursor:pointer;
+                            img
+                            {/* img button */
+                                width:15px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #classPanel
+            {/* class 控項樣版框架 */
+                width:100%;
+                #cpPanel
+                {/* class 主要控項板版*/
+                    width:310px;text-align:left;position:relative;margin-left:auto;margin-right:auto;
+                }
+            }
+        }
+    }
+}

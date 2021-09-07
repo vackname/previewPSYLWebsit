@@ -1,0 +1,11 @@
+﻿
+<div id="postSystemPanel">
+        <component v-bind:is="v.postFrom" v-show="!historyModel"></component>
+        <component v-bind:is="v.pHistory" v-show="historyModel"></component>
+</div>
+<style>
+        #postSystemPanel
+        {/* 主要樣版 */
+                width:100%;position:relative;min-height:500px;
+        }
+</style>

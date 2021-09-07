@@ -1,0 +1,195 @@
+﻿<div id="MGPD_panel" v-if="loadImg">
+        <div style="width:100%;"v-show="!showSearchPage">
+                <div class="excelCtr">
+                        <span v-on:click="$m.fo.payHistoryDownload()">Step1.&nbsp;未處理單據</span>
+                        <span id="tagacButton" v-bind:style="((connectionAC.key=='')?'':'background-color:#333;')" v-on:click="((connectionAC.key=='')?showAddMark(function(adddata,$t){ $t.$m.main.insertTag(adddata); },5):closeAcTag())" >
+                                <!--連結話動開關-->
+                                亻<span style="color:#00DB00;">半</span>→{{((connectionAC.key=="")?"?":connectionAC.name)}}<img v-show="connectionAC.key!=''" v-bind:src="main.pub.lib.src('closeB.png')" style="position:relative;top:3px;width:15px;" />
+                        </span>&nbsp;
+                        <br/>
+                        <select v-model="YearInput">
+                                <option v-bind:value="new Date().getFullYear()-nu" v-for="(val,nu) in new Array(new Date().getFullYear() - year*1+1)">{{new Date().getFullYear()-nu}}年</option>
+                        </select>&nbsp;
+                        <select v-model="MonthInput">
+                                <option value="1">一月份</option>
+                                <option value="2">二月份</option>
+                                <option value="3">三月份</option>
+                                <option value="4">四月份</option> 
+                                <option value="5">五月份</option> 
+                                <option value="6">六月份</option>
+                                <option value="7">七月份</option>
+                                <option value="8">八月份</option>
+                                <option value="9">九月份</option>
+                                <option value="10">十月份</option>
+                                <option value="11">十一月份</option>
+                                <option value="12">十二月份</option>
+                        </select>
+                        <img id="mainLogo" v-on:click="$m.fo.payHistoryDownload()" v-bind:src="main.pub.lib.src('exceldow.png')" style="width:50px;float:right;" />
+                        <div v-show="dealCount>0" id="dealBall" v-on:click="$m.fo.payHistoryDownload()">{{dealCount}}</div>
+                </div>
+                <div class="excelCtr" v-on:click="pb.el.id('PurchaseUpload').get.click();">
+                        Step2.&nbsp;上傳需處理單據<span style="color:#AAA;">(產生進貨單據)</span>
+                        <img id="mainLogo" v-bind:src="main.pub.lib.src('excelimport.png')" style="width:40px;float:right;" />
+                        <input type="file" multiple="multiple" accept="application/vnd.ms-excel" style="display:none;" id="PurchaseUpload" v-on:change="$m.fo.Purchase(event)"/>
+                </div>
+                <div class="excelCtr" v-on:click="pb.el.id('historyupload').get.click();">
+                        Step3.&nbsp;上傳已處理單據<span style="color:#AAA;">(寄送通知)</span>
+                        <img id="mainLogo" v-bind:src="main.pub.lib.src('excelimport.png')" style="width:40px;float:right;" />
+                        <input type="file" multiple="multiple" accept="application/vnd.ms-excel" style="display:none;" id="historyupload" v-on:change="$m.fo.CompleteUpload(event)"/>
+                </div>
+        </div>
+        <div style="width:100%;height:5px;"></div>
+        <div id="MGPDchart">
+                <div id="openSerPage"><img v-bind:src="main.pub.lib.src(((showSearchPage)?'ur.png':'dr.png'))"  v-on:click="showSearchPage=!showSearchPage"/><span v-on:click="showSearchPage=!showSearchPage">{{((showSearchPage)?"營業處理匯入/匯出":"營業資訊")}}</span></div>
+                <component v-bind:is="((mainTemp.SysLevel())?v.pChartView:'')" v-show="showSearchPage && mainTemp.SysLevel()"></component> 
+        </div>
+        <div id="ctrPanel" v-show="showSearchPage">
+                <div class="rowTemp">
+                        <span id="tagacButton" v-bind:style="((connectionAC.key=='')?'':'background-color:#333;')" v-on:click="((connectionAC.key=='')?showAddMark(function(adddata,$t){ $t.$m.main.insertTag(adddata); },5):closeAcTag())" >
+                                <!--連結話動開關-->
+                                亻<span style="color:#00DB00;">半</span>→{{((connectionAC.key=="")?"?":connectionAC.name)}}<img v-show="connectionAC.key!=''" v-bind:src="main.pub.lib.src('closeB.png')" style="position:relative;top:3px;width:15px;" />
+                        </span>&nbsp;
+                        <select v-model="shtp">
+                                <option value="2">一般(進/銷貨)單據</option>
+                                <option value="1">進貨單據</option>
+                                <option value="0">銷貨單據</option>
+                        </select>
+                        &nbsp;
+                        <select v-model="typeInput">
+                                <option value="999">立單狀態全部</option>
+                                <option value="1">一般立單</option>
+                                <option value="0">後台廢單</option>
+                        </select>
+                </div>
+                <div class="rowTemp">
+                        <select v-model="statusInput">
+                                <option value="999">結單狀態全部</option>
+                                <option v-bind:value="val.val" v-for="(val,nu) in statusfilter">{{main.pub.catchLangName(val.nameAry)}}</option>
+                        </select>
+                        <select v-model="YearInput">
+                                <option v-bind:value="new Date().getFullYear()-nu" v-for="(val,nu) in new Array(new Date().getFullYear() - year*1+1)">{{new Date().getFullYear()-nu}}年</option>
+                        </select>&nbsp;
+                        <select v-model="MonthInput">
+                                <option value="1">一月份</option>
+                                <option value="2">二月份</option>
+                                <option value="3">三月份</option>
+                                <option value="4">四月份</option> 
+                                <option value="5">五月份</option> 
+                                <option value="6">六月份</option>
+                                <option value="7">七月份</option>
+                                <option value="8">八月份</option>
+                                <option value="9">九月份</option>
+                                <option value="10">十月份</option>
+                                <option value="11">十一月份</option>
+                                <option value="12">十二月份</option>
+                        </select>&nbsp;
+                                <input type="text" v-model="InputSer" style="width:100px;" /> <input type="button" class="MGPD_searchbt" v-on:click="$m.main.ser(true)" value="搜尋" />
+                        
+                </div>
+                <div id="MGPD_totalPanel" v-show="(getTypeCount.length!=0 || getSHTypeCount.length!=0) && mainTemp.SysLevel()" v-on:click="openDayF()" >
+                        <div class="MGPD_rowtb"></div>
+                        <span id="MGPDTotalTitle">月結統計&nbsp;<img v-bind:src="main.pub.lib.src('add.png')" v-bind:style="((!openDay)?'opacity:1;':'opacity:0.5;')"/>&nbsp;</span><span class="MGPD_title" v-show="!openDay">完成交易月結總額:<span style="color:#FF8800;">{{(sumCash-SHSumCash-NotSHSumCash)|cashFormat}}</span></span>
+                        <div id="MGPD_totalContent" v-show="openDay">
+                                <table id="payTotalDetailTB">
+                                        <tr class="MGPD_tbth"><th v-for="(val,nu) in getTypeCount" style="border:1px solid #EEE;">{{val.status|fpaystatus}}</th></tr>
+                                        <tr><td v-for="(val,nu) in getTypeCount" id="cel1" valign="top">
+                                                <div class="countPanel" v-show="val.c>0"><div id="CPcel1"><img v-bind:src="main.pub.lib.src('edit.png')" /></div><div id="CPcel2">{{pb.MoneyFormat(val.c)}}</div></div>
+                                                <div class="countPanel" v-show="val.dc>0"><div id="CPcel1"><img v-bind:src="main.pub.lib.src('delete.png')" /></div><div id="CPcel2">{{pb.MoneyFormat(val.dc)}}</div></div>
+                                        </td></tr>
+                                        <tr><td v-bind:colspan="getTypeCount.length" class="MGPD_tbth" id="cel2">
+                                                &nbsp;<span id="cel2titel">客戶支付類別-完成交易總額</span>
+                                               <div v-for="(val,nu) in sumObjCash" id="TypeDataList"><div id="MGPDtcel1">{{val.type|fpaytype}}</div><div id="MGPDtcel2" >{{val.cash|cashFormat}}</div></div>
+                                        </td></tr>
+                                        <tr><td v-bind:colspan="getTypeCount.length" class="MGPD_tbth" id="cel3" ><span class="MGPD_title">銷貨總額</span>&nbsp;{{sumCash|cashFormat}}&nbsp;&nbsp;</td></tr>
+                                </table>
+                                <table id="payTotalDetailTB" v-show="getSHTypeCount.length!=0">
+                                        <tr class="MGPD_tbth"><th v-for="(val,nu) in getSHTypeCount" style="border:1px solid #EEE;">{{val.status|fpaystatus}}</th></tr>
+                                        <tr><td v-for="(val,nu) in  getSHTypeCount" id="cel1" valign="top">
+                                                <div class="countPanel" v-show="val.c>0"><div id="CPcel1"><img v-bind:src="main.pub.lib.src('edit.png')" /></div><div id="CPcel2">{{pb.MoneyFormat(val.c)}}</div></div>
+                                                <div class="countPanel" v-show="val.dc>0"><div id="CPcel1"><img v-bind:src="main.pub.lib.src('delete.png')" /></div><div id="CPcel2">{{pb.MoneyFormat(val.dc)}}</div></div>
+                                        </td></tr>
+                                        <tr><td v-bind:colspan="getSHTypeCount.length" class="MGPD_tbth" id="cel2">
+                                                &nbsp;<span id="cel2titel">進貨-完成交易支付總額</span>
+                                               <div v-for="(val,nu) in ShmentSumObjCash" id="TypeDataList"><div id="MGPDtcel1">{{val.type|fpaytype}}</div><div id="MGPDtcel2" >{{val.cash|cashFormat}}</div></div>
+                                        </td></tr>
+                                        <tr><td v-bind:colspan="getSHTypeCount.length" class="MGPD_tbth" id="cel3" ><span class="MGPD_title">進貨總額</span>&nbsp;{{SHSumCash|cashFormat}}&nbsp;&nbsp;</td></tr>
+                                </table>
+                                <div style="width:100%;text-align:right;font-size:12px;color:#AAA;" v-show="NotSHSumCash>0">進貨未結總額=<span style="color:#FFF;padding:3px;border-radius:6px;background-color:#FF3300;">{{(NotSHSumCash)|cashFormat}}</span></div>
+                                <div style="width:100%;text-align:right;font-size:12px;color:#AAA;">銷貨總額-進貨總額-進貨未結總額=(營業收入總額)<span style="color:#FFF;padding:3px;border-radius:6px;background-color:#FF8800;">{{(sumCash-SHSumCash-NotSHSumCash)|cashFormat}}</span></div>
+
+                                                                                                                                                                                                                                
+                                <div class="MGPD_tCMark">注1&nbsp;<img v-bind:src="main.pub.lib.src('edit.png')"/>&nbsp;一般單據數</div>
+                                <div class="MGPD_tCMark">注2&nbsp;<img v-bind:src="main.pub.lib.src('delete.png')"/>&nbsp;後台廢單數</div>
+                                <div class="MGPD_tCMark" style="color:#555;">注3&nbsp;每月結帳日:<span style="color:#FF8800;font-weight:bold;">{{closeDay}}&nbsp;號</span></div>
+                                <div class="MGPD_rowtb"> </div>
+                        </div>
+                 </div>
+        </div>
+        <div id="MGPDEMptyMark"v-show="history.length==0 && showSearchPage">-{{getLang("dataempty")}}-</div>
+        <div id="MGPDEMptyMark" style="padding-bottom:60px;" v-show="showSearchPage">search count:{{pageCount}}</div>
+        <div  class="rowTemp" v-for="(val,nu) in history" v-show="history.length!=0 && showSearchPage">
+                <div id="MGPDPanel">
+                        <div class="MGPD_rowtb" v-bind:style="'background-color:'+((val.recode.status*1!=0 || val.recode.display*1==0)?'#EEE;':'#FF8800;')">
+                        <div class="MGPD_rowtb_left"><span style="font-size:12px;color:#FFF;background-color:#555;">&nbsp;{{((nu+1 >=10)?'':'0')+(nu+1)}}&nbsp;</span><span class="MGPD_label" v-bind:style="((val.recode.display*1==0)?'text-decoration:line-through;':'')">&nbsp;{{val.recode.key}}</span>&nbsp;<span v-show="val.recode.shtp" class="purchase">{{getLang("Purchase")}}</span></div>
+                        <div class="MGPD_rowtb_right" style="width:33%;text-align:right;padding-right:10px;color:#999;"><span class="MGPD_label" v-bind:style="((val.recode.display*1==0)?'text-decoration:line-through;':'')"><img v-bind:src="main.pub.lib.src('excelimport.png')" v-show="val.recode.ck" v-on:click="$m.main.cancelMark(val.recode);" style="width:20px;position:relative;top:5px;cursor:pointer;" />  {{val.recode.date|fdate}}</span></div>
+                        </div>
+                        <div style="width:100%;height:10px;"></div>
+                        <div class="MGPD_rowtb">
+                        <div class="MGPD_rowtb_left">  <span class="MGPD_title">{{getLang("pclass")}}&nbsp;{{val.recode.type|fpaytype}}</span></div>
+                        </div>
+                        <div class="MGPD_rowtb_line"></div>
+                        <div class="MGPD_rowtb">
+                                <div class="MGPD_rowtb_left"> <span class="MGPD_title">{{getLang("bank")}}</span>&nbsp; <span class="MGPD_label"><img v-bind:src="$m.main.bankImg(val.recode.bank)" style="width:20px;position:relative;top:3px;"/>&nbsp;{{bankName(val.recode.bank)}}</span></div>
+                                <div class="MGPD_rowtb_right"  v-show="val.recode.bank!=-1">  <span class="MGPD_title">{{getLang("paccount")}}</span><br/><span class="MGPD_label" v-bind:style="((val.recode.limitDate > pb.unixReNow() && val.recode.display*1!=0 && val.recode.status==0)?'background-color:#555;color:#FFF;border-radius:6px;padding:2px;':'')"> {{val.recode.account}}</span></div>
+                        </div>
+                        <div class="MGPD_rowtb_line"></div>
+                        <div class="MGPD_rowtb">
+                                <div class="MGPD_rowtb_left"><span class="MGPD_title" v-bind:style="((val.recode.display*1==0)?'text-decoration:line-through;':'')">{{getLang("paystatus")}}</span>&nbsp;<span class="MGPD_label" v-bind:style="statusColor(val.recode.status)+((val.recode.display*1==0)?'text-decoration:line-through;':'')"> {{val.recode.status|fpaystatus}}</span></div>
+                                <div class="MGPD_rowtb_right"> <span class="MGPD_title">{{getLang("cancel")}}</span>&nbsp;<span class="MGPD_label"> {{((val.recode.display*1==1)?"NO":"YES")}}</span></div>
+                        </div>
+                        <div class="MGPD_rowtb" v-show="val.recode.limitDate > pb.unixReNow() && val.recode.display*1!=0 && val.recode.status==0">
+                                <div class="MGPD_rowtb_right"><span class="MGPD_title">{{getLang("lpayment")}}</span><br/><span class="MGPD_label" style="background-color:#FF3300;color:#FFF;border-radius:6px;padding:2px;">{{val.recode.limitDate|fdate}}</span></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="MGPD_rowtb" v-show="val.recode.akey!=null && val.recode.akey!=''">
+                                <!--報名活動-->
+                                <div class="MGPD_rowtb_left" style="width:50%;text-align:right;"><span class="MGPD_title"><span v-show="((val.ac.titleAry.length>0)?val.acimg:'')==''" style="background-color:#333;padding:3px;color:#FFF;border-radius:20px;">亻<span style="color:#00BB00;">半</span>{{LangTitle('space')}}</span><img v-bind:src="((val.ac.titleAry.length>0)?val.acimg:'')" v-show="((val.ac.titleAry.length>0)?val.acimg:'')!=''" style="width:90%;" /></div>
+                                <div class="MGPD_rowtb_right" style="width:38%;"><span class="MGPD_label" v-bind:style="((val.recode.display*1==0)?'text-decoration:line-through;':'')" > {{val.recode.acash|cashFormat}}</span>
+                                        <br/>(<span v-html="reTitle(val.ac).substr(0,8)+'...'" style="color:#AAA;"></span>)
+                                </div>
+                        </div>
+                        <div class="MGPD_rowtb_line" v-show="val.recode.akey!=null && val.recode.akey!=''"></div>
+                        <div id="MGPD_Detail">
+                                <div id="MGPDOpen" v-on:click="openDetail(val)" v-show="!val.open"><input type="button" value="▲"/></div>
+                                <component v-bind:is="((val.open)?v.detailDate:'')" v-bind:val="getVal(val)"  ></component> 
+                                <component v-bind:is="((val.open)?v.detail:'')" v-bind:val="val.recode" v-bind:detail="$m.main.detail"></component> 
+                        </div>
+                        <div class="MGPD_rowtb_line"></div>
+                        <div class="MGPD_rowtb" v-show="val.recode.shfeecancel || val.recode.shfee>0 || val.recode.adr">
+                                <div class="MGPD_rowtb_left" style="width:90%;"><span class="MGPD_title">&nbsp;{{getLang(((val.recode.shfee>0)?'shfee':'shfree'))}}</span><span class="MGPD_label" v-show="!val.recode.shfeecancel && val.recode.shfee>0" >&nbsp;+{{val.recode.shfee|cashFormat}}</span>
+                                        <span class="MGPD_label"style="color:#AAA;font-size:12px;" >&nbsp;<img v-bind:src="main.pub.lib.src('package.png')" style="width:15px;"  /><span v-show="val.sfname!=''">({{val.recode.sfname}})</span></span>
+                                        <span v-show="!val.recode.shfeecancel" style="color:#FF8800;font-size:12px;">&nbsp;/<img v-bind:src="main.pub.lib.src('sh.png')" style="width:20px;position:relative;top:5px;" />&nbsp;{{shName(val.recode.sttype)}}</span>
+                                </div>
+                                <!--運費-->
+                        </div>
+                        <div class="MGPD_rowtb">
+                        <div class="MGPD_rowtb_right" style="width:60%;"><span class="MGPD_title">+&nbsp;{{getLang("payment")}}</span>&nbsp;<span class="MGPD_label" v-bind:style="((val.recode.display*1==0)?'text-decoration:line-through;':'')"> {{val.recode.amount|cashFormat}}</span></div>
+                        <div class="MGPD_rowtb_left" style="width:35%;"><span class="MGPD_title">{{getLang("shipping")}}</span>&nbsp;<span class="MGPD_label" style="text-decoration:line-through;"> {{(val.recode.fee+val.recode.afee)|cashFormat}}</span></div>
+                        </div>
+                        <div class="MGPD_rowtb_line" v-show="val.recode.cash!=0"></div>
+                        <div class="MGPD_rowtb"  v-show="val.recode.cash!=0">
+                        <div class="MGPD_rowtb_right" style="width:60%;"><span class="MGPD_title">&nbsp;{{getLang("cashchange")}}</span>&nbsp;<span class="MGPD_label" v-bind:style="((val.recode.display*1==0)?'text-decoration:line-through;':'')"> {{(val.recode.cash - val.recode.amount)|cashFormat}}</span></div>
+                        </div>
+                        <div class="MGPD_SUMsplit"></div><!--分隔線-->
+                        <div class="MGPD_rowtb">
+                        <div class="MGPD_rowtb_right" style="width:38%;"><span class="MGPD_title">{{getLang("sum")}}</span>&nbsp;<span class="MGPD_label" v-bind:style="((val.recode.display*1==0)?'text-decoration:line-through;':'')"> {{(val.recode.amount)|cashFormat}}</span></div>
+                        </div>
+                </div>
+                <div class="clear"></div>
+                <div class="MGPD_row"></div>
+        </div>
+        <div id="MGPD_MorePage" v-on:click="$m.main.ser(false)" v-show="pageCount > history.length && showSearchPage">
+                more...
+        </div>
+        <component v-bind:is="((openMarkAdd)?v.takLabelvue:'')"></component><!-- 加入標籤工具-活動模式 -->
+</div>

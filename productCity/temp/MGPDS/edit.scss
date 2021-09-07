@@ -1,0 +1,227 @@
+﻿#pcPanel
+{/* 商城框架 */
+    #clientProductEditPanel
+    {/* 商店主 定位框架 */
+        #MGPSEPanel
+        {/*商品編緝 panel 主要頁版*/
+            position:fixed;width:100%;top:0px;left:0px;z-index:199;
+            .MGPSETemp
+            {/* 樣版框架 */
+                position:relative;margin-left:auto;margin-right:auto;width:95%;
+                #publishMarkError
+                {/* 客戶商品審核失敗mark */
+                    padding:3px;
+                    border-radius: 6px;
+                    img
+                    {
+                        cursor:pointer;
+                        position:relative;
+                        top:6px;
+                        width:25px;
+                    }
+                }
+
+                #langPanel
+                {/* 語系檢核文章 */
+                    position:relative;
+                    width:95%;
+                    padding-bottom:5px;
+                    color:#555;
+                    font-size:12px;
+                    border-bottom:1px dashed #AAA;
+                    text-align:center;
+                    margin-left:auto;
+                    margin-right:auto;
+                    #notLang
+                    {/* 未設定語系icon/已設定語系 */
+                        position:relative;
+                        padding:3px;
+                        #l
+                        {
+                            position:relative;
+                            padding-right:3px;
+                            width:20px;
+                            top:3px;
+                        }
+                        #c
+                        {
+                            position:absolute;
+                            top:0px;
+                            left:19px;
+                            width:15px;
+                        }
+                    }
+
+                    .langInput
+                    {/* 語言開放選擇器 */
+                        padding-right:20px;
+                        cursor:pointer;
+                        label
+                        {
+                            cursor:pointer;
+                            color:#999;
+                            font-size:12px;
+                        }
+                    }
+                    .langKey
+                    {/* 語言開放 */
+                        padding-left:10px;
+                        padding-right:5px;
+                        color:#FF8800;
+                        font-size:15px;
+                        font-weight:bold;
+                    }
+                }
+
+                #failApprove
+                {/* 商品審核失敗描述 */
+                    position:relative;width:100%;text-align:center;padding-bottom:20px;min-height:170px;
+                }
+
+                #descroptionPanel
+                {/* 商品描述 */
+                    position:relative;width:100%;text-align:center;padding-bottom:20px;
+                    .videoTool
+                    {/* url 輪入欄位 panel*/
+                        position:relative;margin-left:auto;margin-right:auto;width:95%;
+                        padding-top:6px;
+                        padding-bottom:6px;
+                        border-bottom:1px dashed #AAA;
+                        text-align:center;
+                        color:#2894FF;
+                        .urlCath
+                        {/* 取Video url參數 */
+                            padding:5px;
+                            border:1px solid #AAA;
+                            border-radius:3px;
+                            cursor:pointer;
+                            font-size:12px;
+                            color:#666;
+                            img
+                            {/* remove button */
+                                padding-left:6px;width:15px;
+                                position:relative;
+                                top:3px;
+                            }
+                        }
+                    }
+                }
+
+                .MGPSETempImg
+                {/* title mark img*/
+                    width:15px;position:relative;top:3px;cursor:pointer;
+                }
+
+                #MGPublish
+                {/* 發佈panel */
+                    width:100px;
+                    text-align:right;
+                    position:absolute;
+                    right:0px;
+                    top:0px;
+                    span
+                    {
+                        cursor:pointer;
+                        padding:3px;
+                        background-color:#BB5500;
+                        color:#FFF;
+                        font-size:15px;
+                        border-radius:88px;
+                        box-shadow:2px 2px 5px #888888;
+                        img
+                        {
+                            width:13px;
+                            position:relative;
+                            top:3px;
+                            padding:3px;
+                        }
+                    }
+                }
+            }
+
+            #ProductEditLoad
+            {/* 執行緒正在運行動畫 */
+                background-color:#FF8800;
+                height:3px;
+            }
+            .MGPSE_title{
+                color:#AAA;
+                font-size:12px;
+            }
+
+            .MGPSE_label{
+                color:#555;
+                font-size:15px;
+            }
+
+            .MGPSE_row{
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                border-top:1px solid #BBB;
+                width:95%;
+                height:9px;
+            }
+
+            .MGPSE_rowtb_line{
+                position:relative;margin-left:auto;margin-right:auto;width:90%;border-top:1px solid #EEE;
+            }
+
+            .MGPSE_displaybt{
+                background-color:#AAA;
+                color:#FFF;
+                font-size:12px;
+                box-shadow:2px 2px 5px #888888;
+            }
+            .MGPSE_bt{
+                background-color:#555;
+                color:#FFF;
+                font-size:12px;
+                box-shadow:2px 2px 5px #888888;
+            }
+
+            .MGPSE_rowtb
+            {
+                text-align:left;width:100%;height:35px;
+            }
+
+            .MGPSE_rowtb_left
+            {
+                float:left;
+                width:49%;
+            }
+
+            .MGPSE_rowtb_right
+            {
+                float:right;width:49%;
+            }
+            #MGPSE_bg{
+                /*背景遮罩*/
+                position:fixed;height:2000px;opacity:0.5;width:100%;background-color:#000;top:0px;left:0px;
+            }
+
+            #MGPSE_title_edit_panel
+            {/*視窗 title bar*/
+                width:100%;height:30px;background-color:#555;color:#FFF;border-top-left-radius:10px;border-top-right-radius:10px;
+            }
+            #MGPSE_edit_panel
+            {/*視窗框架*/
+                position:relative;margin-left:auto;margin-right:auto;max-width:500px;background-color:#FFF;top:30px;width:95%;border-radius:10px;
+
+                #closeBt
+                {/* 關閉視窗 button panel */
+                    float:right;
+                    img
+                    {/* close button img*/
+                        width:10%;opacity:0.9;min-width:30px;max-width:50px;position:relative;left:10px;cursor:pointer;
+                    }
+                    select
+                    {/* lang choose*/
+                        position:relative;
+                        top:-10px;
+                    }
+                }
+            }
+        }
+    }
+}

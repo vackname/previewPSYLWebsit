@@ -1,0 +1,64 @@
+﻿#postSystemPanel
+{/*main 框架*/
+    #hPanel
+    {/* 單據歷史名細 main panel */
+
+        #ps_h_serDetailPanel
+        {/* search tool*/
+            position:fixed;
+            width:100%;
+            padding-top:10px;
+            padding-bottom:10px;
+            border-bottom:1px solid #EEE;
+            text-align:center;
+            left:0px;
+            top:60px;
+            z-index:189;
+            background-color:#FFF;
+
+            #ps_h_panel
+            {/*定位浮動框架*/
+                width:100%;padding-bottom:10px;
+                #ps_h_ctr
+                {/*功能input框架*/
+                    width:340px;border:2px solid #EEE;position:relative;margin-left:auto;margin-right:auto;border-radius:20px;
+                    #serInput
+                    {/* 搜尋輸入欄位 */
+                        width:110px;border-top-right-radius:0px;border-bottom-right-radius:0px;
+                    }
+                    input, select
+                    {/* select day */
+                        border-radius:10px;
+                        font-size:15px;
+                        font-weight:bold;
+                    }
+                    
+                    #serBt
+                    {/* 搜尋鈕 */
+                        cursor:pointer;text-align:center;width:40px;background-color:#555;border-top-right-radius:50px;border-bottom-right-radius:50px;
+                    }
+
+                }
+            }
+
+            #ps_h_bt
+            {/* 回post system button set panel */
+                position:relative;margin-right:auto;width:130px;
+                #turnPostSysBt
+                {/* 回post system button */
+                    color:#999;
+                    font-size:15px;
+                    font-weight:bold;
+                    width:100%;
+                    border:2px solid #EEE;
+                    border-top-right-radius:50px;
+                    border-bottom-right-radius:50px;
+                    background-color:#FFF;
+                    cursor:pointer;
+                    padding:5px;
+                    position:absolute;
+                }
+            }
+         }
+    }
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "outputFileName": "/Users/chiwenchung/Projects/psylProject/psylProtal/psylProtal/wwwroot/libjs/postSystem.min",
+    "inputFiles": [
+      "/postSystem/temp/postSystfrom/cashChange.js",
+      "/postSystem/temp/postSystfrom/classMenu.js",
+      "/postSystem/temp/postSystfrom/payMenu.js",
+      "/postSystem/temp/postSystfrom/product.js",
+      "/postSystem/temp/postSystfrom/search.js",
+      "/postSystem/temp/postSystfrom/cashChange.scss",
+      "/postSystem/temp/postSystfrom/classMenu.scss",
+      "/postSystem/temp/postSystfrom/payMenu.scss",
+      "/postSystem/temp/postSystfrom/product.scss",
+      "/postSystem/temp/postSystfrom/search.scss",
+      "/postSystem/temp/postSystfrom/cashChange.html",
+      "/postSystem/temp/postSystfrom/classMenu.html",
+      "/postSystem/temp/postSystfrom/payMenu.html",
+      "/postSystem/temp/postSystfrom/product.html",
+      "/postSystem/temp/postSystfrom/search.html",
+      "/postSystem/temp/postSystfrom/payMenu/allowances.js",
+      "/postSystem/temp/postSystfrom/payMenu/setMenu.js",
+      "/postSystem/temp/postSystfrom/payMenu/allowances.scss",
+      "/postSystem/temp/postSystfrom/payMenu/setMenu.scss",
+      "/postSystem/temp/postSystfrom/payMenu/allowances.html",
+      "/postSystem/temp/postSystfrom/payMenu/setMenu.html",
+      "/postSystem/temp/pb/checkOut.js",
+      "/postSystem/temp/pb/checkOut.scss",
+      "/postSystem/temp/pb/checkOut.html",
+      "/postSystem/temp/pb/checkOut/setList.js",
+      "/postSystem/temp/pb/checkOut/setList.scss",
+      "/postSystem/temp/pb/checkOut/setList.html",
+      "/postSystem/temp/history/serTool.js",
+      "/postSystem/temp/history/serTool.scss",
+      "/postSystem/temp/history/serTool.html",
+      "/postSystem/view/history.js",
+      "/postSystem/view/postSystFrom.js",
+      "/postSystem/view/history.scss",
+      "/postSystem/view/postSystFrom.scss",
+      "/postSystem/view/history.html",
+      "/postSystem/view/postSystFrom.html",
+      "/postSystem/controllers/history.js",
+      "/postSystem/controllers/postSystFrom.js",
+      "/postSystem/temp/postSystfrom/QRScreenAddPoint.html",
+      "/postSystem/temp/postSystfrom/QRScreenAddPoint.js",
+      "/postSystem/temp/postSystfrom/QRScreenAddPoint.scss"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

@@ -1,0 +1,67 @@
+﻿#postSystemPanel
+{/*main 框架*/
+    #psf
+    {/*post system panel*/
+        #p_psf_productPanel
+        {/* 商品選擇Panel */
+            width:100%;
+            position:relative;
+            top:10px;
+            #moreProductPanel
+            {/* 更多商品頁按鈕 */
+                position:fixed;
+                top:150px;
+                right:2px;
+                width:40px;
+                padding:5px;
+                border:3px solid #EEE;
+                border-radius:10px;
+                cursor:pointer;
+                text-align:center;
+                font-size:15px;
+                z-index:185;
+                background-color:#FFF;
+                color:#AAA;
+            }
+
+            .productLi
+            {/* 商品選擇 */
+                padding:20px;
+                cursor:pointer;
+                float:left;
+                .productName
+                {/* 商品選擇字 */
+                    border:2px solid #EEE;
+                    background-color:#FFF;
+                    color:#555;
+                    padding:10px;
+                    font-size:22px;
+                    font-weight:bold;
+                    border-radius:10px;
+                    -webkit-filter: drop-shadow(3px 3px 2px rgba(100, 0, 0, 0.1));
+                    filter: drop-shadow(3px 3px 2px rgba(100, 0, 0, 0.1));
+                    .discount
+                    {/* 商品折扣題示 */
+                        position:absolute;top:-30px;right:-30px;font-size:12px;width:30px;
+                        padding:2px;
+                        font-weight:bold;
+                        border-radius:50px;background-color:#FFF;text-align:center;color:#FF8800;
+                    }
+                }
+            }
+
+            #empty
+            {/* 更多商品 鈕 */
+                width:100%;height:150px;float:left;
+            }
+        
+            .productLi:after,#empty:after
+            {/*商品選擇 -容器 float clear*/
+                position:relative;
+                content: "";
+                display: block;
+                clear: both;
+            }
+        }
+    }
+}

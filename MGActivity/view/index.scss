@@ -1,0 +1,178 @@
+﻿#MGActivity_main
+{
+    #acPanel
+    {
+        position:relative;
+        width:100%;
+        position:relative;width:95%;
+        max-width:900px;
+        margin-left:auto;
+        margin-right:auto;
+        padding-bottom:50px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        #searchTool
+        {/* 搜尋功能 panel*/
+            position:relative;width:100%;text-align:center;padding-top:20px;
+            padding-bottom:80px;
+            #tbBox
+            {/* 搜尋功能 框架 */
+                width: 220px;background-color:#EEE;position:relative;margin-left:auto;margin-right:auto;border-radius:6px;
+
+                #serBox
+                {/* 搜尋欄位 panel */
+                    width:160px;text-align:right;
+                    input
+                    {/* 搜尋input */
+                        font-size:16px;height:25px;width:96%;
+                    }
+                }
+
+                #serBt
+                {/* 搜尋button panel */
+                    width:40px;text-align:center;color:#FFF;font-size:16px;font-weight:bold;background-color:#FFF;cursor:pointer;
+                    img
+                    {/* img button */
+                        width:15px;
+                    }
+                }
+            }
+        }
+
+        .dataListPanel
+        {/* 文章定位*/
+            position:relative;
+            width:100%;
+            padding-bottom:50px;
+            cursor:pointer;
+            #document
+            {/* 文章內容框架 */
+                width:100%;
+                #tagAddLabel
+                {/* tag bag */
+                    position:absolute;
+                    width:25px;
+                    cursor:pointer;
+                    top:-12px;
+                    right:6px;
+                }
+                #ACDate
+                {/* 活動日期 panel */
+                    position:relative;
+                    width:98%;
+                    bottom:-6px;
+                    #limit
+                    {//限制報名人數mark
+                        background-color:#FF3300;padding:3px;color:#FFF;border-top-right-radius:9px;font-size:12px;
+                    }
+                    .monthDay
+                    {/* 活動日期 */
+                        font-size:12px;
+                        color:#AAA;
+                        padding:3px;
+                        border-top-left-radius:9px;
+                        background-color:#333;
+                    }
+                }
+                
+                .contentTitle
+                {/* 主標 文字內容 */
+                    width:98%;
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                    word-wrap:break-word;
+                    color:#333;
+                    padding-top:9px;
+                    padding-bottom:20px;
+                    #singupStopBt,#singupBt
+                    { /* 報名提示 */
+                      /* 停止報名提示 */
+                        font-size:15px;
+                        font-weight:bold;
+                        width:400px;
+                        text-align:right;
+                        position:absolute;
+                        right:9px;
+                        bottom:-40px;
+                        .clickBt{
+                             color:#FFF;
+                             border-radius: 9px;
+                             padding:6px;
+                        }
+
+                        img
+                        {
+                            width:15px;
+                        }
+                    }
+    
+                    #singupBt
+                    {/* 報名提示 */
+                        .clickBt{
+                            background-color:#FF8800;
+                        }
+                    }
+    
+                    #singupStopBt
+                    {/* 停止報名提示 */
+                        .clickBt{
+                            background-color:#AAA;
+                        }
+                    }
+                }
+
+                @media screen  and (max-width: 550px){
+                    .contentTitle
+                    {/* 主標 文字內容 */
+                        font-size:26px;
+                    }
+                }
+                
+                
+                @media only screen and (min-width: 550px) and (max-width: 750px)
+                {
+                    .contentTitle
+                    {/* 主標 文字內容 */
+                        font-size:24px;
+                    }
+                }
+                
+                @media screen and (min-width: 750px) 
+                {
+                    .contentTitle
+                    {/* 主標 文字內容 */
+                        font-size:21px;
+                    }
+                }
+
+                #banner
+                {/* 選擇報名活動banner */
+                    width:100%;
+                    overflow-y: hidden;
+                    img
+                    {
+                        width:100%;
+                    }
+                }
+            }
+
+            .splitline
+            {/*文章分隔線*/
+                border-bottom:1px solid #DDD;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                height:50px;
+                width:100%;
+
+            }
+        }
+
+        #btMore
+        {/* 更多文章鈕 */
+            border-bottom:1px solid #EEE;width:100%;padding-top:20px;padding-bottom:50px;cursor:pointer;text-align:center;color:#999;font-size:20px;
+        }
+    }
+}

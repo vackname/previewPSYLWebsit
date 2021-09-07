@@ -1,0 +1,97 @@
+<div id="mbeditPage">
+    <!-- 系統管理者資訊修改 -->
+    <div id="Mainpanel">
+        <div class="mb_Page_title">
+            <p>{{lang.get('mbEdit')}}</p>
+        </div>
+        <div class="mb_container">
+            <table style="width:100%;">
+                <tr>
+                    <th class="mb_ok_reg">{{lang.get('facName')}}</th>
+                    <td>
+                        &nbsp;{{input.name}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="mb_container">
+            <table style="width:100%;">
+                <tr>
+                    <th class="mb_ok_reg">{{lang.get('account')}}</th>
+                    <td>
+                        &nbsp; <img style="width:30px;padding:6px;" v-show="mainTemp.head.mbdata.tp!=0" v-bind:src="((mainTemp.login.img!=null)?mainTemp.login.img.src(loginImg()):'')"/>
+                        {{input.mbid.substring(0,6)+((input.mbid.length>6)?'***':'')}}
+                    </td>
+                </tr>
+                <tr v-show="input.mg !='' && input.ck">
+                    <th class="mb_ok_reg">{{lang.get('bindAc')}}</th>
+                    <td>
+                        &nbsp;<span>{{input.mg}}</span>
+                        <div style="float: right; width: 100px;">
+                            <input type="button" v-bind:value="lang.get('cancelBind')" class="mb_s_bt" v-on:click="$m.cancelBind()" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="MBStoryEdit" v-if="mainTemp.NormalLevel()">
+            <component v-bind:is="((mainTemp.NormalLevel())?v.QRVue:'')"></component>
+            <!--QR code-->
+            <component v-bind:is="((mainTemp.NormalLevel())?v.mbinfoVue:'')"></component>
+            <!--會員簡述資訊-->
+            <component v-bind:is="((mainTemp.NormalLevel())?v.bankinfoVue:'')"></component>
+            <!--銀行交易資訊轉換-->
+            <component v-bind:is="((mainTemp.head.mbdata.level == 0)?v.personVue:'')"></component>
+            <!--申請權限單for normal Level 轉換-->
+        </div>
+        <div class="mb_container" v-show="mainTemp.head.mbdata.tp==0" >
+            <table style="width:100%;">
+                <tr>
+                    <th v-bind:class="((ckType.pw3==0)?'mb_error_reg':'mb_ok_reg')">{{lang.get('sinpassword')}}</th>
+                    <td>
+                        &nbsp;<input type="password" v-model="pw2" v-on:keydown="$m.ckfunpw()" v-on:keyup="$m.ckfunpw()" v-on:change="$m.ckfunpw()" />
+                    </td>
+                </tr>
+                <tr>
+                    <th v-bind:class="((ckType.pw==0)?'mb_error_reg':'mb_ok_reg')">{{lang.get('modifyPassoword')}}</th>
+                    <td>
+                        &nbsp;<input type="password" v-model="input.pw" v-on:keydown="$m.ckfunpw()" v-on:keyup="$m.ckfunpw()" v-on:change="$m.ckfunpw()" />
+                    </td>
+                </tr>
+                <tr>
+                    <th v-bind:class="((ckType.repassword==0)?'mb_error_reg':'mb_ok_reg')"> {{lang.get('rePassoword')}}</th>
+                    <td>&nbsp;<input type="password" v-model="input.repassword" v-on:keydown="$m.ckfunpw()" v-on:keyup="$m.ckfunpw()" v-on:change="$m.ckfunpw()" /></td>
+                </tr>
+            </table>
+            <div class="mb_description">{{lang.get('password')}}</div>
+            <div class="passwordCheckBtn">
+                <input type="button" v-bind:value="lang.get('submit')" v-show="load" v-bind:class="((AllCKpw)?'mb_ok_sub':'mb_error_sub')" v-on:click="$m.editpassword()" />
+            </div>
+        </div>
+        <div class="mb_container">
+            <table style="width:100%;">
+                <tr>
+                    <th v-bind:class="((ckType.mail==0)?'mb_error_reg':'mb_ok_reg')">e-mail</th>
+                    <td>&nbsp;<input type="text" v-model="input.mail" v-on:keydown="$m.ckfun()" v-on:keyup="$m.ckfun()" v-on:change="$m.ckfun()" /></td>
+                </tr>
+            </table>
+            <div class="mb_description" v-show="mainTemp.head.mbdata.tp==0">{{lang.get('returnpassword')}}</div>
+
+            <table style="width:100%;" v-show="mainTemp.head.mbdata.tp==0">
+                <tr>
+                    <th v-bind:class="((ckType.pw2==0)?'mb_error_reg':'mb_ok_reg')">{{lang.get('loginpass')}}</th>
+                    <td>
+                        &nbsp;<input type="password" v-model="pw" v-on:keydown="$m.ckfun()" v-on:keyup="$m.ckfun()" v-on:change="$m.ckfun()" />
+                    </td>
+                </tr>
+            </table>
+            <div class="passwordCheckBtn" v-show="mainTemp.head.mbdata.tp==0">
+                <input type="button" v-bind:value="lang.get('submit')" v-show="load" v-bind:class="((AllCK)?'mb_ok_sub':'mb_error_sub')" v-on:click="$m.editdata()" />
+            </div>
+        </div>
+        <div class="bottomArea">
+             <!-- 處理動畫 -->
+             <component v-bind:is="((!load)?v.runLoad:'')"></component>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{
+    "signup":"报名",
+    "signupstop":"停止报名",
+    "opentime":"开放时间",
+    "stoptime":"报名剩于",
+    "wait":"未开放",
+    "after":"之后",
+    "agree":"已阅读",
+    "stepper":"个资",
+    "stepames":"联络人",
+    "stepadr":"收件地址",
+    "stepcomplete":"完成报名",
+    "name":"姓名",
+    "passid":"身份证/护照",
+    "birthday":"生日",
+    "cperson":"联络人",
+    "relationship":"关系",
+    "limit":"限制报名人数",
+    "rfee":"报名费",
+    "amis":"年龄不符",
+    "LimitA":"年龄限制",
+    "error":{
+        "re":"已报名!!",
+        "full":"已额满！！"
+    },
+    "next":"下一步",
+    "prev":"上一步",
+    "additional":"加购"
+}

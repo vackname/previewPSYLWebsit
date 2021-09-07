@@ -1,0 +1,26 @@
+[
+  {
+    "src": "animateModel/pb/MesBox/tsconfig.json",
+    "modelName": "init_animateModel_pb_MesBox_tscm"
+  },
+  {
+    "src": "animateModel/head/tsconfig.json",
+    "modelName": "init_animateModel_head_tscm"
+  },
+  {
+    "src": "animateModel/index/author/tsconfig.json",
+    "modelName": "init_animateModel_index_author_tscm"
+  },
+  {
+    "src": "animateModel/index/maintain/tsconfig.json",
+    "modelName": "init_animateModel_index_maintain_tscm"
+  },
+  {
+    "src": "animateModel/Login/tsconfig.json",
+    "modelName": "init_animateModel_Login_tscm"
+  },
+  {
+    "src": "model/indexTsc/tsconfig.json",
+    "modelName": "init_model_indexTsc_tscm"
+  }
+]

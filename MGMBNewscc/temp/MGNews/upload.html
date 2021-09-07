@@ -1,0 +1,41 @@
+﻿<div  id="mgNewsUpladcc">
+    <div id="bgUpload"></div>
+    <div id="saveContent">
+        <div v-for="(val,nu) in titleSaveNuAry" class="detail" >
+            {{val.name.substr(0,36)}}...<img v-show="val.ck" v-bind:src="main.pub.lib.src('ck.png')" v-bind:style="((val.notPpoint)?'opacity:0.6':'')" />
+            <div v-show="val.notPpoint" id="pointError"><!--無法扣款錯誤提示-->
+                <img v-bind:src="main.pub.lib.src('coin.png')" style="width:100%;" />
+                <img v-bind:src="main.pub.lib.src('cancel.png')" id="cancelImg" />
+            </div>
+        </div>
+        <div v-for="(val,nu) in docSaveNuAry" class="detail" >
+            {{val.name.substr(0,36)}}... <img v-show="val.ck" v-bind:src="main.pub.lib.src('ck.png')" v-bind:style="((val.notPpoint)?'opacity:0.6':'')" />
+            <div v-show="val.notPpoint" id="pointError" ><!--無法扣款錯誤提示-->
+                <img v-bind:src="main.pub.lib.src('coin.png')" style="width:100%;" />
+                <img v-bind:src="main.pub.lib.src('cancel.png')" id="cancelImg" />
+            </div>
+        </div>
+        <div id="mesPanel">
+            <div id="savePg"> save<div id="savePgBG"><div id="savePgDegress" v-bind:style="'width:'+((prgoressDegress()/(this.titleSaveNuAry.length+this.docSaveNuAry.length))*100)+'%;'"></div></div>
+            <div id="pointCalcu" v-show="usPoint!=0 && !mainTemp.PayLevel() && !mainTemp.SysLevel()"> <!-- 目前增加減少點數 -->
+                <img v-bind:src="main.pub.lib.src('coin.png')" style="width:20px;" />&nbsp;{{ pb.MoneyFormat(usPoint)}}
+            </div> 
+           </div>
+            <div id="imgUploadPanel" v-show="imgShow(NewsCtr.docAry)">
+                <div v-for="(val1,nu1) in NewsCtr.docAry" id="imgSavePanel">
+                    <div v-bind:id="'newsUPimgUUcc'+nu2" v-show="!val2.over && val2.upsize>0" v-for="(val2,nu2) in val1.imgfileAry" class="uploadPrivew">
+                        <div class="row"><span id="imgNote" v-show="!mainTemp.PayLevel() && !mainTemp.SysLevel()"><img v-bind:src="main.pub.lib.src('coin.png')" style="width:15px;position:realtive;top:10px;" />&nbsp;3000</span>&nbsp;path:{{val2.filename.substr(0,3)}}...{{val2.filename.substr(val2.filename.length-6,6)}} size:&nbsp;<span v-bind:style="((val2.over)?'color:#FF3300':'')" >{{val2.size}}&nbsp;{{val2.sizeName}}</span></div>
+                        <div class="row" v-bind:style="((val2.uploadmes.indexOf('error')>-1 || 3 > val2.restart)?'color:#FF8800;':'')">
+                            {{((3 > val2.restart)?'retry':'')+val2.uploadmes}}
+                        </div>
+                        <div id="uploadProgressBG" v-bind:style="((val2.over)?'opacity:0.3':'')"><div id="uploadPline" v-bind:style="'width:'+((val2.upsize/val2.uptotalsize)*100)+'%'"></div></div>
+                        <!--上傳圖片進度條-->
+                    </div>
+                </div>
+            </div>
+            <div id="uploadSaveOKmessaveOKccPanel">
+                <img v-bind:src="main.pub.lib.src('saveOK.png')"  />
+            </div>
+        </div>
+    </div>
+</div>

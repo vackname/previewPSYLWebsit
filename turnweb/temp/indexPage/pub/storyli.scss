@@ -1,0 +1,241 @@
+﻿.storyliPanel
+{/* 故事 */
+        position:relative;width:95%;
+        max-width:800px;
+        margin-left:auto;
+        margin-right:auto;
+        padding-bottom:50px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+
+        #gotoUrl
+        { /* 前往url */
+            font-size:15px;
+            font-weight:bold;
+            width:100%;
+            text-align:center;
+            position:relative;
+            padding-top:60px;
+            padding-bottom:80px;
+            cursor:pointer;
+            .clickBt{
+                color:#FFF;
+                border-radius: 9px;
+                padding:6px;
+                background-color:#FF8800;
+            }
+    
+            img
+            {
+                width:15px;
+            }
+        }
+
+        #document
+        {/* 文章內容框架 */
+            width:100%;
+            position:relative;
+            .contentTitle
+            {/* 主標 文字內容 */
+                width:98%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                word-wrap:break-word;
+                color:#222;
+                font-weight:bold;
+                padding-bottom:20px;
+                #colorArea
+                {/* 標題特顯色塊 */
+                    position:absolute;
+                    left:-10px;
+                    width:5px;
+                    background-color:#A23400;
+                }
+
+                #tagAddLabel
+                {/* tag bag */
+                    position:absolute;
+                    width:25px;
+                    cursor:pointer;
+                    top:-30px;
+                    right:0px;
+                }
+            }
+
+            .contentTitle2
+            {/* 副標 文字內容 */
+                width:95%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                word-wrap:break-word;
+                color:#333;
+                font-weight:bold;
+                padding-bottom:20px;
+            }
+
+            .content
+            {/* 文字內容 */
+                width:93%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                word-wrap:break-word;
+                color:#555;
+                padding-bottom:20px;
+            }
+
+            @media screen  and (max-width: 550px){
+                .contentTitle
+                {/* 主標 文字內容 */
+                    font-size:26px;
+                    #colorArea
+                    {/* 標題特顯色塊 */
+                        top:-2px;
+                        height:30px;
+                    }
+                }
+                .contentTitle2
+                {/* 副標 文字內容 */
+                    font-size:24px;
+                }
+                .content
+                {/* 文字內容 */
+                    font-size:20px;
+                }
+            }
+            
+            
+            @media only screen and (min-width: 550px) and (max-width: 750px)
+            {
+                .contentTitle
+                {/* 主標 文字內容 */
+                    font-size:24px;
+                    #colorArea
+                    {/* 標題特顯色塊 */
+                        top:0px;
+                        height:28px;
+                    }
+                }
+                .contentTitle2
+                {/* 副標 文字內容 */
+                    font-size:22px;
+                }
+                .content
+                {/* 文字內容 */
+                    font-size:19px;
+                }
+            }
+            
+            @media screen and (min-width: 750px) 
+            {
+                .contentTitle
+                {/* 主標 文字內容 */
+                    font-size:21px;
+                    #colorArea
+                    {/* 標題特顯色塊 */
+                        top:2px;
+                        height:25px;
+                    }
+                }
+                .contentTitle2
+                {/* 副標 文字內容 */
+                    font-size:19px;
+                }
+                .content
+                {/* 文字內容 */
+                    font-size:17px;
+
+                }
+            }
+
+
+            .contentIMG
+            {/* 圖片內容 */
+                width:98%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+
+                #photo
+                {/* 一般直行 img panel */
+                    position:relative;
+                    width:100%;
+                    text-align:center;
+                    padding:6px;
+                    cursor:pointer;
+                    .pimg
+                    {
+                        max-width:600px;
+                        width:95%;
+                        padding:3px;
+                        border:2px solid #EEE;
+                        border-radius:6px;
+                    }
+                }
+
+                #photoWallpaper
+                {/* 照片牆panel */
+                    padding:6px;
+                    text-align:center;
+                    cursor:pointer;
+                }
+
+
+                @media screen  and (max-width: 550px){
+                    #photoWallpaper
+                    {/* 照片牆 img panel */
+                        position:relative;
+                        width:100%;
+                        .pimg
+                        {
+                            width:98%;
+                        }
+                    }
+                }
+                
+                
+                @media only screen and (min-width: 550px) and (max-width: 750px){
+                    #photoWallpaper
+                    {/* 照片牆 img panel */
+                        float:left;
+                        width:47%;
+                        .pimg
+                        {
+                            width:100%;
+                        }
+                    }
+                    #photoWallpaper:after 
+                    {/*照片牆 清除float*/
+                        content: "";
+                        display: block;
+                        clear: both;
+                    }
+                }
+                
+                @media screen and (min-width: 750px) 
+                {
+                
+                    #photoWallpaper
+                    {/* 照片牆 img panel */
+                        float:left;
+                        width:31%;
+                        .pimg
+                        {
+                            width:100%;
+                        }
+                    }
+
+                    #photoWallpaper:after 
+                    {/*照片牆 清除float*/
+                        content: "";
+                        display: block;
+                        clear: both;
+                    }
+                }
+
+            }
+        }
+}

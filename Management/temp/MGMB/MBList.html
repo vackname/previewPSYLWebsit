@@ -1,0 +1,40 @@
+﻿<div id="MBListPanel">
+     <div id="MBListDataList" v-for="(val,nu) in main$m.mbList" >
+             <div v-bind:style="'background-color:'+((0>val.level)?'#FFEECC;':'#FFF;')" id="MBListContent">
+                     <div class="MBMG_title"><span style="color:#FFF;font-size:12px;background-color:#AAA;border-radius:6px;padding:3px;">No.{{nu+1+main$m.pageTagetNu*20}}</span></div>
+                     <div class="MBMG_title"><span style="color:#DDD;">帳戶:</span><span v-bind:style="'color:#999;text-decoration:'+((0>val.level)?'line-through;':'none;')">{{val.mbid}}</span></div>
+                     <div class="MBMG_title"><span style="color:#DDD;">匿稱:</span><span v-bind:style="'text-decoration:'+((0>val.level)?'line-through;':'none;')">{{val.name}}</span></div>
+                     <div class="MBMG_title">
+                        <div v-on:click="main$m.$m.mb.loadPer(val)" class="openPerBt" v-show="!val.openPer"><span>個資/銀行Info <img v-bind:src="main.pub.lib.src('ur.png')" /></span></div>
+                        <component v-bind:is="((val.openPer)?v.mbinfoVue:'')" v-bind:per="val.per" ></component>
+                     </div>
+                     <div style="position:absolute;top:0px;right:0px;width:75%;text-align:left;">
+                             <div style="float:right;text-align:right;">
+                                     <input type="button" class="MBMG_bt" v-on:click="main$m.$m.mb.MBSet(val)" value="設定" />
+                                     <span v-show="main$m.headPortal.SysLevel() || main$m.headPortal.editLevel()">&nbsp;
+                                        <input type="button" class="MBMG_bt" v-on:click="main$m.$m.ph.payhistory(val,true,'')" value="歷史支付" />
+                                     </span>
+                                     <div style="width:100%;height:20px;"></div>
+                                     <span v-bind:style="'color:#BBB;font-size:12px;text-decoration:'+((0>val.level)?'line-through;':'none;')">登入:{{pb.reunixDate(val.activity)}}</span>
+                             </div>
+                             <div class="MBMG_title"><span style="color:#AAA;">權限(<span v-bind:style="'color:#'+((val.level>-1)?'FF8800;':'CCC;')">{{val.level|limitName}}</span>)<span v-show="!val.appck" style="color:#FF3300;" >-重大異動</span></span></div>
+                             <div class="MBMG_title"><span style="color:#AAA;" v-show="(main$m.headPortal.MGLevel() || main$m.headPortal.PayLevel() )  && !val.ck">邀請綁定(<span style="color:#FF8800;">{{(((val.mg=='' || val.mg==null))?"未邀請":"已邀請")}}</span>)</span></div>
+                             <div class="MBMG_title"><span style="color:#AAA;" v-show="(main$m.headPortal.MGLevel() || main$m.headPortal.PayLevel() ) && val.mg!='' && val.mg!=null">綁定帳戶client確認(<span style="color:#FF8800;">{{((val.ck)?"YES":"NO")}}</span>)</span></div>
+                             <div class="MBMG_title"><span style="color:#AAA;" v-show="main$m.headPortal.SysLevel()  || main$m.headPortal.editLevel()"><img v-bind:src="main.pub.lib.src('coinDate.png')" style="width:20px;position:relative;top:3px;"/>(<span v-bind:style="'color:'+((val.pay > pb.unixReNow() || val.pay == 0)?'#FF8800;':'#AAA;text-decoration:line-through;')" >{{((val.pay>0)?pb.reunixDate(val.pay):'-')}}</span>)</span></div>
+                     </div>
+                     <div class="MBMG_title"><span style="color:#AAA;" v-show="main$m.headPortal.SysLevel()  || main$m.headPortal.editLevel()">
+                        <table class="cashPanel">
+                                <tr><td style="text-align:right;padding-right:6px;width:100px;">使用累計<img v-bind:src="main.pub.lib.src('coin.png')" style="width:15px;" /></td><td>{{pb.MoneyFormat(val.MBCount-val.usCount)}}</td>
+                                        <td rowspan="2" style="width:250px;text-align:center;">
+                                                <!--營業站成-->
+                                                <span class="profit">
+                                                        <img v-bind:src="main.pub.lib.src(((val.level==1 || val.level==2)?'cashout.png':'close.png'))"/><span v-bind:style="((val.level==1 || val.level==2)?'':'background-color:#BBB;')">{{Math.round((1-val.profit)*100)}}&nbsp;%(營業占成)</span>
+                                                </span>
+                                        </td>
+                                </tr>
+                                <tr><td style="text-align:right;padding-right:6px;"><img v-bind:src="main.pub.lib.src('coin.png')" style="width:15px;position:relative;top:3px;" /></td><td style="color:#333;">{{pb.MoneyFormat(val.MBCount)}}</td></tr>
+                        </table>
+                    </div>
+             </div>
+     </div>
+</div>

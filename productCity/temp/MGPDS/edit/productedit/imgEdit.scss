@@ -1,0 +1,259 @@
+﻿#pcPanel
+{/* 商城框架 */
+    #clientProductEditPanel
+    {/* 商店主 定位框架 */
+        #MGPSEPanel
+        {/*商品編緝 panel 主要頁版*/
+            #pdeditPanel
+            {/* 商品編緝 */
+
+                #editPhotoPanel
+                {/*視窗主框架*/
+                    position:fixed;
+                    width:100%;
+                    left:0px;
+                    top:0px;
+                    z-index:199;
+
+                    #closeBt
+                    {/* 關閉View 鈕 */
+                        width:10%;opacity:0.9;min-width:30px;max-width:50px;position:relative;left:0px;cursor:pointer;
+                    }
+
+                    #chooseBtPanel
+                    {/* 選擇圖片input panel */
+                        position:relative;margin-left:auto;margin-right:auto;width:90%;padding:5px;text-align:left;border-top:1px solid #AAA;
+                    }
+                    
+                    #chooseBtPanel #del
+                    {/* 取消選擇圖片鈕 */
+                        width:30px;opacity:0.9;position:relative;top:3px;cursor:pointer;
+                    }
+
+                    #editPhotoPanel_bg
+                    {/* 背景遮罩*/
+                        position:fixed;
+                        width:100%;
+                        left:0px;
+                        top:0px;
+                        opacity:0.7;
+                        background-color:#000;
+                        height:3000px;
+                    }
+
+                    #title_edit_panel
+                    {/*視窗 title bar*/
+                        width:100%;height:30px;color:#555;border-top-left-radius:10px;border-top-right-radius:10px;background-color:#FFF;
+                        border-bottom:1px solid #EEE;
+                        padding-bottom:6px;
+                    }
+
+                    #edit_panel
+                    {/*視窗框架*/
+                        position:relative;margin-left:auto;margin-right:auto;max-width:500px;background-color:#FFF;top:70px;width:95%;border-radius:10px;
+                    }
+
+                    .choose img,.cancel img
+                    {/*圖片 photo style*/
+                        width:90%;
+                    }
+
+                    .choose,.cancel
+                    {/*圖片 style best*/
+                        position:relative;
+                        text-align:center;
+                        padding:10px;
+                        width:90%;
+                        cursor:pointer;
+                    }
+
+                    #photocontainer
+                    {/* 圖片容器 */
+                        position:relative;margin-left:auto;margin-right:auto;width:90%;
+                        height:60vh;
+                        overflow-y:auto;
+                        padding:5px;
+                        #moveBtPanel
+                        {/* 位移圖片button panel */
+                            position:relative;width:100%;text-align:right;
+                            img
+                            {/* 位移鈕 */
+                                width:10px;
+                                border:1px solid #333;
+                                padding:4px;
+                                border-radius:3px;
+                                position:relative;
+                                cursor:pointer;
+                            }
+                        }
+
+                        #imgUpload
+                        {/* 圖片上傳tool panel */
+                            position:relative;
+                            width:100%;
+                            .savenote
+                            {//儲存
+                                position:absolute;
+                                width:50px;
+                                cursor:pointer;
+                            }
+                            #takePotoPanel
+                            {/* 相機icon 定位panel*/
+                                position:relative;
+                                width:100%;padding-bottom:10px;
+                                .ctrBt
+                                {/* 相機icon*/
+                                    position:relative;
+                                    width:45px;
+                                    top:15px;
+                                    cursor:pointer;
+                                }
+                                .del
+                                {/* 取消上傳 */
+                                    width:20px;
+                                    position:absolute;
+                                    top:9px;
+                                    left:0px;
+                                    opacity:0.9;
+                                    cursor:pointer;
+                                }
+                                .photoLength
+                                {/* 預上傳圖片數量 label */
+                                    color:#AAA;
+                                    font-size:15px;
+                                }
+
+                                #photoAry
+                                {/* 照片 顯示模式 鈕 pnael */
+                                    position:absolute;
+                                    top:20px;
+                                    right:5%;
+                                    .pTPchoose
+                                    {/* 照片牆已選模式 button */
+                                        background-color:#FFF;
+                                        color:#D94600;
+                                        font-size:12px;
+                                        border:1px solid #FF8800;
+                                    }
+                
+                                    .pTPnormal
+                                    {/* 照片牆未選模式 button */
+                                        background-color:#FFF;
+                                        color:#AAA;
+                                        font-size:12px;
+                                    }
+                                }
+                            }
+                            .uploadPrivew
+                            {/* 上傳圖片預覽 */
+                                position:relative;
+                                width:99%;
+
+                                padding-top:20px;
+                                padding-bottom:20px;
+                                text-align:center;
+                                border-left:2px solid #FFDDAA;
+                                #CancelIconPanel
+                                {/* 超出容量限制提示Icon */
+                                    position:absolute;
+                                    width:100%;
+                                    text-align:center;
+                                    top:50px;
+                                    img
+                                    {
+                                        opacity:0.9;
+                                        width:120px;
+                                        cursor:pointer;
+                                    }
+                                }
+                                .upPhoto
+                                {/* 預覽圖片 */
+                                    width:95%;
+                                    max-width:200px;
+                                    padding-bottom:20px;
+                                }
+                                .row
+                                {/* 內容 */
+                                    position:relative;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    text-align:left;
+                                    width:90%;
+                                    max-width:200px;
+                                    padding-top:10px;
+                                    font-size:15px;
+                                    color:#AAA;
+                                    #delPanel
+                                    {/* 刪除鈕panel */
+                                        position:absolute;
+                                        width:100%;
+                                        top:30px;
+                                        text-align:right;
+                                        z-index:180;
+                                        img
+                                        {
+                                            cursor:pointer;
+                                            width:25px;
+                                        }
+                                    }
+                                }
+
+                                #uploadProgressBG
+                                {/*上傳功能進度條 background*/
+                                    position:relative;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    width:90%;
+                                    max-width:200px;
+                                    border-radius:20px;
+                                    height:5px;
+                                    background-color:#999;
+                                    #uploadPline
+                                    {
+                                        border-radius:20px;
+                                        background-color:#FF8800;
+                                        height:5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .photocontainer_row_label
+                    {/* 圖片容器 編號*/
+                        position:absolute;
+                        width:50px;
+                        border-radius:50px;
+                        font-size:12px;
+                        color:#FFF;
+                        text-align:center;
+                        padding:5px;
+                        background-color:#555;
+                        opacity:0.5;
+                    }
+
+                    #photocontainer_list_empty
+                    {/*無資料狀態 label*/
+                        font-size:12px;
+                        color:#AAA;
+                        width:100%;
+                        text-align:center;
+                        padding:5px;
+                    }
+
+                    .choose
+                    {/*被選圖片*/
+                        border:1px solid #FF8800;
+                        background-color: #FFAA00;
+                        border-radius: 20px;
+                    }
+
+                    .cancel
+                    {/*末選圖片*/
+                        border:1px solid #EEE;
+                    }
+                }
+            }
+        }
+    }
+}

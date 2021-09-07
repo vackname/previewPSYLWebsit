@@ -1,0 +1,174 @@
+﻿#turnwebPanel
+{/** 入口panel */
+    #indexPage
+    {/* 入口首頁 */
+        #protalPanl
+        {/* 首頁輪播 */
+            width:100%;
+            position:relative;
+            user-select:none;
+            padding-bottom:20px;
+            #protalList
+            {/* 輪播陣列框架 */
+                position:relative;
+                width:100vw;
+                text-align:center;
+                overflow:hidden;
+                background-color:#000;
+                #protalPanleImg
+                {/* 圖片 */
+                    position:relative;
+                }
+                #titleProtalPnale1,#titleProtalPnale2
+                {/* 字幕 */
+                    position:absolute;
+                    font-weight:bold;
+                    z-index:180px;
+                    color:#FFF;
+                    width:100%;
+                    font-size:20px;
+                    bottom:-100px;
+                    line-height:166%;
+                    height:60px;
+                    #tpptur1,#tpptur2,#tpptur3,#tpptur4
+                    {/*字分段*/
+                        position:relative;
+                        top:20px;
+                    }
+                }
+            }
+
+            #TouchTool
+            {/* touch tool */
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                max-width:1020px;
+                color:#333;
+                text-align:center;
+                padding-top:20px;
+                cursor:pointer;
+                line-height:166%;
+                .dr
+                {/* 按鈕提示 img icon */
+                    width:10px;
+                    position:relative;
+                    padding-left:3px;
+                    opacity:0.6;
+                    top:1px;
+                }
+            }
+
+            #TouchTool
+            {/* touch tool */
+                td
+                {
+                    width:14.2%;
+                }
+            }
+
+            #serProtal
+            {/* 搜尋欄位 */
+                position:absolute;
+                width:220px;
+                right:15vw;
+                top:6px;
+                #searchProtalBox
+                {/* 搜尋提示 */
+                    opacity:0;
+                    width:90%;
+                    position:relative;
+                    padding:10px;
+                    font-size:20px;
+                    background-color:#FFF;
+                    color:#006030;
+                }
+                #tbBox
+                {/* 搜尋功能 框架 */
+                    width: 220px;background-color:#EEE;position:relative;margin-left:auto;margin-right:auto;border-radius:6px;
+    
+                    #serBox
+                    {/* 搜尋欄位 panel */
+                        width:160px;text-align:right;
+                        input
+                        {/* 搜尋input */
+                            font-size:16px;height:25px;width:96%;
+                        }
+                    }
+    
+                    #serBt
+                    {/* 搜尋button panel */
+                        width:40px;text-align:center;color:#FFF;font-size:16px;font-weight:bold;background-color:#FFF;cursor:pointer;
+                        img
+                        {/* img button */
+                            width:15px;
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width:650px) {
+                #TouchTool
+                {/* touch tool */
+                    display:none;
+                }
+
+                #serProtal
+                {/* 搜尋欄位 */
+                    top:-20px;
+                }
+                #protalList
+                {/* 輪播陣列框架 */
+                    height:40vh;
+                    #protalPanleImg
+                    {/* 圖片位移 */
+                        position:relative;
+                        left:-15%;
+                        width:130%;
+                        top:0vw;
+                    }
+                }
+            }
+    
+            @media screen and (min-width:651px) and (max-width:1070px)  {
+                #TouchTool
+                {/* touch tool */
+                    width:90%;
+                    font-size:18px;
+                }
+
+                #protalList
+                {/* 輪播陣列框架 */
+                    height:78vh;
+                    #protalPanleImg
+                    {/* 圖片位移 */
+                        position:relative;
+                        left:-15%;
+                        width:130%;
+                        top:-10vw;
+                    }
+                }
+            }
+    
+            @media screen and (min-width:1071px){
+                #TouchTool
+                {/* touch tool */
+                    width:90%;
+                    font-size:16px;
+                }
+
+                #protalList
+                {/* 輪播陣列框架 */
+                    height:78vh;
+                    #protalPanleImg
+                    {/* 圖片位移 */
+                        position:relative;
+                        left:-15%;
+                        width:130%;
+                        top:-15vw;
+                    }
+                }
+            }
+        }
+    }
+}

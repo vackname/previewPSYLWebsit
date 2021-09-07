@@ -1,0 +1,136 @@
+﻿<div id="watchPanel">
+    <div style="text-align:center;">
+        Server&nbsp;<select v-model="main$m.server">
+            <!--伺服器選擇-->
+            <option v-for="(val,nu) in main$m.serverList" v-bind:value="val">{{val}}<span>({{((1==nu)?"Master":((nu>1)?"Slave":"OS"))}})</span></option>
+        </select>
+    </div>
+    <div class="appPanel" v-for="(val,nu) in main$m.watchList" v-show="main$m.server==val.host">
+        <div id="markColor" >
+            <div id="appTool">
+                <div v-show="!val.CloseComplete && !val.run"><span>wait closeing...</span></div>
+                <div v-show="val.CloseComplete && val.run"><span>wait opening...</span></div>
+                <div v-show="val.CloseComplete && !val.run" ><input type="button" v-on:click="main$m.$m.s.runWatch(val)" value="Open Listen" /></div>
+                <div v-show="val.run && !val.CloseComplete" ><input type="button" v-on:click="main$m.$m.s.CloseWatch(val)"  value="Close Listen" /></div>
+                <div v-show="val.same!='main'"><input type="button" v-on:click="main$m.$m.s.lockAppEdit(val)" v-bind:style="((main$m.lockAP.indexOf(val.same)>-1)?'':'background-color:#AAA;')"  value="Maintain" /></div>
+                <div v-show="val.same=='main'"><input type="button" v-on:click="main$m.$m.s.proxylistenFun(val)" v-bind:style="((main$m.proxlisten)?'background-color:#FF8800;':'background-color:#AAA;')" value="API Listen" /></div>
+            </div>
+            <div id="watchTitle" v-bind:style="((main$m.lockAP.indexOf(val.same)>-1)?'text-decoration:line-through;':'')" v-on:click="val.show=!val.show">{{val.title}}<img v-show="main$m.lockAP.indexOf(val.same)>-1" v-bind:src="main$m.img.src('maintain.png')" class="iconMaintain"  /></div>
+            <div id="row1" v-show="!val.show" style="color:#AAA;cursor:pointer;" v-on:click="val.show=!val.show">...</div>
+            <div id="row1" v-show="val.show && (val.same=='ma' || val.same=='main')">
+                <div id="cp">computer&nbsp;<span>{{((val.name!=null&&val.name!="")?val.name:"-")}}</span></div>
+                <table id="wcontent">
+                    <tr><td colspan="8" style="font-size:12px;color:#AAA;">{{val.cpuModel}}</td></tr>
+                    <tr>
+                        <th><img v-bind:src="main$m.img.src('cpu.png')" class="icon"  /></th><td style="width:112px;">{{val.cpu}}/{{val.cpu*100}}%</td>
+                        <th><img v-bind:src="main$m.img.src('thread.png')" class="icon"  /></th><td style="width:50px;">{{val.thread}}</td>
+                        <th><img v-bind:src="main$m.img.src('memory.png')" class="icon"  /></th><td style="width:76px;">{{MemoryGB(val)}}&nbsp;GB</td>
+                    </tr>
+                    <tr v-show="(val.name!=null&&val.name!='')">
+                        <th colspan="3" ><img v-bind:src="main$m.img.src('openfile.png')" class="icon"  /></th><td style="width:115px;">{{pb.MoneyFormat(val.openFileVal)}}</td>
+                        <th><img v-bind:src="main$m.img.src('process.png')" class="icon"  /></th><td style="width:115px;"  colspan="1">{{pb.MoneyFormat(val.MaxFileProcessVal)}}</td>
+                    </tr>
+                    <tr v-show="(val.name!=null&&val.name!='')">
+                        <th style="position:relative;">
+                            <img v-bind:src="((loadingStatus(val)!='stop')?main$m.img.src(loadingStatus(val)):'')" v-bind:id="'watchloadBG'+val.same+val.host.replace(/\./g,'_').replace(/ /g,'')" style="position:absolute;right:0px;" v-show="loadingStatus(val)!='stop'"  class="icon"  />
+                            <img v-bind:src="main$m.img.src(((loadingStatus(val)!='stop')?'loading.png':'loading_d.png'))" v-bind:id="'watchload'+val.same+val.host.replace(/\./g,'_').replace(/ /g,'')" class="icon"  />
+                        </th>
+                        <td colspan="6">
+                            <div id="loadrowTitle" v-bind:style="'color:'+loadingStatusColor(val)+';'">{{loadingCaul(val)}}%</div>
+                            <div class="loadrow"><span class="loadtitle">5&nbsp;minutes&nbsp;-&nbsp;10&nbsp;minutes-></span>&nbsp;{{loadingCaul5(val)}}%<span class="loadtitle">-</span>{{loadingCaul10(val)}}%</div>
+                            <div class="loadrow"><span class="loadtitle">CPU/Memory</span>&nbsp;{{val.cpuVal}}%<span class="loadtitle">/</span>{{val.memoryVal}}%</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="row2" v-show="val.api.length + val.jsApi.length > 0 && val.show">
+                <div id="APIPanel">
+                    <div style="padding-bottom:30px;" v-show="val.api.length">
+                        <span v-on:click="val.apiDisplay=!val.apiDisplay"><img v-bind:src="main$m.img.src('api.png')" class="iconAPI"  /><img v-bind:src="main.pub.lib.src(((!val.apiDisplay)?'ur':'dr')+'.png')" class="displayAPI"  /><span v-show="!val.apiDisplay" class="apiListMark">&nbsp;(item&nbsp;{{val.api.length}})</span></span>
+                    </div>
+                    <div class="apilist" v-for="(val2,nu2) in val.api" v-bind:style="'opacity:'+((val.api.length-nu2)/val.api.length)+';'" v-show="val.apiDisplay">
+                        <span id="api">{{val2.url}}<span>
+                        <table id="content">
+                            <tr>
+                                <th>request</th><td>{{pb.MoneyFormat(val2.count)}}</td>
+                                <th>404</th><td>{{pb.MoneyFormat(val2.PrevCount)}}&nbsp;Prevent</td>
+                                <th>error</th><td>{{pb.MoneyFormat(val2.error)}}&nbsp;request</td>
+                            </tr>
+                        </table>
+                        <div id="data">recent&nbsp;{{pb.reunixDate(val2.date)}}</span>
+                    </div>
+                    <div style="padding-bottom:30px;" v-show="val.jsApi.length"><span v-on:click="val.apiDisplay1=!val.apiDisplay1"><img v-bind:src="main$m.img.src('document.png')" class="iconAPI"  /><img v-bind:src="main.pub.lib.src(((!val.apiDisplay1)?'ur':'dr')+'.png')" class="displayAPI"  /><span v-show="!val.apiDisplay1" class="apiListMark">&nbsp;(item&nbsp;{{val.jsApi.length}})</span></span>
+                        <div v-on:click="main$m.$m.s.AllClearJs(val)" style="float:right;"><img v-bind:src="main.pub.lib.src('delete.png')" class="delAPIbt"  />All</div>
+                    </div>
+                    <div class="apilist" v-for="(val2,nu2) in val.jsApi" v-bind:style="'opacity:'+((val.jsApi.length-nu2)/val.jsApi.length)+';'" v-show="val.apiDisplay1"> 
+                        <span id="api"><img v-bind:src="main.pub.lib.src('delete.png')" v-on:click="main$m.$m.s.clearJs(val,val2.path)" class="delAPIbt"  />&nbsp;<span style="color:#CCC;">{{(nu2+1)}}_</span>{{val2.path}}</span>
+                        <div id="data">memory:{{val2.ct}}/{{pb.MoneyFormat(Number(val2.content).toFixed(2))}}KB&nbsp;Catch({{pb.MoneyFormat(val2.count)}})</div>
+                    </div>
+                </div>
+            </div>
+            <div id="row3" v-show="val.show">
+                <div id="appTtitle">App process</div>
+                <div class="applist" v-for="(val2,nu2) in val.process">
+                    <table id="appContent">
+                        <tr>
+                            <th><img v-bind:src="main$m.img.src(processType(val2))" class="icon"  /></th>
+                            <td>
+                                <div class="approwtitle">{{val2.name}}</div>
+                                <div class="approw" style="height:60px;"></div>
+                                <div class="approw"><span class="aptitle">Status</span>&nbsp;<span v-bind="'color:'+main$m.$an.w.processStatuColor(val2.error)+';'">{{main$m.$an.w.processStatustr(val2.error)}}</span></div>
+                                <div class="approw"><span class="aptitle">LIMIT(Open File / MAX Process)-></span>&nbsp;{{pb.MoneyFormat(val2.openFileVal)}}<span class="aptitle">/</span>{{pb.MoneyFormat(val2.MaxFileProcessVal)}}</div>
+                                <div class="approw" v-show="val2.order==0"><span class="aptitle">connection-></span>&nbsp;{{pb.MoneyFormat(val2.connectCount)}}</div>
+                                <div class="approw"><span class="aptitle">CPU/Memory</span>&nbsp;{{val2.cpu}}<span class="aptitle">%&nbsp;/&nbsp;</span>{{val2.memory}}<span class="aptitle">%(</span>{{pb.MoneyFormat((val2.memoryQ/1024).toFixed(2))}}<span class="aptitle">MB)</span></div>
+                                <div class="approw" v-for="(val3,nu3) in ((val2.content!=null)?val2.content:[])"><span class="aptitle">{{val3}}</span></div>
+                                <div class="approw"><span class="aptitle">{{((val2.update!=0)?pb.reunixDate(val2.update):'-/-/-')}}</span></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div> 
+            <div id="row4" v-show="val.show">
+                <div class="apList" v-for="(val2,nu2) in val.ap">
+                    <div id="APmarkColor" style="padding-bottom:60px;">
+                        <div id="sysTitle" ><span style="color:#AAA;">APP WEB{{nu2+1}}-</span><span v-on:click="val2.show=!val2.show" v-bind:style="'cursor:pointer;'+((main$m.lockAP.indexOf(val2.same)>-1)?'text-decoration:line-through;':'')" >{{val2.title}}</span>
+                            <img v-show="main$m.lockAP.indexOf(val2.same)>-1" v-bind:src="main$m.img.src('maintain.png')" class="iconMaintain"  />
+                            <div id="appTool">
+                                <div v-show="!val2.CloseComplete && !val2.run"><span>wait closeing...</span></div>
+                                <div v-show="val2.CloseComplete && val2.run"><span>wait opening...</span></div>
+                                <div v-show="val2.CloseComplete && !val2.run" ><input type="button" v-on:click="main$m.$m.s.runWatch(val2)" value="Open Listen" /></div>
+                                <div v-show="val2.run && !val2.CloseComplete" ><input type="button" v-on:click="main$m.$m.s.CloseWatch(val2)"  value="Close Listen" /></div>
+                                <div v-show="val2.same!='main'"><input type="button" v-on:click="main$m.$m.s.lockAppEdit(val2)" v-bind:style="((main$m.lockAP.indexOf(val2.same)>-1)?'':'background-color:#AAA;')"  value="Maintain" /></div>
+                                <div v-show="val2.same=='main'"><input type="button" v-on:click="main$m.$m.s.proxylistenFun(val2)" v-bind:style="((main$m.proxlisten)?'background-color:#FF8800;':'background-color:#AAA;')" value="API Listen" /></div>
+                            </div>
+                        </div>
+                        <div id="sysrow1" v-show="val2.api.length + val2.jsApi > 0 && val2.show">
+                            <div id="APIPanel">
+                                <div style="padding-bottom:30px;"><span v-on:click="val2.apiDisplay=!val2.apiDisplay" ><img v-bind:src="main$m.img.src(((val2.same!='main')?'api.png':'document.png'))" class="iconAPI" /><img v-bind:src="main.pub.lib.src(((!val2.apiDisplay)?'ur':'dr')+'.png')" class="displayAPI"  /><span v-show="!val2.apiDisplay" class="apiListMark">&nbsp;(item&nbsp;{{val2.api.length + val2.jsApi.length}})</span></span>
+                                <div v-on:click="main$m.$m.s.AllClearJs(val2)" v-show="val2.same=='main'" style="float:right;"><img v-bind:src="main.pub.lib.src('delete.png')" class="delAPIbt"  />All</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sysrow2" v-show="val2.show">
+                            <div id="appTtitle">App process</div>
+                            <div class="applist" v-for="(val3,nu3) in val2.process">
+                                <table id="appContent">
+                                    <tr>
+                                        <th><img v-bind:src="main$m.img.src(processType(val3))" class="icon"  /></th>
+                                        <td>
+                                            <div class="approwtitle">{{val3.name}}</div>
+                                            <div class="approw" style="height:60px;"></div>
+                                            <div class="approw"><span class="aptitle">Status</span>&nbsp;{{main$m.$an.w.processStatustr(val3.error)}}</div>
+                                            <div class="approw"><span class="aptitle">LIMIT(Open File / Process)-></span>&nbsp;{{pb.MoneyFormat(val3.openFileVal)}}<span class="aptitle">/</span>{{pb.MoneyFormat(val3.MaxFileProcessVal)}}</div>
+                                            <div class="approw"><span class="aptitle">CPU/Memory</span>&nbsp;{{val3.cpu}}%<span class="aptitle">/</span>{{val3.memory}}%</div>
+                                            <div class="approw" v-for="(val4,nu4) in ((val3.content!=null)?val3.content:[])"><span class="aptitle">{{val4}}</span></div>
+                                            <div class="approw"><span class="aptitle">{{((val3.update!=0)?pb.reunixDate(val3.update):'-/-/-')}}</span></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

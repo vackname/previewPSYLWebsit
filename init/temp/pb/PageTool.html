@@ -1,0 +1,20 @@
+﻿<style>
+    .pb_PageNu
+    {/* page Number  */
+        border-radius:5px;float:left;height:30px;width:8%;text-align:center;border-left:1px solid #FFF;cursor:pointer;color:#FFF;
+    }
+    .pb_PageBar{
+        position:relative;width:100%;margin-left:auto;margin-right:auto;height:30px;max-width:500px;opacity:0.8;
+    }
+    .pb_PageBar:hover{
+        opacity:1;
+    }
+</style>
+<div class="pb_PageBar" >
+    <div class="pb_PageNu" style="background-color:#EEE;"><div class="pb_PageNu" style="width:100%;background-color:#BBB;" v-on:click="PageDecrease()" v-show="pageNu!=0">&lt;&lt;</div></div>
+    <div class="pb_PageNu" v-bind:style="'background-color:'+ ((pageCount>PageNumber(nu))?((PageNumber(nu) == pageNu)?'#555;':'#AAA;'):'#EEE;')" v-for="(val,nu) in new Array(10)" v-on:click="choosePage(nu)">
+        <div style="width:100%;height:2px;"></div>
+        <span v-show="pageCount>PageNumber(nu)">{{1+ PageNumber(nu)}}</span>
+    </div>
+    <div class="pb_PageNu" style="background-color:#EEE;"><div class="pb_PageNu" style="width:100%;background-color:#BBB;" v-on:click="PageIncrease()"  v-show="pageCount>pageNu+1">&gt;&gt;</div></div>
+</div>

@@ -1,0 +1,63 @@
+﻿<div id="pcDetilPanel">
+        <div v-show="pj.showDetail" v-on:click="returnList()" id="toIndex"><img v-bind:src="main.pub.lib.src('dr.png')" style="transform:rotate(90deg);position:relative;"  class="goto" /><span>{{LangInput("return")}}</span></div>
+        <div id="pContent">
+                <div id="leftPanel">
+                        <div id="openPCImgBt" v-bind:style="((data.objImg!=null)?'background-color:#FFF;border:1px solid #EEE;':'')">
+                                <img v-bind:id="'pDetailToPhoto'+data.key" v-bind:src="((data.objImg!=null)?data.objImg.src(((((data.imgAry!=null)?data.imgAry.length>0:false))?data.imgAry[geNu]:'')):'')" />
+                                <div class="discount" v-show="discountFun(data)!=1 && discountFun(data)!=0">{{discountFun(data)*((main.pub.langNu==0)?10:100)}}&nbsp;{{((main.pub.langNu==0)?"折優惠":"off %")}}</div>
+                        </div>
+                        <div id="TouchPanel">
+                                <div class="left" v-on:click="imgLeft()"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(90deg);"/></div>
+                                <div class="right" v-on:click="imgRight()"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(-90deg);"/></div>
+                                <div class="clear">&nbsp;</div> <!--float 阻隔-->
+                        </div>
+                        <div class="touchPageShow">
+                                <!--圖片選點-->
+                                <table v-bind:style="'width:'+(data.imgAry.length*8)+'px'">
+                                        <tr>
+                                                <td v-on:click="geNu=nu" v-for="(val,nu) in data.imgAry.length">
+                                                        <div v-bind:style="((geNu==nu)?'background-color:#888;':'')"></div>
+                                                </td>
+                                        </tr>
+                                </table>
+                        </div>
+                </div>
+                <div id="rightPanel">
+                        <div id="pdTitle"><span>&nbsp;{{reContent(data,data.nameAry)}}&nbsp;</span>
+                                <div style="float:right;padding-right:3px;">
+                                        <img v-show="mainTemp.NormalLevel() || mainTemp.SysLevel() || mainTemp.editLevel()" v-bind:src="main.pub.lib.src(((ckTagBag(data))?'tagbag.png':'tagtouch.png'))" v-on:click="((!ckTagBag(data))?mainTemp.addTag(6,data.key,reContent(data,data.nameAry)):mainTemp.delTag(6,data.key))" id="tagAddLabel" />
+                                </div>
+                        </div>
+                        <div style="position:relative;margin-left:auto;margin-right:auto;width:95%;" v-if="data.ybe!='' && data.ybe!=null && !pj.toPay && mainTemp.NuView==3">
+                                <!-- video -->
+                                <iframe style="width:100%;height:20vh;" v-bind:src="'https://www.youtube.com/embed/'+data.ybe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div id="pdContent">
+                                <span v-html="reContent(data,data.descriptionAry,true)"></span>
+                                <div id="pcStatusPanel" v-show="mainTemp.NormalLevel() || !mainTemp.head.singCK">
+                                        <div id="setMarkPanel" v-show="data.set" ><span>&nbsp;{{getLang('set')}}&nbsp;</span></div>
+                                        <div id="pcCarBt" v-on:click="$m.main.getProductCar(data)" v-bind:style="((!data.ck)?'border:1px solid #AAA;':'')">
+                                                <!-- 購物鈕 -->
+                                                <img v-bind:src="main.pub.lib.src('product.png')" id="btIcon" v-bind:style="((!data.ck)?'opacity:0.6':'')" />
+                                                <img v-bind:src="main.pub.lib.src('ck.png')" id="chooseIcon" v-show="data.ck"/>
+                                                <div id="ChooseCount" v-show="data.ck" >+&nbsp;{{data.count}}</div>
+                                        </div>
+                                </div>
+                                <div id="pdCatch">
+                                        <div style="position:absolute;top:0px;opacity:0.6" v-show="data.QR==null" v-on:click="$an.main.getQurCode(data)">
+                                                <!--QRCode/url click-->
+                                                <img v-bind:src="main.pub.lib.src('qr.png')" style="width:20px;cursor:pointer;"/><img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:20px;padding-left:6px;cursor:pointer;"/>
+                                        </div>
+                                        <span v-show="discountFun(data)!=1 && discountFun(data)!=0" style="color:#007500;">{{(data.cash*data.discount) | cashFormat}}&nbsp;</span><span v-bind:style="((discountFun(data)!=1 && discountFun(data)!=0)?'text-decoration:line-through;':'color:#007500;')">{{data.cash | cashFormat}}</span>
+                                        <!--金額-->
+                                </div>
+                                <div style="width:100%;text-align:center;padding-top:20px;" v-show="data.QR!=null">
+                                        <!--QR Code content-->
+                                        <div v-bind:id="'pcqr'+data.key" v-on:click="loadQR(data)" style="width:200px;height:220px;position:relative;margin-left:auto;margin-right:auto;"></div>
+                                        <span v-bind:id="'pcqrurl'+data.key" v-on:click="copyUrl(data)" style="font-size:12px;color:#AAA;cursor:pointer;user-select:all;" ><img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:15px;padding-right:6px;"/>{{getUrl(data)}}</span>
+                                </div>
+                        </div>
+                </div>
+                <div class="clear">&nbsp;</div> <!--float 阻隔-->
+        </div>
+</div>

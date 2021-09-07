@@ -1,0 +1,267 @@
+﻿<div id="NewsEditPanel">
+    <div id="createPanel">
+        <div id="selectPanel"><!--create 文章-->
+            <select v-model="selfclassmain" class="NewsEditselectInput">
+                <option value="333">{{main$m.getLang('input').notchoose}}</option>
+                <option v-bind:value="val.key" v-for="(val,nu) in main$m.newsctcs" >{{main.pub.catchLangName(val.nameAry)}}</option>
+            </select><span style="color:#AAA;font-size:12px;">→</span><span v-show="selfclassmain=='333'" style="color:#AAA;font-size:12px;">({{main$m.getLang('input').unknow}})</span>
+            <select v-model="selfclass" v-show="selfclassmain!='333'" class="NewsEditselectInput">
+                <option value="999">{{main$m.getLang('input').detailnotchoose}}</option>
+                <option v-bind:value="val.key" v-for="(val,nu) in newsctcsSec" >{{main.pub.catchLangName(val.nameAry)}}</option>
+            </select>
+            <div id="rightPanel"><input type="button" class="NS_bt" v-bind:style="((Number(mainTemp.head.mbdata.status.split('#')[0])<36)?'background-color:#AAA;':'')" v-on:click="main$m.$m.edit.insertDoc()" v-bind:value="main$m.getLang('input').createarticle" /></div>
+        </div>
+    </div>
+    <div class="newsDataListPanel" v-bind:id="'newsDLP'+nu" v-for="(val,nu) in main$m.datalist">
+        <component  v-bind:is="((val.bshow)?v[main$m.$m.main.showTemp(val.btp)]:'')" v-bind:page="val.bContent"></component>
+        <!-- 前往 之前文章  -->
+        <div style="width:100%;text-align:center;" v-show="val.bkey!='' &&  val.codekey!=''" >
+            <!-- 前往 之前文章 鈕-->
+            <img v-show="val.bContent == null" v-bind:src="main.pub.lib.src('tracenextprev.png')" class="newsnextprev"  v-on:click="main$m.$m.main.catchShowTemp(val,'b')" />
+            <img v-show="val.bContent != null" v-bind:src="main.pub.lib.src('tracenextprev.png')" class="newsnextprev"  v-bind:style="((val.bshow)?'opacity:0.3;':'')" v-on:click="val.bshow=!val.bshow" />
+        </div>
+        <div id="editTool">
+            <div id="titlecodePanel">
+                <div id="approveErrorPanel" v-show="val.approve!=''"> <!--審核失敗訊息-->
+                    <img v-bind:src="main.pub.lib.src('errorMes.png')" v-bind:style="((val.showApprove)?'opacity:0.6':'')"  v-on:click="val.showApprove=!val.showApprove;" />
+                    <div id="errorApprove" v-show="val.showApprove" v-html="val.approve.replace(/\n/g,'<br/>')" ></div>
+                </div>
+                <span id="titlecode" >{{main$m.getLang('input').approve}}-code</span>&nbsp;<span v-bind:id="((val.codekey=='' || val.codekey=='fail')?'publishcode':'publishcodeOn')" >{{((val.codekey!="")?val.codekey:((val.publish!=-1)?'Wait':'-'))}}</span>
+            </div>
+            <div v-show="!limitEdit(val) && val.publish!=-1" id="limitEditDayMark">{{main$m.getLang('error').limitDay}}</div>
+            <div id="toolPanel" v-show="limitEdit(val)">  
+                <img v-bind:src="main.pub.lib.src('edit.png')"  class="ctrBt" v-on:click="val.edit=!val.edit"  />
+                  <!--編緝文章-->
+                <img v-bind:src="main.pub.lib.src('delete.png')" v-show="val.edit && val.publish==-1" class="ctrBt" v-on:click="main$m.$m.edit.delDoc(val,nu)" />
+                <img v-bind:src="main.pub.lib.src('save.png')" id="savectrBt" v-show="main$m.$m.s.usUpdate(val) && val.publish==-1" v-on:click="main$m.$m.s.save(val)" />
+                <span id="langPanel" v-show="(val.edit || val.bkey=='')">
+                    <span id="notLang">
+                        <img v-bind:src="main.pub.lib.src('lang.png')" id="l"/>
+                        <img v-bind:src="main.pub.lib.src('close.png')" id="c" v-show="val.langAry.length==0"/>
+                    </span>&nbsp;
+                    <span v-for="(val1,nu1) in main.pub.langAry" class="langInput" v-show="val.edit && val.publish==-1">
+                        <!--語系開發選擇-編緝中-->
+                        <input type="checkbox" v-bind:checked="val.langAry.indexOf(nu1)>-1" v-on:click="main$m.$m.edit.chooseLang(val,nu1)"/><label v-on:click="main$m.$m.edit.chooseLang(val,nu1)" >{{val1.key}}</label>
+                    </span>
+                    <span v-for="(val1,nu1) in main.pub.langAry" class="langKey" v-show="val.langAry.indexOf(nu1)>-1 && (!val.edit ||  (val.publish>3|| -1>val.publish)) ">
+                        {{val1.key}}&nbsp;
+                    </span>
+                </span>
+                <div style="float:right;">
+                    <img v-bind:src="main.pub.lib.src(((val.edit || (val.publish!=-1 && (val.codekey=='' || val.codekey=='fail')))?'publish.png':'unzip.png'))" v-bind:style="((val.langAry.length==0 && val.edit || val.publish!=-1)?'opacity:0.5;':'')" v-show="val.publish==-1 || (val.publish!=-1 && (val.codekey=='' || val.codekey=='fail') && !val.edit)" id="publish"/>
+                    <span v-show="!val.edit && (val.publish!=-1 && (val.codekey!='' && val.codekey!='fail'))" v-bind:style="'color:#AAA;font-size:12px;'+((0>val.publish && val.publish!=-1)?'text-decoration:line-through;':'opacity:0.6;')">
+                        <img v-bind:src="main.pub.lib.src('release.png')" v-show="val.publish==9999 || (val.publish>0 && pb.unixReNow()-val.publish>0)" id="release"/>
+                        <img v-bind:src="main.pub.lib.src('compress.png')" v-show="val.publish!=-1 && !(val.publish==9999 || (val.publish>0 && pb.unixReNow()-val.publish>0))" id="release"/>
+                        {{((val.publish==-1)?"not of publish":((val.publish==9999 || (val.publish>0 && pb.unixReNow()-val.publish>0))?"release":"after "+publishTime(val)+" publish"))}}
+                    </span>
+                    <span v-on:click="main$m.$m.edit.PublishDoc(val,-1)" id="resetPublish" v-show="val.edit && (val.publish>3|| -1>val.publish)">
+                        <img v-bind:src="main.pub.lib.src('unzip.png')"/>unzip
+                    </span>
+                    <select v-on:change="main$m.$m.edit.PublishDoc(val,$event.target.value)" v-model="val.publish" v-show="val.edit && !(val.publish>3 || -1>val.publish) && val.langAry.length>0 && !main$m.$m.s.usUpdate(val)">
+                        <option value="-1" v-show="val.publish==-1">not of publish</option>
+                        <option value="9999">now</option>
+                        <option value="1">after 1 day</option>
+                        <option value="2">after 2 day</option>
+                        <option value="3">after 3 day</option>
+                    </select>
+                    <img v-bind:src="main.pub.lib.src(((val.publish>=0)?'display_on.png':'display_off.png'))" v-show="val.publish!=-1 && !val.edit" class="ctrBt" v-bind:style="((val.publish>=0)?'':'opacity:0.5;')+'position:relative;left:10px;top:5px;'" v-on:click="main$m.$m.edit.PublishDoc(val,0)" />
+                </div>
+            </div>
+            <div id="traceDoc" v-on:click="main$m.$m.edit.insertTraceDoc(val)" v-show="!limitEdit(val) && val.fkey==''">
+                <img v-bind:src="main.pub.lib.src('trace.png')" id="tracicon" />
+                <img v-bind:src="main.pub.lib.src('add.png')" id="traceinsert"/>
+                  <!--延讀文章-->
+            </div>
+
+            <div id="traceDocCon" v-show="!limitEdit(val) && val.fkey!='' && val.fkey.indexOf('c_')==0" v-on:click="main$m.$m.main.serStraceData(val.key,val.fkey)">
+                <img v-bind:src="main.pub.lib.src('trace.png')" id="tracicon" />
+                &nbsp;{{val.key}}
+                  <!--被trace文章 連接 get code-->
+            </div>
+            <div id="joinTrac" v-show="val.fkey!='' && val.fkey.indexOf('c_')==0" v-on:click="main$m.$m.main.serStraceData(val.key,val.fkey)">
+                <img v-bind:src="main.pub.lib.src('join.png')" id="tracicon" />
+                &nbsp;{{val.fkey.replace("c_","")}}
+                  <!--join 被 trace 文章 連接 get code-->
+            </div>
+
+            <div id="jointraceDocCon" v-show="val.bkey!='' && !val.edit && val.codekey==''" v-on:click="main$m.$m.main.serStraceData(val.bkey,val.key)">
+                <img v-bind:src="main.pub.lib.src('join.png')" id="tracicon" />
+                &nbsp;{{val.bkey}}
+                  <!--join trace 文章(create 文章) 連接 get code-->
+            </div>
+        </div>
+        <div id="dateDoc">{{pb.reunixDate(val.date)}}</div>
+        <!--發佈日期/create日期-->
+        <div id="docTitle"><div id="markpanel"></div><span v-show="!val.edit" v-on:click="val.show=!val.show" style="cursor:pointer;" v-html="main.pub.catchLangName(val.titleAry).replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+            <textarea v-show="val.edit" v-model="val.titleAry[main.pub.langNu]" v-on:keydown="val.update=true;main$m.$an.edit.dataRefrsh(val.key+'title');" placeholder="main title">
+            </textarea>
+            <img v-bind:src="main.pub.lib.src('savenoteleft.png')" v-bind:id="val.key+'title'" v-show="val.edit && val.update && val.publish==-1" style="top:-5px;padding-left:10px;transform:rotate(-20deg);" v-on:click="main$m.$m.s.save(val)" class="savenote" />
+       </div>
+       <div style="position:realtive;margin-left:auto;width:95%;color:#AAA;font-weight:bold;font-size:15px;cursor:pointer;" v-on:click="val.show=!val.show" v-show="!val.show && !val.edit">...</div>
+       <div style="width:100%;" v-show="val.show || val.edit">
+            <div class="newsContent" v-bind:id="'docConnection'+val.key+nu1" v-for="(val1,nu1) in getContent(val.docAry)" v-show="!val.loadDoc[main.pub.lang] && nu1==0 || val.loadDoc[main.pub.lang]">
+                <div v-bind:id="((val.loadDoc[main.pub.lang] && val.edit)?'textContentedit':'textContent')">
+                    <img v-bind:src="main.pub.lib.src('savenoteright.png')" v-bind:id="val.key+'doc'+ nu1" v-show="val.edit && val1.update && val.publish==-1 && val.loadDoc[main.pub.lang]" style="top:155px;left:50px;transform:rotate(-20deg);" v-on:click="main$m.$m.s.save(val)" class="savenote" />
+                    <!--段落內容-->
+                    <div id="delDocAry" v-show="val.edit && val.loadDoc[main.pub.lang] && val.publish==-1" >
+                        <!--刪除段落-->
+                        <img v-bind:src="main.pub.lib.src('close2.png')" v-on:click="main$m.$m.edit.delContentDoc(val,val1)" />
+                    </div>
+                    <div id="DocAryTool" v-show="val.edit && val.loadDoc[main.pub.lang] && val.publish==-1">
+                        <!--位移段落-->
+                        <div>
+                            <img v-bind:src="main.pub.lib.src('ur.png')" v-show="nu1>0" v-on:click="main$m.$m.edit.preContentDoc(val,val1)" />
+                        </div>
+                        <div>
+                            <img v-bind:src="main.pub.lib.src('dr.png')" v-show="val.docAry.length > nu1+1 && nu1+1 != val.docAry.length" v-on:click="main$m.$m.edit.nextContentDoc(val,val1)"/>
+                        </div>
+                    </div>
+                    <div id="title" v-show="val1.content[main.pub.lang].title!='' || val.edit && val.loadDoc[main.pub.lang]" >
+                        <span v-show="(!val.edit || (!val.loadDoc[main.pub.lang] && nu1==0)) && val1.content[main.pub.lang].title!=''"  v-html="((val1.content[main.pub.lang].title!='')?val1.content[main.pub.lang].title:'...').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+                        <textarea v-show="val.edit && val.loadDoc[main.pub.lang]" v-bind:style="((val1.content[main.pub.lang].title=='')?'width:70px;opacity:0.5;height:30px;':'')" v-model="val1.content[main.pub.lang].title" v-on:keydown="val1.update=true;main$m.$an.edit.dataRefrsh(val.key+'doc'+ nu1);" placeholder="title"></textarea>
+                    </div>
+                    <div class="videoPanel" v-if="(val1.ybe !='' && val1.ybe!=null || val.edit) && val.loadDoc[main.pub.lang]">
+                        <!-- video -->
+                        <iframe v-if="(!val.edit || val.publish!=-1) && val1.ybe.length>0" v-bind:src="'https://www.youtube.com/embed/'+val1.ybe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="videoTool" v-show="val.edit && val.publish==-1">
+                            <img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:15px;padding-right:6px;"/>Video&nbsp;
+                            <span class="urlCath" v-show="val1.ybe.length>0" v-on:click="cancelYoutube(val1,val)">{{main$m.$an.char.YoutubeChar(val1.ybe)}}<img v-bind:src="main.pub.lib.src('close2.png')" /></span>
+                            <input type="text" v-show="val1.ybe.length==0" placeholder="Youtube url/code" v-model="val1.ybeInput" />
+                            <input type="button" v-show="val1.ybe.length==0" value="OK" v-on:click="getYoutube(val1,val)" />
+                        </div>
+                    </div>
+                    <div id="content" v-show="val.loadDoc[main.pub.lang]">
+                        <span v-show="!val.edit" style="font-size:22px;font-weight:bold;color:#000;">{{((val.loadDoc[main.pub.lang])?((val1.content[main.pub.lang].content!='')?val1.content[main.pub.lang].content.substring(0,1):''):"")}}</span>
+                        <span v-show="!val.edit" v-html="((val.loadDoc[main.pub.lang])?((val1.content[main.pub.lang].content!='')?val1.content[main.pub.lang].content.substring(1):''):'').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+                        <div v-show="val.edit" id="EditDocPanel">
+                            <textarea v-model="val1.content[main.pub.lang].content" v-bind:style="((val1.content[main.pub.lang].content=='')?'width:90px;height:30px;':'')" v-on:keydown="val1.update=true;main$m.$an.edit.dataRefrsh(val.key+'doc'+ nu1);" placeholder="content"></textarea>
+                        </div>
+                        <div id="imgUpload" v-show="val.edit && val.publish==-1">
+                            <img id="noteIcon" v-bind:src="main.pub.lib.src('ur.png')" style="transform:rotate(90deg);"/>
+                            <!--upload tool-->
+                            <div id="takePotoPanel" >
+                                <img v-bind:src="main.pub.lib.src('savenoteleft.png')" v-bind:id="val.key+'docphoto'+ nu1" style="top:0px;left:100px;transform:rotate(-20deg);" v-show="val1.IMGupdate" v-on:click="main$m.$m.s.save(val)" class="savenote" />
+                                <img v-bind:src="main.pub.lib.src('close.png')" v-show="val1.imgfile!=null && val.publish==-1 && val1.IMGupdate" class="del" v-on:click="main$m.$m.edit.imguploadCancel(val1,nu1,val.key)"  /><!---cancel upload-->
+                                <img v-bind:src="main.pub.lib.src('add.png')" v-show="val1.imgfile==null && val.publish==-1 && val1.imgfileAry.length==0"  class="del" v-on:click="opeImageFile(val.key+'_'+nu1)" /><!---open upload-->
+                                <img v-bind:src="main.pub.lib.src('takephoto.png')" v-bind:id="'IUtakephoto'+nu1+val.key" v-show="val.publish==-1 && (val1.IMGupdate || val1.imgfileAry.length==0)" class="ctrBt" v-on:click="((val1.imgfile!=null)?main$m.$m.edit.imguploadCancel(val1,nu1,val.key):opeImageFile(val.key+'_'+nu1))" />
+                                <input type="file" multiple="multiple" accept="image/jpeg, image/png" style="display:none;" v-bind:id="'newofile_'+val.key+'_'+nu1" v-on:change="main$m.$m.edit.imgupload(val,nu1,val1,event)"/>
+                                <span v-show="val1.imgfile!=null" class="photoLength">&nbsp;({{((val1.imgfileAry.length!=((val1.imgfile!=null)?val1.imgfile.length:0) && !val1.IMGupdate)?((val1.imgfileAry.length/val1.imgfile.length)*100).toFixed(2):val1.imgfileAry.length)}}&nbsp;{{((val1.imgfileAry.length!=((val1.imgfile!=null)?val1.imgfile.length:0)&& !val1.IMGupdate)?"%..open file":"ps")}})</span>
+                                <div id="photoAry"><span v-show="val.publish!=-1">{{((val1.WallPaper)?main$m.getLang('input').wallpaper+'◎':'')}}</span><input type="button" v-show="val.publish==-1" v-on:click="main$m.$m.edit.WallPaperImgDoc(val,val1)" v-bind:class="((val1.WallPaper)?'pTPchoose':'pTPnormal')" v-bind:value="main$m.getLang('input').wallpaper+((val1.WallPaper)?'◎':'')" /></div>
+                                <!--照片 陣列 模式鈕-->
+                            </div>
+                            <div v-bind:id="'IUtakephotoAll'+nu1+val.key" style="width:100%;"> <!--預覽上傳photo-->
+                                <div v-bind:id="'newsUPimg'+nu1+val.key+nu2" v-for="(val2,nu2) in val1.imgfileAry" class="uploadPrivew">
+                                    <img v-bind:src="val2.base64" class="upPhoto" v-bind:style="((val2.over)?'opacity:0.3':'')" />
+                                    <div id="CancelIconPanel" v-show="val2.over" ><img v-bind:src="main.pub.lib.src(((Number(val2.size)>2)?'lock.png':'unlock.png'))" v-on:click="main$m.$m.edit.impguploadReSize(val2);" /></div>
+                                    <div class="row">
+                                        <div id="delPanel" v-show ="val2.upsize==0 && val1.IMGupdate"><img v-bind:src="main.pub.lib.src('delete.png')" v-on:click="main$m.$m.edit.imguploadDel(val1,nu2,val.key,nu1)" /></div>
+                                        {{val2.filename.substring(0,16)}}...
+                                    </div>
+                                    <div class="row">
+                                        size:&nbsp;<span v-bind:style="((val2.over)?'color:#FF3300':'')" >{{val2.size}}&nbsp;{{val2.sizeName}}</span>
+                                        <span v-show="val2.over" style="color:#FF8800;" >&gt;2&nbsp;MB</span>
+                                    </div>
+                                    <div class="row" v-bind:style="((val2.uploadmes.indexOf('error')>-1 || 3 > val2.restart)?'color:#FF8800;':'')">
+                                        {{((3 > val2.restart)?'retry':'')+val2.uploadmes}}
+                                    </div>
+                                    <div id="uploadProgressBG" v-bind:style="((val2.over)?'opacity:0.3':'')"><div id="uploadPline" v-bind:style="'width:'+((val2.upsize/val2.uptotalsize)*100)+'%'"></div></div>
+                                    <!--上傳圖片進度條-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="photoPanel" v-show="val.loadDoc[main.pub.lang]" v-bind:style="((val1.WallPaper)?'width:90%;':'')">
+                        <div v-bind:class="((!val1.WallPaper)?'contentImg':'contentImgWP')" v-show="val1.objImg.src(val2.path)!=null" v-for="(val2,nu2) in val1.imgAry">
+                            <!--文章圖片-->
+                            <div v-show="val.edit" id="IMGtool">
+                                <img v-bind:src="main.pub.lib.src('delete.png')" v-show="val.publish==-1" class="remove" v-on:click="main$m.$m.edit.delContentImgDoc(val,val1,val2)"/>
+                                <img  v-show="nu2>0" v-on:click="main$m.$m.edit.preContentImgDoc(val,val1,val2,nu2)" class="moveBt" v-bind:src="main.pub.lib.src('ur.png')" v-bind:style="((val1.WallPaper)?'transform:rotate(-90deg);':'')"/>
+                                <img   v-show="val1.imgAry.length > nu2+1 && nu2+1 != val1.imgAry.length" class="moveBt" v-on:click="main$m.$m.edit.nextContentImgDoc(val,val1,val2,nu2)" v-bind:src="main.pub.lib.src('dr.png')" v-bind:style="((val1.WallPaper)?'transform:rotate(-90deg);':'')"/>
+                            </div>
+                            <div id="container">
+                                <img v-bind:src="val1.objImg.src(val2.path)" v-bind:id="'loadPhoto'+val.key+'_'+val1.path+'_'+val2.path.split('.')[0]" class="photo" v-on:click="openImgView(val1,nu2)" />
+                            </div>
+                            <div class="Photodescription"  v-bind:id="'dloadPhoto'+val.key+'_'+val1.path+'_'+val2.path.split('.')[0]" v-show="val2.titleAry[main.pub.langNu]!='' && val2.titleAry[main.pub.langNu]!=null || val.edit">
+                                <!--照片描述-->
+                                <span v-show="!val.edit" v-html="((!val1.WallPaper)?main.pub.catchLangName(val2.titleAry):main.pub.catchLangName(val2.titleAry).substring(0,9)+'...').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+                                <img v-show="val.edit" v-bind:src="main.pub.lib.src('savenoteleft.png')"  v-bind:id="val.key+'docimg'+val1.path + nu2" style="top:-30px;right:-20px;transform:rotate(-30deg);" v-show="val2.update && val.publish==-1" v-on:click="main$m.$m.s.save(val)" class="savenote" />
+                                <textarea v-show="val.edit"  v-on:keydown="val2.update=true;main$m.$an.edit.dataRefrsh(val.key+'docimg'+val1.path+ nu2);" v-model="val2.titleAry[main.pub.langNu]" v-bind:style="((val2.titleAry[main.pub.langNu].length==0)?'width:70px;height:18px;':'')" placeholder="description">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="clear">&nbsp;</div> <!--float 阻隔-->
+                </div>
+                </div>
+                <div v-show="val.edit && val.loadDoc[main.pub.lang] && getContent(val.docAry).length-1!=nu1" class="imgConnection">
+                    <img v-bind:src="main.pub.lib.src('catchDoc.png')" v-bind:id="'imgConnection'+val.key+nu1"/>
+                </div>
+            </div>
+            <div v-on:click="main$m.$m.main.moreData(val)" id="newsContentOpen" v-show="val.docAry.length>0 && !val.loadDoc[main.pub.lang]"><span style="color:#DDD;">...(</span>{{main$m.getLang('input').pagemore}}<span style="color:#DDD;">)</span></div>
+            <div id="createContent" v-show="val.edit && (val.loadDoc[main.pub.lang] || val.docAry.length==0) && val.publish==-1"><input type="button"  v-on:click="main$m.$m.edit.insertContentDoc(val)" v-bind:value="'+'+main$m.getLang('input').createcontent" /></div>
+            <div class="markTitle" v-show="val.readPathAry.length>0 || val.edit">{{main$m.getLang('input').extendlabel}}&nbsp;<input type="button" v-show="val.edit && val.publish==-1" v-on:click="showAddMark(function(adddata){  main$m.$m.edit.insertReadPath(val,adddata);})" v-bind:value="'+'+main$m.getLang('input').add" />
+                <img v-bind:src="main.pub.lib.src('savenoteleft.png')" v-bind:id="val.key+'lab'" style="top:-5px;left:0px;transform:rotate(-50deg);" v-show="val.LABELupdate && val.publish==-1" v-on:click="main$m.$m.s.save(val)" class="savenote" />
+                <!-- 移除更動提示 -->
+            </div>
+            <div class="readPathContent" v-for="(val1,nu1) in val.readPathAry">
+                <div class="labelPanel">
+                    <div  id="editNuLine" v-show="val.edit && val.publish==-1">
+                        <div style="position:relative;width:100%;">
+                            <img v-bind:src="main.pub.lib.src('delete.png')" class="delBt" v-on:click="main$m.$m.edit.delReadPath(val,nu1)" />
+                            <div id="movePanel">
+                                <img v-show="nu1>0" v-on:click="main$m.$m.edit.preReadPath(val1,val,nu1)"  v-bind:src="main.pub.lib.src('ur.png')"/>
+                                <img v-show="val.readPathAry.length > nu1+1 && nu1+1 != val.readPathAry.length" v-on:click="main$m.$m.edit.nextReadPath(val1,val,nu1)" v-bind:src="main.pub.lib.src('dr.png')"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="editNu" v-show="val.edit">{{nu1+1}}</div>
+                    #<span v-on:click="main$m.$m.main.getLabel(val1,'Label'+nu1+'loadPhoto','LabelTag'+val.key+nu1,0)" id="label" v-show="!val.edit && val1.content == null">{{main.pub.catchLangName(val1.nameAry)}}</span>
+                    <span v-show="!val.edit && val1.content!=null" v-on:click="val1.show=!val1.show;" v-bind:style="((val1.show)?'color:#ACD6FF;font-size:12px;':'')" id="label">{{main.pub.catchLangName(val1.nameAry)}}<img v-bind:src="main.pub.lib.src('lock.png')" v-show="val1.lock" class="LabelTagLock" /></span>
+                    <span class="databind" v-show="val.edit">{{val1.path}}</span>
+                    <div id="editpanel" v-show="val.edit"><!--延申閱讀-->
+                        <img v-bind:src="main.pub.lib.src('savenoteleft.png')" v-bind:id="val.key+'lab'+ nu1" style="top:20px;left:220px;transform:rotate(20deg);" v-show="val1.update && val.publish==-1" v-on:click="main$m.$m.s.save(val)" class="savenote" />
+                        <textarea  v-model="val1.nameAry[main.pub.langNu]" v-on:keydown="val1.update=true;main$m.$an.edit.dataRefrsh(val.key+'lab'+ nu1);" placeholder="Label name">
+                        </textarea>
+                    </div>
+                </div>
+                <div style="position:relative;width:100%;" v-show="val1.show"><img v-bind:src="main.pub.lib.src('tag.png')" v-on:click="val1.show=!val1.show;" v-bind:id="'LabelTag'+val.key+nu1" class="tagLabel" /><component v-bind:is="((val1.show || val1.content!=null)?v[main$m.$m.main.showTemp(val1.tp)]:'')" v-bind:page="val1.content"></component></div><!-- 標籤文章 -->
+            </div>
+            <div class="markTitle" v-show="val.mdocAry.length>0 || val.edit">{{main$m.getLang('input').eventlabel}}&nbsp;<input type="button" v-show="val.edit && val.publish==-1" v-on:click="showAddMark(function(adddata){ main$m.$m.edit.insertMdoc(val,adddata);})" v-bind:value="'+'+main$m.getLang('input').add" />
+                <img v-bind:src="main.pub.lib.src('savenoteleft.png')" v-bind:id="val.key+'eventlab'" style="top:-5px;left:0px;transform:rotate(-50deg);" v-show="val.EVENTLABELupdate && val.publish==-1" v-on:click="main$m.$m.s.save(val)" class="savenote" />
+                <!-- 移除更動提示 -->
+            </div>
+            <div class="eventContent" v-for="(val1,nu1) in val.mdocAry"><!--其它標籤-->
+                <div class="labelPanel">
+                    <div  id="editNuLine" v-show="val.edit && val.publish==-1">
+                        <div style="position:relative;width:100%;">
+                            <img v-bind:src="main.pub.lib.src('delete.png')" class="delBt" v-on:click="main$m.$m.edit.delMdoc(val,nu1)" />
+                            <div id="movePanel">
+                                <img v-show="nu1>0" v-on:click="main$m.$m.edit.preMdoc(val1,val,nu1)" v-bind:src="main.pub.lib.src('ur.png')"/>
+                                <img v-show="val.mdocAry.length > nu1+1 && nu1+1 != val.mdocAry.length" v-on:click="main$m.$m.edit.nextMdoc(val1,val,nu1)" v-bind:src="main.pub.lib.src('dr.png')"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div  id="editNu" v-show="val.edit">{{nu1+1}}</div>
+                    #<span v-on:click="main$m.$m.main.getLabel(val1,'eventLabel'+nu1+'loadPhoto','eventLabelTag'+val.key+nu1,0);" id="label" v-show="!val.edit && val1.content == null">{{main.pub.catchLangName(val1.nameAry)}}</span>
+                    <span v-show="!val.edit && val1.content!=null" v-on:click="val1.show=!val1.show;" v-bind:style="((val1.show)?'color:#ACD6FF;font-size:12px;':'')" id="label">{{main.pub.catchLangName(val1.nameAry)}}<img v-bind:src="main.pub.lib.src('lock.png')" v-show="val1.lock" class="LabelTagLock" /></span>
+                    <span class="databind" v-show="val.edit">{{val1.path}}</span>
+                    <div id="editpanel" v-show="val.edit">
+                        <img v-bind:src="main.pub.lib.src('savenoteleft.png')" v-bind:id="val.key+'eventlab'+ nu1" style="top:20px;left:220px;transform:rotate(20deg);" v-show="val1.update && val.publish==-1" v-on:click="main$m.$m.s.save(val)" class="savenote" />
+                        <textarea v-model="val1.nameAry[main.pub.langNu]" v-on:keydown="val1.update=true;main$m.$an.edit.dataRefrsh(val.key+'eventlab'+ nu1);" placeholder="Label name" >
+                        </textarea>
+                    </div>
+                </div>
+                <div style="position:relative;width:100%;" v-show="val1.show"><img v-bind:src="main.pub.lib.src('tag.png')" v-on:click="val1.show=!val1.show;" v-bind:id="'eventLabelTag'+val.key+nu1" class="tagLabel" /><component v-bind:is="((val1.show || val1.content!=null)?v[main$m.$m.main.showTemp(val1.tp)]:'')" v-bind:page="val1.content"></component></div><!-- 標籤文章 -->
+            </div>
+        </div>
+        <div style="width:100%;text-align:center;padding-top:20px;" v-show="val.fkey!='' && val.fkey.indexOf('c_')==-1" >
+            <!-- 前往 追蹤文章 鈕-->
+            <img v-show="val.afContent == null" v-bind:src="main.pub.lib.src('tracenextprev.png')" class="newsnextprev" style="transform:rotate(180deg);" v-on:click="main$m.$m.main.catchShowTemp(val,'af')" />
+            <img v-show="val.afContent != null" v-bind:src="main.pub.lib.src('tracenextprev.png')" class="newsnextprev" v-bind:style="'transform:rotate(180deg);'+((val.afshow)?'opacity:0.3;':'')" v-on:click="val.afshow = !val.afshow" />
+        </div>
+        <component v-bind:is="((val.afshow)?v[main$m.$m.main.showTemp(val.ftp)]:'')" v-bind:page="val.afContent" ></component>
+        <!-- 前往 追蹤文章 -->
+    </div>
+    <div v-on:click="main$m.$m.main.serData(false);" id="moreDocPage">{{main$m.getLang('input').clickmore}}<span style="color:#DDD;">...</span></div>
+    <component v-bind:is="((openMarkAdd)?v.takLabelvue:'')"></component><!-- 加入標籤工具 -->
+    <component v-bind:is="((openImgPreview)?v.newsliIMGvue:'')"></component><!--圖片大圖預覽-->
+</div>

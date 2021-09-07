@@ -1,0 +1,84 @@
+﻿#newsPJccPanel
+{/* 新聞專案*/
+    #newsPanel
+    {/*新聞稿 框架 panel*/
+        #toolMainHead
+        {/* 搜尋文章工具框架 */
+            #NewsSerTool
+            {/*設定、搜尋 tool panel*/
+                position:fixed;background-color:#FFF;width:100%;left:0px;z-index:189;border-bottom:1px solid #EEE;
+                #ctr
+                {/*設定、搜尋 控制項l panel*/
+                    position:relative;margin-top:5px;margin-left:auto;margin-right:auto;width:95%;
+                    padding:3px;
+                    border-radius:20px;
+                    #classFirstPanel
+                    {/* 選擇分類 第一層*/
+                        width:85%;
+                        .choose
+                        {
+                            float:left;
+                            font-size:17px;
+                            font-weight:bold;
+                            color:#888;
+                            padding-left:20px;
+                            cursor:pointer;
+                        }
+
+                    }
+
+                    #classSecPanel
+                    {/* 選擇分類 第二層*/
+                        width:80%;
+                        padding-left:60px;
+                        .choose
+                        {
+                            float:left;
+                            font-size:17px;
+                            font-weight:bold;
+                            color:#333;
+                            padding-left:20px;
+                            cursor:pointer;
+                        }
+
+                    }
+                    #classFirstPanel,#classSecPanel
+                    {/* 選擇分類*/
+                        position:relative;
+                        padding-bottom:6px;
+                        margin-left:auto;
+                        margin-right:auto;
+                        .choose
+                        {
+                            float:left;
+                            font-size:17px;
+                            font-weight:bold;
+                            padding-left:20px;
+                            cursor:pointer;
+                        }
+
+                        .nochoose
+                        {
+                            float:left;
+                            font-size:15px;
+                            color:#AAA;
+                            padding-left:20px;
+                            cursor:pointer;
+                        }
+
+                        .choose:after,.nochoose:after
+                        {/*照片牆 阻斷 清除float*/
+                            width:100%;
+                        }
+
+                        .clear
+                        {/*照片牆 阻斷 清除float*/
+                            width:100%;
+                            clear: left;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

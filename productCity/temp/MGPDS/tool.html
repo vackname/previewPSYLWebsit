@@ -1,0 +1,31 @@
+﻿
+<div id="pSetTool">
+        <div id="classPanel">
+                <div id="cpPanel">
+                        <div id="productSetErrorBorder">
+                                <select v-model="main$m.selfclassmain">
+                                        <option value="333">{{langP("cAll")}}</option>
+                                        <option v-bind:value="val.key" v-for="(val,nu) in main$m.productcs">{{main.pub.catchLangName(val.nameAry)}}</option>
+                                </select><span v-show="main$m.selfclassmain=='333'" style="color:#AAA;font-size:12px;">→(UKnow?)</span>
+                                <select v-model="main$m.selfclass" v-show="main$m.selfclassmain!='333'">
+                                        <option value="999">{{langP("cAlls")}}</option>
+                                        <option v-bind:value="val.key" v-for="(val,nu) in main$m.productcsSec">{{main.pub.catchLangName(val.nameAry)}}</option>
+                                </select>
+                        </div>
+                        <select v-model="main$m.InputType">
+                                <option value="999">{{langP("SInventoryTp")}}</option>
+                                <option v-bind:value="val.val" v-for="(val,nu) in main$m.productTypeList"  v-show="val.val>-1" >{{main.pub.catchLangName(val.nameAry)}}</option>
+                        </select>&nbsp;
+                </div>
+        </div>
+        <div id="ctr">
+               <div class="ctrLi" style="width:80px;"> 
+                       <span class="MGPS_title"></span>&nbsp;<button class="insertBt" v-on:click="main$m.$m.main.AddProduct()"><img v-bind:src="main$m.main.pub.lib.src('add.png')" />&nbsp;&nbsp;{{langP("Add")}}</button>&nbsp;
+                </div>
+                <div class="ctrLi" style="width:150px;">
+                        <table id="tbBox">
+                                <tr><td id="serBox"> <input type="text" v-model="main$m.InputSer" placeholder=" search" v-on:keyup.enter="main$m.$m.main.productListSer(true)"/></td><td id="serBt" v-on:click="main$m.$m.main.productListSer(true)"><img v-bind:src="main.pub.lib.src('searchIcon.jpg')"/></td></tr>
+                        </table>
+                </div>
+        </div>
+</div>

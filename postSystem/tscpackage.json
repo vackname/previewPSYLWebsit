@@ -1,0 +1,14 @@
+[
+  {
+    "src": "animateModel/postSysfrom/tsconfig.json",
+    "modelName": "postSystem_animateModel_postSysfrom_tscm"
+  },
+  {
+    "src": "model/postSysFromtsc/tsconfig.json",
+    "modelName": "postSystem_model_postSysFromtsc_tscm"
+  },
+  {
+    "src": "model/historyTsc/tsconfig.json",
+    "modelName": "postSystem_model_historyTsc_tscm"
+  }
+]

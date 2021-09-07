@@ -1,0 +1,61 @@
+﻿#Management_main
+{/* Management project */
+    #productSet
+    {/* 商品設定 */
+        #MGPSEPanel
+        {/*商品編緝 panel 主要頁版*/
+            #pdeditPanel
+            {/*主要樣版 */
+                width:100%;
+                .MGPSEmark
+                {/* 備註 content panel*/
+                    border-top:1px solid #EEE;width:90%;padding-left:5px;padding-right:5px;height:80px;padding-top:5px;overflow-y:auto;table-layout: fixed;word-wrap:break-word;
+                }
+            
+                .MGPSEClose
+                {/* 設定異常img 提示 */
+                    width:15px;opacity:0.9;position:relative;top:3px;
+                }
+                #getCountPanel
+                {/* 庫存增減器 */
+                    
+                    table{
+                        position:relative;
+                        margin-left:auto;
+                        margin-right:auto;
+                        width:150px;
+                        th{
+                            width:40px;
+                            font-size:12px;
+                            position:relative;
+                            text-align:center;
+                            cursor:pointer;
+                            color:#AAA;
+                            img
+                            {/*按鈕增-減*/
+                                position:relative;
+                                top:3px;
+                                width:15px;
+                            }
+                        }
+                        td
+                        {
+                            text-align:center;
+                            select
+                            {/*數量增減選擇*/
+                                width:70px;
+                            }
+                        }
+                    }
+                    div
+                    {
+                        width:100%;
+                        padding-top:9px;
+                        text-align:center;
+                        color:#FF8800;
+                    }
+                }
+            }
+        }
+    }
+}

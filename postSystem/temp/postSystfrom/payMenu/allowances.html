@@ -1,0 +1,16 @@
+﻿<div id="p_psf_p_allowancesPanel" v-show="open">
+    <div id="bg"></div>
+    <div id="edit_panel">
+        <div id="title_edit_panel">
+            &emsp;{{main$m.getLang('allowances')+"-"+main.pub.catchLangName(obj.nameAry)}}
+        </div>
+        <div style="width:100%;height:20px;"></div>
+        <div id="content">
+            <div style="padding:10px;"><div id="ansPanel">{{obj.allowances | |cashFormat}}</div></div>
+            <div v-on:click="((val!=-2)?getVal(val+''):close())" class="nu"  v-for="(val,nu) in [9,7,8,6,5,4,3,2,1,0,-1,-2]">
+                <div class="val" v-bind:id="'nuAddPanel'+val" v-show="val!=-2">{{((val!=-1)?val:"←")}}</div>
+                <div class="val" v-bind:id="'nuAddPanel'+val"  style="padding:10px;width:60px;" v-show="val==-2"><img v-bind:src="main.pub.lib.src('ck.png')" id="close"/></div>
+            </div>
+        </div>
+    </div>
+</div>

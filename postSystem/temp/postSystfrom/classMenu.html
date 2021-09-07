@@ -1,0 +1,13 @@
+﻿
+<div id="classPanel">
+    <div v-show="!secPanel" style="width:100%;">
+        <div v-on:click="chooseFirst('333')" v-bind:class="((data.selfclassmain=='333')?'chooseM':'classM')">All</div>
+        <div v-on:click="chooseFirst(val.key)" v-for="(val,nu) in data.productcs" v-bind:class="((data.selfclassmain==val.key)?'chooseM':'classM')">{{main.pub.catchLangName(val.nameAry)}}</div>
+    </div>
+    <div v-show="secPanel" style="width:100%;">
+        <div id="turnFirst" v-on:click="secPanel = !secPanel" >&lt;&lt;</div>
+        <div v-on:click="chooseSec('999')" v-bind:class="((data.selfclass=='999')?'chooseM':'classM')">All</div>
+        <div v-on:click="chooseSec(val.key)" v-for="(val,nu) in data.productcsSec"  v-bind:class="((data.selfclass==val.key)?'chooseM':'classM')">{{main.pub.catchLangName(val.nameAry)}}</div>
+        <div style="width:100%;height:100px"><!--撐開--></div>
+    </div>
+</div>

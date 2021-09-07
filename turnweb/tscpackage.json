@@ -1,0 +1,30 @@
+[
+  {
+    "src": "animateModel/indexPage/tsconfig.json",
+    "modelName": "turnweb_animateModel_indexPage_tscm"
+  },
+  {
+    "src": "animateModel/aboutStory/tsconfig.json",
+    "modelName": "turnweb_animateModel_aboutStory_tscm"
+  },
+  {
+    "src": "model/reg/tsconfig.json",
+    "modelName": "turnweb_model_reg_tscm"
+  },
+  {
+    "src": "model/indexPage/tsconfig.json",
+    "modelName": "turnweb_model_indexPage_tscm"
+  },
+  {
+    "src": "model/MGPay/tsconfig.json",
+    "modelName": "turnweb_model_MGPay_tscm"
+  },
+  {
+    "src": "model/mbedit/tsconfig.json",
+    "modelName": "turnweb_model_mbedit_tscm"
+  },
+  {
+    "src": "animateModel/invite/tsconfig.json",
+    "modelName": "turnweb_animateModel_invite_tscm"
+  }
+]

@@ -1,0 +1,17 @@
+﻿<div id="auEditPanel">
+    <div id="searchTool"> <input type="text" v-model="InputSer" /><input type="button" class="MBMG_bt" v-on:click="main$m.$m.au.MBList(true)" value="搜尋" /></div>
+    <div id="emptyMark" v-show="mbList.length==0">目前無資料...</div>
+    <div id="aepMBListDataList" v-for="(val,nu) in mbList" >
+            <div v-bind:style="'background-color:'+((0>val.level)?'#FFEECC;':'#FFF;')" id="aepMBListContent">
+                    <div class="aep_row"><span style="color:#FFF;font-size:12px;background-color:#555;">&nbsp;No.{{nu+1+pageTagetNu*20}}&nbsp;</span>
+                    <div class="aep_row"><span style="color:#CCC;">帳戶/匿稱</span>&nbsp;<span v-bind:style="'color:#999;text-decoration:'+((0>val.level)?'line-through;':'none;')">{{val.mbid}}/{{val.name}}</span></div>
+                    <div class="aep_row">
+                        <span style="color:#CCC;">審核功能</span>&nbsp;<span v-bind:style="'font-weight:bold;color:'+((val.auto.ck)?'#FF8800;':'#555;')">{{((val.auto.ck)?'自動':'手動')}}</span>&nbsp;-&nbsp;<input type="button" v-bind:id="((val.auto.ck)?'changeBton':'changeBtoff')" v-bind:value="((val.auto.ck)?'on':'off')" v-on:click="main$m.$m.au.setAuto(val)" /><span v-show="!val.auto.appck" style="color:#FF3300;">(重大異動)</span></div>
+                    </div>
+                    <div class="aep_row" v-show="val.auto.uid!=''">
+                            <span style="color:#AAA;font-size:12px;">GM-uid-{{val.auto.mguid}}-{{pb.reunixDate(val.auto.date)}}</span>
+                    </div>
+            </div>
+    </div>
+    <div id="aueMBMGPage" v-show="mbList.length>0"><component v-bind:is="v.pagetool" ></component></div>
+</div>

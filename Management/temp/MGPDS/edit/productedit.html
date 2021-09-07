@@ -1,0 +1,153 @@
+﻿
+<div id="pdeditPanel">
+    <div  class="MGPSE_rowtb">
+        <div class="MGPSE_rowtb_left" style="position:relative;">
+            <div class="MGPSE_rowtb_left" style="width:39%;text-align:right;">
+                <span class="MGPSE_title">使用所屬</span>&nbsp;
+            </div>
+            <div class="MGPSE_rowtb_right" style="width:58%;">
+                <select v-model="EditData.val.store" v-on:change="main$m.$m.main.storeSet(EditData.val.store)" >
+                        <option v-bind:value="val.val" v-for="(val,nu) in main$m.storedatalist" >{{main.pub.catchLangName(val.nameAry)}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="MGPSE_rowtb_right" style="position:relative;">
+            <div class="MGPSE_rowtb_left"style="width:37%;text-align:right;">
+                <span class="MGPSE_title">商品屬性&nbsp;</span>
+            </div>
+            <div class="MGPSE_rowtb_right" style="width:61%;">
+                <span class="MGPSE_label" style="color:#FF8800;">{{EditData.val.class|filterClass}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="MGPSE_rowtb_line"></div>
+    <div  class="MGPSE_rowtb">
+        <div class="MGPSE_rowtb_left" style="position:relative;width:100%;padding-left:4%;">
+            <span class="MGPSE_title">商品分類</span>&nbsp;
+            <span v-show="EditData.val.codekey=='chiefadmin'">
+                <img v-bind:src="main.pub.lib.src('close.png')" class="MGPSEClose" v-show="selfclass=='999' || selfclassmain=='333'" />
+                <select v-model="selfclassmain">
+                        <option value="333">(無)</option>
+                        <option v-bind:value="val.key" v-for="(val,nu) in main$m.productcs" v-show="nu!=0">{{main.pub.catchLangName(val.nameAry)}}</option>
+                </select><span class="MGPSE_title">&nbsp;→&nbsp;</span>&nbsp;<span class="MGPSE_title" style="color:#FF3300;" v-show="selfclassmain=='333'">(未知商品分類細項)</span>
+                <select v-model="selfclass" v-show="selfclassmain!='333'">
+                    <option value="999">細項(無)</option>
+                    <option v-bind:value="val.key" v-for="(val,nu) in productcsSec"  v-show="nu!=0">{{main.pub.catchLangName(val.nameAry)}}</option>
+                </select>
+            </span>
+            <span v-show="EditData.val.codekey!='chiefadmin'">{{getClassname(EditData.val)}}</span>
+        </div>
+    </div>
+    <div class="MGPSE_rowtb_line"></div>
+    <div class="MGPSE_rowtb">
+        <div class="MGPSE_rowtb_left" style="position:relative;">
+            <div class="MGPSE_rowtb_left" style="width:40%;text-align:right;">
+                <img v-bind:src="main.pub.lib.src('close.png')" class="MGPSEClose" v-show="main.pub.catchLangName(EditData.val.nameAry).replace(/  /g,'')==''" /><span class="MGPSE_title">商品名稱</span>
+            </div>
+            <div class="MGPSE_rowtb_right" style="width:55%;">
+                <input type="text" style="width:90%;" v-show="notUsInput() && EditData.val.codekey=='chiefadmin'" v-model="EditData.val.nameAry[main.pub.langNu]"/>
+                <span class="MGPSE_label" v-show="!notUsInput() || EditData.val.codekey!='chiefadmin'">{{main.pub.catchLangName(EditData.val.nameAry)}}</span>
+            </div>
+        </div>
+        <div class="MGPSE_rowtb_right" style="position:relative;">
+            <div class="MGPSE_rowtb_left"style="width:20%;text-align:right;"><span class="MGPSE_title">庫存</span></div>
+            <div class="MGPSE_rowtb_right" style="width:75%;position:relative;">
+                <select v-model="EditData.val.typeCtr" v-show="notUsInput() && EditData.val.codekey=='chiefadmin'">
+                        <option v-bind:value="val2.val" v-for="(val2,nu2) in main$m.productTypeList" v-show="val2.val>-1">{{main.pub.catchLangName(val2.nameAry)}}</option>
+                </select>
+                <span class="MGPSE_label" v-show="!notUsInput() || EditData.val.codekey!='chiefadmin'">{{EditData.val.type|typeFilter}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="MGPSE_rowtb" style="height:90px;">
+        <div class="MGPSE_rowtb_left" style="position:relative;">
+            <div class="MGPSE_rowtb_left"style="width:40%;text-align:right;"><span class="MGPSE_title">購入上限</span></div>
+            <div class="MGPSE_rowtb_right" style="width:55%;position:relative;">
+                <select v-model="EditData.val.countLimit" v-on:change="main$m.$m.main.limitCount(EditData.val.countLimit)">
+                        <option v-bind:value="nu2" v-for="(val2,nu2) in new Array(20)" >{{((0==nu2)?"無上限":nu2)}}</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="MGPSE_rowtb_right" style="position:relative;" v-show="notUsInput() && (EditData.val.typeCtr==1)">
+            <div id="getCountPanel">
+                <!--庫存選擇器-->
+                <table>
+                    <tr><th v-on:click="main$m.$m.main.inCount(addCount)">+<img v-bind:src="main.pub.lib.src('dr.png')" style="transform:rotate(90deg);" /></th>
+                        <td>
+                            <select v-model="addCount">
+                                <option value="1">1</option>
+                                <option value="10">10</option>
+                                <option value="30">30</option>
+                                <option value="88">88</option>
+                                <option value="150">150</option>
+                                <option value="300">300</option>
+                                <option value="1000">1000</option>
+                            </select>
+                        </td>
+                        <th v-on:click="main$m.$m.main.deCount(addCount)"> <img v-bind:src="main.pub.lib.src('dr.png')" style="transform:rotate(-90deg);" />-</th></tr>
+                </table>
+                <div>
+                    <span style="color:#AAA;">=</span>&nbsp;{{EditData.val.Count}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="MGPSE_rowtb_line"></div>
+    <div class="MGPSE_rowtb">
+        <div class="MGPSE_rowtb_left" style="position:relative;width:100%;">
+            <div class="MGPSE_rowtb_left"style="width:19%;text-align:right;"><img v-bind:src="main.pub.lib.src('close.png')" class="MGPSEClose" v-show="(EditData.val.fee+'').replace(/  /g,'')*0!=0" /><span class="MGPSE_title">稅額</span></div>
+            <div class="MGPSE_rowtb_right" style="width:79%;">
+                <span v-show="EditData.val.codekey!='chiefadmin'">{{EditData.val.fee|cashFormat}}</span>
+                <span v-show="EditData.val.codekey=='chiefadmin'"><input type="text" style="width:50px;"v-model="EditData.val.fee"/>&nbsp;<span class="MGPSE_label" >NT$</span></span><span class="MGPSE_label" style="color:#AAA;">(僅顯示不列入計算)</span>
+            </div>
+        </div>
+    </div>
+    <div class="MGPSE_rowtb_line"></div>
+    <div class="MGPSE_rowtb">
+        <div class="MGPSE_rowtb_left" style="position:relative;width:50%;">
+                <div class="MGPSE_rowtb_left"style="width:39%;text-align:right;"><img v-bind:src="main.pub.lib.src('close.png')" class="MGPSEClose" v-show="(EditData.val.cash+'').replace(/  /g,'')*0!=0" /><span class="MGPSE_title">單價</span>
+                </div>
+                <div class="MGPSE_rowtb_right"style="width:58%;">
+                  <span v-show="EditData.val.codekey=='chiefadmin'"><input type="text" v-model="EditData.val.cash"  style="width:50px;"/>&nbsp;<span class="MGPSE_label" >NT$</span></span>
+                  <span v-show="EditData.val.codekey!='chiefadmin'">{{EditData.val.cash|cashFormat}}</span>
+                </div>
+        </div>
+        <div class="MGPSE_rowtb_right" style="position:relative;width:50%;" v-show="EditData.val.class==2">
+            <div class="MGPSE_rowtb_left"style="width:37%;text-align:right;"><img v-bind:src="main.pub.lib.src('close.png')" class="MGPSEClose" v-show="(EditData.val.shunit+'').replace(/  /g,'')*0!=0" /><span class="MGPSE_title">容積</span></div>
+            <div class="MGPSE_rowtb_right"style="width:61%;">
+                <span v-show="EditData.val.codekey=='chiefadmin'"><input type="text" style="width:50px;" v-model="EditData.val.shunit" />&nbsp;<span class="MGPSE_title" >立方單位</span></span>
+                <span v-show="EditData.val.codekey!='chiefadmin'">{{pb.MoneyFormat(EditData.val.shunit)}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="MGPSE_rowtb_line"></div>
+    <div class="MGPSE_rowtb" style="height:150px;">
+        <div class="MGPSE_rowtb_left" style="position:relative;height:150px;">
+            <div class="MGPSE_rowtb_left"style="width:40%;text-align:right;">
+                <img v-bind:src="main.pub.lib.src('close.png')" class="MGPSEClose" v-show="EditData.val.unitAry[main.pub.langNu].replace(/  /g,'')==''" /><span class="MGPSE_title">數量單位</span>
+            </div>
+            <div class="MGPSE_rowtb_right"style="width:55%;">
+                <input type="text" style="width:100px;" v-model="EditData.val.unitAry[main.pub.langNu]" v-show="notUsInput()&&EditData.val.codekey=='chiefadmin'" />
+                <span class="MGPSE_label" v-show="!notUsInput() || EditData.val.codekey!='chiefadmin'">{{main.pub.catchLangName(EditData.val.unitAry)}}</span>
+            </div>
+            <div style="width:100%;height:60px">
+            <div class="MGPSEmark">
+                <img v-bind:src="main.pub.lib.src('takephoto.png')" v-on:click="imgEditShow=true" style="width:50px;cursor:pointer;" />建議:390X260({{EditData.val.imgAry.length}}ps)
+                <component v-bind:is="((imgEditShow)?v.pPhotoImgEditView:'')"></component>
+            </div>
+            </div>
+        </div>
+        <div class="MGPSE_rowtb_right" style="position:relative;height:50px;"> 
+            <span class="MGPSE_title">備註</span>
+            <div class="MGPSEmark">
+                <span class="MGPSE_label">{{((EditData.val.mark!=null && EditData.val.mark!="")?EditData.val.mark:'(無)')}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="MGPSE_rowtb_line"></div>
+    <div class="MGPSE_rowtb" style="text-align:center;">
+    <input type="button" class="MGPSE_bt" v-show="EditData.val.codekey=='chiefadmin'" value="確認" v-on:click="main$m.$m.main.editProduct()" />
+    </div>
+    <div class="MGPSE_rowtb"></div>
+</div>

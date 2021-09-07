@@ -1,0 +1,24 @@
+﻿<div id="takeLabelPanel">
+    <div id="bg"></div>
+    <div id="labelChoosePanel">
+        <div id="headtool">
+            <div id="delPanl"><img v-bind:src="main.pub.lib.src('close.png')" class="closeBt" v-on:click="close()" /></div>
+        </div>
+        <div id="content">
+            <div id="row">
+                <div v-for="(val,nu) in mainTemp.tagbag" class="bagData" v-show="val.tp==tp">
+                    <div id="bagContent">
+                        <div id="imgTag"><img v-bind:src="main.pub.lib.src('tagbag.png')" v-on:click="main$m.$m.p.insertBt(val.path,val.tp,val.name)" /></div>
+                        <div id="nu" >
+                            <div id="char">{{val.nu}}</div>
+                        </div>
+                        <div  id="namePanel" >
+                            <span>{{((val.name.replace(/ /g,'')!='')?val.name:"No."+val.nu)}}</span>
+                        </div>
+                    </div>
+                    <div style="font-size:12px;width:100%;color:#DDD;text-align:center;">{{pb.reunixDate(val.date)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

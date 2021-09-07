@@ -1,0 +1,84 @@
+﻿<div id="aboutStory">
+        <div id="aboutStorySetTB">
+                <img  v-bind:src="((setImg!=null && setAry.indexOf('content.png')>-1)?setImg.src('content.png'):'')"/>
+        </div>
+        <div id="imgList" v-show="goodAry.length>0">
+                <img id="aboutStoryGoodPanlelImg" v-bind:src="((goodImg!=null)?goodImg.src(goodAry[indexGoodNu]):'')" v-bind:style="'margin-top:'+mainTemp.topRemove+'px'"/>
+                <div class="touchPageShow"><span>{{indexGoodNu+1}}/{{goodAry.length}}</span></div>
+                <div id="TouchPanel">
+                        <div class="left" v-on:click="goodLeft()"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(90deg);"/></div>
+                        <div class="right" v-on:click="goodRight()"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(-90deg);"/></div>
+                </div>
+        </div>
+
+        <div class="splitLine" v-on:click="openPage1=!openPage1">
+                <div>
+                        <div class="title" v-show="!openPage1" >緣份</div><img v-bind:src="main.pub.lib.src(((openPage1)?'ur.png':'dr.png'))"/>
+                </div>
+        </div>
+        <div id="aboutStoryMeTB"  v-show="openPage1">
+                <img  v-bind:src="((setImg!=null && setAry.indexOf('content3.png')>-1)?setImg.src('content3.png'):'')"/>
+                <img  v-bind:src="((setImg!=null && setAry.indexOf('content2.png')>-1)?setImg.src('content2.png'):'')"/>
+        </div>
+
+        <div id="aboutStoryFoodTB" v-show="openPage1">
+                <img  v-bind:src="((setImg!=null && setAry.indexOf('food.png')>-1)?setImg.src('food.png'):'')"/>
+                <img  v-bind:src="((setImg!=null && setAry.indexOf('food2.png')>-1)?setImg.src('food2.png'):'')"/>
+        </div>
+        <div id="aboutStoryMenuTB" v-show="openPage1">
+                <img  v-bind:src="((setImg!=null && setAry.indexOf('menu1.png')>-1)?setImg.src('menu1.png'):'')"/>
+                <img  v-bind:src="((setImg!=null && setAry.indexOf('menu2.png')>-1)?setImg.src('menu2.png'):'')"/>
+        </div>
+        <div class="splitLine" v-on:click="openPage2=!openPage2">
+                <div>
+                        <div class="title" v-show="!openPage2" >家庭式飯盒</div><img v-bind:src="main.pub.lib.src(((openPage2)?'ur.png':'dr.png'))"/>
+                </div>
+        </div>
+        <div id="aboutStoryClassTB" v-show="openPage2">
+                <div class="li">
+                        <div>家庭式飯盒<br/>
+                        簡單調味｜美味呈現</div>
+                        <img  v-bind:src="((setImg!=null && setAry.indexOf('setbox.jpg')>-1)?setImg.src('setbox.jpg'):'')"/>
+                </div>
+                <div  class="li">
+                        <div>特色餐盒｜餐袋<br/>
+                        客製化餐盒｜餐袋</div>
+                        <img  v-bind:src="((setImg!=null && setAry.indexOf('setbag.jpg')>-1)?setImg.src('setbag.jpg'):'')">
+                </div>
+                <div  class="li">
+                        <div>茶會點心<br/>
+                        特色餐會｜整場驚艷</div>
+                        <img  v-bind:src="((setImg!=null && setAry.indexOf('tea.jpeg')>-1)?setImg.src('tea.jpeg'):'')"/>
+                </div>
+                <div class="clear">&nbsp;</div>
+                 <!--float 阻隔-->
+        </div>
+        <div style="position:relative;width:100%;" >  
+                <div id="getSetTB">
+                        <a href="https://page.line.me/col1008a" target="_blank"><img  v-bind:src="((setImg!=null)?setImg.src('getSet.png'):'')"/></a>
+                </div>
+        </div>
+        <div style="position:relative;width:100%;" >  
+                <div id="uberTB">
+                        <a href="https://tinyurl.com/yjf8qdsl" target="_blank"><img  v-bind:src="((setImg!=null)?setImg.src('UBER.png'):'')"/></a>
+                </div>
+        </div>
+        <div style="position:relative;width:100%;" >  
+                <div id="foodPdaTB">
+                        <a href="https://page.line.me/col1008a" target="_blank"><img  v-bind:src="((setImg!=null)?setImg.src('FoodPAND.png'):'')"/></a>
+                </div>
+        </div>
+        <div id="psylMessage">
+                <div><a href="https://g.page/guabaotw?share" target="top">701&nbsp;臺南市&nbsp;東區裕農路621巷25號</a></div>
+                <div><a href="tel:0906655216" target="top">0906-655-216</a></div>
+                <div><a href="mailto:psyltw@gmail.com" target="top">psyltw@gmail.com</a></div>
+                <table>
+                    <tr>
+                        <td><a href="https://www.facebook.com/psyltw/" target="top"><img v-bind:src="((inviteimgload)?inviteImg.src('facebook.png'):'')" /></a></td>
+                        <td><a href="https://www.instagram.com/hochiholi/" target="top"><img v-bind:src="((inviteimgload)?inviteImg.src('ig.png'):'')" /></a></td>
+                        <td><a href="https://page.line.me/col1008a" target="top"><img v-bind:src="((inviteimgload)?inviteImg.src('line.png'):'')" /></a></td>
+                        <td><a href="mailto:psyltw@gmail.com"  target="top"><img v-bind:src="((inviteimgload)?inviteImg.src('google.png'):'')" /></a></td>
+                    </tr>
+                </table>
+        </div>
+</div>

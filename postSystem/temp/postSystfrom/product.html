@@ -1,0 +1,14 @@
+﻿<div id="p_psf_productPanel">
+    <div class="productLi" style="width:120px;height:20px;"><!--empty--></div>
+    <div v-for="(val,nu) in main$m.pObj().list" class="productLi">
+        <div class="productName" v-on:click="main$m.$m.main.chooseProduct(val,nu,true)" v-bind:name="'productname'+nu">
+            <div style="position:relative;width:100%;"><div class="discount" v-show="main$m.discountFun(val)!=1">{{main$m.discountFun(val)*100}}%</div></div>
+            {{reContent(val,val.nameAry)}}
+        </div>
+    </div>
+    <div id="empty"></div>
+    <div v-show="main$m.pObj().dataCount > main$m.pObj().list.length" id="moreProductPanel" v-on:click="morePage()">
+        <img v-bind:src="main.pub.lib.src('product.png')" style="width:10px;" />&nbsp;<img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;" />
+        <div style="text-align:center;">more</div>
+    </div>
+</div>

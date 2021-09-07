@@ -1,0 +1,23 @@
+﻿<div style="width:100%;">
+    <component v-bind:is="v.head_temp" v-show="!gotoTagBag"></component>
+    <div style="width:100%;height:60px;"><!--head 撐開--></div>
+    <div style="position:relative;width:100%;" v-show="!maintain && !showTagBag">
+        <component v-bind:is="((loadPJVue && loadTurnWeb)?v[VueName]:'')" v-show="NuView==0" ></component><!--首頁(搜尋頁turnweb) 緩儲介面-->
+        <div style="width:100%;padding-top:60px;text-align:center;" v-show="!loadPJVue">
+            <img v-bind:src="main.pub.lib.src('ajax.gif')" style="width:300px;" />
+            <!--登入ajax gif-->
+        </div>
+        <component v-bind:is="pageV('Management')" v-show="NuView==1" ></component><!--後台管理 緩儲介面-->
+        <component v-bind:is="pageV('MGMBNews')" v-show="NuView==2" ></component><!--新聞媒體 緩儲介面-->
+        <component v-bind:is="pageV('MGMBNewscc')" v-show="NuView==5" ></component><!--採踩地方 緩儲介面-->
+        <component v-bind:is="pageV('pcview')" v-show="NuView==3" ></component><!--購物商城 緩儲介面-->
+        <component v-bind:is="pageV('PostSys')" v-show="NuView==4" ></component><!--post system 緩儲介面-->
+        <component v-bind:is="pageV('MGActivity')" v-show="NuView==6" ></component><!--活動報名 緩儲介面-->
+        <component v-bind:is="pageV('author_temp')" v-show="NuView==-1" ></component><!--作者資訊-->
+    </div>
+    <component v-bind:is="((maintain_exist)?v.maintain_temp:'')" v-show="maintain && !showTagBag"></component><!--maintain model-->
+    <component v-bind:is="((showTagBag && tagbag.length>0)?v.TagBagVue:'')" v-show="showTagBag" ></component><!--標籤背包-->
+    <component v-bind:is="v.foot_temp" v-show="!showTagBag && NuView==0" ></component>
+    <component v-bind:is="((loginopen)?v.login:'')" ></component>
+    <component v-bind:is="v.mesbox_temp"></component>
+</div>

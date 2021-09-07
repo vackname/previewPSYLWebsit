@@ -1,0 +1,91 @@
+﻿<div v-bind:style="'background-color:#'+((!load)?'FFF':'FFEEDD')+';'" id="MGPSGiftPanel" >
+    <div  id="MGPSGTitle">
+        <div id="chooseMark">
+            <div style="float:left;width:105px;height:10px;" v-show="giftModel" >
+               <span style="color:#FFF;">.</span>
+            </div>
+            <div class="ckTitle">
+                <span >▲</span>
+            </div>
+        </div>
+        <div style="width:100%;height:50px;">
+            <span v-bind:class="((giftModel)?'MGPSG_title':'MGPSG_titleChoose')" v-on:click="giftModel=false">已建立Menu模式&nbsp;</span>
+            &nbsp;|&nbsp;
+            <span v-bind:class="((!giftModel)?'MGPSG_title':'MGPSG_titleChoose')"  v-on:click="giftModel=true">新增Menu模式&nbsp;</span>
+        </div>
+    </div>
+    <div class="splitLinePanel">
+        <div id="line"></div>
+    </div>
+    <div id="serProduct" v-show="!giftModel" >
+        <div id="tool">
+            <div style="width:100%;">
+                    <select v-model="InputClass">
+                            <option value="999">商品屬性全部</option>
+                            <option v-bind:value="val.val" v-for="(val,nu) in main$m.productClassList">{{main.pub.catchLangName(val.nameAry)}}</option>
+                    </select><br/>
+                    <select v-model="selfclassmain">
+                            <option value="333">商品分類全部</option>
+                            <option v-bind:value="val.key" v-for="(val,nu) in main$m.productcs" v-show="val.key!=''">{{main.pub.catchLangName(val.nameAry)}}</option>
+                    </select><span v-show="selfclassmain=='333'" style="color:#AAA;font-size:12px;">→(未知)</span>
+                    <select v-model="selfclass" v-show="selfclassmain!='333'">
+                            <option value="999">商品分類細項全部</option>
+                            <option v-bind:value="val.key" v-for="(val,nu) in productcsSec" v-show="val.key!=''">{{main.pub.catchLangName(val.nameAry)}}</option>
+                    </select>
+            </div>
+            <input type="text" v-model="InputSer" style="width:100px;"/><input type="button" class="MGPS_searchbt" v-on:click="main$m.$m.gt.setOptions(true)" value="搜尋" />
+         </div>
+         <div class="splitLinePanel">
+            <div id="line"></div>
+        </div>
+        <div id="emptyData" v-show="!load && dataList.length==0"><span class="MGPSG_title" >-尚未建立-</span></div>
+        <div id="dataPanel">
+            <div id="dataList" v-for="(val,nu) in dataList">
+                <div id="itemPanel">
+                    <div id="cel1" >
+                        <img v-bind:src="main.pub.lib.src(((val.type>=0)?'display_on.png':'display_off.png'))" v-bind:style="((val.type>=0)?'':'opacity:0.5')" v-on:click="main$m.$m.gt.CancelF(val)" />&nbsp;&nbsp;
+                        <span>&nbsp;{{((nu+1 >=100)?'':'0')+((nu+1 >=10)?'':'0')+(nu+1)}}&nbsp;</span>&nbsp;
+                    </div>
+                    <div id="cel2" >{{main.pub.catchLangName(val.nameAry)}}&nbsp;<span v-show="val.set">&nbsp;套餐&nbsp;</span></div>
+                    <div id="cel3" >
+                        <span class="sp">∣&nbsp;</span><img v-bind:src="main.pub.lib.src('delete.png')" v-on:click="main$m.$m.gt.delOption(val)"/>&nbsp;
+                    </div>
+                    <div id="cel4" >
+                        <button class="movebt" v-show="nu>0" v-on:click="main$m.$m.gt.PreOption(val)">▲</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="movebt" v-show="pageCountSet > nu+1 && nu+1 != dataList.length" v-on:click="main$m.$m.gt.NextOption(val)">▼</button>
+                    </div>
+                </div>
+                <div class="splitLinePanel">
+                    <div id="line"></div>
+                </div>
+            </div>
+            <div id="pageButton" v-on:click="main$m.$m.gt.setOptions()" v-show="pageCountSet > dataList.length && !load">
+                more&nbsp;<img v-bind:src="main.pub.lib.src('add.png')" />
+            </div>
+        </div>
+    </div>
+    <div id="chooseGift" v-show="giftModel">
+        <div id="tool" ><input type="text" v-model="serinput" style="width:100px;"/><input type="button" class="MGPSE_bt" v-on:click="main$m.$m.gt.serGiftOption(true)" value="搜尋" /></div>
+        <div id="dataPanel">
+            <div class="splitLinePanel">
+                <div id="line"></div>
+            </div>
+            <div d="emptyData" v-show="!load && setOptions.length==0"><span class="MGPSG_title" >-目前無搜尋商品項目-</span></div>
+            <div id="datalist" v-on:click="val.ck=!val.ck" v-for="(val,nu) in setOptions">
+                <div id="itemPanel" v-bind:style="((val.ck)?'background-color:#'+((val.us)?'77DDFF;':'EFEFEF;'):'')">
+                    <div id="cel1" ><span v-bind:style="'font-size:12px;color:#FFF;background-color:#'+((val.us)?'555;':'AAA;')">&nbsp;{{((nu+1 >=100)?'':'0')+((nu+1 >=10)?'':'0')+(nu+1)}}&nbsp;</span>&nbsp;</div>
+                    <div id="cel2" v-bind:style="'color:'+ ((!val.us)?'#AAA;text-decoration:line-through;':'#777;')">{{main.pub.catchLangName(val.nameAry)}}&nbsp;<span v-show="val.set">&nbsp;套餐&nbsp;</span></div>
+                    <div id="cel3" ><img v-bind:src="main.pub.lib.src('ck.png')" v-show="val.ck && val.us" /></div>
+                </div>
+                <div class="splitLinePanel">
+                    <div id="line"></div>
+                </div>
+            </div>
+            
+            <div id="pageButton"  v-on:click="main$m.$m.gt.serGiftOption()" v-show="(setOptions.length != pageCount+nowRemoveCount()) && !load">
+                    more&nbsp;<img v-bind:src="main.pub.lib.src('add.png')"/>
+            </div>
+        </div>
+        <div id="menuAdd" ><input type="button" value="加入Menu" v-on:click="main$m.$m.gt.addOption()" /></div>
+    </div>
+</div>

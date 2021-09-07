@@ -1,0 +1,18 @@
+[
+  {
+    "src": "animateModel/News/tsconfig.json",
+    "modelName": "MGMBNewscc_animateModel_News_tscm"
+  },
+  {
+    "src": "animateModel/MGNews/tsconfig.json",
+    "modelName": "MGMBNewscc_animateModel_MGNews_tscm"
+  },
+  {
+    "src": "model/index/tsconfig.json",
+    "modelName": "MGMBNewscc_model_index_tscm"
+  },
+  {
+    "src": "model/MGNews/tsconfig.json",
+    "modelName": "MGMBNewscc_model_MGNews_tscm"
+  }
+]

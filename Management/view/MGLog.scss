@@ -1,0 +1,167 @@
+﻿#Management_main
+{/* Management project */
+    #MGLogPanel
+    {/* 審核Log */
+        position:relative;
+        width:100%;
+        #title
+        {
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            width:95%;
+            padding-top:20px;
+            padding-bottom:40px;
+            font-size:18px;
+            color:#FF8800;
+            text-align:center;
+            font-weight:bold;
+        }
+
+        #LogSertbBox
+        {/* search bar */
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            width:300px;
+            border:1px solid #555;
+            background:#EEE;
+            border-radius: 9px;
+            #serSelect
+            {/*審核type*/
+                width:100px;
+                select
+                {
+                    width:90%;
+                }
+            }
+            #serBox
+            {/* search textbox */
+                width:160px;
+                input
+                {
+                    width:95%;
+                    font-size:18px;
+                }
+            }
+            #serBt
+            {/* search button */
+                width:40px;
+                cursor:pointer;
+                text-align:center;
+                background-color:#FFF;
+                border-top-right-radius: 9px;
+                border-bottom-right-radius: 9px;
+                img
+                {
+                
+                    width:50%;
+                }
+            }
+        }
+
+        #dataPanel
+        {/* log 定位 */
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            width:98%;
+            max-width:500px;
+            padding-top:60px;
+            padding-bottom:80px;
+            #emptyData
+            {/*無任何資料*/
+                color:#AAA;font-size:15px;width:100%;text-align:center;
+            }
+            #dataList
+            {/* log panel */
+                position:relative;
+                width:100%;
+                padding-top:10px;
+                padding-bottom:10px;
+                border-bottom:1px solid #EEE;
+                .nu
+                {/* 流水號 */
+                    color:#999;
+                    font-size:12px;
+                    padding-left:9px;
+                }
+                .month
+                {/*月份mark*/
+                    color:#FFF;background-color:#333;border-radius:9px;padding:3px;font-size:18px;
+                }
+
+                .day
+                {/*日期mark*/
+                    color:#FFF;background-color:#888;border-top-right-radius:9px;border-bottom-right-radius:9px;padding:2px;font-size:12px;
+                    position:relative;
+                    top:-2px;
+                }
+                #gotoPanel
+                {/* 前往功能頁 */
+                    position:relative;
+                    text-align:right;
+                    width:98%;
+                    font-size:12px;
+                    color:#005AB5;
+                    padding-bottom:20px;
+                    .goto
+                    {/* 前往預覽 mark img */
+                        width:15px;
+                        padding-right:3px;
+                        position:relative;
+                        top:3px;
+                    }
+                }
+
+                .light
+                {/* 燈號*/
+                    position:absolute;
+                    width:9px;
+                    height:9px;
+                    top:3;
+                    right:0px;
+                    border-radius: 60px;
+                }
+
+                .date
+                {/* create 日期 */
+                    float:right;font-size:12px;color:#AAA;
+                    .time
+                    {/* 時間 mark img */
+                        width:15px;
+                        padding-right:3px;
+                        position:relative;
+                        top:3px;
+                    }
+                }
+                .content
+                {/* log value */
+                    position:relative;
+                    width:100%;
+                    padding-top:30px;
+                    padding-bottom:40px;
+                    font-size:15px;
+                    color:#777;
+                }
+                .ans
+                {/* 處理狀態 */
+                    position:relative;width:90%;color:#AAA;padding-top:10px;padding-bottom:20px;border-top:1px solid #EEE;
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+            }
+
+            #morePage
+            {/* 更多log page button*/
+                position:relative;
+                margin-left:auto;
+                width:100px;
+                text-align:right;
+                cursor:pointer;
+                font-size:15px;
+                color:#AAA;
+            }
+        }
+    }
+}

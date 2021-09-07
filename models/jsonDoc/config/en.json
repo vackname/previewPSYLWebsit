@@ -1,0 +1,63 @@
+{
+    "title":"伴手有禮human space",
+    "page":{
+        "author":"Author",
+        "private":"Private",
+        "service":"Service",
+        "aboutStory":"禾氣合秝",
+        "mgccvue":"採踩News-edit",
+        "newsccvue":"採踩News",
+        "space":"Space",
+        "invite":"Cooperate",
+        "mbedit":"Edit MB",
+        "index":"Home",
+        "ser":"Search",
+        "reg":"Registered",
+        "MgWatch":"surveillance system",
+        "MgMb":"Member MG",
+        "MgPd":"From MG",
+        "MgPs":"PRoduct MG",
+        "MgNews":"News MG",
+        "MgNewscc":"採踩MG",
+        "MgPT":"Protal DM MG",
+        "PayHistory":"Document details",
+        "productTemp":"Ho li Bazaar",
+        "productPay":"Pay",
+        "mgvue":"News edit",
+        "newsvue":"News",
+        "postFrom":"post system",
+        "login":"Login",
+        "logout":"Logout",
+        "doctag":"Tag document",
+        "MgLog":"Ation for Audit",
+        "AcVue":"伴Space",
+        "MgAc":"伴Space MG",
+        "pnews":"Hot",
+        "acnews":"Activity"
+    },
+    "error":
+    {
+        "svbusy":"server busy!",
+        "notpoint":"Not enough of App point！",
+        "notpaytime":"Not Open permissions<br/>(over datelate)!",
+        "deleteBag":"Confirm for remove of Tag?",
+        "edit":"Confirm for edit?",
+        "stopdoc":"don't read！",
+        "choosepay":"Please choose to payment！",
+        "sendmail":"send E-mail successfully!",
+        "Verification":"Error!Verification code.",
+        "waitLogin":"Wait for login！Audit for chief Update of Account.",
+        "loginFail":"Fail of Login！",
+        "errorInputLogin":"error of input!<br/>Account/Password/Verification code！",
+        "limitAccount":"Limit of account!",
+        "StopLogin":"Suspension ID！"
+    },
+    "input":
+    {
+        "verification":"Verification",
+        "password":"Password",
+        "checkout":"Buy",
+        "return":"Return",
+        "fpassword":"Forgot password"
+    }
+}

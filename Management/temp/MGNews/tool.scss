@@ -1,0 +1,56 @@
+﻿#Management_main
+{/* Management project */
+    #MGNewsPanel
+    {/* 新聞 panel*/
+        #nSetTool
+        {/*設定、搜尋 tool panel*/
+            position:fixed;background-color:#FFF;width:100%;left:0px;z-index:189;box-shadow:2px 2px 5px #888888;
+            #ctr
+            {/*設定、搜尋 控制項l panel*/
+                max-width:300px;position:relative;margin-top:5px;margin-left:auto;margin-right:auto;width:95%;
+                height:60px;
+                padding:10px;
+                border:1px solid #EEE;
+                border-radius:20px;
+                .ctrLi
+                {/*設定、搜尋 控制項l list panel*/
+                    width:100%;
+                    text-align:left;
+                    padding-bottom:5px;
+                }
+                #serBox
+                {/* 搜尋 panel */
+                    position:relative;
+                    margin-left:auto;margin-right:auto;
+                    width:90%;
+                    background-color:#EEE;
+                    border-radius:50px;
+                    cursor:pointer;
+                    #textbox
+                    {
+                        text-align:center;
+                        input[type="text"]
+                        {
+                            width:85%;
+                            font-size:18px;
+                        }
+                    }
+                    #NS_bt
+                    {/* 按鈕樣式 */
+                        background-color:#FFF;
+                        border:1px solid #AAA;
+                        border-top-right-radius:20px;
+                        border-bottom-right-radius:20px;
+                        width:50px;
+                        text-align:center;
+                        cursor:pointer;
+                        img
+                        {
+                            position:relative;width:13px;left:0px;top:0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

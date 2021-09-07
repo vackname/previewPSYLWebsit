@@ -1,0 +1,29 @@
+{
+    "signup":"Sign up",
+    "signupstop":"Stop of sign up",
+    "opentime":"Open",
+    "stoptime":"Deadline",
+    "wait":"Wait",
+    "after":"After",
+    "agree":"Read",
+    "stepper":"Personal info",
+    "stepames":"Contact person",
+    "stepadr":"Receiver",
+    "stepcomplete":"Complete",
+    "name":"Name",
+    "passid":"passport ID",
+    "birthday":"Birthday",
+    "cperson":"Contact person",
+    "relationship":"Relationship",
+    "limit":"Limit",
+    "rfee":"registration fee",
+    "amis":"Age mismatch",
+    "LimitA":"Limit age",
+    "error":{
+        "re":"Registered!!",
+        "full":"The Registration is closed (The event is full)."
+    },
+    "next":"Next",
+    "prev":"Back",
+    "additional":"Additional"
+}

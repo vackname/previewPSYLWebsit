@@ -1,0 +1,22 @@
+﻿<div id="ps_h_serDetailPanel">
+    <div id="ps_h_panel">
+        <table id="ps_h_ctr">
+            <tr>
+                <td>
+                    <select v-model="catchDay" style="width:140px;">
+                        <option value="%">{{main$m.getLang('OderNuHistory').AllDate}}</option>
+                        <option value="today">{{main$m.getLang('OderNuHistory').Today}}</option>
+                        <option value="7">{{main$m.getLang('OderNuHistory').Date7}}</option>
+                        <option value="3">{{main$m.getLang('OderNuHistory').Date3}}</option>
+                        <option value="30">{{main$m.getLang('OderNuHistory').month1}}</option>
+                        <option value="60">{{main$m.getLang('OderNuHistory').month2}}</option>
+                        <option value="90">{{main$m.getLang('OderNuHistory').month3}}</option>
+                    </select>&nbsp;
+                    <input type="text" v-model="ser" v-bind:placeholder="main$m.getLang('OderNuHistory').serHoldPlace" id="serInput" />
+                </td>
+                <td v-on:click="main$m.$m.main.serFun(true)" id="serBt"><img v-bind:src="main.pub.lib.src('searchIcon.png')" style="height:15px;" /></td>
+            </tr>
+        </table>
+    </div>
+    <div id="ps_h_bt"><div v-on:click="toPostSysModel()" id="turnPostSysBt">&lt;&lt;&nbsp;Post System</div></div>
+</div>

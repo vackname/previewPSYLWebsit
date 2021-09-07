@@ -1,0 +1,45 @@
+﻿#init_maintain_temp
+{/* 維護框架定位 */
+    position:relative;
+    width:100%;
+    padding-top:50px;
+    padding-bottom:50px;
+    #maintainPanel
+    {/* 維護動畫panel */
+        position:relative;
+        width:95%;
+        margin-left:auto;
+        margin-right:auto;
+        max-width:500px;
+
+        #init_mt_hammer
+        {/*錘子*/
+            position:absolute;
+            width:100%;
+            opacity:1;
+        }
+
+        #init_mt_mark
+        {/*釘子*/
+            width:30%;
+            position:absolute;
+            bottom:0px;
+            left:20%;
+            opacity:0.1;
+        }
+
+        #init_mt_note
+        {/*震波*/
+            width:30%;
+            position:absolute;
+            bottom:0px;
+            left:20%;
+            opacity:0.1;
+        }
+
+        #init_mt_wait
+        {/* 維護中提示 */
+            width:100%;
+        }
+    }
+}

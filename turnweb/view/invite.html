@@ -1,0 +1,50 @@
+﻿<div id="invitePanel" >
+        <div id="title">{{LangTitle('invite')}}</div>
+        <div id="getPanel">
+                <div id="leftPanel">
+                        <div id="imgList">
+                                <img id="turInviatePanlelImg" v-bind:src="((invateImg!=null)?invateImg.src(Ary[indexNu]):'')" />
+                                <div id="TouchPanel">
+                                        <div class="left" v-on:click="Left()"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(90deg);"/></div>
+                                        <div class="right" v-on:click="Right()"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(-90deg);"/></div>
+                                </div>
+                                <div class="touchPageShow"><span>{{indexNu+1}}/{{Ary.length}}</span></div>
+                        </div>
+                </div>
+                <div id="rightPanel">
+                        <table>
+                                <tr><td id="Righttitle">交個朋友吧！<br/>找我們合作商品或服務的在這裡</td></tr>
+                                <tr><td id="imgtd"> 
+                                <a href="https://www.facebook.com/psyltw/" target="top"><img v-bind:src="Img.src('facebook.png')" /></a>
+                                <a href="https://www.instagram.com/hochiholi/" target="top"><img v-bind:src="Img.src('ig.png')" /></a>
+                                <a href="https://page.line.me/col1008a" target="top"><img v-bind:src="Img.src('line.png')" /></a> 
+                                <a href="mailto:psyltw@gmail.com"  target="top"><img v-bind:src="Img.src('google.png')" /></a>
+                                </td></tr>
+                                <tr><td id="content"> 
+                                        <div class="cf" style="width:100%;color:#666;">市集邀約｜合作單位</div>
+                                        <div style="width:100%;">
+                                                <div class="cf">行政院｜</div> <div class="cf">水土保持局｜</div><div class="cf">役政署｜</div><div class="cf">教育部｜</div>
+                                                <div class="cf">台南市政府｜</div><div class="cf">台南文化局｜</div>
+                                        </div>
+                                        <div style="width:100%">
+                                        <div class="cf">成功大學｜</div><div class="cf">台南大學｜</div><div class="cf">崑山科技大學｜</div><div class="cf">台南應用科技大學</div>
+                                        </div>
+                                        <div style="width:100%">
+                                                <div class="cf">台南女中｜</div><div class="cf">台南第二中｜</div><div class="cf">台南高商</div>
+                                        </div>
+                                        <div style="width:100%">
+                                                <div class="cf">奇美博物館｜</div><div class="cf">南台灣創新園區 京城銀行｜</div><div class="cf">康和證券｜</div><div class="cf">碩泰公關｜</div><div class="cf">宏得國際｜</div><div class="cf">創莘園</div>
+                                        </div>
+                                        <div class="clear">&nbsp;</div>
+                                        <!--float 阻隔-->
+                                </td></tr>
+                        </table>
+                </div>
+                <div class="clear">&nbsp; </div><!--float 阻隔-->
+        </div>
+         <div id="psylMessage">
+                <div><a href="https://g.page/guabaotw?share" target="top">701&nbsp;臺南市&nbsp;東區裕農路621巷25號</a></div>
+                <div><a href="tel:0906655216" target="top">0906-655-216</a></div>
+                <div><a href="mailto:psyltw@gmail.com" target="top">psyltw@gmail.com</a></div>
+        </div>
+</div>

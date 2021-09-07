@@ -1,0 +1,17 @@
+﻿<div id="author_canvasPanel">
+    <div id="authorMain">
+        <div id="authorsequence"></div>
+        <div id="authorChart">
+          <div id="authorexplanation" style="visibility: hidden;">
+            <span id="authorpercentage"></span><br/>
+            PSYL系統的誕生組成
+          </div>
+        </div>
+    </div>
+    <div id="authorSidebar">
+         <label for="authortogglelegend"><input type="checkbox" id="authortogglelegend" v-model="openTogglelegen" />思維歷程</label><br/>
+        <div id="authorlegend" v-show="openTogglelegen" v-for="(val,nu) in color">
+            <div v-bind:style="'background-color:'+val.val+';'">{{val.key}} </div>
+        </div>
+    </div>
+</div>

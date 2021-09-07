@@ -1,0 +1,15 @@
+﻿<div id="protalIMGAryPreview" v-show="imgAry.length>nu && closeView">
+    <div id="protalIMGAryPreviewPB"></div>
+    <div id="closePreview"><img v-bind:src="main.pub.lib.src('close2.png')" v-on:click="close()" /></div>
+    <div id="protalImgContent">
+        <div v-show="((imgAry.length>nu)?objImg.src(imgAry[nu])==null:false)" id="imgLoad">loading...</div>
+        <div v-show="((imgAry.length>nu)?objImg.src(imgAry[nu])!=null:false)" id="imgContent">
+            <!--文章圖片-->
+            <div id="container">
+                <img v-bind:src="((imgAry.length>nu)?objImg.src(imgAry[nu]):'')" class="photo" v-bind:id="'preViewprotalImg'+anName" />
+            </div>
+        </div>
+    </div>
+    <div id="protalAryRight" v-on:click="right()"><img v-bind:src="main.pub.lib.src('arrbt.png')" style="transform:rotate(180deg);" /></div>
+    <div id="protalAryLeft" v-on:click="left()"><img v-bind:src="main.pub.lib.src('arrbt.png')"  /></div>
+</div>

@@ -1,0 +1,69 @@
+<!-- 註冊 -->
+<div class="registerPage">
+    <div id="regPage">
+        <div class="regPage_title">
+            <p>{{lang.get('mbreg')}}</p>
+        </div>
+        <div class="container">
+            <table style="width:100%;">
+                <tr>
+                    <th v-bind:class="((ckType.name==0)?'error_reg':'ok_reg')">{{lang.get('facName')}}&nbsp;</th>
+                    <td>
+                        <input type="text" v-model="input.name" v-on:keydown="$m.ckfun()" v-on:keyup="$m.ckfun()" v-on:change="$m.ckfun()" />
+                    </td>
+                </tr>
+            </table>
+            <div class="description">{{lang.get('accountinput')}}</div>
+        </div>
+        <div class="container">
+            <table style="width:100%;">
+                <tr>
+                    <th v-bind:class="((ckType.mbid==0)?'error_reg':'ok_reg')">{{lang.get('account')}}</th>
+                    <td>
+                        &nbsp;<input type="text" v-model="input.mbid" v-on:keydown="$m.ckfun()" v-on:keyup="$m.ckfun()" v-on:change="$m.ckfun()" />
+                    </td>
+                </tr>
+            </table>
+            <div class="description">{{lang.get('password')}}</div>
+        </div>
+        <div class="container">
+            <table style="width:100%;">
+                <tr>
+                    <th v-bind:class="((ckType.password==0)?'error_reg':'ok_reg')">{{lang.get('inputpassword')}}</th>
+                    <td>
+                        &nbsp;<input type="password" v-model="input.pw" v-on:keydown="$m.ckfun()" v-on:keyup="$m.ckfun()" v-on:change="$m.ckfun()" />
+                    </td>
+                </tr>
+                <tr>
+                    <th v-bind:class="((ckType.repassword==0)?'error_reg':'ok_reg')">{{lang.get('rePassoword')}}</th>
+                    <td>&nbsp;<input type="password" v-model="input.repassword" v-on:keydown="$m.ckfun()" v-on:keyup="$m.ckfun()" v-on:change="$m.ckfun()" /></td>
+                </tr>
+            </table>
+            <div class="description">{{lang.get('password')}}</div>
+        </div>
+        <div class="container">
+            <table style="width:100%;">
+                <tr>
+                    <th v-bind:class="((ckType.mail==0)?'error_reg':'ok_reg')">e-mail</th>
+                    <td>&nbsp;<input type="text" v-model="input.mail" v-on:keydown="$m.ckfun()" v-on:keyup="$m.ckfun()" v-on:change="$m.ckfun()" /></td>
+                </tr>
+            </table>
+            <div class="description">{{lang.get('returnpassword')}}</div>
+        </div>
+        <div class="bottomArea">
+            <!-- 同意隱私條款 -->
+            <div class="agreeCheck">
+                <input type="checkbox" v-model="priv" id="priv" v-on:change="$m.ckfun()" v-show="!load" />
+                <span v-show="load">ν&nbsp;</span>
+                <label for="priv" v-bind:class="((ckType.priv==0)?'error_reg':'ok_reg')">{{lang.get('agree')}}</label>
+                &nbsp;-
+                <span class="readText" v-on:click="privOpenView()">({{lang.get('readpolicy')}})</span>
+            </div>
+            <input type="button" v-bind:value="lang.get('submit')" v-show="!load" v-bind:class="((AllCK)?'ok_sub':'error_sub')" v-on:click="$m.regInsert()" />
+            <!-- 處理動畫 -->
+            <component v-bind:is="((load)?v.runLoad:'')"></component>
+        </div>
+    </div>
+    <!-- 隱私條款 -->
+    <component v-bind:is="v.regConsent"></component>
+</div>

@@ -1,0 +1,183 @@
+﻿#p_pb_checkoutMenuPanel
+{/*結帳 menu panel*/
+   width:100%;
+    #dNuTitlePanle
+    {/* 訂單號title panle*/
+        position:fixed;z-index:185;background-color:#FFF;opacity:0.9;left:0px;width:100%;top:60px;padding:5px;
+        -webkit-box-shadow: 3px 3px 5px #AAA;
+        -moz-box-shadow: 3px 3px 5px #AAA;
+        box-shadow: 3px 3px 5px #AAA;
+        #dNutitle
+        {/* 訂單號title */
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            width:100%;
+            padding:20px;
+            border-radius:20px;
+            color:#555;
+            font-size:18px;
+            font-weight:bold;
+            max-width:450px;
+            border:5px solid #EEE;
+            img
+            {/* 取消訂單 提示img*/
+                width:20px;padding-right:5px;position:relative;top:3px;
+            }
+            .date
+            {/* 訂單建立時間*/
+                float:right;font-size:12px;color:#AAA;
+            }
+        }
+    }
+
+    .checkOut
+    {/* 結帳模式選單 */
+        position:relative;
+        width:500px;
+        margin-left:auto;
+        margin-right:auto;
+        #detailPanel
+        {/* 結帳明細panel*/
+            position:fixed;z-index:185;background-color:#FFF;opacity:0.9;left:0px;width:100%;bottom:30px;
+            -webkit-box-shadow: -3px -3px 5px #AAA;
+            -moz-box-shadow: -3px -3px 5px #AAA;
+            box-shadow: -3px -3px 5px #AAA;
+            .lab
+            {/*支付狀態 title*/
+                color:#999;
+                font-size:15px;
+            }
+            #payPanel
+            {/* 支付狀態名細 */
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                width:90%;padding:20px;
+                max-width:450px;
+                width:100%;
+                 #cancelBt
+                {/* 取消單據Bt */
+                    cursor:pointer;
+                    width:25px;
+                    float:right;
+                    padding-top:10px;
+                }
+            }
+
+            #amountPanel
+            {/* 訂單金額名細 */
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                width:90%;padding:20px;
+                font-size:25px;
+                font-weight:bold;
+                color:#555;
+                max-width:450px;
+                .status
+                {/*支付狀態 value*/
+                    color:#555;
+                    font-size:18px;
+                    font-weight:bold;
+                }
+
+                #closeCheckout
+                {/* close checkout view*/
+                    position:absolute;
+                    right:5px;
+                    top:70px;
+                    cursor:pointer;
+                    opacity:0.5;
+                    width:50px;
+
+                }
+
+                #watch
+                {/* preview item detail*/
+                    position:absolute;
+                    left:25px;
+                    top:-10px;
+                    cursor:pointer;
+                    opacity:0.5;
+                    width:20px;
+                }
+
+                th
+                {/* 訂單金額名細 lab title*/
+            
+                    width:120px;
+                    text-align:right;
+                }
+            
+                td
+                {/* 訂單金額名細 value*/
+                    text-align:left;
+                    padding-left:20px;
+                }
+            }
+        }
+    }
+
+    .menuli
+    {/* menu detail*/
+        padding:20px;
+        text-align:center;
+        width:95%;
+        position:relative;
+        margin-left:auto;
+        margin-right:auto;
+        border-bottom:1px solid #CCC;
+        font-size:20px;
+        font-weight:bold;
+        cursor:pointer;
+        .nuPanel
+        {/*流水號panel*/
+            float:left;color:#AAA;font-size:12px;font-weight:bold;
+            #nuLabel
+            {/*流水號 label 框架*/
+                position:relative;width:100px;
+                img
+                {/*套餐模式 提示*/
+                    width:20px;position:absolute;right:0px;top:3px
+                }
+            }
+        }
+        #itemCash
+        {/* 商品單項統計細項panel */
+            text-align:left;width:90%;margin-right:auto;padding:5px;border-bottom:3px solid #CCC;
+        }
+        .cash
+        {/* menu 單價*/
+            font-size:18 px;
+            color:#999;
+            height:50px;
+            width:100%;
+            position:relative;
+            opacity:0.6;
+            .giftCK,.allowancesCK
+            {/* menu 贈、讓鈕*/
+                font-size:18 px;
+                color:#FFF;
+                height:30px;
+            }
+        
+            .allowancesCK
+            {/* menu 讓*/
+                background-color:#555;
+        
+            }
+        
+            .giftCK
+            {/* menu 贈鈕 確認*/
+                background-color:#FF8800;
+            }
+        
+           .cashPanel
+            {/* menu 單價-li foramt*/
+                float:right;
+                padding-top:20px;
+            }
+        }
+    }
+}

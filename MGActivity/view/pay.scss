@@ -1,0 +1,504 @@
+﻿#MGActivity_main
+{
+    #AcPay{
+        width:95%;position:relative;
+        margin-left:auto;
+        margin-right:auto;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        padding-bottom:180px;
+        #document
+        {/* 文章內容框架 */
+            position:relative;
+            width:100%;
+            margin-left:auto;
+            margin-right:auto;
+            max-width:900px;
+
+            .step
+            {/* step panel */
+                width:100%;
+                text-align:center;
+                padding-top:20px;
+                padding-bottom:20px;
+               .pc_p_PayBtNext
+               {/* step panel 下step button */
+                   background-color:#FF8800;
+                   font-size:15px;
+                   border:1px solid #FF3300;
+                   color:#FFF;
+                   border-bottom-right-radius:10px;
+                   border-top-right-radius:10px;
+                   box-shadow:2px 2px 5px #888888;
+               }
+       
+               .pc_p_PayBtPre
+               {/* step panel 上step button */
+                   background-color:#FF8800;
+                   font-size:15px;
+                   border:1px solid #FF3300;
+                   color:#FFF;
+                   border-bottom-left-radius:10px;
+                   border-top-left-radius:10px;
+                   box-shadow:2px 2px 5px #888888;
+               }
+           }
+
+            #nowAdr
+            {/*現場取貨*/
+                text-align:center;width:200px;cursor:pointer;color:#AAA;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                padding-bottom:6px;
+                border-bottom:1px solid #AAA;
+                label
+                {
+                    cursor:pointer;
+                    img
+                    {
+                        position:relative;
+                        top:5px;
+                        height:20px;
+                        padding:3px;
+                    }
+                }
+            }
+            #tagAddLabel
+            {/* tag bag */
+                position:absolute;
+                width:25px;
+                cursor:pointer;
+                top:-12px;
+                right:6px;
+            }
+            #ACDate
+            {/* 活動日期 panel */
+                position:relative;
+                width:98%;
+                bottom:-6px;
+                #limit
+                {//限制報名人數mark
+                    background-color:#FF3300;padding:3px;color:#FFF;border-top-right-radius:9px;font-size:12px;
+                }
+                .monthDay
+                {/* 活動日期 */
+                    font-size:12px;
+                    color:#AAA;
+                    padding:3px;
+                    border-top-left-radius:9px;
+                    background-color:#333;
+                }
+            }
+
+            #event
+            {/* 其它備註 */
+                width:90%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                text-align:center;
+                padding-top:0px;
+                padding-bottom:10px;
+                border-bottom:1px solid #EEE;
+                color:#AAA;
+                textarea
+                {
+                    width:95%;
+                    max-width:400px;
+                    height:80px;
+                }
+            }
+
+            #agreePanel
+            {/* 確認簡章鈕 */
+                width:100%;
+                padding-top:20px;
+                padding-bottom:20px;
+                border-bottom:1px solid #DDD;
+                color:#555;
+                font-size:15px;
+                text-align:center;
+            }
+
+            #stepPanel
+            {/* 報名step mark panel */
+                width:100%;
+                color:#555;
+                font-size:15px;
+                padding-bottom:20px;
+                span
+                {
+                    padding:3px;
+                    img
+                    {
+                        width:10px;
+                        transform:rotate(-90deg);position:relative;
+                    }
+                }
+            }
+
+
+            #perPanel
+            {/* 個資/聯絡人設定 */
+                max-width:500px;
+                width:100%;
+                font-size:18px;
+                color:#333;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                padding-top:60px;
+                th
+                {
+                    text-align:right;
+                    width:150px;
+                    padding-right:12px;
+                }
+                td,th
+                {
+                    padding-bottom:20px;
+                }
+                img
+                {
+                    width:15px;
+                }
+                input[type='text']
+                {
+                    font-size:18px;
+                    width:150px;
+                }
+            }
+            
+            .contentTitle
+            {/* 主標 文字內容 */
+                width:98%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                word-wrap:break-word;
+                color:#333;
+                padding-top:29px;
+                padding-bottom:20px;
+                text-align:center;
+            }
+
+            .content
+            {/* 文字內容 */
+                width:93%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                word-wrap:break-word;
+                color:#555;
+                padding-bottom:20px;
+                line-height: 166%;
+            }
+
+            #singupStopBt,#singupBt
+            { /* 報名提示 */
+                /* 停止報名提示 */
+                font-size:15px;
+                font-weight:bold;
+                width:100%;
+                text-align:center;
+                position:relative;
+                padding-top:60px;
+                padding-bottom:80px;
+                cursor:pointer;
+                .clickBt{
+                        color:#FFF;
+                        border-radius: 9px;
+                        padding:6px;
+                }
+
+                img
+                {
+                    width:15px;
+                }
+            }
+
+            #singupBt
+            {/* 報名提示 */
+                .clickBt{
+                    background-color:#FF8800;
+                }
+            }
+
+            #singupStopBt
+            {/* 停止報名提示 */
+                .clickBt{
+                    background-color:#AAA;
+                }
+            }
+
+            #reinfo
+            {/* 報資資訊 */
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                padding-bottom:10px;
+                border-top:1px solid #AAA;
+                border-bottom:1px solid #AAA;
+                width:95%;
+                max-width:500px;
+                div
+                {
+                    width:100%;
+                    font-size:15px;
+                    padding-top:9px;
+                    padding-bottom:6px;
+                }
+            }
+
+            #addCtrPanel
+            {/** 加購panel 定位 */
+                width:100%;
+                #addTitlePanel
+                {/* 加購title */
+                    padding-top:10px;width:100%;
+                    padding-bottom:20px;
+                    font-size:18px;
+                    text-align:center;
+                    border-bottom:1px solid #EEE;
+                    color:#333;
+                    max-width:500px;
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+
+                #addTotalPanel 
+                {/* 已選商品 總額計算 panel */
+                    padding-top:10px;width:100%;
+                    padding-bottom:60px;
+                    text-align:center;
+                    #title
+                    {
+                        color:#AAA;font-size:12px;
+                    }
+
+                    #val
+                    {/* total cash label*/
+                        color:#AAA;font-weight:bold;
+                        opacity:0.5;
+                    }
+                }
+
+                .productPanel
+                {/* 加購商品 */
+                    width:100%;
+                    padding-top:20px;
+                    padding-bottom:20px;
+                    border-bottom:1px solid #EEE;
+                    max-width:500px;
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                    
+                    .tbpanel
+                    {/* 商品info */
+                        width:100%;
+                        #imgth{
+                            /* 商品圖 定位panel */
+                            width:210px;
+                            height:136px;
+                            #openPCImgBt
+                            {/* 商品圖 預覽 */
+                                position:relative;margin-left:auto;margin-right:auto;
+                                width:200px;height:133px;overflow:hidden;
+                                text-align:center;overflow:hidden;border-radius:10px;cursor:pointer;
+                            
+                                .CKimg
+                                {//購買鈕
+                                    width:30px;
+                                    position:absolute;
+                                    left:0px;
+                                    top:0px;
+                                    opacity:0.8;
+                                }
+    
+                                img
+                                {  /* 商品圖片 */
+                                    width:98%;cursor:pointer;
+                                }
+                                .discount
+                                {/* 折顯示 */
+                                    position:absolute;
+                                    text-align:center;
+                                    top:12px;
+                                    right:-26px;
+                                    padding:3px;
+                                    width:120px;
+                                    font-size:15px;
+                                    color:#FFF;
+                                    background-color: #BB5500;
+                                    transform:rotate(40deg);
+                                    opacity:0.8;
+                                }
+                            }
+                        }
+                        td
+                        {
+                            vertical-align: top;
+                            .titlePD
+                            {
+                                font-size:15px;
+                                color:#333;
+                                width:95%;
+                                position:relative;
+                                margin-left:auto;
+                                padding-bottom:10px;
+                            }
+                            #pdCatch
+                            {/* 金額 */
+                                position:relative;margin-left:auto;
+                                margin-right:auto;
+                                text-align:right;
+                                width:95%;
+                                text-align:right;
+                                font-size:12px;
+                                padding-top:9px;
+                                span
+                                {
+                                    color:#AAA;padding:3px;
+                                }
+    
+                                #sumPanel
+                                {/* 單品 計算實際金額 */
+                                    padding-bottom:10px;
+                                    padding-left:30%;padding-bottom:20px;
+                
+                                    #title
+                                    {
+                                        color:#AAA;
+                                    }
+                
+                                    #val
+                                    {/* sum cash label*/
+                                        color:#BB5500;font-size:12px;
+                                    }
+                                }
+                            }
+    
+                            #pccsCount
+                            {/* 商品數量 */
+                                width:100%;
+                                color:#AAA;font-size:18px;
+                                position:relative;
+                                text-align:center;
+                                padding-top:9px;
+                                table
+                                {
+                                    position:relative;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    width:130px;
+                                    th{
+                                        width:24px;
+                                        div
+                                        {/* 增減按鈕 */
+                                            width:20px;
+                                            padding-top:2px;
+                                            padding-bottom:2px;
+                                            color:#FFF;
+                                            background-color:#999;
+                                            border-radius:60px;
+                                            text-align:center;
+                                            font-size:12px;
+                                            font-weight:bold;
+                                            cursor:pointer;
+                                        }
+                                    }
+                                    td
+                                    {
+                                        text-align:center;
+                                        font-size:18px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #TotalPanel
+            {/* 已選商品 總額計算 panel */
+                padding-top:10px;width:100%;
+                padding-bottom:60px;
+                text-align:center;
+                #title
+                {
+                    color:#AAA;font-size:12px;
+                }
+
+                #val
+                {/* total cash label*/
+                    color:#FF8800;font-weight:bold;
+                    opacity:0.5;
+                }
+            }
+
+           
+
+            @media screen  and (max-width: 550px){
+                .contentTitle
+                {/* 主標 文字內容 */
+                    font-size:26px;
+                }
+            }
+            
+            
+            @media only screen and (min-width: 550px) and (max-width: 750px)
+            {
+                .contentTitle
+                {/* 主標 文字內容 */
+                    font-size:24px;
+                }
+            }
+            
+            @media screen and (min-width: 750px) 
+            {
+                .contentTitle
+                {/* 主標 文字內容 */
+                    font-size:21px;
+                }
+            }
+
+            #banner
+            {/* 選擇報名活動banner */
+                width:100%;
+                overflow-y: hidden;
+                position:relative;
+                img
+                {
+                    width:100%;
+                }
+            }
+        }
+
+        #toIndex
+        {/* 由活動data list page 返回 */
+            position:relative;
+            width:150px;
+            left:0px;
+            padding-top:30px;
+            padding-bottom:30px;
+            cursor:pointer;
+            font-size:15px;
+            color:#FFF;
+            span
+            {
+                padding:3px;
+                background-color:#555;
+                border-radius: 9px;
+            }
+            .goto
+            {
+                position:relative;
+                top:3px;
+                width:15px;
+            }
+        }
+    }
+}

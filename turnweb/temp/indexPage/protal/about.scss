@@ -1,0 +1,61 @@
+﻿#turnwebPanel
+{/** 入口panel */
+    #indexPage
+    {/* 入口首頁 */
+        #protalPanl
+        {/* 首頁輪播 */
+            #about
+            {/* 認識我 */
+                width: 100%;
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                padding-bottom:20px;
+                border-bottom:1px solid #EEE;
+                #title
+                {
+                    width:100%;
+                    font-size:18px;
+                    font-weight:bold;
+                    padding-top:80px;
+                    text-align:center;
+                    color:#006241;
+                }
+                #aboutbody
+                {/* 起點故事 */
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                    padding-top:30px;
+                    text-align:center;
+                    width:100%;
+                    max-width:350px;
+                    line-height: 166%;
+                    font-size:16px;
+                    color:#333;
+                }
+
+                #goToPage
+                {/* 前往支點 panel */
+                    position:relative;
+                    width:100%;
+                    margin-left:auto;
+                    margin-right:auto;
+                    max-width:300px;
+                    padding-top:80px;
+                    td
+                    {
+                        font-size:12px;
+                        text-align:center;
+                        cursor:pointer;
+                        color:#AAA;
+                        img
+                        {
+                            height:60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

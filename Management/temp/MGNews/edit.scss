@@ -1,0 +1,377 @@
+﻿#Management_main
+{/* Management project */
+    #MGNewsPanel
+    {/* 新聞 panel*/
+        #nEditPanel
+        {/* 審核文章 panel */
+            width:95%;position:relative;
+            max-width:900px;
+            margin-left:auto;
+            margin-right:auto;
+
+            .newsDataListPanel
+            {/* 文章list -panel */
+                position:relative;
+                width:95%;
+                margin-left:auto;
+                margin-right:auto;
+                max-width:9ppx;
+                padding-bottom:70px;
+                padding-top:20px;
+                border-bottom:1px solid #EEE;
+
+                .newsnextprev
+                {/* 上下編文章鈕 */
+                    width:30px;
+                    cursor:pointer;
+                    border:2px solid #EEE;border-radius:60px;padding:3px;box-shadow: 3px 3px 5px #999;
+                    opacity:0.8;
+                }
+
+                #dateDoc
+                {/* create 日期或發佈日期 */
+                    color:#AAA;
+                    font-size:12px;
+                    position:relative;
+                    margin-right:auto;
+                    width:95%;
+                    padding-top:0px;
+                    padding-bottom:15px;
+                    text-align:right;
+                }
+
+                #editTool
+                {/* 文章 tool 定位panel */
+                    width:100%;position:relative;
+                    padding-top:10px;
+                    padding-bottom:10px;
+
+                    #approveErrorPanel
+                    {/* 審核錯誤訊息 */
+                        position:relative;width:30px;margin-left:auto;
+                        img
+                        {/* 錯誤提示 Icon */
+                            position:absolute;width:100%;cursor:pointer;right:90px;top:-18px;transform:rotate(30deg);
+                        }
+                        #errorApprove
+                        {/* 錯誤訊息 */
+                            width:300px;position:absolute;padding:5px;background-color:#FFF;border-radius:9px;border:1px solid #FF3300;right:130px;top:00px;text-align:left;z-index:180;
+                            font-size:15px;
+                            color:#555;
+                        }
+                    }
+
+                    #langPanel
+                    {/* 語系檢核文章 */
+                        padding:10px;
+                        font-size:10px;
+                        color:#555;
+                        font-size:18px;
+                        border:1px solid #EEE;
+                        border-radius:5px;
+                        .langKey
+                        {/* 語言開放 */
+                            padding-left:10px;
+                            padding-right:5px;
+                            color:#FF8800;
+                            font-size:15px;
+                            font-weight:bold;
+                        }
+                    }
+
+                    #titlecodePanel
+                    {/* 審核title panel */
+                        padding-bottom:15px;
+                        width:95%;
+                        text-align:right;
+                        .ckDocumentBt
+                        {/* 審核鈕 */
+                            background-color:#FFF;
+                            border:2px solid #AAA;
+                            color:#555;
+                        }
+                        #titlecode
+                        {/* 審核title label */
+                            font-size:12px;
+                            color:#AAA;
+                        }
+                        #publishcode
+                        {/*審核代碼-未審 label*/
+                            font-size:12px;
+                            font-weight:bold;
+                            color:#FF8800;
+                        }
+
+                        #publishcodeOn
+                        {/*審核代碼-已審合 label*/
+                            font-size:15px;
+                            font-weight:bold;
+                            color:#00A600;
+                        }
+                    }
+                    #toolPanel
+                    {/* 文章 tool panel */
+                        width:95%;
+                        text-align:right;
+                        .ctrBt
+                        {
+                            width:20px;
+                            cursor:pointer;
+                            padding-right:10px;
+                        }
+                    }
+
+                    #limitEditDayMark
+                    {/* 文章 tool panel 無權更動mark label */
+                        font-size:15px;
+                        font-weight:bold;
+                        color:#AAA;
+                        padding-bottom:10px;
+                        text-align:right;
+                    }
+                }
+
+                #docTitle
+                {/* 新聞標題 */
+                    position:relative;
+                    margin-left:auto;
+                    width:95%;
+                    font-size:22px;
+                    color:#222;
+                    font-weight:bold;
+                    padding-bottom:10px;
+
+                    #markpanel
+                    {/*title 色塊標示*/
+                        position:absolute;
+                        left:-10px;
+                        top:2px;
+                        background-color:#408080;
+                        width:5px;
+                        height:23px;
+                    }
+                }
+                
+                .newsContent
+                {/* 段落內容 */
+                    position:relative;
+                    width:100%;
+
+                    #textContent
+                    {/* 文章 */
+                        position:relative;
+                        width:100%;
+                        
+                        #title
+                        {/* 標題 */
+                            position:relative;
+                            margin-left:auto;
+                            width:93%;
+                            color:#555;
+                            font-size:18px;
+                            font-weight:bold;
+                            word-wrap:break-word;
+                            padding-top:20px;
+                            padding-bottom:10px;
+                        }
+
+                        #content
+                        {/* 內容 */
+                            position:relative;
+                            margin-left:auto;
+                            width:90%;
+                            color:#777;
+                            font-size:18px;
+                            word-wrap:break-word;
+                            padding-bottom:20px;
+                        }
+
+                        #photoPanel
+                        {/* 照片 顯示 定位panel */
+                            position:relative;
+                            width:100%;
+                            margin-left:auto;
+                            padding-top:10px;
+                            padding-bottom:10px;
+                            .contentImg
+                            {/* 圖片照片 array */
+                                position:relative;
+                                width:100%;
+                                .Photodescription
+                                {/* 圖片文字描述 panel */
+                                    font-size:18px;
+                                    color:#666;
+                                    position:relative;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    padding-top:10px;
+                                    padding-bottom:60px;
+                                    width:95%;
+                                    max-width:490px;
+                                    text-align:left;
+                                    word-break: break-all;
+                                }
+                            }
+    
+                            @media screen and (min-width:571px) and (max-width:799px)
+                            {
+                                .contentImgWP
+                                {/* 圖片照片牆模式 array */
+                                    float:left;
+                                    width:47%;
+                                }
+                            }
+
+                            @media screen and (min-width:800px) 
+                            {
+                                .contentImgWP
+                                {/* 圖片照片牆模式 array */
+                                    float:left;
+                                    width:31%;
+                                }
+                            }
+
+                            @media screen and (max-width:570px) 
+                            {
+                                .contentImgWP
+                                {/* 圖片照片牆模式 array */
+                                    width:95%;
+                                    position:relative;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                }
+                            }
+    
+                            .contentImgWP
+                            {/* 圖片照片牆模式 array */
+                                padding:10px;
+                                .Photodescription
+                                {/* 圖片文字描述 panel */
+                                    font-size:12px;
+                                    color:#AAA;
+                                    position:relative;
+                                    padding-top:10px;
+                                    padding-bottom:20px;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    max-width:190px;
+                                    text-align:left;
+                                }
+                            }
+
+                            .clear
+                            {/*照片牆 阻斷 清除float*/
+                                width:100%;
+                                clear: left;
+                            }
+    
+                            .contentImgWP, .contentImg
+                            {
+                                #IMGtool
+                                {/* photo tool */
+                                    position:relative;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    width:90%;
+                                    padding-top:10px;
+                                    padding-bottom:10px;
+                                }
+                                #container
+                                {  /* 照片 定位panel*/                         
+                                    position:relative;
+                                    width:100%;
+                                    padding-top:10px;
+                                    padding-bottom:10px;
+                                    text-align:center;
+                                    .photo
+                                    {/* 照片 */
+                                        cursor:pointer;
+                                        width:90%;
+                                        padding-top:10px;
+                                        max-width:400px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                
+                }
+                #newsContentOpen
+                {/* 更多內容 bt panel */
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                    cursor:pointer;
+                    width:90%;
+                    color:#AAA;
+                    text-align:right;
+                    font-size:15px;
+                    font-weight:bold;
+                    padding-top:10px;
+                    padding-bottom:20px;
+                }
+
+                .markTitle
+                {/* 標籤 title */
+                    position:relative;
+                    color:#AAA;
+                    font-size:16px;
+                    font-weight:bold;
+                    padding-top:30px;
+                    padding-bottom:10px;
+                    width:95%;
+                    margin-left:auto;
+                }
+                .readPathContent,.eventContent
+                {/* 延申導讀、其它 標籤 */
+                    position:relative;
+                    width:100%;
+                    .tagLabel
+                    {/* 已顯示標籤文章 */
+                        position:absolute;
+                        top:-43px;
+                        left:-5px;
+                        width:50px;
+                        cursor:pointer;
+                    }
+                    .labelPanel
+                    {/*標籤文字*/
+                        position:relative;
+                        width:90%;
+                        margin-left:auto;
+                        color:#005AB5;
+                        font-size:15px;
+                        font-weight:bold;
+                        padding-top:10px;
+                        padding-bottom:10px;
+                        cursor:pointer;
+                        #label
+                        {/* 標籤名 */
+                            color:#0072E3;
+                            cursor:pointer;
+                            .LabelTagLock
+                            {/* 禁止閱讀 icon */
+                                position:relative;
+                                top:6px;
+                                padding-left:6px;
+                                width:20px;
+                            }
+                        }
+                    }
+                }
+            }
+            #MGmoreDocPage
+            {/* 更多文章 click button */
+                padding-top:30px;
+                padding-bottom:70px;
+                cursor:pointer;
+                font-size:18px;
+                color:#AAA;
+                text-align:center;
+                width:100%;
+                border-bottom-right-radius:20px;
+                border-bottom-left-radius:20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+﻿<div id="payPanel">
+        <div id="payStep">
+                <span style="color:#555;font-size:12px;font-weight:bold;">&nbsp;Step</span>&nbsp;
+                <span v-bind:class="((step==0)?'pc_p_payStepChoose':'pc_p_payStep')"><span v-show="step==0"><img v-bind:src="main.pub.lib.src('dr.png')"/></span>{{getLang("serPlaceHolder")}}</span><span style="color:#ccc;">&nbsp;</span>
+                <span v-bind:class="((step==1)?'pc_p_payStepChoose':'pc_p_payStep')"><span v-show="step==1"><img v-bind:src="main.pub.lib.src('dr.png')"/></span>{{getLangPay("readr")}}</span><span style="color:#ccc;">&nbsp;</span>
+                <span v-bind:class="((step==2)?'pc_p_payStepChoose':'pc_p_payStep')"><span v-show="step==2"><img v-bind:src="main.pub.lib.src('dr.png')"/></span>{{LangInput('checkout')}}</span>
+        </div>
+        <div id="step1Panel" v-show="step==0">
+                <div class="pccsRow" v-for="(val,nu) in productCar" v-bind:id="'PaypcPrviewDatali'+val.key">
+                        <table style="width:100%;">
+                            <tr>
+                                <td v-on:click="$m.main.removePC(val)" style="width:20px;cursor:pointer;opacity:0.5">
+                                    <img v-bind:src="main.pub.lib.src('delete.png')" style="width:20px;position:relative;top:3px;left:3px;"/>
+                                </td>
+                                <td id="pccsPhoto">
+                                    <span v-show="((val.imgAry.length>0)?val.imgAry[0] == '':true)" style="color:#999;font-size:12px;">img</span>
+                                    <img v-show="((val.imgAry.length>0)?val.imgAry[0]!= '':false)" v-bind:id="((val.imgAry.length>0)?'pcPrviewExsit'+val.imgAry[0].split('.')[0]:'')" v-bind:src="((val.imgAry.length>0)?productImg.src(val.imgAry[0]):'')" />
+                                </td>
+                                <td id="pccsTitle">
+                                    <span v-bind:style="((val.error || val.errorCount)?'text-decoration:line-through;color:#FF3300;':'')">{{reContent(val,val.nameAry)}}</span>
+                                    <div id="pccsCount"><span style="color:#333;">{{pb.MoneyFormat(val.count)}}</span><span style="color:#AAA;font-size:12px;" v-show="['b'].indexOf(val.key)>-1">&nbsp;{{reContent(val,val.unitAry)}}</span>
+                                        <div style="float:right;width:15px;height:15px;background-color:#FFF;"></div>
+                                        <div v-on:click="$m.main.decrease(val)">-</div>
+                                        <div style="float:right;width:10px;height:15px;background-color:#FFF;"></div>
+                                        <div v-on:click="$m.main.increase(val)" v-bind:style="((val.countLimit> val.count ||val.countLimit==0 )?'':'opacity:0.5')">+</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" id="discountPanel">
+                                        <span class="label">&nbsp;×&nbsp;</span><span v-bind:style="((val.discount!=0 && val.discount!=1)?'text-decoration:line-through;color:#DDD;':'color:#DDAA00;font-weight:bold;')"> {{val.cash | cashFormat}} </span> &nbsp;<span id="cash" v-show="val.discount!=0 && val.discount!=1"> {{(val.cash*((val.discount==0)?1:val.discount)) | cashFormat}} </span> 
+                                        <span v-show="val.discount!=0 && val.discount!=1" class="label">&nbsp;({{discountFun(val)*((main.pub.langNu==0)?10:100)}}&nbsp;{{((main.pub.langNu==0)?"折優惠":"off %")}})</span>
+                                </td>
+                           </tr>
+                            <tr><td colspan="3" id="sumPanel">
+                                        <span id="title" >=</span>
+                                        <span id="val" >{{(val.cash*((val.discount==0)?1:val.discount) * val.count) | cashFormat}}<span>
+                                        <div style="font-size:12px;color:#AAA;text-decoration:line-through;" >({{getLangPay('shipping')}}:{{(val.fee * val.count )|cashFormat}})</div>
+                            </td></tr>
+                        </table>
+               </div>
+              <div class="step"><input type="button" v-bind:value="getLangPay('readr')+'&gt;'" class="pc_p_PayBtNext" v-on:click="step=1" v-show="productCar.length>0" /></div>
+        </div>
+        <div id="step2Panel" v-show="step==1">
+                <div id="nowAdr"><label for="acAddress"><input type="checkbox" id="acAddress" v-model="adrnow" /> <img v-bind:src="((imgBK!=null)?imgBK.src('address.png'):'')"/>{{getLangPay('nowadr')}}</label></div>
+                <!--現場取貨-->
+                <table id="adrPanel" v-show="!adrnow" style="border-bottom:1px #AAA solid;">
+                        <tr><th>{{getLangPay('receiver')}}</th><td><input type="text" v-model="adr.name" /><img v-bind:src="main.pub.lib.src('close.png')" v-show="(adr.name=='')" /></td></tr>
+                        <tr><th>{{getLangPay('gender')}}</th><td>
+                                <label for="genderAin3"><input type="radio" v-model="adr.gender" value="1"  id="genderAin3" />{{getLangPay('mr')}}</label>
+                                <label for="genderAin4"><input type="radio" v-model="adr.gender" value="0"  id="genderAin4" />{{getLangPay('ms')}}</label>
+                        </td></tr>
+                        <tr><th>{{getLangPay('phone')}}</th><td><input type="text" v-model="adr.phone" /><img v-bind:src="main.pub.lib.src('close.png')" v-show="(adr.phone.length<=5 && adr.tel.length<=5)" /></td></tr>
+                        <tr><th>{{getLangPay('tel')}}</th><td><input type="text" v-model="adr.tel" /><img v-bind:src="main.pub.lib.src('close.png')" v-show="(adr.phone.length<=5 && adr.tel.length<=5)" /></td></tr>
+                        <tr><th>{{getLangPay('recountry')}}</th>
+                                <td>
+                                        <select v-model="adr.country">
+                                                <option v-bind:value="val.val" v-for="(val,nu) in main.pub.adrAry">{{val.key}}</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr><th>{{getLangPay('readr')}}</th>
+                                <td>
+                                        <div style="border-left:2px solid #006030;width:98%;padding-left:2%;">
+                                                <select v-model="adr.city">
+                                                        <option value="-">{{getLangPay('choose')}}</option>
+                                                        <option v-bind:value="val.city" v-for="(val,nu) in ((adrLoad!=null)?((adrLoad.get('data')!='null')?adrLoad.get('data'):[]):[])">{{val.city}}</option>
+                                                </select><br/>
+                                                <select v-model="adr.area">
+                                                        <option value="-">{{getLangPay('choose')}}</option>
+                                                        <option v-bind:value="val.n" v-for="(val,nu) in adrChooseArea()">{{val.n}}</option>
+                                                </select>
+                                                &nbsp;<span style="font-size:12px;color:#FFF;background-color:#555;padding:3px;border-radius:9px;">{{adr.zip}}</span>
+                                                <div style="width:100%;padding-top:9px;"><input type="text" v-model="adr.address" style="width:80%;" /><img v-bind:src="main.pub.lib.src('close.png')" v-show="(adr.city =='-' || adr.area=='-' || adr.address.length<=5)" /></div>
+                                        </div>
+                                </td>
+                        </tr>
+                        <tr><th>{{getLangPay("DeliveryTime")}}</th>
+                                <td>
+                                        <select v-model="adr.dtime">
+                                                <option v-for="(val,nu) in (($m!=null)?$m.main.getDtime():[])" v-bind:value="val.val">{{val.nameAry[main.pub.langNu]}}</option>
+                                        </select>
+                                </td>
+                        </tr>
+                </table>
+                <div class="step"><input type="button" v-bind:value="'&lt;'+LangInput('return')" class="pc_p_PayBtPre" v-on:click="step=0" />&nbsp;<span v-show="(($m!=null)?$m.main.adrCk():false)"><input type="button" v-bind:value="LangInput('checkout')+'&gt;'" class="pc_p_PayBtNext" v-on:click="step=2" /></span></div>
+        </div>
+        <div id="step3Panel" v-show="step==2">
+                <component v-bind:is="v.bankVue"></component>
+                <div id="event">{{getLangPay('event')}}<br/><textarea v-model="usermark"></textarea> </div>
+                <div id="TotalPanel">
+                        <span style="color:#AAA;font-size:12px;" v-show="getShFormat!='' && !adrnow">{{getLangPay(((shFee>0)?'shfee':'shfree'))}}<span v-show="shFee>0">+{{shFee | cashFormat }}</span>&nbsp;(<img v-bind:src="main.pub.lib.src('package.png')" style="width:15px;" />&nbsp;{{getShFormat}})<br/></span>
+                        <span id="title">={{getLangPay("sum")}}</span>&nbsp;<span id="val">{{(sumProductCash+((!adrnow)?shFee:0)) | cashFormat}}</span>
+                        <div style="font-size:12px;color:#AAA;text-decoration:line-through;" >({{getLangPay('shipping')}}:{{sumfee|cashFormat}})</div>
+                        <div id="payBtPanel">
+                                <span v-on:click="step=1">{{'&lt;'+LangInput('return')}}</span>&nbsp;<span v-on:click="((mainTemp.NormalLevel() && inLoad)?pay():false)">&nbsp;<img v-bind:src="main.pub.lib.src('product.png')" />{{((inLoad)?LangInput('checkout'):getLangPay("bank")+'...')}}&nbsp;</span>
+                        </div>
+                </div>
+        </div>
+</div>

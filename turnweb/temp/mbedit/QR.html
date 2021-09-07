@@ -1,0 +1,6 @@
+﻿<div id="mbQRPanel">
+    <!--當前QR code token-->
+    <div id="goto" ><span v-on:click="Show=!Show"><img v-bind:src="main.pub.lib.src(((Show)?'dr.png':'ur.png'))"/>{{langGet('myQRCode')}}</span></div>
+    <div id="mbeditqr" v-show="Show"></div>
+    <div id="mbeditqr2" v-show="Show"></div>
+</div>

@@ -1,0 +1,41 @@
+﻿<div id="p_pb_checkoutMenuPanel">
+    <div class="checkOut" v-show="open">
+        <div style="width:100%;height:100px;"><!--撐開--></div>
+        <div id="dNuTitlePanle">
+            <div id="dNutitle" v-bind:style="((checkOutDocument.display==0)?'text-decoration:line-through;':'')"><img v-show="checkOutDocument.display==0" v-bind:src="main.pub.lib.src('cancel.png')"/>{{checkOutDocument.key}}<div class="date">{{pb.reunixDate(checkOutDocument.date)}}</div></div>
+        </div>
+        <div v-for="(val,nu) in list" class="menuli" v-on:click="((val.set)?setOpen(val):false)">
+            <div class="nuPanel"> <div id="nuLabel">No.{{nu+1}}<img v-bind:src="main.pub.lib.src('product.png')" v-show="val.set" /></div></div> <span style="color:#555;">{{main.pub.catchLangName(val.nameAry)}}</span>
+            <div style="float:right;width:180px;">×&nbsp;{{val.count}} <div style="float:right;width:80px;" v-show="main$m.stepPanel==0">{{main.pub.catchLangName(val.unitAry)}}</div></div>
+            <div class="cash" v-show="watch" id="itemCash">
+                <span v-show="val.gifts"><input type="button" v-bind:value="main$m.getLang('gift')" class="giftCK"/>&nbsp;</span>
+                <span v-show="!val.gifts && val.allowances!=0" ><input type="button" v-bind:value="main$m.getLang('allowances')" class="allowancesCK" />&nbsp;<span v-show="val.allowances!=0">{{val.allowances | cashFormat}}</span></span>
+                <div style="float:right;font-size:15px;padding-top:20px;" v-show="val.sfee!=0 && !val.gifts">{{main$m.getLang('difference')}}&nbsp;{{val.sfee|cashFormat}}</div>
+            </div>
+            <div class="cash" v-show="watch" >
+                <!--總額計算-->
+                <div class="cashPanel" style="width:55%;color:#555;font-weight:bold;"><span style="color:#2894FF;font-size:12px;" v-show="val.discount!=1 && !val.gifts">&nbsp;({{val.discount*100}}%)</span>{{ ((!val.gifts)?(val.count*val.cash*val.discount-(val.allowances*1)):0) | cashFormat }}</div>
+                <div class="cashPanel" style="width:5%;text-align:center;">=</div>
+                <div class="cashPanel" style="width:35%;text-align:right;font-size:12px;">{{val.cash | cashFormat}}/{{main.pub.catchLangName(val.unitAry)}}</div><!--單價-->
+            </div>
+        </div>
+        <div style="width:100%;height:100px;"><!--撐開--></div>
+        <div id="detailPanel">
+            <div id="payPanel"><span class="lab">{{main$m.getLang('paystatus')}}&nbsp;</span><span class="status">{{checkOutDocument.type|fpaytype}}-<span v-bind:style="statusColor(checkOutDocument.status)">{{checkOutDocument.status|fpaystatus}}</span></span>
+            <div id="cancelBt" v-show="checkOutDocument.display>0" v-on:click="main$m.$m.main.cancelFPay(checkOutDocument)">
+                <div style="position:relative;width:100%;left:5px;"><!--取消訂單鈕--><img v-bind:src="main.pub.lib.src('delete.png')" style="width:100%;"/></div>
+            </div>
+            </div>
+            <div id="amountPanel"> 
+                <table style="width:100%;">
+                    <div id="watch" v-on:click="watch=!watch"><img v-bind:src="main.pub.lib.src('display_'+((!watch)?'off':'on')+'.png')" style="width:100%;" /></div>
+                    <div id="closeCheckout" v-on:click="close()"><img v-bind:src="main.pub.lib.src('ck.png')" style="width:100%;"/></div>
+                    <tr><th> <span class="lab">&nbsp;{{main$m.getLang('shipping')}}&nbsp;</span></th><td style="color:#BBB;font-size:12px;text-decoration:line-through;"> {{checkOutDocument.fee|cashFormat}}</td></tr>
+                    <tr><th> <span class="lab">&nbsp;{{main$m.getLang('cashchange')}}&nbsp;</span></th><td style="color:#AAA;"> {{(checkOutDocument.cash - checkOutDocument.amount)|cashFormat}}</td></tr>
+                    <tr><th> <span class="lab">&nbsp;{{main$m.getLang('sum')}}&nbsp;</span></th><td> {{checkOutDocument.amount| cashFormat}}</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <component v-bind:is="v.setMenuListView"></component>
+</div>

@@ -1,0 +1,64 @@
+﻿#MGpayPanel
+{/* 單據明細主要框架 */
+    width:100%;border:1px solid #FDA;
+    #payTitle
+    {/* 單據title */
+        background-color:#0088A8;padding-top:5px;
+    }
+    #showBankInfo
+    {/* 客戶銀行資訊鈕 退款/進貨用 */
+       font-size:12px; padding:3px;color:#FFF;background-color:#666;cursor:pointer;border-radius:6px;box-shadow:2px 2px 5px #888888;
+    }
+    #PayRecode
+    {/* 交握記錄 */
+        border-top:1px solid #EEE;width:90%;padding-left:5px;padding-right:5px;height:50px;padding-top:5px;
+    }
+    #payMark
+    {/* 操作備註*/
+        border-top:1px solid #EEE;width:90%;padding-left:5px;padding-right:5px;height:50px;padding-top:5px;overflow-y:auto;
+    }
+
+    .MGpay_rowtb
+    {
+        text-align:left;width:100%;
+        padding-top:10px;
+        padding-bottom:30px;
+        .MGpay_rowtb_left
+        {
+            float:left;
+            padding-left:5%;
+        }
+        
+        .MGpay_rowtb_right
+        {
+            float:right;width:50%;
+        }
+        .MGpay_rowtb_left:after,.MGpay_rowtb_right:after
+        {
+            clear:both;
+        }
+
+        .MGpay_label{
+            color:#555;
+            font-size:12px;
+        }
+    
+        .MGpay_title
+        {
+            color:#999;
+            font-weight:bold;
+            font-size:13px;
+        }
+    }
+
+    .clear
+    {/*阻斷 清除float*/
+        width:100%;
+        clear:both;
+        padding-bottom:9px;
+    }
+    
+    .MGpay_rowtb_line{
+        position:relative;margin-left:auto;margin-right:auto;width:90%;border-top:1px solid #EEE;
+    }
+}

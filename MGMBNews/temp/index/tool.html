@@ -1,0 +1,15 @@
+﻿<div id="NewsSerTool">
+    <div id="ctr">
+        <div id="classFirstPanel">
+            <div v-bind:class="((selfclassmain=='333')?'choose':'nochoose')" v-on:click="selfclassmain='333';main$m.$m.main.serData(true);">{{main$m.getLang('input').allcontent}}</div>
+            <div v-bind:class="((selfclassmain==val.key)?'choose':'nochoose')" v-on:click="selfclassmain=val.key;main$m.$m.main.serData(true);" v-for="(val,nu) in main$m.newsctcs">{{main.pub.catchLangName(val.nameAry)}}</div>
+            <div class="clear">&nbsp;</div> <!--float 阻隔-->
+        </div>
+        <div id="classSecPanel" v-show="selfclassmain!='333'">
+            <div style="color:#DDD;float:left;"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(-90deg);"/></div>
+            <div  v-bind:class="((selfclass=='999')?'choose':'nochoose')" v-on:click="selfclass='999';main$m.$m.main.serData(true);">{{main$m.getLang('input').allcontentclass}}</div>
+            <div  v-bind:class="((selfclass==val.key)?'choose':'nochoose')" v-on:click="selfclass=val.key;main$m.$m.main.serData(true);" v-for="(val,nu) in newsctcsSec">{{main.pub.catchLangName(val.nameAry)}}</div>
+            <div class="clear">&nbsp;</div> <!--float 阻隔-->
+        </div>
+    </div>
+</div>

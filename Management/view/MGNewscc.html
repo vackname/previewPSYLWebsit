@@ -1,0 +1,23 @@
+﻿<div id="MGNewsccPanel" >
+        <div id="toolhead"><component v-bind:is="v.toolvue" v-show="showView=='editvue'" ></component></div>
+        <div class="MGNSTitleBT"><span v-on:click="showView='classvue'">分類設定&nbsp;<img v-bind:src="main.pub.lib.src('edit.png')" v-bind:style="((showView!='classvue')?'opacity:1;':'opacity:0.5;')"/>
+            <br/><span class="MGNSTitleMark" v-show="showView=='classvue'">※備註:文章分類</span>
+        </div>
+        <div class="MGNSContent" v-show="showView=='classvue'">
+                <div class="MGNSCpanel"><component v-bind:is="((showView=='classvue')?v.classvue:'')" ></component></div>
+        </div>
+    
+        <div class="MGNSTitleBT"><span v-on:click="showView='autoeditvue'">文章自動審核設定&nbsp;<img v-bind:src="main.pub.lib.src('edit.png')" v-bind:style="((showView!='autoeditvue')?'opacity:1;':'opacity:0.5;')"/>
+            <br/><span class="MGNSTitleMark" v-show="showView=='autoeditvue'">※備註:無需人工審核文章自動通過</span>
+        </div>
+        <div class="MGNSContent" v-show="showView=='autoeditvue'">
+                <div class="MGNSCpanel"><component v-bind:is="((showView=='autoeditvue')?v.autoeditvue:'')" ></component></div>
+        </div>
+    
+        <div class="MGNSTitleBT"><span v-on:click="showView='editvue'">文章審核&nbsp;<img v-bind:src="main.pub.lib.src('edit.png')" v-bind:style="((showView!='editvue')?'opacity:1;':'opacity:0.5;')"/>
+            <br/><span class="MGNSTitleMark" v-show="showView=='editvue'">※備註:審核內容圖片是否不洽當!</span>
+        </div>
+        <div style="width:100%;padding-top:30px;padding-bottom:60px;" v-show="showView=='editvue'">
+                <component v-bind:is="v.editvue" ></component>
+        </div>
+</div>

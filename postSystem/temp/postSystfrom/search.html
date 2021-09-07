@@ -1,0 +1,23 @@
+﻿<div id="p_psf_choose">
+    <div id="classLab">{{prdClass()}}</div><!--商品類名Label-->
+    <div id="onuEditBt" v-on:click="toHistoryModel()"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;opacity:0.5;"/>&nbsp;{{main$m.getLang('history')}}</div>
+    <table style="width:100%;">
+        <tr>
+          <td colspan="2" style="text-align:left;padding-left:5px;">
+              <input type="button" v-bind:value="getLang('set')" v-bind:style="'width:50px;color:#FFF;background-color:'+((data.filter)?'#FF8800':'#AAA')+';'" v-on:click="setCK()" />
+              &nbsp;
+              <select v-model="data.gift" style="width:70%;">
+                <option v-bind:value="val.val" v-for="(val,nu) in data.giftList">{{main.pub.catchLangName(val.nameAry)}}</option>
+              </select>
+          </td>
+       </tr>
+       <tr>
+            <td style="text-align:right;">
+              <div id="p_psf_serPanel">
+                <input v-model="data.ser" type="text" style="width:120px;" v-bind:placeholder="getLang('serHoldPlace')" />
+              </div>
+            </td>
+            <td id="serBt" v-on:click="main$m.$m.ser.productListGet(true)"><img v-bind:src="main.pub.lib.src('searchIcon.jpg')" id="serachIcon" /></td>
+       </tr>
+    </table>
+</div>

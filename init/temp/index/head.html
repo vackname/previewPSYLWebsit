@@ -1,0 +1,140 @@
+﻿<div id="HeadPanel">
+    <div v-bind:style="'width:100%;'+((((mainTemp.scrollTop>6 || firstHome) && !headopen || !facebookMesLoad) && !mainTemp.pcarShow)?'':'display:none;')">
+        <div id="fb-root"></div>
+        <div id="fb-customer-chat" class="fb-customerchat"></div>
+    </div>
+    <div id="HeadContent" v-bind:class="((headopen)?'headBKContent':'headBKMobileContent')" v-bind:style="((mainTemp.scrollTop>6 || headopen)?'background-color:#D4E9E2;':'')">
+        <div id="HeadCtr" v-show="!mainTemp.showTagBag">
+            <div id="headTooltitle" style="display:none;" v-show="headopen">{{main.pub.config.get("page")[targetPageName].substring(0,6)+((main.pub.config.get("page")[targetPageName].length>6)?'...':'')}}</div>
+            <span id="HeadGoHomeBt" v-show="firstHome" v-on:click="mainTemp.$m.h.tur.gourlIndex()">
+                <img v-bind:src="main.pub.lib.src('logo.png')" id="homebt"/>
+                <img v-bind:src="main.pub.lib.src('dr.png')" v-show="mainTemp.toAbout" style="width:10px;transform:rotate(90deg);position:relative;"/>
+                {{((!mainTemp.toAbout)?"":main.pub.config.get("page")["about"])}}
+            </span>
+            <span id="HeadGoHomeBt" v-show="!firstHome && !headopen">
+                <img v-bind:src="main.pub.lib.src('logo2.png')" id="homebt2"/>
+            </span>
+            <!--回首頁-->
+            <div id="headToolImg">
+               <div id="headToolImgContent">
+                   <div id="content" style="display:none;padding-bottom:10px;" v-show="headopen">
+                        <div style="width:100%;border-top:1px solid #EEE;" v-show="!singCK"></div>
+                        <div id="HeadloginPanel" v-show="singCK">
+                            <div id="HeadUser">
+                                <span v-html="mbdata.name+'&nbsp;&nbsp;'+mbdata.account.substr(0,3)+'*'"></span>
+                            </div>
+                        </div>
+                        <div  id="HeadItem">
+                            <div id="HeadMobilePanel" style="height:70vh;">
+                                <div class="headMenuMobile" v-bind:style="getTragetLable(val.key,false)"  v-on:click="((load==0)?val.clickfun():false)" v-for="(val,nu) in MenuList" v-show="((singCK)?val.logInfun():val.notLoginFun())" >
+                                    {{val.addName()}}
+                                    {{getLange(val.key)}}<img v-bind:src="main.pub.lib.src('dr.png')" class="dr" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="HeadLoginBottom">
+                            <div id="loginMes">
+                                <!--point/day cash-->
+                                <div id="HeadPoint" v-show="NormalLevel()" ><img v-bind:src="main.pub.lib.src('coin.png')" />&nbsp;<span v-bind:style="'color:'+((0>=mbdata.status.split('#')[0]*1)?'#FF3300;':'#DDAA00')">{{pb.MoneyFormat(mbdata.status.split('#')[0])}}</span></div>
+                                <div id="HeadDaylight" v-show="NormalLevel()"><img v-bind:src="main.pub.lib.src('coinDate.png')" />&nbsp;<span v-show="mbdata.status.split('#')[1]==''">-</span><span v-show="mbdata.status.split('#')[1]!=''">{{pb.MoneyFormat(mbdata.status.split('.')[0].split('#')[1])}}&nbsp;Day</span></div>
+                                <div id="HeadLang">
+                                    <!--mobile 語系-->
+                                    <select v-model="main.pub.lang" v-on:change="main.pub.langFun()" class="LangSelect">
+                                        <option v-for="(val,nu) in main.pub.langAry" v-bind:value="val.val">{{val.key}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+               <div id="HeadMobileOpen" v-bind:style="((!headopen)?'opacity:0.6;':'')"><img v-bind:src="main.pub.lib.src('indexMenu.png')" v-on:click="headopen = !headopen"/></div>
+            </div>
+           <div id="headTool" >
+                <div id="HeadItem">
+                    <span v-bind:style="getTragetLable(val.key,true)" v-on:click="((load==0)?val.clickfun():false)" v-for="(val,nu) in MenuList" v-show="((singCK)?val.logInfun():val.notLoginFun()) && ((!val.head)?firstHome:true)"  >
+                         {{val.addName()}}
+                         {{getLange(val.key)}} <img v-bind:src="main.pub.lib.src('dr.png')" class="dr" />
+                         {{((!val.FinalAry)?"&nbsp;&nbsp;":"")}}
+                    </span>
+                    <div id="headToolPath">
+                        <span v-bind:style="getTragetLable(val.key,true)" v-on:click="((load==0)?val.clickfun():false)" v-for="(val,nu) in MenuList4" v-show="((singCK)?val.logInfun():val.notLoginFun()) && ((!val.head)?firstHome:true) && toolOpen == 'checkout'"  >
+                            {{val.addName()}}
+                            {{getLange(val.key)}}<img v-bind:src="main.pub.lib.src('dr.png')" class="dr" />
+                            {{((!val.FinalAry)?"&nbsp;&nbsp;":"")}}
+                             <!--營業管理分頁-->
+                       </span>
+                        <span v-show="SysLevel() || editLevel()">
+                            <!--營業管理按鈕 謹限系統管理者-->
+                            <img v-bind:src="main.pub.lib.src('dr.png')" v-on:click="toPage('checkout')" v-bind:style="((toolOpen != 'checkout')?'opacity:0.5;':'')+'transform:rotate('+((toolOpen == 'checkout')?90:-90)+'deg);'"/>
+                            <img v-bind:src="main.pub.lib.src('cashout.png')" v-on:click="toPage('checkout')" v-bind:style="((toolOpen == 'checkout')?'opacity:0.5;':'')+'right:8px;'"/>
+                        </span>
+                        <span v-bind:style="getTragetLable(val.key,true)" v-on:click="((load==0)?val.clickfun():false)" v-for="(val,nu) in MenuList3" v-show="((singCK)?val.logInfun():val.notLoginFun()) && ((!val.head)?firstHome:true) && toolOpen == 'doc'"  >
+                            {{val.addName()}}
+                            {{getLange(val.key)}}<img v-bind:src="main.pub.lib.src('dr.png')" class="dr" />
+                            {{((!val.FinalAry)?"&nbsp;&nbsp;":"")}}
+                             <!--文章管理分頁-->
+                       </span>
+                        <span v-show="SysLevel() || editLevel()">
+                            <!--文章管理按鈕 謹限系統管理者-->
+                            <img v-bind:src="main.pub.lib.src('dr.png')" v-on:click="toPage('doc')" v-bind:style="((toolOpen != 'doc')?'opacity:0.5;':'')+'transform:rotate('+((toolOpen == 'doc')?90:-90)+'deg);'"/>
+                            <img v-bind:src="main.pub.lib.src('mesing.png')" v-on:click="toPage('doc')" v-bind:style="((toolOpen == 'doc')?'opacity:0.5;':'')+'right:8px;'"/>
+                        </span>
+                        <span v-bind:style="getTragetLable(val.key,true)" v-on:click="((load==0)?val.clickfun():false)" v-for="(val,nu) in MenuList2" v-show="((singCK)?val.logInfun():val.notLoginFun()) && ((!val.head)?firstHome:true) && toolOpen == 'tool'"  >
+                            {{val.addName()}}
+                            {{getLange(val.key)}} <img v-bind:src="main.pub.lib.src('dr.png')" class="dr" />
+                            {{((!val.FinalAry)?"&nbsp;&nbsp;":"")}}
+                            <!--工具箱分頁-->
+                       </span>
+                       <span v-show="singCK && mbdata.level!=0">
+                           <!--工具箱按鈕-->
+                            <img v-bind:src="main.pub.lib.src('dr.png')" v-on:click="toPage('tool')" v-bind:style="((toolOpen != 'tool')?'opacity:0.5;':'')+'transform:rotate('+((toolOpen == 'tool')?90:-90)+'deg);'"/>
+                            <img v-bind:src="main.pub.lib.src('tools.png')" v-on:click="toPage('tool')" v-bind:style="((toolOpen == 'tool')?'opacity:0.5;':'')+'right:8px;'"/>
+                        </span>
+                        <img v-bind:src="main.pub.lib.src('doc.png')" v-show="SysLevel()" v-on:click="mainTemp.$m.h.MG.gourlMGLog()" style="cursor:pointer;"/>
+                        <!--前往log審核-->
+                    </div>
+                </div> 
+                <div id="HeadLangPanel" v-bind:style="((mainTemp.scrollTop<6)?'opacity:0.3':'')"><!--語系選單-->
+                        <select v-model="main.pub.lang" v-on:change="main.pub.langFun()" class="LangSelect">
+                            <option v-for="(val,nu) in main.pub.langAry" v-bind:value="val.val">{{val.key}}</option>
+                        </select> 
+                  </div>
+            </div>
+        </div>
+        <div id="HeadPointCtr"><!--點數增加減少 動畫-->
+            <img v-bind:src="main.pub.lib.src('coin.png')" id="headAnimateIcon" />
+            <div id="HeadPointchar">
+                <span id="HeadPointCtrAdd" v-show="Number(nowIncon)-Number(oldIncon)>0">+</span><span id="HeadPointCtrDes" v-show="Number(nowIncon)-Number(oldIncon)<0">-</span>
+                <span id="CatchPoint">&nbsp;{{Math.abs(Number(nowIncon)-Number(oldIncon))}}&nbsp;</span>
+            </div>
+        </div>
+
+         <div id="HeadMBMes" v-bind:style="((mainTemp.scrollTop<6)?'opacity:0.3;':'')+'display:none;'" v-show="(NormalLevel()) && !mainTemp.showTagBag && payCar">
+            <div  id="HeadMBMesPanel">
+                <div id="HeadPoint" ><img v-bind:src="main.pub.lib.src('coin.png')" />&nbsp;<span style="font-size:18px;font-weight:bold;color:#FF8800;" v-show="PayLevel()">∞</span><span  v-show="!PayLevel()" v-bind:style="'color:'+((0>=mbdata.status.split('#')[0]*1)?'#FF3300;':'#DDAA00')">{{pb.MoneyFormat(mbdata.status.split('#')[0])}}</span></div>
+                <div id="HeadDaylight" v-show="mbdata.status.split('#')[1]!=''" ><img v-bind:src="main.pub.lib.src('coinDate.png')" />&nbsp;{{pb.MoneyFormat(mbdata.status.split('.')[0].split('#')[1])}}&nbsp;Day</div>
+            </div>
+        </div>
+
+        <div id="headPayCarBoxShowBt" v-on:click="mainTemp.$m.h.pc.PrivewProductPay()" v-bind:style="((mainTemp.scrollTop<6)?'opacity:0.3;':'')+'display:none;'" v-show="((NormalLevel() || !singCK) && payCar && !mainTemp.showTagBag) && productCar.length>0">
+            <img v-bind:src="main.pub.lib.src('product.png')" style="width:20px;position:relative;top:3px;left:3px;"/>
+            <div class="markNu" id="headPayCarBoxShowBtNu">{{productCar.length}}</div>
+        </div> <!-- 購物車 icon-->
+        <component v-bind:is="v.pcarTemp" v-show="mainTemp.pcarShow" ></component>
+
+        <div v-show="mainTemp.NuView!=4 && !mainTemp.showTagBag && firstHome && payCar" id="headSerBox" v-bind:style="'width:'+((!searchBox)?25:270)+'px;'+((searchBox)?'opacity:1;':((mainTemp.scrollTop<6 && load==0)?'opacity:0.3;':'opacity:1;'))" v-on:mousedown="searchBox=((!searchBox)?true:searchBox)">
+            <img v-bind:src="main.pub.lib.src('searchIcon.jpg')" style="position:relative;width:15px;left:5px;top:0px;" v-show="!searchBox" />
+            <table id="tbBox" v-show="searchBox">
+                <tr><td id="closeBt"><img v-bind:src="main.pub.lib.src('close.png')" v-on:mouseup="searchBox=false" /></td><td id="serBox"> <input type="text" v-model="mainTemp.searchTextBox" placeholder=" search" v-on:keyup.enter="mainTemp.$m.h.tur.GoInSearch()" /></td><td id="serBt" v-on:click="mainTemp.$m.h.tur.GoInSearch()"><img v-show="mainTemp.NuView==3"v-bind:src="main.pub.lib.src('product.png')" style="width:10px;position:absolute;right:25px;top:25px;opacity:0.5;"/><img v-bind:style="((mainTemp.NuView==3)?'width:20px;':'')" v-bind:src="main.pub.lib.src('searchIcon.jpg')"/></td></tr>
+            </table>
+        </div>
+        <div id="serTxtBoxAn" v-show="mainTemp.NuView!=4 && !mainTemp.showTagBag && firstHome">{{((mainTemp.searchTextBox!='')?mainTemp.searchTextBox:'not key?!')}}</div>
+
+        <div v-show="(NormalLevel() || SysLevel() || editLevel() ) && mainTemp.tagbag.length>0 && !mainTemp.showTagBag && !mainTemp.gotoTagBag && payCar" id="tagbag" v-bind:style="'display:none;'+((mainTemp.showTagBag || mainTemp.scrollTop<6)?'opacity:0.6;':'')+ 'top:'+Math.ceil(((!firstHome)?180:230)+((mbdata.status.split('#')[1]!='')?30:0))+'px;'" v-on:click="openBag()">
+            <!--書籤 背包-->
+            <img v-bind:src="main.pub.lib.src('tagbag.png')" />     
+            <div class="markNu">{{mainTemp.tagbag.length}}</div>
+        </div>
+    </div>
+    <div id="HeadPanelLoad" style="display:none;" v-show="load>0 && !mainTemp.pcarShow"></div>
+</div>

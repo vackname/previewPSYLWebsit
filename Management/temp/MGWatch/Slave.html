@@ -1,0 +1,6 @@
+﻿<div id="MGWtachSlave">
+    <div v-for="(val,nu) in main$m.LBServer" class="WatchSlaveRow">
+        <img v-bind:src="main.pub.lib.src(((main$m.stopLB.indexOf(val.host)>-1)?'lock.png':'unlock.png'))" v-on:click="main$m.$m.lb.OpenClose(val)" />
+        {{val.host}}({{((0==nu)?"Master-Write":"Slave-Read")}})<span style="color:#DDD;font-size:12px;">-></span><span style="color:#AAA;">connection</span>&nbsp;<span style="color:#FF8800;">{{pb.MoneyFormat(val.count)}}</div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿#Management_main
+{/* Management project */
+    #MBMGpanel
+    {/* 帳戶設定 框架 panel*/
+        #MBListPanel
+        {/*帳戶 Member List*/
+            width:95%;max-width:700px;position:relative;margin-left:auto;margin-right:auto;padding-bottom:120px;
+            #MBListDataList
+            {/*data List panel*/
+                position:relative;width:98%;margin-left:auto;margin-right:auto;
+                padding-top:20px;
+                padding-bottom:20px;
+                border-top:1px solid #DDD;
+                .openPerBt
+                {/* 閱覽使用者資訊 button */
+                    width:100%;text-align:center;cursor:pointer;padding-top:6px;padding-bottom:6px;
+                    span{
+                        padding:3px;
+                        color:#333;
+                        border-radius:6px;
+                        border:1px solid #FF8800;
+                        img
+                        {
+                            width:10px;position:relative;padding-left:3px;
+                        }
+                    }
+                }
+                #MBListContent
+                {/* content 框架 */
+                    position:relative;width:100%;max-width:680px;margin-left:auto;margin-right:auto;
+                }
+                .cashPanel
+                {/* 額度資訊panel */
+                    width:500px;border-top:1px #CCC solid;position:relative;margin-left:auto;margin-right:auto;
+                    .profit
+                    {/* 營業站成 panel*/
+                        font-size:12px;
+                        span
+                        {
+                            color:#FFF;padding:6px;border-radius:250px;background-color:#666;
+                        }
+                        img
+                        {
+                            width:15px;
+                            padding-right:6px;
+                            position:relative;
+                            top:3px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

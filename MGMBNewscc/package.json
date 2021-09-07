@@ -1,0 +1,44 @@
+[
+  {
+    "outputFileName": "/Users/chiwenchung/Projects/psylProject/psylProtal/psylProtal/wwwroot/libjs/MGMBNewscc.min",
+    "inputFiles": [
+      "/MGMBNewscc/temp/index/index.js",
+      "/MGMBNewscc/temp/index/tool.js",
+      "/MGMBNewscc/temp/index/index.scss",
+      "/MGMBNewscc/temp/index/tool.scss",
+      "/MGMBNewscc/temp/index/index.html",
+      "/MGMBNewscc/temp/index/tool.html",
+      "/MGMBNewscc/temp/pub/newsli.js",
+      "/MGMBNewscc/temp/pub/newsli.scss",
+      "/MGMBNewscc/temp/pub/newsli.html",
+      "/MGMBNewscc/temp/pub/newsli/imgPreview.js",
+      "/MGMBNewscc/temp/pub/newsli/imgPreview.scss",
+      "/MGMBNewscc/temp/pub/newsli/imgPreview.html",
+      "/MGMBNewscc/temp/MGNews/News.js",
+      "/MGMBNewscc/temp/MGNews/tool.js",
+      "/MGMBNewscc/temp/MGNews/upload.js",
+      "/MGMBNewscc/temp/MGNews/News.scss",
+      "/MGMBNewscc/temp/MGNews/tool.scss",
+      "/MGMBNewscc/temp/MGNews/upload.scss",
+      "/MGMBNewscc/temp/MGNews/News.html",
+      "/MGMBNewscc/temp/MGNews/tool.html",
+      "/MGMBNewscc/temp/MGNews/upload.html",
+      "/MGMBNewscc/temp/MGNews/News/takLabel.js",
+      "/MGMBNewscc/temp/MGNews/News/takLabel.scss",
+      "/MGMBNewscc/temp/MGNews/News/takLabel.html",
+      "/MGMBNewscc/view/index.js",
+      "/MGMBNewscc/view/MGNews.js",
+      "/MGMBNewscc/view/index.scss",
+      "/MGMBNewscc/view/MGNews.scss",
+      "/MGMBNewscc/view/index.html",
+      "/MGMBNewscc/view/MGNews.html",
+      "/MGMBNewscc/controllers/index.js",
+      "/MGMBNewscc/controllers/MGNews.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

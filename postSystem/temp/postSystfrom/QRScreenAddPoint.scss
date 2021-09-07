@@ -1,0 +1,108 @@
+﻿#postSystemPanel
+{/*main 框架*/
+    #psf
+    {/*post system panel*/
+        #p_psf_AddPointPanel
+        {/* 點數現場充值 */
+            width:100%;
+            #bg
+            {/*背景遮罩*/
+                position:fixed;height:2000px;opacity:0.5;width:100%;background-color:#000;top:0px;left:0px;
+                z-index:199;
+            }
+
+            #scContent
+            {/*攝影機 panel*/
+                position:fixed;
+                width:100%;
+                z-index:199;
+                top:20px;
+                #ToolPanel
+                {
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                    width:410px;
+                    border-radius:6px;
+                    background-color:#FFF;
+                    #AddP_Tool
+                    {/* 選擇充值工具 定位 panel */
+                        width:100%;
+                        padding-top:10px;
+                        padding-bottom:10px;
+                        text-align:center;
+                        .AddP_bt{
+                            background-color:#FFF;
+                            color:#333;
+                            cursor:pointer;
+                            border:1px solid #666;
+                            border-radius:6px;
+                            padding:6px;
+                            img
+                            {
+                                width:20px;
+                                padding:5px;
+                                position:relative;
+                                top:10px;
+                            }
+                        }
+                    }
+                    #panel
+                    {
+                        position:relative;
+                        margin-left:auto;
+                        margin-right:auto;
+                        width:400px;
+                        height:400px;
+                        padding:5px;
+                        background-color:#000;
+                        border-top-left-radius:6px;
+                        border-top-right-radius:6px;
+
+                        #AddPointPreview,#AddPointPreview2
+                        {/* 預覽畫面 */
+                            position:relative;
+                            margin-left:auto;
+                            margin-right:auto;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        .AddP_bt{
+                            position:absolute;
+                            right:0px;
+                            bottom:0px;
+                            img
+                            {
+                                width:20px;
+                                padding:5px;
+                                position:relative;
+                                background-color:#666;
+                                border-radius:6px;
+                            }
+                        }
+
+                        #scQR
+                        {/* QR view */
+                            cursor:pointer;
+                            width:60px;
+                            padding:160px;
+                            border:2px solid #FFF;
+                            opacity:0.7;
+                            position:absolute;
+                            left:15px;
+                            top:10px;
+                            border-radius:6px;
+                            img{
+                                width:60px;
+                                background-color:#FFF;
+                                border-radius:6px;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+﻿<div  v-show="open" style="display:none;" id="loginpanel">
+    <div id="loginBG"></div>
+    <!--登入 baground black-->
+    <div id="loginView">
+        <div  id="loginHeadPanel">
+            <div id="closeBt"><img v-bind:src="main.pub.lib.src('close.png')" v-on:click="mainTemp.$m.l.openView()" /></div>
+        </div>
+        <div id="loginContent"> 
+            <table id="loginBtPanel">
+                <tr v-show="!meLogin">
+                    <td colspan="3" >
+                        <div style="color:#666;width:100%;text-align:left;font-size:12px;">{{LangTitle("reg")}}/{{LangTitle("login")}}</div>
+                    </td>
+                    <td rowspan="2">
+                        <component v-bind:is="v.LoginlogoView" ></component>
+                    </td>
+                </tr>
+                <tr v-show="!meLogin">
+                    <td valign="bottom" colspan="3" class="title" >
+                        <div style="width:95%;position:relative;margin-left:auto;text-align:left;height:18px;">Gmail/Facebook/Line&nbsp;<span style="color:#BBB;">|</span>&nbsp;<span style="text-decoration:underline;cursor:pointer;" v-on:click="mainTemp.$m.github.toLogin()">GitHub</span></div>
+                        <div style="width:95%;position:relative;margin-left:auto;text-align:left;height:18px;">direct/直接&emsp;<span style="color:#777;">{{LangTitle("login")}}&{{LangTitle("reg")}}</span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td v-show="!meLogin" v-on:click="mainTemp.$m.g.Login()">
+                        <img v-bind:src="((img!=null)?img.src('google.png'):'')" class="bt" />
+                        <!--google-->
+                    </td>
+                    <td v-show="!meLogin" v-on:click="mainTemp.$m.fb.toLogin()"  class="bt">
+                        <!--facebook-->
+                        <img v-bind:src="((img!=null)?img.src('facebook.png'):'')"  class="bt"/>
+                    </td>
+                    <td v-show="!meLogin" v-on:click="mainTemp.$m.line.toLogin()">
+                        <img v-bind:src="((img!=null)?img.src('line.png'):'')"  class="bt" />
+                        <!--line-->
+                    </td>
+                    <td v-on:click="meLogin=!meLogin">
+                        <img v-bind:src="main.pub.lib.src('me.png')"  class="bt" />
+                        <!--login-->
+                    </td>
+                </tr>
+                <tr v-show="!meLogin">
+                    <td colspan="4" style="text-align:left;color:#333;font-size:12px;">伴手有禮工坊&nbsp;|&nbsp;共好的緣分從這裡開始<span style="color:#AAA;">...</span></td>
+                </tr>
+            </table>
+            <table style="width:100%;" v-show="!mailfun && meLogin" id="loginCtrTB">
+                <tr>
+                    <td rowspan="3" style="width:30px;" ><img v-bind:src="img.src('single.png')" style="width:30px;" /></td><td style="width:150px;"><input type="text" v-model="input.id" placeholder=" ID" class="loginInput" /></td>
+                    <td rowspan="3" id="loginbt" valign="middle" v-bind:style="((!findPwd)?'background-color:#FFF;border:1px solid #EEE;':'')" v-on:click="((!load)?((!findPwd)?mainTemp.$m.l.singIn():mainTemp.$m.l.findPassword()):true)">
+                        <span v-show="findPwd">Find</span>
+                        <img v-bind:src="((img!=null)?img.src('key.png'):'')" v-show="!findPwd" id="key" />
+                    </td>
+                </tr>
+                <tr v-show="!findPwd"><td><input v-model="input.pw" type="password" v-bind:placeholder="LangInput('password')" class="loginInput" /></td></tr>
+                <tr v-show="!load"><td><input v-model="input.code" type="text" v-bind:placeholder="LangInput('verification')" class="loginInput" /></td></tr>
+                <tr v-show="!load"><td colspan="3" style="height:5px;"></td></tr>
+                <tr v-show="!load">
+                    <td colspan="3" id="loginGetVerCode" valign="middle">
+                        <img v-bind:src="code" id="LoginVerImg" v-on:click="mainTemp.$m.l.catchCode()"  />
+                        <div v-on:click="pwdType()" id="loginGotoModel">{{LangInput(((!findPwd)?'fpassword':'return'))}}<img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(90deg);position:relative;"/></div>
+                    </td>
+                </tr>
+                <tr v-show="!findPwd">
+                    <td colspan="3" id="loginGetVerCode" valign="middle">
+                        <div v-on:click="gotoReg()" id="loginGotoModel">{{main.pub.config.get("page")['reg']}}<img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(90deg);position:relative;"/></div>
+                    </td>
+                </tr>
+            </table>
+            <div id="loginPanelLoad" v-show="load"></div>
+            <div id="loginCatchPassword" v-show="mailfun">e-mail...<img v-bind:src="main.pub.lib.src('ajaxSearc.gif')"/></div>
+        </div>
+    </div>
+    <span >
+</div>

@@ -1,0 +1,476 @@
+﻿#turnwebPanel
+{/** 入口panel */
+    #aboutStory
+    {/* 共好 */
+        width: 100%;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        user-select:none;
+        #imgList
+        {/* 輪播陣列框架 */
+            position:relative;
+            width:100vw;
+            text-align:center;
+            overflow:hidden;
+            background-color:#000;
+            #aboutStoryGoodPanlelImg
+            {/* 圖片 */
+                position:relative;
+            }
+            #TouchPanel
+            {/* 選頁鈕 */
+                width:100%;
+                position:absolute;
+                bottom:0px;
+                .left,.right
+                {
+                    cursor:pointer;
+                    width:30px;
+                    background-color:#FFF;
+                    opacity:0.8;
+                    text-align:center;
+                    img
+                    {
+                        height:20px;
+                        position:relative;
+                        top:3px;
+                    }
+                }
+
+                .left
+                {
+                    float:left;
+                    border-top-right-radius:20px;
+                    border-bottom-right-radius:20px;
+                }
+                .right
+                {
+                    float:right;
+                    border-top-left-radius:20px;
+                    border-bottom-left-radius:20px;
+                }
+            }
+
+            .touchPageShow
+            {/*分頁提示*/
+                position:absolute;font-size:12px;text-align:center;
+                bottom:0px;
+                opacity:0.8;
+                width:50%;
+                left:25%;
+                span
+                {
+                    padding:2px;
+                    border-radius:9px;
+                    color:#00754A;
+                    background-color:#D4E9E2;
+                }
+            }
+        }
+        .splitLine
+        {/*分隔線*/
+            width:100%;height:50px;text-align:center;padding-top:60px;
+            .title
+            {
+                border-top:1px solid #FFF;
+                color:#006030;
+                font-size:15px;
+            }
+            div
+            {   cursor:pointer;
+                border-top:1px solid #DDD;
+                width:100%;
+                img
+                {
+                    position:relative;width: 15px;top:-8px;opacity:0.3;
+                }
+            }
+        }
+
+        #aboutStorySetTB
+        {/*理念 title*/
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+        	width:95%;
+            text-align:center;
+            padding-top:20px;
+            padding-bottom:9px;
+            max-width: 300px;
+            img
+            {
+                width:100%;
+            }
+        }
+
+        #aboutStoryMeTB
+        {/*理念 刈包*/
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            width:90%;
+            text-align:center;
+            img
+            {
+                width:47%;
+                max-width: 600px;
+                padding:1%;
+            }
+        }
+
+        #getSetTB
+        {/* 一指搞定*/
+            width:100%;
+            padding-top:66px;
+            padding-bottom:66px;
+            text-align:center;
+            border-top:1px solid #333;
+            img{
+                width:40%;
+                max-width:400px;
+            }
+        }
+
+        #getSetTB:before 
+        {/* 波浪形 */
+            content: "";
+            display: block;
+            position: absolute;
+            border-radius: 100% 50%;
+            width: 54%;;
+            height: 70px;
+            background-color: #333;
+            right: 0%;
+            bottom: -45px;
+        }
+        #uberTB:after 
+        {/* 波浪形 */
+            content: "";
+            display: block;
+            position: absolute;
+            border-radius: 100% 50%;
+            width: 54%;
+            height: 70px;
+            background-color: #FFF;
+            left: 0%;
+            top: -45px;
+        }
+
+        #uberTB
+        {/* uber服務 */
+            width:100%;
+            background-color:#333;
+            padding-top:66px;
+            padding-bottom:66px;
+            text-align:center;
+            img{
+                width:40%;
+                max-width:200px;
+            }
+        }
+
+        #uberTB:before 
+        {/* 波浪形 */
+            content: "";
+            display: block;
+            position: absolute;
+            border-radius: 100% 50%;
+            width: 54%;;
+            height: 70px;
+            background-color: #D80064;
+            right: 0%;
+            bottom: -45px;
+        }
+        #foodPdaTB:after 
+        {/* 波浪形 */
+            content: "";
+            display: block;
+            position: absolute;
+            border-radius: 100% 50%;
+            width: 54%;
+            height: 70px;
+            background-color: #333;
+            left: 0%;
+            top: -45px;
+        }
+
+        #foodPdaTB
+        {/* foodpanda服務 */
+            width:100%;
+            background-color:#D80064;
+            padding-top:66px;
+            padding-bottom:66px;
+            text-align:center;
+            border-bottom:1px solid #FF8800;
+            img{
+                width:40%;
+                max-width:200px;
+            }
+        }
+        
+        #aboutStoryFoodTB
+        {/*理念 food 價格*/
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            width:90%;
+            text-align:center;
+            img
+            {
+                width:47%;
+                max-width: 600px;
+                padding:1%;
+            }
+        }
+
+        #aboutStoryMenuTB
+        {/*理念 菜單 */
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            width:95%;
+            text-align:center;
+            img
+            {
+                width:47%;
+                max-width: 600px;
+                padding:1%;
+            }
+        } 
+
+        #aboutStoryClassTB
+        {/*服務種類*/
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+        	width:98%;
+            padding-bottom:80px;
+            .li
+            {
+                width:100%;
+                padding-top:80px;
+                div
+                {/* title */
+                    position:relative;
+                    padding-bottom:9px;
+                    font-size:18px;
+                    line-height:166%;
+                    color:#333;
+                }
+
+                img
+                {
+                    width:95%;
+                }
+            }
+        }
+
+        #psylMessage
+        {/*組織資訊*/
+            background-color:#333;
+            width:100%;
+            padding-top:30px;
+            padding-bottom:80px;
+            top:60px;
+            div
+            {
+                width:240px;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                padding-top:3px;
+                padding-bottom:3px;
+                text-align:left;
+                a{
+                    color:#EEE;
+                    font-size:15px;
+                    outline : none;
+                    text-decoration:none;
+                }
+            }
+            table
+            {
+                width:100%;
+                padding-top:20px;
+                max-width:300px;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                td
+                {
+                    text-align:center;
+                    width:25%;
+                    img
+                    {
+                        width:60px;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:650px) {
+            #imgList
+            {/* 輪播陣列框架 */
+                height:40vh;
+                #aboutStoryGoodPanlelImg
+                {/* 圖片位移 */
+                    position:absolute;
+                    top:-5vh;
+                    right:0px;
+                    height:55vh;
+                }
+            }
+
+            #aboutStoryMeTB
+            {/*理念 刈包*/
+                width:95%;
+                text-align:center;
+                img
+                {
+                    width:98%;
+                    padding:1%;
+                }
+            }
+
+
+            #aboutStoryFoodTB
+            {/*理念 food 價格*/
+                width:95%;
+                text-align:center;
+                img
+                {
+                    width:98%;
+                    padding:1%;
+                }
+            }
+
+            #aboutStoryMenuTB
+            {/* menu */
+                width:95%;
+                text-align:center;
+                img
+                {
+                    width:98%;
+                    padding:1%;
+                }
+            }
+
+            #aboutStoryClassTB
+            {/*服務種類*/
+                .li
+                {
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                    width:98%;
+                    text-align:center;
+                    div
+                    {
+                        text-align:left;
+                        width:90%;
+                        padding-left:9px;
+                    }
+                    img
+                    {
+                        width:100%;
+                    }
+                }
+            }
+            
+        }
+
+        @media screen and (min-width:1071px){
+            #aboutStoryClassTB
+            {/*服務種類*/
+                .li
+                {
+                    float:right;
+                    width:33%;
+                }
+    
+                .clear
+                {/*照片牆 阻斷 清除float*/
+                    width:100%;
+                    clear: both;
+                }
+            }
+        }
+
+        @media screen and (min-width:651px) and (max-width:1070px)  {
+            #imgList
+            {/* 輪播陣列框架 */
+                height:40vh;
+                #aboutStoryGoodPanlelImg
+                {/* 圖片位移 */
+                    position:absolute;
+                    top:-5vh;
+                    right:0px;
+                    width:140%;
+                }
+            }
+
+            #aboutStoryClassTB
+            {/*服務種類*/
+                .li
+                {
+                    float:right;
+                    width:33%;
+                }
+    
+                .clear
+                {/*照片牆 阻斷 清除float*/
+                    width:100%;
+                    clear: both;
+                }
+            }
+
+        }
+
+        @media screen and (min-width:1071px) and (max-width:1200px) {
+            #imgList
+            {/* 輪播陣列框架 */
+                height:50vh;
+                #aboutStoryGoodPanlelImg
+                {/* 圖片位移 */
+                    position:absolute;
+                    top:-5vh;
+                    right:0px;
+                    width:120%;
+                }
+            }
+
+        }
+
+        @media screen and (min-width:1201px)  and (max-width:1400px) 
+        {
+            #imgList
+            {/* 輪播陣列框架 */
+                height:60vh;
+                #aboutStoryGoodPanlelImg
+                {/* 圖片位移 */
+                    position:absolute;
+                    top:-10vh;
+                    right:0px;
+                    width:120%;
+                }
+            }
+
+        }
+
+        @media screen and (min-width:1401px)
+        {
+            #imgList
+            {/* 輪播陣列框架 */
+                height:60vh;
+                #aboutStoryGoodPanlelImg
+                {/* 圖片位移 */
+                    position:absolute;
+                    top:-10vh;
+                    right:0px;
+                    width:120%;
+                }
+            }
+        }
+    }
+}

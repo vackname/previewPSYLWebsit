@@ -1,0 +1,576 @@
+﻿<div id="myPsylPanel">
+    <div class="reSpace"></div>
+
+    <div class="myPsylAnimatePanel">
+        PSYL WEB Project(Animate)演示:<br/>
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep1();AllRun=!action;" v-bind:style="((action)?'background-color:#DDD':'')" >PSYL總成/演示<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <div class="myPsylAnimatePanel" v-show="!AllRun">
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep1()" v-bind:style="((action)?'background-color:#DDD':'')">Create 前端 Project<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" v-show="step>-1&&step<4" />
+    <span class="stepPsylTitle" v-show="step>-1&&step<4">{{((step>-1)?stepAry[step]:"")}}</span>
+    <div class="reSpace" v-show="step>-1&&step<4"></div>
+    <div class="sourceRange" style="height:700px;" v-show="step>-1&&step<4">
+        <!-- psyl js -->
+        <span class="title">Project</span>
+        <div class="reSpace"></div>
+        <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />main&nbsp;<img v-bind:src="imgSrc('scss.png')" id="edscssIcon" />main
+        <div class="reSpace"></div>
+        <div class="sourceRange">
+            <span class="title">Folder of View</span>
+            <div class="reSpace"></div>
+            <div class="sourceRange" style="border-color: #AAA;opacity:0;" id="PSYLStepAn1_NewView" >
+                <span class="title" style="background-color:#AAA;">New View</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('htmldoc.png')" id="edHtmlIcon" />
+                <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />
+                <img v-bind:src="imgSrc('scss.png')" id="edscssIcon" />
+                <div class="PsylJoin" style="right:-100px;height:180px;"><!--Join 虛線-->
+                    <span>Join</span>
+                </div>
+            </div>
+            <div class="reSpace" id="PSYLStepAn1_NewViewRS"></div>
+            <img v-bind:src="imgSrc('htmldoc.png')" id="edHtmlIcon" />
+            <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />
+            <img v-bind:src="imgSrc('scss.png')" id="edscssIcon" />...
+        </div>
+        <div class="reSpace"></div>
+        <div class="sourceRange">
+            <span class="title">Folder of Controllers</span>
+            <div class="reSpace"></div>
+            <span id="PSYLStepAn1_controllerPanel">
+                <div class="sourceRange" id="PSYLStepAn1_Con1" style="border-color: #AAA;">
+                    <span class="title" style="background-color:#AAA;">New View(Controllers)</span>
+                    <div class="reSpace"></div>
+                    <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />
+                </div>
+                <div class="reSpace" id="PSYLStepAn1_Con1RS"></div>
+                <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />
+            </span>...
+        </div>
+        <div class="reSpace" id="PSYLStepAn1_EV1RS" ></div>
+        <div class="sourceRange"  id="PSYLStepAn1_EV1" style="border-color: #FF8800;opacity:0;">
+            <div class="PsylJoin" style="right:-100px;height:300px;top:-300px;border-color:#333;"><!--Join 虛線-->
+            <span>import</span>
+            </div>
+            <span class="title" style="background-color:#AAA;">Event Folder of  View</span>
+            <div class="reSpace"></div>
+            <div class="sourceRange" id="PSYLStepAn1_EV2" style="border-color: #AAA;">
+                <div class="PsylJoin" style="right:-103px;height:220px;top:-220px;border-color:#FF8800;"><!--Join 虛線-->
+                    <span>import</span>
+                </div>
+                <span class="title" style="background-color:#AAA;">Event 2 Folder of View</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('htmldoc.png')" id="edHtmlIcon" />
+                <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />
+                <img v-bind:src="imgSrc('scss.png')" id="edscssIcon" />
+            </div>
+            <div class="reSpace" id="PSYLStepAn1_EV2RS"></div>
+            <img v-bind:src="imgSrc('htmldoc.png')" id="edHtmlIcon" />
+            <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />
+            <img v-bind:src="imgSrc('scss.png')" id="edscssIcon" />
+        </div>
+        <div class="reSpace" id="PSYLStepAn1_model1RS"></div>
+        <div class="sourceRange" style="border-color: #AAA;opacity:0;" id="PSYLStepAn1_model1">
+            <div class="PsylJoin" style="right:-103px;height:220px;top:-200px;border-color:#333;"><!--Join 虛線-->
+                <span>import</span>
+            </div>
+            <!--animate model-->
+            <span class="title" style="background-color:#AAA;">Folder of News Animate Model</span>
+            <div class="reSpace"></div>
+            <img v-bind:src="imgSrc('ts.png')" id="edTSIcon" />&nbsp;Animate...
+        </div>
+        <div class="reSpace"></div>
+        <div class="sourceRange" id="PSYLStepAn1_model1Data">
+            <!--model-->
+            <div class="PsylJoin" style="right:-103px;height:60px;top:-40px;border-color:#AAA;"><!--Join 虛線-->
+                <span>import</span>
+            </div>
+            <span class="title">Folder of Model</span>
+            <div class="reSpace"></div>
+            <img v-bind:src="imgSrc('ts.png')" id="edTSIcon" />&nbsp;model...
+        </div>
+    </div>
+    <div class="myPsylAnimatePanel" v-show="!AllRun">
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep2()" v-bind:style="((action)?'background-color:#DDD':'')">PSYL的MVVM架構<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" v-show="step==4" />
+    <span class="stepPsylTitle" v-show="step==4">{{((step>-1)?stepAry[step]:"")}}</span>
+    <div class="reSpace" v-show="step==4"></div>
+    <div style="width:100%;position:relative;" v-show="step==4">
+        <!-- psyl js to MVVM -->
+        <div class="sourceRange" style="width:180px;height:700px;">
+            <span class="title">Project</span>
+            <div class="reSpace"></div>
+            <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />main&nbsp;<img v-bind:src="imgSrc('scss.png')" id="edscssIcon" />main
+            <div class="reSpace"></div>
+            <div class="sourceRange" >
+                <span class="title">Folder of View</span>
+                <div class="reSpace"></div>...
+                <div class="PsylJoinMVVM" id="PSYLMVVMANLine3"  style="right:-100px;top:-10px;border-color:#FF8800;width:100px;transform:rotate(-10deg);"><!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+            </div>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <span class="title">Folder of Controllers</span>
+                <div class="reSpace"></div>...
+            </div>
+            <div class="reSpace" ></div>
+            <div class="sourceRange" style="border-color: #AAA;">
+                <div class="PsylJoinMVVM" id="PSYLMVVMANLine2"    style="right:-100px;top:-40px;border-color:#00BB00;width:50px;"><!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <!--animate model-->
+                <div class="PsylJoin" style="right:-50px;height:150px;top:-150px;border-color:#333;width:50px;"><!--Join 虛線-->
+                    <span>import</span>
+                </div>
+                <span class="title" style="background-color:#AAA;">Folder of News Animate Model</span>
+                <div class="reSpace"></div>...
+            </div>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <div class="PsylJoinMVVM" id="PSYLMVVMANLine1"    style="right:-90px;top:-20px;border-color:#009393;width:60px;"><!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <!--model-->
+                <div class="PsylJoin" style="right:-30px;width:30px;height:150px;top:-150px;border-color:#AAA;"><!--Join 虛線-->
+                    <span>import</span>
+                </div>
+                <span class="title">Folder of Model</span>
+                <div class="reSpace"></div>...
+            </div>
+        </div>
+        <div class="PsylMVVM" style="background-color:#009393;top:350px;" id="PSYLMVVMAN1">
+            <div style="position:relative;width:100%;">
+                <div style="position:absolute;width:60px;background-color:#009393;top:-50px;left:13px;text-align:right;font-size:12px;border-top-right-radius:60px;border-bottom-right-radius:60px;transform:rotate(-60deg);">
+                    Event&nbsp;<img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(-90deg);position:relative;"/>
+                </div>
+                Model<br/>
+                Business Logic
+            </div>
+        </div>
+        <div class="PsylMVVM" style="background-color:#00BB00;top:190px;" id="PSYLMVVMAN2">
+            <div style="position:relative;width:100%;">
+                <div style="position:absolute;width:90px;background-color:#00BB00;top:90px;right:5px;text-align:left;font-size:12px;border-top-left-radius:60px;border-bottom-left-radius:60px;transform:rotate(-60deg);">
+                    <img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(90deg);position:relative;"/>&nbsp;Method&nbsp;Call
+                </div>
+                ViewModel<br/>
+                Presentation Logic
+            </div>
+        </div>
+        <div class="PsylMVVM" style="background-color:#FF8800;top:0px;" id="PSYLMVVMAN3">
+            <div style="position:relative;width:100%;">
+                <div style="position:absolute;width:170px;background-color:#FF8800;top:110px;left:-30px;text-align:left;font-size:12px;border-top-left-radius:60px;border-bottom-left-radius:60px;transform:rotate(-60deg);">
+                    <img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(90deg);position:relative;"/>&nbsp;Command/Data&nbsp;Binding
+                </div>
+                    View<br/>
+                Presentation UI
+            </div>
+        </div>
+    </div>
+    <div class="myPsylAnimatePanel" v-show="!AllRun">
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep3()" v-bind:style="((action)?'background-color:#DDD':'')">PSYL vue.js 簡易設定端點載入 Net Core<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" v-show="step==5" />
+    <span class="stepPsylTitle" v-show="step==5">{{((step>-1)?stepAry[step]:"")}}</span>
+    <div class="reSpace" v-show="step==5"></div>
+    <div class="sourceRange2" style="height:780px;" v-show="step==5">
+        <!-- psyl vue.js combine net core -->
+        <span class="title">Combine/簡單/減少維護</span>
+        <div class="sourceRange2" v-show="bundlePsyl<=2" id="psylShowNetCoreCombine">
+            <span v-show="bundlePsyl==0">
+                <img v-bind:src="imgSrc('netcore.png')" id="edNetCoreIcon" />Layout
+                <img v-bind:src="imgSrc('netCoreLayout.png')" style="width:100%;" />
+            </span>
+            <span v-show="bundlePsyl==1">
+                <img v-bind:src="imgSrc('netcore.png')" id="edNetCoreIcon" />Layout include Index<br/>
+                <img v-bind:src="imgSrc('netCoreIndex.png')" style="width:200px;" />
+            </span>
+            <span v-show="bundlePsyl==2">
+                <img v-bind:src="imgSrc('netcore.png')" id="edNetCoreIcon" />Controllers<br/>
+                <img v-bind:src="imgSrc('NetControl.png')" style="width:300px;" />
+            </span>
+        </div>
+        <div class="sourceRange2" v-show="bundlePsyl>2">
+            <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" />PSYL Vue.js
+            <span style="color:#FF8800;">
+            &nbsp;<img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(90deg);position:relative;"/>Combine&nbsp;<img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(-90deg);position:relative;"/>&nbsp;</span>
+            <img v-bind:src="imgSrc('netcore.png')" id="edNetCoreIcon" />
+            <img v-bind:src="imgSrc('psylJoin.png')" style="width:100%;" v-show="bundlePsyl==3" id="psylShowVueCombine" />
+        </div>
+    </div>
+    <div class="myPsylAnimatePanel" v-show="!AllRun">
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep4()" v-bind:style="((action)?'background-color:#DDD':'')">為typescript 注入DB<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" v-show="step==6" />
+    <span class="stepPsylTitle" v-show="step==6">{{((step>-1)?stepAry[step]:"")}}</span>
+    <div class="reSpace" v-show="step==6"></div>
+    <div style="width:100%;position:relative;" v-show="step==6">
+        <div class="sourceRange" style="height:700px;">
+            <!--DB 與 Psyl Vue.js Mapping-->
+            <span class="title" id="psylImportAnTB">DB of Mapping for PSYL Vue.js </span>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <span class="title">DBConfig</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('netcore.png')" id="edNetCoreIcon" />&nbsp;<span style="color:#FF8800;">Json/Class/JObj</span>
+                <div class="reSpace"></div>
+            </div>
+            <div class="reSpace" v-show="[3].indexOf(psylimporttb)>-1"></div>
+            <div class="sourceRange" v-show="[3].indexOf(psylimporttb)>-1" >
+                <span class="title">Developer</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('dev.jpg')" id="edDevIcon" />&nbsp;<span style="color:#FF8800;">Preview/Debug</span>
+                <div class="reSpace"></div>
+            </div>
+        </div>
+        <div class="PsylDownLoadLine" style="left:250px;top:60px;border-color:#AAA;width:60px;transform:rotate(-30deg)" v-show="[0,1].indexOf(psylimporttb)>-1">
+            <!--箭頭 虛線 net core to DB -->
+        </div>
+        <div class="PsylDownLoadLine" style="left:255px;top:240px;border-color:#AAA;width:40px;transform:rotate(180deg);" v-show="[3].indexOf(psylimporttb)>-1">
+            <!--箭頭 虛線 psyl vue.js to developer -->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine" style="left:235px;top:315px;border-color:#AAA;width:130px;transform:rotate(240deg);" v-show="[3].indexOf(psylimporttb)>-1">
+            <!--箭頭 虛線 typescript to developer -->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine"  style="left:305px;top:215px;border-color:#AAA;width:80px;transform:rotate(100deg);" v-show="[1].indexOf(psylimporttb)>-1" >
+            <!--箭頭 虛線 API import for DB Table of format -->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine" style="left:335px;top:340px;border-color:#AAA;width:90px;transform:rotate(90deg);"  v-show="[2].indexOf(psylimporttb)>-1" >
+            <!--箭頭 虛線 PSYL vue.js to TSC inteface-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="psylDBVueMapObj" style="position:absolute;top:0px;left:300px;"  v-show="[0,1].indexOf(psylimporttb)>-1"><img v-bind:src="imgSrc('DB.jpg')" id="edDBIcon"  />&nbsp;Marriadb/Mysql/MSsql</div>
+        <div class="psylDBVueMapObj" style="position:absolute;top:250px;left:300px;"  v-show="[1,2,3].indexOf(psylimporttb)>-1"><img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon"/>PSYL Bundle Tool</div>
+        <div class="psylDBVueMapObj" style="top:125px;left:200px;width:250px;" v-show="[1].indexOf(psylimporttb)>-1" > <img  v-bind:src="imgSrc('api.png')" id="edApiIcon" /><span>import for DB Table of format</span></div>
+        <div class="psylDBVueMapObj" style="top:50px;left:260px;" v-show="[0,1].indexOf(psylimporttb)>-1" > <img v-bind:src="imgSrc('dbsync.png')" id="edDBasyncIcon" /><span>&nbsp;sync</span></div>
+        <div class="psylDBVueMapObj" style="top:330px;left:370px;" v-show="[2].indexOf(psylimporttb)>-1" > <img v-bind:src="imgSrc('json.png')" id="edjsonIcon" /><span>import fromat</span></div>
+        <div class="psylDBVueMapObj" style="top:385px;left:300px;" v-show="[2,3].indexOf(psylimporttb)>-1" > <img v-bind:src="imgSrc('ts.png')" id="edTSIcon" />&nbsp;Inteface for DB Table</span></div>
+    </div>
+    <div class="myPsylAnimatePanel" v-show="!AllRun">
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep5()" v-bind:style="((action)?'background-color:#DDD':'')">簡化的bundle tool 封裝/release<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" v-show="step==7" />
+    <span class="stepPsylTitle" v-show="step==7">{{((step>-1)?stepAry[step]:"")}}</span>
+    <div class="reSpace" v-show="step==7"></div>
+    <div style="width:100%;position:relative;" v-show="step==7">
+        <!-- psyl vue.js release -->
+        <div class="sourceRange" style="width:180px;height:700px;">
+            <span class="title">Project</span>
+            <div class="reSpace"></div>
+            <img v-bind:src="imgSrc('js.png')" id="edJSIcon" />main&nbsp;<img v-bind:src="imgSrc('scss.png')" id="edscssIcon" />main
+            <div class="PsylCombineNetoCoreLine" v-show="[0,1].indexOf(bundleRelease)>-1" style="right:-80px;top:80px;border-color:#AAA;width:100px;transform:rotate(40deg);">
+                <!--箭頭 虛線-->
+                <img v-bind:src="main.pub.lib.src('dr.png')" />
+            </div>
+            <div class="reSpace"></div>
+            <div class="sourceRange" >
+                <div class="PsylCombineNetoCoreLine"   v-show="[0,1].indexOf(bundleRelease)>-1"  style="right:-90px;top:25px;border-color:#AAA;width:100px;transform:rotate(30deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title">Folder of View</span>
+                <div class="reSpace"></div>...
+            </div>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <div class="PsylCombineNetoCoreLine"  v-show="[0].indexOf(bundleRelease)>-1" style="right:-80px;top:0px;border-color:#AAA;width:80px;transform:rotate(-10deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title">Folder of Controllers</span>
+                <div class="reSpace"></div>...
+            </div>
+            <div class="reSpace" ></div>
+            <div class="sourceRange" style="border-color: #AAA;">
+                <div class="PsylCombineNetoCoreLine"  v-show="[0,2].indexOf(bundleRelease)>-1" style="right:-125px;top:-20px;border-color:#AAA;width:150px;transform:rotate(-60deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title" style="background-color:#AAA;">Folder of News Animate Model</span>
+                <div class="reSpace"></div>...
+            </div>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <div class="PsylCombineNetoCoreLine" v-show="[0,2].indexOf(bundleRelease)>-1"  style="right:-125px;top:-40px;border-color:#AAA;width:150px;transform:rotate(-60deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title">Folder of Model</span>
+                <div class="reSpace"></div>...
+            </div>
+        </div>
+       <!--psyl vue.js bumdle release-->
+        <img v-bind:src="imgSrc('psylBundle.png')" style="left:220px;top:0px;position:absolute;width:300px" id="PSYLStepAn1_tool" />
+        <!--bundle Toot 提示-->
+        <div class="psylVueBudleObj" style="top:80px;" v-show="bundleRelease==0"><img v-bind:src="imgSrc('js.png')" id="edJSIcon" /> </div>
+        <div class="psylVueBudleObj" style="top:140px;"  v-show="bundleRelease==0"><img v-bind:src="imgSrc('js.png')" id="edJSIcon" /> </div>
+        <div class="psylVueBudleObj" style="top:200px;left:230px;"  v-show="bundleRelease==0"><img v-bind:src="imgSrc('js.png')" id="edJSIcon" /> </div>
+        <div class="psylVueBudleObj" style="top:260px;left:230px;"  v-show="bundleRelease==0"><img v-bind:src="imgSrc('js.png')" id="edJSIcon" /> </div>
+        <div class="psylVueBudleObj" style="top:350px;left:230px;"  v-show="bundleRelease==0"><img v-bind:src="imgSrc('js.png')" id="edJSIcon" /> </div>
+
+        <div class="psylVueBudleObj" style="top:140px;left:330px;" id="PSYLBundleRelease1"  v-show="[0,1,2].indexOf(bundleRelease)>-1"><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />Release 1</div>
+        <div class="psylVueBudleObj" style="top:200px;left:330px;" id="PSYLBundleRelease2"  v-show="[1,2].indexOf(bundleRelease)>-1"><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />Release 2</div>
+
+        <div class="psylVueBudleObj" style="top:80px;"  v-show="bundleRelease==1"><img v-bind:src="imgSrc('scss.png')" id="edscssIcon" /><span><br/>Convert To Css</span></div>
+        <div class="psylVueBudleObj" style="top:140px;"  v-show="bundleRelease==1"><img v-bind:src="imgSrc('scss.png')" id="edscssIcon" /><span><br/>Convert To Css</span></div>
+
+        <div class="psylVueBudleObj" style="top:260px;left:230px;"  v-show="bundleRelease==2"><img v-bind:src="imgSrc('ts.png')" id="edTSIcon" /><span><br/>Convert To Js</span></div>
+        <div class="psylVueBudleObj" style="top:350px;left:230px;"  v-show="bundleRelease==2"><img v-bind:src="imgSrc('ts.png')" id="edTSIcon" /><span><br/>Convert To Js</span></div>
+    </div>
+    <div class="myPsylAnimatePanel" v-show="!AllRun">
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep6()" v-bind:style="((action)?'background-color:#DDD':'')">簡潔的後端Controllers/ajax/PSYL Vue.js載入<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" v-show="step==8" />
+    <span class="stepPsylTitle" v-show="step==8">{{((step>-1)?stepAry[step]:"")}}</span>
+    <div class="reSpace" v-show="step==8"></div>
+    <div style="width:100%;position:relative;" v-show="step==8">
+        <div class="sourceRange"  style="width:160px;height:700px;">
+            <!--Load Psyl Vue.js to Input data 階段-->
+            <span class="title" id="psylInputData" ><img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" style="width:8px;top:5px;border:1px solid #AAA;" />&nbsp;input Api</span>
+            <div class="reSpace"></div>
+            <div class="sourceRange" v-show="[0,1,2,3].indexOf(psylJSLoad)>-1">
+                <span class="title">Psyl Load</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />psyl.js
+                <div class="reSpace"></div>
+            </div>
+            <div class="reSpace" style="height:60px;" v-show="[1,2,3].indexOf(psylJSLoad)>-1" >
+                <div class="PsylDownLoadLine" style="right:50px;top:15px;border-color:#AAA;width:50px;transform:rotate(90deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+            </div>
+            <div class="sourceRange"  v-show="[1,2,3,4].indexOf(psylJSLoad)>-1">
+                <div class="PsylDownLoadLine" v-show="[2].indexOf(psylJSLoad)>-1" style="right:-110px;top:-100px;border-color:#AAA;width:170px;transform:rotate(-80deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <div class="PsylDownLoadLine" v-show="[2].indexOf(psylJSLoad)>-1" style="right:-97px;top:-65px;border-color:#AAA;width:125px;transform:rotate(-70deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <div class="PsylDownLoadLine" v-show="[2].indexOf(psylJSLoad)>-1" style="right:-83px;top:-20px;border-color:#AAA;width:80px;transform:rotate(-30deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <div class="PsylDownLoadLine" v-show="[2].indexOf(psylJSLoad)>-1" style="right:-50px;top:0px;border-color:#AAA;width:50px;transform:rotate(0deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title">Project Load</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />project.js
+                <div class="reSpace"></div>
+            </div>
+
+            <div class="psylVueBudleObj" style="top:10px;left:210px;" v-show="[2,3,4].indexOf(psylJSLoad)>-1"><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />Animate_Model.js</div>
+            <div class="psylVueBudleObj" style="top:70px;left:210px;" v-show="[2,3,4].indexOf(psylJSLoad)>-1"><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />modle.js</div>
+
+            <div class="PsylDownLoadLine" v-show="[3].indexOf(psylJSLoad)>-1" style="left:310px;top:70px;border-color:#AAA;width:50px;transform:rotate(90deg);">
+                <!--箭頭 虛線-->
+                <img v-bind:src="main.pub.lib.src('dr.png')" />
+            </div>
+            <div class="PsylDownLoadLine" v-show="[3].indexOf(psylJSLoad)>-1" style="left:260px;top:90px;border-color:#AAA;width:50px;">
+                <!--箭頭 虛線-->
+                <img v-bind:src="main.pub.lib.src('dr.png')" />
+            </div>
+            <div class="PsylDownLoadLine" v-show="[4].indexOf(psylJSLoad)>-1" style="left:280px;top:205px;border-color:#AAA;width:150px;transform:rotate(95deg);">
+                <!--箭頭 虛線-->
+                <img v-bind:src="main.pub.lib.src('dr.png')" />
+            </div>
+
+            <div class="PsylDownLoadLine" v-show="[4].indexOf(psylJSLoad)>-1" style="left:265px;top:260px;border-color:#AAA;width:180px;transform:rotate(92deg);">
+                <!--箭頭 虛線-->
+                <img v-bind:src="main.pub.lib.src('dr.png')" />
+            </div>
+            
+            <div class="psylVueBudleObj" style="top:120px;left:230px;color:#FF8800;text-align:right;" v-show="[3,4].indexOf(psylJSLoad)>-1">{{((psylJSLoad==3)?"Wait of complete for load":"load for complete")}}</div>
+            <div class="psylVueBudleObj" style="top:150px;left:230px;" v-show="[2,3,4].indexOf(psylJSLoad)>-1" ><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />view.html</div>
+            <div class="psylVueBudleObj" style="top:210px;left:230px;" v-show="[2,3,4].indexOf(psylJSLoad)>-1"><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />view.css</div>
+            <div class="psylVueBudleObj" style="top:270px;left:230px;" v-show="[4].indexOf(psylJSLoad)>-1"><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />event/view.html</div>
+            <div class="psylVueBudleObj" style="top:330px;left:230px;" v-show="[4].indexOf(psylJSLoad)>-1"><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />event/view.css</div>
+            <div class="sourceRange"  v-show="[5,6].indexOf(psylJSLoad)>-1">
+                <div class="PsylDownLoadLine" v-show="[6].indexOf(psylJSLoad)>-1" style="right:-90px;top:55px;border-color:#AAA;width:90px;transform:rotate(0deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <div class="PsylDownLoadLine" v-show="[6].indexOf(psylJSLoad)>-1" style="right:-103px;top:92px;border-color:#AAA;width:125px;transform:rotate(130deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title">Input data</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" />
+                <span style="color:#FF8800;">Input&nbsp;<img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(-90deg);position:relative;"/></span>
+                <img v-bind:src="imgSrc('ajax.png')" style="top:-10px;right:-20px;" id="edAjaxIcon" />
+                <div class="reSpace"></div>
+            </div>
+            <div class="reSpace"></div>
+            <div class="sourceRange"  v-show="[6,7,8].indexOf(psylJSLoad)>-1">
+                <div class="PsylDownLoadLine" v-show="[7].indexOf(psylJSLoad)>-1" style="right:-83px;top:20px;border-color:#AAA;width:80px;transform:rotate(-30deg);">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title">Filter/過濾</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('netcore.png')" id="edNetCoreIcon" />&nbsp;Server:<span>API</span><br/>
+                <span style="color:#FF8800;">input of Key-name<br/>Convert To</span><br/>
+                <img v-bind:src="imgSrc('json.png')" id="edjsonIcon" /><br/>DBConfig-Json<br/><br/>
+                <img v-bind:src="imgSrc('DB.jpg')" id="edDBIcon" /><br/>DBConfig-DB Table
+                <div class="reSpace"></div>
+            </div>
+        </div>
+        <div class="psylDBConnectionObj" style="position:absolute;top:90px;left:280px;width:250px;"  v-show="[6].indexOf(psylJSLoad)>-1"><img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" />DBConfig:<span>Proxy/Loading balance</span></div>
+        <img v-bind:src="imgSrc('api.png')" id="edApiIcon" style="position:absolute;top:55px;left:260px;" v-show="[7].indexOf(psylJSLoad)>-1" />
+        <div style="width:300px;position:absolute;top:30px;left:210px;" v-show="[8].indexOf(psylJSLoad)>-1" ><img v-bind:src="imgSrc('netcore.png')"  id="edNetCoreIcon" />簡潔Controllers-Sorce code/序列化下的資安<br/><img v-bind:src="imgSrc('APIC.png')" style="width:300px;"  /></div>
+    </div>
+    <div class="myPsylAnimatePanel" v-show="!AllRun">
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep7()" v-bind:style="((action)?'background-color:#DDD':'')">PSYL的負載平衡系統(DBConfig)<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" v-show="step==9" />
+    <span class="stepPsylTitle" v-show="step==9">{{((step>-1)?stepAry[step]:"")}}</span>
+    <div class="reSpace" v-show="step==9"></div>
+    <div style="width:100%;position:relative;"  v-show="step==9">
+        <div class="sourceRange" style="height:700px;">
+            <!--DB 連結 階段-->
+            <span class="title" id="PSYLDBConnectionStep">Calculatio/DB Connection</span>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <div class="PsylDownLoadLine" style="right:-83px;top:120px;border-color:#AAA;width:80px;transform:rotate(-30deg);" v-show="[1].indexOf(psylDBConnection)>-1">
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title">DB-Slave</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('DB.jpg')" id="edDBIcon" />&nbsp;Read<span style="color:#FF8800;">SQL:select</span><br/>
+                <img v-bind:src="imgSrc('DB.jpg')" id="edDBIcon" />&nbsp;Read<br/>
+                ...
+                <div class="reSpace"></div>
+            </div>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <span class="title">DB-Master</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('DB.jpg')" id="edDBIcon" />&nbsp;Write<br/>
+                <span style="color:#FF8800;">SQL:update/delte</span>
+                <div class="reSpace"></div>
+            </div>
+        </div>
+        <div class="PsylDownLoadLine" style="left:335px;top:70px;border-color:#AAA;width:60px;transform:rotate(90deg);" v-show="[0,1,2,3].indexOf(psylDBConnection)>-1">
+            <!--箭頭 虛線 Proxy/Loading balance to API Server/Calculation-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine" style="left:215px;top:210px;border-color:#AAA;width:280px;transform:rotate(140deg);" v-show="[2].indexOf(psylDBConnection)>-1">
+            <!--箭頭 虛線 API Server/Calculation to Master DB -->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine" style="left:250px;top:80px;border-color:#AAA;width:60px;transform:rotate(30deg)" v-show="[1,2,3].indexOf(psylDBConnection)>-1">
+            <!--箭頭 虛線 API Server/Calculation to Slave DB -->
+        </div>
+        <div class="PsylDownLoadLine" style="left:305px;top:220px;border-color:#AAA;width:180px;transform:rotate(65deg);"  v-show="[3].indexOf(psylDBConnection)>-1">
+            <!--箭頭 虛線 API Server/Log -->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine"  style="left:275px;top:200px;border-color:#AAA;width:130px;transform:rotate(100deg);" v-show="[3].indexOf(psylDBConnection)>-1">
+            <!--箭頭 虛線 API Server/Change Output -->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="psylDBConnectionObj" style="position:absolute;top:0px;left:300px;width:250px;"><img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" />DBConfig:<span>Proxy/Loading balance</span></div>
+        <div class="psylDBConnectionObj" style="position:absolute;top:100px;left:300px;"><img v-bind:src="imgSrc('netcore.png')" id="edNetCoreIcon" />Server:<span>API/Calculation</span></div>
+        <div class="psylDBConnectionObj" style="top:150px;left:250px;" v-show="[1].indexOf(psylDBConnection)>-1"> <img v-bind:src="imgSrc('json.png')" id="edjsonIcon"  />Select data</div>
+        <div class="psylDBConnectionObj" style="top:220px;left:330px;" v-show="[2].indexOf(psylDBConnection)>-1"> <img v-bind:src="imgSrc('json.png')" id="edjsonIcon" />input/data</div>
+        <div class="psylDBConnectionObj" style="top:60px;left:260px;" v-show="[1,2,3].indexOf(psylDBConnection)>-1"> <img v-bind:src="imgSrc('copyurl.png')" id="edURLIcon" /></div>
+        <div class="psylDBConnectionObj" style="top:300px;left:450px;" v-show="[3].indexOf(psylDBConnection)>-1"> <img v-bind:src="imgSrc('log.png')" id="edLogIcon" /></div>
+        <div class="psylDBConnectionObj" style="top:295px;left:300px;" v-show="[3].indexOf(psylDBConnection)>-1"> <img v-bind:src="imgSrc('json.png')" id="edjsonIcon" />Output:<span style="color:#FF8800;">Change</span><span><br/>Data Key rename<br/>List Key rename</span></div>
+    </div>
+    <div class="myPsylAnimatePanel" v-show="!AllRun">
+        <!--動畫選擇panel-->
+        <span v-on:click="main$m.$an.p.runStep8()" v-bind:style="((action)?'background-color:#DDD':'')">UI 渲染<img v-bind:src="main.pub.lib.src('dr.png')" /></span>
+    </div>
+    <img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" v-show="step==10" />
+    <span class="stepPsylTitle" v-show="step==10">{{((step>-1)?stepAry[step]:"")}}</span>
+    <div class="reSpace" v-show="step==10"></div>
+    <div style="width:100%;position:relative;" v-show="step==10">
+        <div class="sourceRange" style="height:700px;">
+            <!--show ui 階段-->
+            <span class="title" id="PSYLUIANStep" ><img v-bind:src="imgSrc('vue.png')" id="edVueIcon" style="height:20px;top:5px;" />&nbsp;Output API</span>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <div class="PsylDownLoadLine" v-show="[0].indexOf(psylVueUI)>-1" style="right:-115px;top:25px;border-color:#AAA;width:80px;transform:rotate(-30deg);" >
+                    <!--箭頭 虛線-->
+                    <img v-bind:src="main.pub.lib.src('dr.png')" />
+                </div>
+                <span class="title">Ajax</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('ajax.png')" id="edAjaxIcon" />&nbsp;Response
+                <div class="reSpace"></div>
+            </div>
+            <div class="reSpace"></div>
+            <div class="sourceRange">
+                <span class="title">Draw UI</span>
+                <div class="reSpace"></div>
+                <img v-bind:src="imgSrc('ui.png')" id="edUIIcon"/>&nbsp;Preview for client
+                <div class="reSpace"></div>
+            </div>
+        </div>
+        <div class="reSpace"></div>
+        <div class="PsylDownLoadLine" v-show="[1].indexOf(psylVueUI)>-1" style="left:205px;top:175px;border-color:#AAA;width:250px;transform:rotate(100deg);">
+            <!--箭頭 虛線 Psyl vue.js to Animate Model-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine"  v-show="[1,2].indexOf(psylVueUI)>-1"  style="left:260px;top:105px;border-color:#DDD;width:170px;height:60px;transform:scaleX(-1) rotate(110deg);border-left:2px dashed #DDD;">
+            <!--箭頭 虛線 Psyl.js to Vue.js-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine" v-show="[2].indexOf(psylVueUI)>-1" style="left:260px;top:285px;border-color:#AAA;width:70px;transform:rotate(-120deg);" >
+            <!--箭頭 psyl animate to html 虛線-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine" v-show="[1,2].indexOf(psylVueUI)>-1" v-bind:style="'left:280px;top:212px;border-color:'+((psylVueUI==1)?'#666':'#AAA')+';width:65px;transform:rotate(180deg);'" >
+            <!--箭頭 vue.js to html 虛線-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine" v-show="[2].indexOf(psylVueUI)>-1" style="left:353px;top:173px;border-color:#AAA;width:235px;transform:rotate(270deg);" >
+            <!--箭頭 PSYL Extend SDK Mode to psyl vue.js 虛線-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine"  v-show="[1].indexOf(psylVueUI)>-1"  style="left:315px;top:255px;border-color:#AAA;width:35px;transform:rotate(68deg);" >
+            <!--箭頭 psyl js to PSYL Extend SDK Mode 虛線-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine"  v-show="[1].indexOf(psylVueUI)>-1"  style="left:240px;top:300px;border-color:#666;width:140px;transform:scaleX(-1) rotate(95deg);" >
+            <!--箭頭 vue js to event Html 虛線-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine"  v-show="[2].indexOf(psylVueUI)>-1"  style="left:245px;top:325px;border-color:#AAA;width:90px;transform:rotate(-100deg);" >
+            <!--箭頭 event Html to html 虛線-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="PsylDownLoadLine" style="left:335px;top:377px;border-color:#AAA;width:40px;transform:rotate(90deg);" v-show="[2].indexOf(psylVueUI)>-1">
+            <!--箭頭 虛線 PSYL Animate_Mode to event Htmln-->
+            <img v-bind:src="main.pub.lib.src('dr.png')" />
+        </div>
+        <div class="psylOutputViewObj" style="position:absolute;top:20px;left:350px;width:250px;" v-show="[0,1,2].indexOf(psylVueUI)>-1" ><img v-bind:src="main.pub.lib.src('logo.png')" id="edPsylIcon" />PSYL Vue.js</div>
+        <div class="psylOutputViewObj" style="position:absolute;top:230px;left:348px;width:250px;" v-show="[1,2].indexOf(psylVueUI)>-1" ><img v-bind:src="imgSrc('vue.png')" id="edVueIcon"  />Vue.js</div>
+        <div class="psylOutputViewObj" style="position:absolute;top:230px;left:230px;width:250px;"  v-show="[1,2].indexOf(psylVueUI)>-1"><img v-bind:src="imgSrc('htmldoc.png')" id="edHtmlIcon" /></div>
+        <div class="psylOutputViewObj" style="position:absolute;top:390px;left:270px;width:250px;" v-show="[1,2].indexOf(psylVueUI)>-1" ><img v-bind:src="imgSrc('htmldoc.png')" id="edHtmlIcon" />&nbsp;Event<span>(Load/Include)</span></div>
+        <div class="psylOutputViewObj" style="position:absolute;top:65px;left:270px;width:250px;" v-show="[1,2].indexOf(psylVueUI)>-1" ><img v-bind:src="imgSrc('obj.png')" id="edObjIcon"  />DataBing:<span>Action[get;set;]</span></div>
+        <div class="psylOutputViewObj" style="position:absolute;top:80px;left:220px;width:250px;" v-show="[0].indexOf(psylVueUI)>-1" ><img v-bind:src="imgSrc('api.png')" id="edApiIcon" /></div>
+        <div class="psylOutputViewObj" style="position:absolute;top:325px;left:300px;width:250px;" v-show="[1,2].indexOf(psylVueUI)>-1" ><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />&nbsp;PSYL Animate_Model</div>
+        <div class="psylOutputViewObj" style="position:absolute;top:285px;left:350px;width:250px;" v-show="[1,2].indexOf(psylVueUI)>-1" ><img v-bind:src="imgSrc('obj.png')" id="edObjIcon" />&nbsp;PSYL Extend:<span>SDK Model</span></div>
+    </div>
+</div>

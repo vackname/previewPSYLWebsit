@@ -1,0 +1,217 @@
+﻿
+#pcPanel
+{/* 商城框架 */
+    #clientProductEditPanel
+    {/* 商店主 定位框架 */
+        position:relative;width:100%;
+        padding-bottom:80px;
+        .MGPS_title{
+            color:#AAA;
+            font-size:12px;
+        }
+    
+        .MGPS_label{
+            color:#555;
+            font-size:15px;
+        }
+        .MGPSpublishMes
+        {/* 商品發佈狀態 */
+            color:#FFF;
+            background-color:#AAA;
+            font-size:12px;
+            padding:3px;
+            border-radius: 9px;
+            img
+            {
+                width:15px;
+                position:relative;
+                top:3px;
+                padding-right:3px;
+            }
+        }
+        .MGPS_row{
+            border-top:5px solid #CCC;
+            width:100%;
+            height:30px;
+        }
+    
+        .MGPS_rowtb
+        {
+            text-align:left;width:100%;height:35px;
+        }
+    
+        .MGPS_rowtb_left
+        {
+            float:left;
+            width:49%;
+        }
+    
+        .MGPS_rowtb_right
+        {
+            float:right;width:49%;
+            .itemPanel
+            {/*content 項目 panel*/
+                width:100%;height:30px;
+            }
+        }
+        
+        .MGPS_rowtb_line{
+            position:relative;margin-left:auto;margin-right:auto;width:90%;border-top:1px solid #EEE;
+        }
+
+        #productloadprogress
+        {/*商品共用load 動畫*/
+                background-color:#FF3300;
+                position:fixed;
+                margin-left:auto;
+                margin-right:auto;
+                width:100%;
+                top:0px;
+                height:3px;
+                z-index:199;
+        }
+
+        .MGPSTitleBT
+        {/* 商品編緝操作說明 */
+            position:relative;margin-left:auto;margin-right:auto;max-width:500px;width:95%;color:#00BBFF;font-size:15px;font-weight:bold;cursor:pointer;
+            padding-top:130px;
+            padding-bottom:10px;
+            
+            .MGPSTitleMark
+            {/*提示說明*/
+                color:#999;font-size:12px;
+            }
+            .profit
+            {/* 營業站成 panel*/
+                font-size:12px;
+                color:#AAA;
+                span
+                {
+                    color:#FFF;padding:6px;border-radius:250px;background-color:#FF8800;
+                }
+                img
+                {
+                    width:15px;
+                    padding-right:6px;
+                    position:relative;
+                    top:3px;
+                }
+            }
+        }
+
+        #MGPSContentPanel
+        {/* 商品資料內容 */
+            width:100%;
+            #prEmptyMark
+            {/* 商品無資料狀態提示 label */
+                width:100%;text-align:center;color:#AAA;
+            }
+            #MGPSLoad
+            {/*載入中提示panel*/
+                font-size:12px;color:#555;width:100%;text-align:center;position:absolute;bottom:20px;width:100%;left:0px;background-color:#FFF;opacity:0.8;
+            }
+
+            #MGPSMorePage
+            {/* Page more button */
+                width:90%;height:30px;cursor:pointer;text-align:center;border:1px solid #FF8800;position:relative;margin-left:auto;margin-right:auto;max-width:500px;
+
+                img
+                {/* 提示mark*/
+                    position:relative;top:5px;width:15px;
+                }
+            }
+
+            #MGPSListPanel
+            {/* 商品Item list panel*/
+                position:relative;margin-left:auto;margin-right:auto;width:95%;max-width:600px;
+
+
+                .MGPSMark
+                {/* 套餐備註 mark */
+                    border-top:1px solid #EEE;width:90%;padding-left:5px;padding-right:5px;height:135px;padding-top:5px;overflow-y:auto;table-layout: fixed;word-wrap:break-word;
+                }
+
+                
+                #MGPSProductTool
+                {/* 設定tool 框架 */
+                    width:100%;
+                    #publishMarkError
+                    {/* 客戶商品審核失敗mark */
+                        padding:3px;
+                        border-radius: 6px;
+                        img
+                        {
+                            position:relative;
+                            cursor:pointer;
+                            top:6px;
+                            width:25px;
+                        }
+                    }
+                    #sNu
+                    {/* 流水號panel */
+                        font-size:12px;color:#FFF;background-color:#555;
+                    }
+                    #sTitle
+                    {/* 標題 */
+                        color:#00BBFF;font-size:15px;
+                    }
+
+                    .MGPSProductPanel
+                    {/* 設定功能項 */
+                        float:right;
+                        width:200px;
+                        text-align:right;
+                        padding-right:5px;
+                        .ctrBt
+                        {/* 設定功能 button img*/
+                            width:20px;position:relative;top:3px;cursor:pointer;
+                        }
+                
+                        .MGPSMoveBT
+                        {/* 上移下移 button*/
+                            position:relative;top:-3px;border-radius:5px;cursor:pointer;background-color:#FFF;box-shadow:2px 2px 5px #888888;
+                        }
+                    }
+                }
+
+                #MGPSProductContent
+                {/*目前設定內容資訊*/
+                    width:100%;border:1px solid #eee;
+
+                    .MGPSIMG
+                    {/*商品圖片 panel*/
+                        position:relative;
+                        margin-left:auto;margin-right:auto;left:20%;width:90px;height:90px;text-align:center;padding:5px;background-color:#EEE;overflow:hidden;
+                        top:20px
+                    }
+
+                    .MGPSIMGCount
+                    {/*商品圖片 計數提示 label*/
+                        position:absolute;width:40px;text-align:right;left:30px;top:100px;color:#FF8800;background-color:#000;
+                        padding-right:5px;
+                        border-radius:20px;
+                    }
+
+                    #MGPS_DPanel
+                    {/* 折扣設定panel */
+                        width:100%;
+                        position:relative;
+                        padding-top:9px;
+                        padding-bottom:9px;
+                        text-align:center;
+                        .discount
+                        {
+                            font-size:12px;
+                            color:#00BBFF;
+                        }
+                    }
+
+                    #MGPS_DPage
+                    {/* 更多折扣設定資訊 button */
+                        width:100%;text-align:center;font-size:12px;color:#999;
+                    }
+                }
+            }
+        }
+    }
+}

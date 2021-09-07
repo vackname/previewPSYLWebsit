@@ -1,0 +1,45 @@
+﻿<div id="sfPanel">
+        <div id="searchTool"> 
+            <div>
+                <select v-model="adr.shfeecancel">
+                    <option value="0">運費</option>
+                    <option value="1">免運</option>
+                </select>
+                <select v-model="adr.country">
+                        <option v-bind:value="val.val" v-for="(val,nu) in main.pub.adrAry">{{val.key}}</option>
+                </select>
+                <select v-model="adr.city">
+                    <option value="all">全域</option>
+                    <option v-bind:value="val.city" v-for="(val,nu) in ((adrLoad!=null)?((adrLoad.get('data')!='null')?adrLoad.get('data'):[]):[])">{{val.city}}</option>
+                </select>
+                <input type="button" class="sfMG_bt" v-on:click="main$m.$m.sf.insert()" value="新增" style="opacity:0.5;" />
+             </div>
+            <div style="border-bottom:1px solid #AAA;"><input type="text" v-model="ser" /><input type="button" class="sfMG_bt" v-on:click="main$m.$m.sf.ser()" value="搜尋" /></div>
+       </div>
+       <div id="sfDataPanel">
+           <div style="width:100%;text-align:center;padding-top:10px;color:#AAA;" v-show="list.length==0">-無資料-</div>
+           <div v-for="(val,nu) in list" class="datarow">
+               <table>
+                   <tr>
+                        <th>{{val.country}}-{{((val.city!='all')?val.city:'全域')}}{{((val.shfeecancel)?'免運':'')}}</th>
+                        <td class="input"><input type="text" v-model="val.name" />&nbsp;(format Name)</td>
+                        <td rowspan="3">
+                            <input type="button" class="sfMG_bt" v-on:click="main$m.$m.sf.edit(val)" value="儲存" />
+                            <input type="button" class="sfMG_bt" v-on:click="main$m.$m.sf.del(val)" value="刪除" />
+                        </td>
+                    </tr>
+                    <tr v-show="!val.shfeecancel">
+                        <th>容積單位</th>
+                        <td class="input"><input type="text" v-model="val.shunit" /><img v-bind:src="main.pub.lib.src('close.png')" class="btImgIcon" v-show="val.shunit*0!=0" /></td>
+                    </tr>
+                    <tr >
+                        <th>{{((!val.shfeecancel)?"運費":"滿額")}}</th>
+                        <td class="input"><input type="text" v-model="val.fee" /><img v-bind:src="main.pub.lib.src('close.png')" class="btImgIcon" v-show="val.fee*0!=0" /></td>
+                    </tr>
+                    <tr >
+                        <td colspan="3">{{val.mark}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</div>

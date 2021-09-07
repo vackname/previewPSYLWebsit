@@ -1,0 +1,239 @@
+﻿#myDataPanel
+{
+    #myPsylPanel
+    {/* psyl 說膽*/
+        width:100%;
+        position:relative;
+        .myPsylAnimatePanel
+        {/* Action 按鈕總成 */
+            color:#333;
+            line-height: 366%;
+            span
+            {
+                font-size:12px;
+                cursor:pointer;
+                color:#FFF;
+                background-color:#999;
+                padding:3px;
+                border-radius:6px;
+                box-shadow: 1px 1px 2px #AAA;
+                img
+                {
+                    position:relative;
+                    top:2px;
+                    width:10px;
+                    padding-left:9px;
+                }
+            }
+        }
+        .sourceRange
+        {/* 容器框架 */
+            position:relative;
+            width:94%;
+            max-width:230px;
+            padding:3%;
+            border:1px dashed #DDD;
+            border-radius:6px;
+            color:#AAA;
+            font-size:12px;
+            background-color:#FFF;
+            .title
+            {
+                position:absolute;
+                padding:3px;
+                color:#FFF;
+                background-color:#333;
+                border-radius:6px;
+                top:-20px;
+                left:-3px;
+            }
+        }
+
+        .sourceRange2
+        {/* 容器框架 */
+            position:relative;
+            width:94%;
+            padding:3%;
+            border:1px dashed #DDD;
+            border-radius:6px;
+            color:#AAA;
+            font-size:12px;
+            background-color:#FFF;
+            .title
+            {
+                position:absolute;
+                padding:3px;
+                color:#FFF;
+                background-color:#333;
+                border-radius:6px;
+                top:-20px;
+                left:-3px;
+            }
+        }
+
+
+        .PsylMVVM
+        {
+            color:#FFF;
+            font-size:12px;
+            padding-top:40px;
+            padding-bottom:40px;
+            width:130px;
+            text-align:center;
+            border-radius:500px;
+            position:absolute;
+            left:300px;
+            opacity:0;
+        }
+
+        .PsylJoinMVVM
+        {/* 連結Right 箭頭 虛線 */
+            border-top:2px dashed #AAA;
+            position:absolute;
+            width:100px;
+            text-align:right;
+            opacity:0px;
+            img
+            {
+                width:10px;transform:rotate(-90deg);position:relative;top:-13px;right:-5px;
+            }
+        }
+
+        .psylVueBudleObj
+        {/* Psyl bundle Release 資料類型 */
+            position:absolute;
+            width:200px;
+            text-align:left;
+            left:250px;
+            span
+            {
+                position:relative;
+                top:-15px;
+                left:-20px;
+                color:#AAA;
+            }
+        }
+
+        .psylDBVueMapObj
+        {/* Psyl vue.js mapping DBConfig*/
+            position:absolute;
+            width:200px;
+            text-align:left;
+            left:250px;
+            span
+            {
+                position:relative;
+                color:#AAA;
+            }
+        }
+
+        .psylDBConnectionObj
+        {/* Psyl DBconnection */
+            position:absolute;
+            width:200px;
+            text-align:left;
+            left:250px;
+            span
+            {
+                position:relative;
+                color:#AAA;
+            }
+        }
+
+        .psylOutputViewObj
+        {/* Output View */
+            position:absolute;
+            width:200px;
+            text-align:left;
+            left:250px;
+            span
+            {
+                position:relative;
+                color:#AAA;
+            }
+        }
+
+        .PsylDownLoadLine
+        {/* 連結Right Psyl 載入渲染 箭頭 虛線 */
+            border-top:2px dashed #AAA;
+            position:absolute;
+            width:100px;
+            text-align:right;
+            img
+            {
+                width:10px;transform:rotate(-90deg);position:relative;top:-13px;right:-5px;
+            }
+        }
+
+        .PsylCombineNetoCoreLine
+        {/* 連結Right Psyl bundle Release 箭頭 虛線 */
+            border-top:2px dashed #AAA;
+            position:absolute;
+            width:100px;
+            text-align:right;
+            img
+            {
+                width:10px;transform:rotate(-90deg);position:relative;top:-13px;right:-5px;
+            }
+        }
+
+        .PsylJoin
+        {/* 連結Right 虛線 */
+            border-top:2px dashed #AAA;
+            border-right:2px dashed #AAA;
+            border-bottom:2px dashed #AAA;
+            position:absolute;
+            width:100px;
+            color:#333;
+            text-align:right;
+            span
+            {
+                color:#FFF;
+                background-color:#FF8800;
+                padding:2px;
+            }
+        }
+
+        .stepPsylTitle
+        {/* step note */
+            padding:3px;
+            font-size:12px;
+            color:#666;
+            border-radius:6px;
+            border:1px solid #333;
+            position:relative;
+            top:-15px;
+        }
+        
+        .reSpace
+        {/* 撐開空間 */
+            width:100%;
+            height:30px;
+            position:relative;
+        }
+
+        #edApiIcon,#edDevIcon,#edAjaxIcon
+        {
+            height:60px;
+        }
+        #edHtmlIcon,#edJSIcon,#edTSIcon,#edscssIcon,#edNetCoreIcon,#edVueIcon,#edUIIcon,#edObjIcon,#edDBIcon,#edjsonIcon
+        {
+            height:40px;
+        }
+
+        #edLogIcon,#edURLIcon,#edDBasyncIcon
+        {
+            height:30px;
+        }
+
+        #edPsylIcon
+        {/* psyl bundle */
+            padding:3px;width:32px;background-color:#333;border-radius:200px;
+        }
+
+        #edHtmlIcon,#edJSIcon,#edTSIcon,#edPsylIcon,#edscssIcon,#edNetCoreIcon,#edVueIcon,#edApiIcon,#edUIIcon,#edObjIcon,#edDBIcon,#edjsonIcon,#edURLIcon,#edLogIcon,#edAjaxIcon,#edDBasyncIcon,#edDevIcon
+        {
+            position:relative;
+        }
+    }
+}

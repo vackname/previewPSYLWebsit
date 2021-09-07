@@ -1,0 +1,19 @@
+﻿<div id="nEditTool">
+    <div id="ctr">
+        <div class="ctrLi" style="text-align:center;">
+            <select v-model="selfclassmain">
+                <option value="333">{{main$m.getLang('input').allcontent}}</option>
+                <option v-bind:value="val.key" v-for="(val,nu) in main$m.newsctcs">{{main.pub.catchLangName(val.nameAry)}}</option>
+            </select><span style="color:#AAA;font-size:12px;">→</span><span v-show="selfclassmain=='333'" style="color:#AAA;font-size:12px;">({{main$m.getLang('input').unknow}})</span>
+            <select v-model="selfclass" v-show="selfclassmain!='333'">
+                <option value="999">{{main$m.getLang('input').allcontentclass}}</option>
+                <option v-bind:value="val.key" v-for="(val,nu) in newsctcsSec">{{main.pub.catchLangName(val.nameAry)}}</option>
+            </select>
+        </div>
+        <div class="ctrLi">
+            <table id="serBox">
+                <tr><td id="textbox"><input type="text" v-model="InputSer" /></td><td id="NS_bt" v-on:click="main$m.$m.main.serData(true)"><img v-bind:src="main.pub.lib.src('searchIcon.jpg')" /></td></tr>
+            </table>
+        </div>
+    </div>
+</div>

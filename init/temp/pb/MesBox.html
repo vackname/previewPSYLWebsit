@@ -1,0 +1,27 @@
+﻿<div style="position:fixed;width:100%;top:0px;left:0px;z-index:199;" id="MesBox" v-show="open">
+    <div style="position:fixed;height:2000px;opacity:0.5;width:100%;background-color:#000;top:0px;left:0px;"></div>
+    <div class="MesBox_container">
+        <div class="MesBox_titleBar">
+              <!-- message title -->
+            <div style="float:right;"><img v-bind:src="main.pub.lib.src('close.png')" class="MesBox_CloseBT" v-on:click="close()" /></div>
+            &emsp;{{title}}
+        </div>
+        <div style="width:100%;height:20px;">
+            <div style="width:100%;height:3px;background-color:#AAA;" v-show="type==2">
+                <div v-bind:style="'height:3px;background-color:#6688FF;width:'+(((countDownTotal*10-countDown)/(countDownTotal*10))*100)+'%;'"></div>
+            </div>
+        </div>
+        <div class="MesBox_contentImg" v-show="imgicon!=''"><img v-bind:src="imgicon" id="MesIimgIcon" /></div><!--小圖設置-->
+        <div class="MesBox_content" v-html="content"></div>
+        <div class="MesBox_btBar" v-show="fun==null || [0,2].indexOf(type)>-1">
+              <!-- 確認鈕 -->
+            <input type="button" style="width:80px;" v-bind:value="BoxMes.get('confirm')" v-on:click="Agree()" />
+        </div>
+        <div class="MesBox_btBar" v-show="fun!=null && [1,3].indexOf(type)>-1">
+            <textarea v-show="type==3" v-bind:style="'width:200px;height:70px;padding:3px;'+((mark=='')?'border:1px solid #FF3300;':'')" v-model="mark">
+            </textarea><br/>
+            <!-- 是否鈕 -->
+            <input type="button" v-bind:value="BoxMes.get('yes')" v-show="mark!='' || type!=3" v-on:click="Agree()" style="width:60px;" />&nbsp;&nbsp;<input type="button" v-bind:value="BoxMes.get('no')" v-on:click="close()" style="width:60px;"  />
+        </div>
+    </div>
+</div>

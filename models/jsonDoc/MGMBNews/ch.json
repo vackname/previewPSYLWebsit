@@ -1,0 +1,36 @@
+{
+    "error":
+    {
+        "limitDay":"已超過編緝時間!",
+        "nottranslate":"未支持翻譯",
+        "onlysupport":"謹支持"
+    },
+    "mes":
+    {
+        "delns":"是否刪除 文章？",
+        "delnscontent":"是否刪除 段落及照片/圖片？",
+        "dellabel":"是否移除(未儲存) 標籤？",
+        "delnscontentimg":"是否刪除 照片/圖片？",
+        "resavestart":"是否繼續儲存動作？",
+        "publish":"是否重新設定發佈？",
+        "createTrace":"是否建立此文章追蹤?"
+    },
+    "input":
+    {
+        "approve":"審核",
+        "extendlabel":"延申閱讀",
+        "eventlabel":"其它標籤",
+        "pagemore":"繼續閱讀",
+        "clickmore":"點擊我更多內容",
+        "unknow":"未知",
+        "notchoose":"未選取",
+        "detailnotchoose":"未選取分類",
+        "allcontent":"全部文章",
+        "allcontentclass":"全部分類",
+        "createarticle":"創建文章",
+        "wallpaper":"照片牆",
+        "createcontent":"創建內容",
+        "add":"新增",
+        "empty":"查詢無相關資料"
+    }
+}

@@ -1,0 +1,20 @@
+﻿<div id="Any_canvasPanel">
+    <div id="PayDayMain">
+        <div id="PayDaysequence"></div>
+        <div id="PayDayChart">
+          <div id="PayDayexplanation" style="visibility: hidden;">
+            <span id="PayDaypercentage"></span><br/>
+            月結銷售
+          </div>
+        </div>
+    </div>
+    <div id="errorAnyImg" v-if="error" >
+        <img v-bind:src="main.pub.lib.src('errorMes.png')"/>
+    </div>
+    <div id="PayDaySidebar">
+         <label for="PayDaytogglelegend"><input type="checkbox" id="PayDaytogglelegend" v-model="openTogglelegen" />註1</label><br/>
+        <div id="PayDaylegend" v-show="openTogglelegen" v-for="(val,nu) in color">
+            <div v-bind:style="'background-color:'+val.val+';'">{{val.key}} </div>
+        </div>
+    </div>
+</div>

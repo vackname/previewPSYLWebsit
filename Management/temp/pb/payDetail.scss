@@ -1,0 +1,56 @@
+﻿#MGPayPDD_rowPanel
+{/* 單據 商品項目主要框架 */
+    width:100%;padding-top:5px;
+    #MGPayPDDPanel
+    {/* 單據 商品項目content */
+        width:100%;border:1px solid #55AA00;padding-bottom:5px;padding-top:5px;
+        .MGPDD_rowtb
+        {
+            position:relative;text-align:left;width:100%;height:35px;
+            .productIcon
+            {/*商品 圖片提示Icon*/
+                position:absolute;
+                left:25px;
+                top:30px;
+                width:40px;
+            }
+        }
+
+        .MGPDD_rowtb_left
+        {
+            float:left;
+            padding-left:5%;
+        }
+
+        .MGPDD_rowtb_right
+        {
+            float:right;width:50%;
+        }
+        .MGPDD_rowtb_line{
+            position:relative;margin-left:auto;margin-right:auto;width:90%;border-top:1px solid #EEE;
+        }
+        #MGPDD_rowtb_right_setBt
+        {/* 套餐鈕 */
+            position:relative;
+            width:100%;
+            cursor:pointer;
+        }
+
+        #MGPDD_dataListPanel
+        {/* data list panel */
+            width:100%;padding-bottom:5px;
+        }
+
+        .MGPDD_label{
+            color:#555;
+            font-size:12px;
+        }
+
+        .MGPD_title
+        {
+            color:#333;
+            font-weight:bold;
+            font-size:13px;
+        }
+    }
+}

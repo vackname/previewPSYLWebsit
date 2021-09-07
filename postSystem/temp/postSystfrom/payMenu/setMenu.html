@@ -1,0 +1,33 @@
+﻿<div id="p_psf_p_SetPayMenuPanel" >
+    <div id="BG"></div>
+    <div id="FixedPanel">
+        <div id="chooseNuPanel">
+            <div id="closeBt" v-on:click="close()" >
+                <img v-bind:src="main.pub.lib.src('closeB.png')" />&nbsp;{{main$m.getLang('set')}}
+            </div>
+            <div v-on:click="menuModelFun()" id="menuModel"> 
+                <div id="add"> Add </div>
+                <div id="old"> Menu </div>
+            </div>
+        </div>
+        <div v-bind:style="'background-color:#FFF;'+((ckCashError)?'border:2px solid #FF3300;':'')" id="chooseModel">
+            <div v-for="(val,nu) in setList" class="menuli" v-bind:name="'setproductnameMenu'+nu">
+                <div class="nu"><input type="button" v-bind:id="'setincrease'+nu" value="+" v-on:click="main$m.$m.set.increaseProduct(val,nu)"/>&nbsp;&nbsp;&nbsp;&nbsp;No.{{nu+1}}</div> 
+                {{main.pub.catchLangName(val.nameAry)}}
+                <div style="float:right;width:140px;">
+                    ×&nbsp;{{val.count}} <div style="float:right;width:70px;"><input type="button" v-bind:id="'setdecrease'+nu" value="-"v-on:click="main$m.$m.set.decreaseProduct(val,nu)" /></div>
+                </div>
+            </div>
+        </div>
+        <div id="productcar">
+            <button v-on:click="gotoChooseMenu()" id="productcarAddGoBt" v-show="menuModel=='add'">
+                <img v-bind:src="main.pub.lib.src('product.png')" style="width:90%;" />
+            </button>
+            <div id="chooseNuPage">
+            <select v-model="chooseNu">
+                <option v-for="(val,nu) in new Array(group.length)" v-bind:value="nu">Group {{nu+1}}</option>
+            </select>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿<div id="protalPanl">
+    <div id="protalList">
+            <img id="protalPanleImg" v-bind:src="((protalImg!=null)?protalImg.src(INDEOXimgary[indexNu]):'')" v-bind:style="'margin-top:'+mainTemp.topRemove+'px'"/>
+            <div id="titleProtalPnale1" style="line-height:0%;">
+                <span id="tpptur1">伴手</span><span id="tpptur2">有你</span>&nbsp;<span id="tpptur3">有禮</span><span id="tpptur4">有我</span>
+            </div>
+            <div id="titleProtalPnale2">
+               要做的事很多,<br/>
+               那顆曾經人文關懷的種子，已逐漸發芽茁壯！
+            </div>
+    </div>
+    <table id="TouchTool">
+        <tr>
+            <td v-on:click="mainTemp.$m.h.tur.goaboutStory()">禾氣合秝<img class="dr" v-bind:src="main.pub.lib.src('dr.png')"/></td>
+            <td v-on:click="mainTemp.$m.h.pc.goProductTemp()">{{LangTitle('productTemp')}}<img class="dr" v-bind:src="main.pub.lib.src('dr.png')"/></td>
+            <td v-on:click="mainTemp.$m.h.ncc.GoInNewsccIndex()">{{LangTitle('newsccvue')}}<img class="dr" v-bind:src="main.pub.lib.src('dr.png')"/></td>
+            <td v-on:click="mainTemp.$m.h.ac.GoIndex()">亻<span style="color:#006030;">半</span>{{LangTitle('space')}}<img class="dr" v-bind:src="main.pub.lib.src('dr.png')"/></td>
+            <td v-on:click="mainTemp.$m.h.ns.GoInNewsIndex()"> {{LangTitle('newsvue')}}<img class="dr" v-bind:src="main.pub.lib.src('dr.png')"/></td>
+            <td v-on:click="mainTemp.$m.h.tur.goinvite()">{{LangTitle('invite')}}<img class="dr" v-bind:src="main.pub.lib.src('dr.png')"/></td>
+            <td v-on:click="searchBox=!searchBox"><span style="color:#AAA;">{{LangTitle('ser')}}</span><img v-bind:src="main.pub.lib.src(((searchBox)?'dr.png':'searchIcon.jpg'))" style="padding-left:6px;position:relative;top:3px;width:15px;"/></td>
+        </tr>
+    </table>
+    <div style="position:relative;width:100%;">
+        <!--search bar-->
+        <div id="serProtal" v-show="searchBox">
+            <table id="tbBox">
+                <tr><td id="serBox"> <input type="text" v-model="mainTemp.searchTextBox" placeholder=" search" v-on:keyup.enter="mainTemp.$m.h.tur.GoInSearch()"/></td><td id="serBt" v-on:click="mainTemp.$m.h.tur.GoInSearch()"><img v-bind:src="main.pub.lib.src('searchIcon.jpg')"/></td></tr>
+            </table>
+            <div id="searchProtalBox">
+                <span v-show="main$m.searchTxt==''" style="color:#FF3300" >error search</span>
+                <span v-show="main$m.searchTxt!=''">{{main$m.searchTxt.substr(0,6)}}...<img v-bind:src="main.pub.lib.src('searchIcon.jpg')" style="width:10px;"/></span>
+            </div>
+        </div>
+    </div>
+    <div style="border-bottom:1px solid #D4E9E2;width:100%;height:35px;cursor:pointer;" v-on:click="showAbout=!showAbout"></div>
+    <div style="width:100%;height:5px;text-align:center;cursor:pointer;" v-on:click="showAbout=!showAbout">
+        <img v-bind:src="main.pub.lib.src(((showAbout)?'dr.png':'ur.png'))" style="position:relative;width: 15px;top:-8px;opacity:0.3;"/>
+    </div>
+    <component v-bind:is="v.about" v-show="showAbout"></component>
+
+</div>

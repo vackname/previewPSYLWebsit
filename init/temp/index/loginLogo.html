@@ -1,0 +1,32 @@
+﻿<div id="loginAnPanel">
+    <img v-bind:src="mainTemp.img.src('login_mb.png')" id="loginAnMB" style="width:50px;" />
+    <img v-bind:src="mainTemp.img.src('login_key.png')" id="loginAnKey" style="width:40px;" />
+    <img v-bind:src="mainTemp.img.src('login_Arm.png')" id="loginAnARM"  style="width:40px;" />
+</div>
+<style>
+#loginAnPanel
+{/*login 動畫樣版*/
+    position:relative;
+    left:-6px;
+    width:70px;
+    cursor:pointer;
+    z-index:199;
+}
+#loginAnMB
+{/*人物 img*/
+    position:relative;
+    width:100%;
+}
+#loginAnKey
+{/*key img*/
+    position:absolute;
+    top:28px;
+    left:15px;
+}
+#loginAnARM
+{/*人物手臂img*/
+    position:absolute;
+    top:25px;
+    left:17px;
+}
+</style>

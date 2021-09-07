@@ -1,0 +1,300 @@
+﻿#pcPanel
+{/* 商城框架 */
+    #pcDetilPanel
+    {/* 商品名細 */
+        width:100%;position:relative;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        padding-top:20px;
+        padding-bottom:180px;
+       
+        #toIndex
+        {/* 由訊息page 返回 */
+            position:relative;
+            width:150px;
+            left:0px;
+            padding-top:30px;
+            padding-bottom:30px;
+            cursor:pointer;
+            font-size:15px;
+            color:#FFF;
+            span
+            {
+                padding:3px;
+                background-color:#555;
+                border-radius: 9px;
+            }
+            .goto
+            {
+                position:relative;
+                top:3px;
+                width:15px;
+            }
+        }
+        #pContent
+        {/* 內容框架 */
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            width:95%;
+            max-width:1010px;
+            #leftPanel
+            {/* 左邊浮動框架 */
+                #openPCImgBt
+                {/* 開起商品圖 預覽 */
+                    position:relative;margin-left:auto;margin-right:auto;
+                    overflow:hidden;
+                    text-align:center;overflow:hidden;border-radius:10px;cursor:pointer;
+                    box-shadow:1px 1px 3px #AAA;
+                    img
+                    {  /* 商品圖片 */
+                        width:98%;cursor:pointer;
+                    }
+                    .discount
+                    {/* 折顯示 */
+                        position:absolute;
+                        text-align:center;
+                        top:10px;
+                        right:-25px;
+                        padding:3px;
+                        width:120px;
+                        font-size:15px;
+                        color:#FFF;
+                        background-color: #BB5500;
+                        transform:rotate(40deg);
+                        opacity:0.8;
+                    }
+                }
+
+                #TouchPanel
+                {/* 選頁鈕 */
+                    width:95%;
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                    top:-30px;
+                    .left,.right
+                    {
+                        cursor:pointer;
+                        width:30px;
+                        opacity:0.8;
+                        text-align:center;
+                        background-color:#FFF;
+                        img
+                        {
+                            height:20px;
+                            position:relative;
+                            top:3px;
+                        }
+                    }
+
+                    .left
+                    {
+                        float:left;
+                        border-top-left-radius:20px;
+                        border-bottom-left-radius:20px;
+                    }
+                    .right
+                    {
+                        float:right;
+                        border-top-right-radius:20px;
+                        border-bottom-right-radius:20px;
+                    }
+                    .clear
+                    {/*照片牆 阻斷 清除float*/
+                        width:100%;
+                        clear:both;
+                    }
+                }
+
+                .touchPageShow
+                {/*分頁提示球*/
+                    position:relative;text-align:center;
+                    width:70%;
+                    margin-left:auto;
+                    margin-right:auto;
+                    text-align:center;
+                    top:-45px;
+                    padding-bottom:15px;
+                    opacity:0.8;
+                    table
+                    {
+                        position:relative;
+                        margin-left:auto;
+                        margin-right:auto;
+                        td
+                        {
+                            padding:2px;
+                            width:6px;
+                            div{
+                                width:6px;
+                                height:6px;
+                                background-color:#DDD;
+                                border:1px solid #AAA;
+                                border-radius:60px;
+                                cursor:pointer;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #rightPanel
+            {/* 右邊浮動框架 */
+                #pdTitle
+                {/*商品標題*/
+                    position:relative;
+                    width:95%;
+                    margin-left:auto;
+                    margin-right:auto;
+                    text-align:left;
+                    font-size:15px;
+                    padding-top:9px;
+                    padding-bottom:10px;
+                    background-color:#00754A;
+                    border:1px solid #00754A;
+                    border-top-left-radius:6px;
+                    border-top-right-radius:6px;
+                    span
+                    {
+                        color:#FFF;padding:2px;
+                    }
+                    #tagAddLabel
+                    {/* tag bag */
+                        position:relative;
+                        width:20px;
+                        cursor:pointer;
+                        padding:3px;
+                        border-radius:6px;
+                        opacity:0.8;
+                        background-color:#FFF;
+                    }
+                }
+
+                #pdContent
+                {/*商品內容*/
+                    position:relative;
+                    width: 91%;
+                    padding:2%;
+                    text-align:left;
+                    margin-left:auto;
+                    margin-right:auto;
+                    color:#666;
+                    font-size:15px;
+                    border:1px solid #EEE;
+                    #pdCatch
+                    {/* 金額 */
+                        position:relative;margin-left:auto;
+                        margin-right:auto;
+                        text-align:right;
+                        width:98%;
+                        text-align:right;
+                        font-size:12px;
+                        span
+                        {
+                            color:#AAA;padding:3px;
+                        }
+                    }
+
+                    #pcStatusPanel
+                    {/* 商品狀態內容 panel */
+                        position:relative;margin-right:auto;margin-left:auto;width:93%;color:#BB5500;font-size:18px;font-weight:bold;opacity:0.8;padding:5px;height:50px;top:9px;
+                        #setMarkPanel
+                        {/* 是否為套餐提示 panel */
+                            position:absolute;top:5px;left:15px;width:100px;opacity:0.7;
+                            span
+                            {/* 字符提示label */
+                                background-color:#000;font-size:15px;color:#EEE;border-radius:9px;
+                            }
+                        }
+                        #pcCarBt
+                        {/* 放入購物車 按鈕 */
+                            float:right;width:33px;height:30px;padding-top:2px;border-radius:50px;border:1px solid #BB5500;text-align:center;opacity:0.7;
+                            cursor:pointer;
+                            #chooseIcon
+                            {/* 已被選擇 mark icon img */
+
+                                width:20px;position:absolute;top:4px;right:-5px;
+                            }
+                            #ChooseCount
+                            {/* 已被選擇數量 */
+                                position:absolute;top:10px;right:30px;width:30px;height:28px;border-radius:70px;background-color:#222;color:#FFF;font-size:12px;font-weight:bold;text-align:center;padding-top:2px;opacity:0.7;
+                            }
+                            #btIcon
+                            {/* 放入購物車 按鈕 icon img */
+                                width:20px;position:relative;top:4px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width:900px) {
+                #leftPanel
+                {
+                    width:100%;
+                    #openPCImgBt
+                    {
+                        width:90vw;height:60vw; 
+                    }
+                }
+
+               #rightPanel
+               {
+                    width:100%;
+               }
+            }
+    
+            @media screen and (min-width:901px) and (max-width:1070px)  {
+                #leftPanel
+                {
+                    float:left;
+                    width:45vw;
+                    #openPCImgBt
+                    {
+                        width:45vw;height:30vw;
+                    }
+                }
+                #rightPanel
+                {
+                    float:right;
+                    width:45vw;
+                }
+
+                .clear
+                {/*照片牆 阻斷 清除float*/
+                    width:100%;
+                    clear:both;
+                }
+            }
+    
+            @media screen and (min-width:1071px){
+                #leftPanel
+                {
+                    float:left;
+                    width:50vw;
+                    max-width:600px;
+                    #openPCImgBt
+                    {
+                        width:50vw;height:33vw;
+                        max-width:600px;
+                        max-height:400px;
+                    }
+                }
+                #rightPanel
+                {
+                    float:right;
+                    width:50vw;
+                    max-width:380px;
+                }
+
+                .clear
+                {/*照片牆 阻斷 清除float*/
+                    width:100%;
+                    clear:both;
+                }
+            }
+        }
+    }
+}

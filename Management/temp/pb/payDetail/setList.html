@@ -1,0 +1,38 @@
+﻿<div id="SetPayMenuCheckoutPanel" v-show="open" >
+    <div id="SetPayMenuCheckoutBG"></div>
+    <div id="SPFixedPanel">
+        <div id="chooseNuPanel">
+            <div id="closeBt" v-on:click="close()" >
+                <img v-bind:src="main.pub.lib.src('closeB.png')"/>&nbsp;{{getLang("set")}}-{{main.pub.catchLangName(obj.nameAry)}}
+            </div>
+        </div>
+        <div class="chooseModel">
+            <div v-for="(val,nu) in ((chooseNu!=-1)?obj.sdata.add[chooseNu]:[])" class="SPSeTmenuli">
+                <div class="nu">&nbsp;&nbsp;&nbsp;No.{{nu+1}}</div> 
+                <span style="color:#FF8800;">+&nbsp;</span><span style="color:#555;">{{main.pub.catchLangName(val.nameAry)}}</span>
+                <div style="float:right;width:140px;">
+                    ×&nbsp;{{val.count}}
+                </div>
+            </div>
+            <div v-for="(val,nu) in ((chooseNu!=-1)?getOldList():[])" class="SPSeTmenuli">
+                <div class="nu">&nbsp;&nbsp;&nbsp;No.{{nu+((chooseNu!=-1)?obj.sdata.add[chooseNu]:[]).length+1}}</div> 
+                <span style="color:#555;">{{main.pub.catchLangName(val.nameAry)}}</span>
+                <div style="float:right;width:140px;">
+                    ×&nbsp;{{val.count}}
+                </div>
+            </div>
+            <div v-for="(val,nu) in ((chooseNu!=-1)?obj.sdata.del[chooseNu]:[])" class="SPSeTmenuli" style="text-decoration:line-through;color:#AAA;">
+                <div class="nu">&nbsp;&nbsp;&nbsp;No.{{nu+((chooseNu!=-1)?obj.sdata.add[chooseNu]:[]).length+((chooseNu!=-1)?getOldList():[]).length+1}}</div> 
+                {{main.pub.catchLangName(val.nameAry)}}
+                <div style="float:right;width:140px;">
+                    ×&nbsp;{{val.count}}
+                </div>
+            </div>
+        </div>
+        <div id="productcar">
+            <select v-model="chooseNu">
+                <option v-for="(val,nu) in new Array(obj.count)" v-bind:value="nu">Group {{nu+1}}</option>
+            </select>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+﻿
+<div id="Management_main">
+        <div v-show="turnLog" id="returnLog"><span v-on:click="mainTemp.$m.h.MG.gourlMGLog()">
+                <img v-bind:src="main.pub.lib.src('dr.png')" style="transform:rotate(90deg);"/>
+                <img v-bind:src="main.pub.lib.src('sys.png')"/>Log審核</span>
+        </div>
+        <component v-bind:is="v[VueName]" v-show="!logedit"></component>
+        <component v-bind:is="((logodownload)?v.MgLog:'')" v-show="logedit"></component>
+</div>

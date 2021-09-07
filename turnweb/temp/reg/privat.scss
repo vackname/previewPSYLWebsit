@@ -1,0 +1,25 @@
+﻿.PrivateContent
+{/* 文章 panel */
+    position: relative;
+    width: 95%;
+    padding-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    .privContent
+    {/** 內容 label */
+        position: relative;
+        width: 95%;
+        margin-bottom: 50px;
+        font-size: 12px;
+        margin-left: auto;
+        color: #999;
+    }
+
+    .privSUbj
+        {/** 標題 label */
+        width: 100%;
+        font-size: 15px;
+        font-weight: bold;
+        color: #555;
+    }
+}

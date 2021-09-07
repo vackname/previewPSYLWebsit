@@ -1,0 +1,39 @@
+﻿#Management_main
+{/* Management project */
+    #productSet
+    {/* 商品設定 */
+        #MGPSEPanel
+        {/*商品編緝 panel 主要頁版*/
+            #discountPanel
+            {/*折扣主要樣版*/
+                width:100%;
+                .rowtemp
+                {/*content*/
+                    position:relative;margin-left:auto;margin-right:auto;width:95%;
+                }
+
+                .btImgIcon
+                {/* img:提示 OR 功能鈕 */
+                    width:15px;opacity:0.9;position:relative;top:3px;
+                }
+
+                #dataPanel
+                {/* 已設定折扣資料panel */
+                    position:relative;border-top:1px solid #EEE;width:95%;padding-left:5px;padding-right:5px;height:240px;padding-top:5px;overflow-y:auto;
+                    #dataEmpty
+                    {/* 無資料 提示 label panel */
+                        text-align:center;width:100%;color:#999;font-size:12px;padding:5px;
+                    }
+                    #dataList
+                    {
+                        width:98%;
+                        .markContent
+                        {/* 備註content panel*/
+                            height:33px;overflow-y:auto;table-layout: fixed;word-wrap:break-word;width:100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

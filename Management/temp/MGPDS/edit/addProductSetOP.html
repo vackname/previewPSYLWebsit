@@ -1,0 +1,67 @@
+﻿<div id="addPPanel">
+    <div id="markPanel">
+        <span class="MGPSE_title">註1:(單位)欄位Enter鍵為儲存</span><br/>
+        <span class="MGPSE_title">註2:如單位設為零擇不打印為目錄</span>
+    </div>
+    <div  id="chooseModelPanel" v-on:click="addModel=!addModel">
+        <div id="chooseModelTemp">
+            <div style="float:left;width:115px;" v-show="addModel"><span style="color:#FFF;">.</span></div>
+            <div class="MGPS_e_apso_ckTitle">
+               <span>▲</span><span style="color:#FFF;">.</span>
+            </div>
+        </div>
+        <div style="width:100%;z-index:50;">
+            <span v-bind:class="((addModel)?'MGPSE_title':'MGPSE_titleChoose')">已建立Menu模式&nbsp;</span>
+            &nbsp;|&nbsp;
+            <span v-bind:class="((!addModel)?'MGPSE_title':'MGPSE_titleChoose')" >新增Menu模式&nbsp;</span>
+        </div>
+    </div>
+    <div class="addPanelsplit">
+        <div class="splitLinePanel"></div>
+    </div>
+    <div class="dataPanel" v-show="!addModel">
+        <div class="titlePanel" v-show="!load && dataList.length==0"><span class="MGPSE_title" >-尚未建立-</span></div>
+        <div class="dataTemp" v-bind:style="'background-color:#' + ((load)?'FF8800':'FFF') ">
+            <div class="listPanel" v-for="(val,nu) in dataList">
+                <div class="mathPanel">
+                    <div id="cel5">
+                        <img v-bind:src="main.pub.lib.src('delete.png')" v-on:click="main$m.$m.pos.delOption(val)"/>&nbsp;
+                        <span class="nu">&nbsp;{{((nu+1 >=100)?'':'0')+((nu+1 >=10)?'':'0')+(nu+1)}}&nbsp;</span>&nbsp;
+                    </div>
+                    <div id="cel4">{{main.pub.catchLangName(val.nameAry)}}</div>
+                    <div id="cel3">×</div>
+                    <div id="cel2"><span style="color:#FFF;" v-show="val.count*0==0">.</span><img v-bind:src="main.pub.lib.src('close.png')" v-show="val.count*0!=0" /></div>
+                    <div id="cel1"><input type="text" v-model="val.count" style="width:30px;" v-on:keyup.enter="main$m.$m.pos.editOption(val)" />&nbsp;&nbsp;<span style="color:#CCC;font-size:12px;">{{val.unit}}</span></div>
+                </div>
+                <div class="splitPanel">
+                    <div class="splitLinePanel"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dataPanel" v-show="addModel">
+        <div class="titlePanel"><input type="text" v-model="serinput" style="width:100px;"/><input type="button" class="MGPSE_bt" v-on:click="main$m.$m.pos.serAddOption(true)" value="搜尋" /><span class="MGPSE_title" >&nbsp;(謹非套餐搜尋條件)</span></div>
+        <div style="width:100%;height:10px;"></div>
+        <div id="addPLoad" v-show="load">載入中...<img v-bind:src="main.pub.lib.src('ajaxSearc.gif')"/></div>
+        <div class="pagePanel">
+            <div class="splitPanel">
+                <div class="splitLinePanel"></div>
+            </div>
+            <div class="titlePanel" v-show="!load && setOptions.length==0"><span class="MGPSE_title" >-目前無搜尋商品項目-</span></div>
+            <div style="width:100%;cursor:pointer;" v-on:click="val.ck=!val.ck" v-for="(val,nu) in setOptions">
+                <div class="setPPanel" v-bind:style="((val.ck)?'background-color:#'+((val.us)?'77DDFF;':'EFEFEF;'):'')">
+                    <div id="cel3" ><span v-bind:style="'background-color:#'+((val.us)?'555;':'AAA;')">&nbsp;{{((nu+1 >=100)?'':'0')+((nu+1 >=10)?'':'0')+(nu+1)}}&nbsp;</span>&nbsp;</div>
+                    <div v-bind:style="'color:'+ ((!val.us)?'#AAA;text-decoration:line-through;':'#777;')" id="cel2">{{main.pub.catchLangName(val.nameAry)}}&nbsp;</div>
+                    <div id="cel1"><img v-bind:src="main.pub.lib.src('ck.png')" v-show="val.ck && val.us" /></div>
+                </div>
+                <div class="splitPanel">
+                    <div class="splitLinePanel"></div>
+                </div>
+            </div>
+            <div id="pageMoreBt" v-on:click="main$m.$m.pos.serAddOption()" v-show="(setOptions.length != pageCount+nowRemoveCount()) && !load">
+                    more&nbsp;<img v-bind:src="main.pub.lib.src('add.png')"/>
+            </div>
+        </div>
+        <div id="menuAddPanel" ><input type="button" value="加入Menu" v-on:click="main$m.$m.pos.addOption()" /></div>
+    </div>
+</div>

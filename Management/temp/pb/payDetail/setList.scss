@@ -1,0 +1,106 @@
+﻿#MGPayPDD_rowPanel
+{/* 單據 商品項目主要框架 */
+    #SetPayMenuCheckoutPanel
+    {/*套餐menu 樣版*/
+        width:100%;
+        #SetPayMenuCheckoutBG
+        {/*背景遮罩*/
+            position:fixed;background-color:#000;top:0px;left:0px;width:100%;height:2000px;z-index:190;opacity:0.7;
+        }
+
+        #SPFixedPanel
+        {/*框架浮動定位框架*/
+            position:fixed;left:0px;top:80px;width:100%;z-index:199;
+            .chooseModel
+            {/* 選擇"組"模式選單/忝加模式list或原餐點list */
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                border-top:3px solid #999;
+                border-right:3px solid #999;
+                border-left:3px solid #999;
+                height:450px;
+                overflow-y:auto;
+                border-top-left-radius:20px;
+                border-top-right-radius:20px;
+                width:400px;
+                background-color:#FFF;
+            }
+
+            #chooseNuPanel
+            {/*選擇數套餐陣列修改鈕*/
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                width:380px;text-align:right;
+                font-size:30px;
+                height:35px;
+                top:8px;
+                z-index:199;
+                left:20px;
+                
+                #closeBt
+                {/*close 關閉鈕*/
+                    position:absolute;width:300px;cursor:pointer;left:-30px;top:-25px;
+                    font-size:20px;
+                    font-weight:bold;
+                    text-align:left;
+                    z-index:199;
+                    color:#FFF;
+                    img
+                    { /* 關閉視窗鈕img */
+                        position:relative;top:20px;width:40px;
+                    }
+                }
+            }
+
+            #productcar
+            {/* 套餐加入選擇鈕 */
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                border-top:2px solid #DDD;
+                border-bottom:3px solid #999;
+                border-right:3px solid #999;
+                border-left:3px solid #999;
+                height:50px;
+                border-bottom-left-radius:20px;
+                border-bottom-right-radius:20px;
+                width:400px;
+                text-align:center;
+                background-color:#FFF;
+                cursor:pointer;
+                padding-top:15px;
+                #chooseNuPage
+                {/* 套餐 group選頁 */
+                    position:absolute;top:20px;
+                } 
+
+                #productcarAddGoBt
+                {/* 套餐加入選擇 button */
+                    padding:5px;
+                    position:relative;
+                    border-radius:100px;
+                }
+            }
+
+            .SPSeTmenuli
+            {/* menu detail*/
+                padding:20px;
+                text-align:center;
+                width:95%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                border-bottom:1px solid #AAA;
+                font-size:20px;
+                font-weight:bold;
+                cursor:pointer;
+                .nu
+                {/* No 流水號 label */
+                    float:left;color:#AAA;font-size:12px;font-weight:bold;
+                }
+            }
+        }
+    }
+}

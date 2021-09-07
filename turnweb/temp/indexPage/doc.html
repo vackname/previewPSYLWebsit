@@ -1,0 +1,4 @@
+﻿<div style="width:100%;position:relative;padding-top:80px;">
+    <div v-show="!tag.show" style="width:100%;position:relative;padding-top:60px;font-size:18px;font-weight:bold;color:#FF8800;text-align:center;">Loading...</div>
+    <component v-bind:is="((tag.show && tag.content!=null)?v[main$m.$m.main.showTemp(tag.tp)]:'')"  v-bind:page="tag.content"></component>
+</div>

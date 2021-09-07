@@ -1,0 +1,156 @@
+﻿#Management_main
+{/* Management project */
+    #productSet
+    {/* 商品設定 */
+        #MGPSEPanel
+        {/*商品編緝 panel 主要頁版*/
+            #addPPanel
+            {/* 新增套餐 主要panel */
+                width:100%;
+                #markPanel
+                {/* 備註panel */
+                    width:100%;position:relative;padding-left:8%;
+                }
+                .addPanelsplit
+                {/* 分隔線樣版*/
+                    position:relative;margin-left:auto;margin-right:auto;width:90%;height:15px;
+                }
+                #chooseModelPanel
+                {/* 選擇模式panel 框架 */
+                    position:relative;margin-left:auto;margin-right:auto;width:90%;cursor:pointer;font-weight:bold;
+                    #chooseModelTemp
+                    {/* 模式 樣版 */
+                        width:100%;position:absolute;z-index:1;top:17px;
+                        .MGPS_e_apso_ckTitle
+                        {/* show add panel bt*/
+                            float:left;width:120px;text-align:center;font-size:12px;
+                        }
+                    }
+
+                    .MGPSE_titleChoose
+                    {/* 被選擇 title Label */
+                        color:#227700;
+                        font-weight:bold;
+                        font-size:15px;
+                    }
+                }
+                .dataPanel
+                {/* 資料框架 */
+                    width:100%;
+                    .titlePanel
+                    {/* title panel*/
+                        width:100%;text-align:center;
+                    }
+                    #splitPanel
+                    {/* 分隔線樣版*/
+                        font-size:12px;color:#555;width:100%;text-align:center;bottom:20px;width:100%;left:0px;background-color:#FFF;opacity:0.8;
+                    }
+
+                    #addPLoad
+                    {/* 處中提示 */
+                        font-size:12px;color:#555;width:100%;text-align:center;bottom:20px;width:100%;left:0px;background-color:#FFF;opacity:0.8;
+                        img
+                        {/* load img*/
+                            width:15px;
+                        }
+                    }
+                    .dataTemp
+                    {/* 資料panel */
+                        width:100%;overflow-y:auto;height:200px;
+                        .listPanel
+                        {/* 資料List panel */
+                            width:100%;
+                            .mathPanel
+                            {/*商品計算式panel*/
+                                position:relative;width:100%;height:30px;
+                                #cel1
+                                {/* 選購數量、單位 label */
+                                    float:left;width:35%;text-align:left;
+                                }
+                                #cel2
+                                {/* 選購數量檢測格式提示 label */
+                                    float:left;width:4%;text-align:center;
+                                    img
+                                    {/* 異常訊息提示 img*/
+                                        width:15px;opacity:0.9;position:relative;top:3px;
+                                    }
+                                }
+                                #cel3
+                                {/* 乘法符號label */
+                                    float:left;width:3%;text-align:right;
+                                }
+                                #cel4
+                                {/* 商品名稱 label*/
+                                    float:left;width:33%;font-size:12px;text-align:left;padding-left:5%;color:#777;
+                                }
+                                #cel5
+                                {/* 刪除button panel 及流水號 label */
+                                    float:left;width:20%;text-align:right;
+                                    img
+                                    {/* 刪除 button img */
+                                        width:15px;position:relative;top:3px;cursor:pointer;
+                                    }
+                                    .nu
+                                    {/* 流水號 */
+                                        font-size:12px;color:#FFF;background-color:#555;
+                                    }
+                                }
+                            }
+                            .splitPanel
+                            {/* 分隔線樣版*/
+                                position:relative;margin-left:auto;margin-right:auto;width:80%;height:10px;
+                            }
+                        }
+                    }
+
+                    .pagePanel
+                    {/* data 內容*/
+                        width:100%;overflow-y:auto;height:200px;
+                        .titlePanel
+                        {/* title panel*/
+                            width:100%;text-align:center;
+                        }
+                        #pageMoreBt
+                        {/*更多資料顯示 bt*/
+                            width:90%;height:30px;cursor:pointer;text-align:center;border:1px solid #FF8800;position:relative;margin-left:auto;margin-right:auto;max-width:500px;
+                            img
+                            {
+                                position:relative;top:5px;width:15px;
+                            }
+                        }
+                    }
+                    .setPPanel
+                    {/*搜尋 product name label panel*/
+                        position:relative;margin-left:auto;margin-right:auto;width:98%;height:30px;border-radius:10px;
+                        #cel1
+                        {/* 選購取確譇提示panel */
+                            float:left;width:100px;text-align:right;
+                            img
+                            {/* 點選確認提示 img */
+                                position:relative;top:5px;width:15px;
+                            }
+                        }
+                        #cel2
+                        {/* 商品名稱 label */
+                            float:left;width:40%;font-size:12px;text-align:left;padding-left:5%;
+                        }
+                        #cel3
+                        {/* 流水號panel */
+                            float:left;width:20%;text-align:right;
+                            font-size:12px;color:#FFF;
+                        }
+                    }
+
+                    #menuAddPanel
+                    {/* 新增套餐button panel */
+                        width:90%;text-align:center;padding:5px;background-color:#EEFFBB;position:relative;margin-left:auto;margin-right:auto;
+                    }
+                }
+                .splitLinePanel
+                {/* 分隔線 */
+                    width:100%;height:5px;border-bottom:1px solid #EEE;
+                }
+            }
+        }
+    }
+}

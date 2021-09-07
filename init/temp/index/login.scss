@@ -1,0 +1,122 @@
+﻿#loginpanel
+{/*login 主要panel*/
+    position:fixed;
+    width:100%;
+    margin-left:0px;
+    margin-top:0px;
+    left:0px;
+    top:0px;
+    z-index:199;
+
+    #loginView
+    {/*login view 框架 panel*/
+        position:relative;width:300px;margin-left:auto;margin-right:auto;background-color:#FFF;top:100px;border-radius:5px;    
+        #loginHeadPanel
+        {/* head */
+            position:relative;width:100%;height:5px;background-color:#FFF;
+            border-top-left-radius:20px;border-top-right-radius:20px;
+            z-index:199;
+    
+            #closeBt
+            {/* 關閉視窗 button panel*/
+                position:absolute;right:-8px;top:-8px;cursor:pointer;width:30px;
+                img
+                {/* 關閉視窗 img bt */
+                    width:100%;
+                }
+            }
+        }
+
+        #loginContent
+        {/* 登入功能內容 panel*/
+            position:relative;width:95%;margin-left:auto;margin-right:auto;min-height:70px;
+            .title
+            {
+                color:#AAA;
+                font-size:12px;
+            }
+            #loginBtPanel
+            {/* 登入 button panel */
+                width:100%;
+                td
+                {
+                    width:25%;
+                    position:relative;
+                    text-align:center;
+                    cursor:pointer;
+                    .bt
+                    {
+                        width:60px;
+                        padding-top:9px;
+                        padding-bottom:9px;
+                    }
+                }
+            }
+            #loginbt
+            {/* 觸發功能button */
+                width:70px;
+                background-color:#BB5500;
+                color:#FFF;font-size:15px;
+                font-weight:bold;
+                cursor:pointer;
+                border-top-right-radius:10px;
+                border-bottom-right-radius:10px;
+                text-align:center;
+                #key
+                {
+                    width:30px;
+
+                }
+            }
+
+            #loginCtrTB
+            {/* 功能框架panel(table)*/
+                width:100%;padding-top:15px;
+
+                .loginInput
+                {/*登入模式 input textbox*/
+                    width:150px;font-size:20px;height:30px;
+                }
+
+                #loginGetVerCode
+                {/* 取回密碼panel */
+                    text-align:center;border-bottom-left-radius:10px;border-bottom-right-radius:10px;cursor:pointer;min-height:30px;
+
+                    #loginGotoModel
+                    {/* 前往處理模式 button */
+                        width:100%;text-align:center;cursor:pointer;font-size:15px;color:#AAA;
+                        position:relative;
+                        border-top:1px solid #EEE;
+                        padding-top:9px;
+                        padding-bottom:9px;
+                    }
+
+                    #LoginVerImg
+                    {/* 驗證碼圖示 */
+                        width:200px;padding-top:5px;padding-bottom:5px;border-radius:6px;
+                    }
+                    
+                }
+            }
+
+            #loginPanelLoad
+            {/* 處理中動畫 panel */
+                width:100%;height:3px;background-color:#FF3300;
+            }
+
+            #loginCatchPassword
+            {/* mail 取回密碼 處理中提示 panel */
+                width:100%;text-align:center;padding:20px;padding-bottom:5px;color:#555;font-weight:bold;
+                img
+                {/* 處理中提示 img */
+                    width:15px;
+                }
+            }
+        }
+    }
+
+    #loginBG
+    {/* 登入遮罩 */
+        position:absolute;width:100%;height:2000px;opacity:0.9;background-color:#000;
+    }
+}

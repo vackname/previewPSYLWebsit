@@ -1,0 +1,134 @@
+﻿
+#Management_main
+{/* Management project */
+    #MBMGpanel
+    {/* 帳戶設定 框架 panel*/
+        #phPanel
+        {/*帳號歷史付款明細 框架 panel*/
+            position:fixed;width:100%;top:0px;left:0px;z-index:199;
+            #BG
+            {/* 背景遮罩 */
+                position:fixed;height:2000px;opacity:0.5;width:100%;background-color:#000;top:0px;left:0px;
+            }
+            #phFixedPanel
+            {/* 浮動視窗框架定位 */
+                position:relative;margin-left:auto;margin-right:auto;max-width:500px;background-color:#FFF;top:70px;width:95%;border-radius:10px;
+                #phFixedTitle
+                {/* 浮動視窗title */
+                    width:100%;height:30px;background-color:#555;color:#FFF;border-top-left-radius:10px;border-top-right-radius:10px;
+                    #phCloseBt
+                    {/*關閉視窗鈕*/
+                        float:right;
+                        img
+                        {/*關睛視窗鈕 img*/
+                            width:10%;opacity:0.9;min-width:30px;max-width:50px;position:relative;left:10px;cursor:pointer;
+                        }
+                    }
+                }
+
+                #MGMBPH_page
+                {/* 選頁工具 */
+                    position:absolute;bottom:20px;width:100%;left:0.5%;
+                }
+
+                #MGMB_PHTB
+                {/*視窗內容content*/
+                    width:100%;height:500px;overflow-y:scroll;padding-top:20px;
+                    .purchase
+                    {/* 客戶為出貨單mark */
+                        color:#FFF;
+                        background-color:#FFAD86;
+                        padding:3px;
+                        border-radius:6px;
+                        font-size:12px;
+                    }
+                    #emptyMark
+                    {/* 資料空值提示 label */
+                        width:100%;text-align:center;font-size:12px;color:#AAA;
+                    }
+                    #MGMB_PHdataList
+                    {/* data list */
+                        position:relative;margin-left:auto;margin-right:auto;width:95%;
+                        #MGMBPanel
+                        {/* list content */
+                            width:100%;
+                            #MGMBPanelConent
+                            {/*框架內容*/
+                                width:100%;border:1px solid #eee;
+                                .MGMBPH_title{
+                                    color:#AAA;
+                                    font-size:12px;
+                                }
+                                
+                                .MGMBPH_label{
+                                    color:#555;
+                                    font-size:15px;
+                                }
+                                
+                                .MGMBPH_row{
+                                    border-top:5px solid #CCC;
+                                    width:100%;
+                                    height:30px;
+                                }
+                                
+                                .MGMBPH_bt{
+                                    background-color:#555;
+                                    color:#FFF;
+                                    font-size:12px;
+                                    box-shadow:2px 2px 5px #888888;
+                                }
+                                
+                                .MGMBPH_StopBt{
+                                    background-color:#FF8800;
+                                    color:#FFF;
+                                    font-size:12px;
+                                    box-shadow:2px 2px 5px #888888;
+                                }
+                                
+                                .MGMBPH_rowtb
+                                {
+                                    text-align:left;width:100%;
+                                    padding-top:10px;
+                                    padding-bottom:30px;
+                                    .MGMBPH_rowtb_left
+                                    {
+                                        float:left;
+                                        padding-left:2%;
+                                    }
+                                    
+                                    .MGMBPH_rowtb_right
+                                    {
+                                        float:right;width:50%;
+                                    }
+                                    .MGMBPH_rowtb_left:after,.MGMBPH_rowtb_right:after
+                                    {/*阻斷 清除float*/
+                                        clear:both;
+                                    }
+                                }
+
+                                .clear
+                                {/*阻斷 清除float*/
+                                    width:100%;
+                                    clear:both;
+                                    padding-bottom:9px;
+                                }
+                        
+                        
+                                .MGMBPH_rowtb_line
+                                {
+                                    clear:both;
+                                    position:relative;margin-left:auto;margin-right:auto;width:90%;border-top:1px solid #EEE;
+                                }
+                                
+                                .MGMBPH_editBt{
+                                    position:relative;left:10px;top:5px;width:20px;cursor:pointer;
+                                    box-shadow:2px 2px 5px #888888;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

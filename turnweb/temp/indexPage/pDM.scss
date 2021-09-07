@@ -1,0 +1,300 @@
+﻿#turnwebPanel
+{/** 入口panel */
+    #indexPage
+    {/* 入口首頁 */
+        #pDMPanel
+        {/* 商品文宣頁 */
+            position:relative;
+            width:95%;
+            margin-left:auto;
+            margin-right:auto;
+            padding-top:20px;
+            
+            #catchPanel
+            {/* 資訊卡定位 */
+                width:100%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                max-width:1450px;
+                .cardPanel
+                {/* 資訊卡 */
+                    width:100%;
+                    padding:12px;
+                    .dataListPanel
+                    {/* 文章定位*/
+                        position:relative;
+                        width:95%;
+                        padding:6px;
+                        border-radius: 9px;
+                        border:1px solid #EEE;
+                        margin-left:auto;
+                        margin-right:auto;
+                        -webkit-box-shadow: 1px 1px 2px #AAA;
+                        -moz-box-shadow: 1px 1px 2px #AAA;
+                        box-shadow: 1px 1px 2px #AAA;
+                        cursor:pointer;
+                        #pDMDate
+                        {/* 日期 */
+                            position:relative;
+                            width:100%;
+                            padding-bottom:20px;
+                            .month
+                            {
+                                font-size:18px;
+                                color:#FFF;
+                                padding:3px;
+                                border-radius:90px;
+                                background-color:#999;
+                            }
+                            .day
+                            {
+                                font-size:15px;
+                                color:#DDD;
+                                padding:3px;
+                                border-radius:90px;
+                                background-color:#666;
+                            }
+                        }
+                        #imgContent
+                        {/* 圖片內容 */
+                            width:100%;
+                            position:relative;
+                            margin-left:auto;
+                            margin-right:auto;
+                            .imgIcon
+                            {
+                                position:relative;
+                                width:100%;
+                            }
+                        }
+                        #content
+                        {/* title 內容 */
+                            position:relative;
+                            width:90%;
+                            margin-left:auto;;
+                            margin-right:auto;
+                            padding-top:10px;
+                            padding-bottom:10px;
+                            color:#333;
+                            white-space: nowrap; 
+                        }
+                    }
+                }
+            }
+
+            #mainTitle
+            {/* 標題 */
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                width:95%;
+                padding-top:20px;
+                padding-bottom:60px;
+                font-size:20px;
+                color:#AAA;
+            }
+
+
+            @media screen and (min-width:1451px)
+            {
+                #catchPanel
+                {/* 資訊卡定位 */
+                    .cardPanel
+                    {
+                        width:430px;
+                        float:left;
+                        .dataListPanel
+                        {
+                            #imgContent
+                            {/* 圖片內容 */
+                                width:390px;
+                                height:260px;
+                                overflow:hidden;
+                                .imgIcon
+                                {
+                                    left:-15%;
+                                    width:130%;
+                                }
+                            }
+                        }
+                    }
+
+                    .cardPanel:after
+                    {
+                        clear: both;
+                    }
+
+                    .clear
+                    {/*照片牆 阻斷 清除float*/
+                        width:100%;
+                        clear: both;
+                    }
+                }
+            }
+            
+            
+            @media screen and (max-width:1450px) and (min-width:1351px)
+            {
+                #catchPanel
+                {/* 資訊卡定位 */
+                    .cardPanel
+                    {
+                        width:400px;
+                        float:left;
+                        .dataListPanel
+                        {
+                            #imgContent
+                            {/* 圖片內容 */
+                                width:351px;
+                                height:234px;
+                                overflow:hidden;
+                                .imgIcon
+                                {
+                                    left:-15%;
+                                    width:130%;
+                                }
+                            }
+                        }
+                    }
+
+                    .cardPanel:after
+                    {
+                        clear: both;
+                    }
+
+                    .clear
+                    {/*照片牆 阻斷 清除float*/
+                        width:100%;
+                        clear: both;
+                    }
+                }
+            }
+            
+            @media screen and (min-width:1001px) and (max-width:1351px) 
+            {
+                #catchPanel
+                {/* 資訊卡定位 */
+                    max-width:1000px;
+                    .cardPanel
+                    {
+                        width:430px;
+                        float:left;
+                        .dataListPanel
+                        {
+                            #imgContent
+                            {/* 圖片內容 */
+                                width:390px;
+                                height:260px;
+                                overflow:hidden;
+                                .imgIcon
+                                {
+                                    left:-15%;
+                                    width:130%;
+                                }
+                            }
+                        }
+                    }
+
+                    .cardPanel:after
+                    {
+                        clear: both;
+                    }
+
+                    .clear
+                    {/*照片牆 阻斷 清除float*/
+                        width:100%;
+                        clear: both;
+                    }
+                }
+            }
+
+            @media screen and (min-width:700px) and (max-width:1000px) 
+            {
+                #catchPanel
+                {/* 資訊卡定位 */
+                    max-width:500px;
+                    .cardPanel
+                    {
+                        width:500px;
+                        float:left;
+                        .dataListPanel
+                        {
+                            #imgContent
+                            {/* 圖片內容 */
+                                width:468px;
+                                height:312px;
+                                overflow:hidden;
+                                .imgIcon
+                                {
+                                    left:-15%;
+                                    width:130%;
+                                }
+                            }
+                        }
+                    }
+
+                    .cardPanel:after
+                    {
+                        clear: both;
+                    }
+
+                    .clear
+                    {/*照片牆 阻斷 清除float*/
+                        width:100%;
+                        clear: both;
+                    }
+                }
+
+                #mainTitle
+                {
+                    font-size:18px;
+                }
+            }
+
+            @media screen and (max-width:699px)
+            {
+                #catchPanel
+                {/* 資訊卡定位 */
+                    .cardPanel
+                    {
+                        width:440px;
+                        position:relative;
+                        margin-left:auto;
+                        margin-right:auto;
+                        .dataListPanel
+                        {
+                            #imgContent
+                            {/* 圖片內容 */
+                                width:390px;
+                                height:260px;
+                                overflow:hidden;
+                                .imgIcon
+                                {
+                                    left:-15%;
+                                    width:130%;
+                                }
+                            }
+                        }
+                    }
+
+                    .cardPanel:after
+                    {
+                        clear: both;
+                    }
+
+                    .clear
+                    {/*照片牆 阻斷 清除float*/
+                        width:100%;
+                        clear: both;
+                    }
+                }
+
+                #mainTitle
+                {
+                    font-size:15px;
+                }
+            }
+        }
+    }
+}

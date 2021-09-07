@@ -1,0 +1,437 @@
+﻿$bkColor:#006241;/* 背景色 */
+
+#HeadPanel
+{/* head panel 框架 */
+    width:100%;
+    user-select: none;
+    .headBKContent
+    {/* head背景色 */
+        background-color:$bkColor;
+    }
+
+    .headBKMobileContent
+    {/* head背景色-mobile */
+        background-color:#FFF;
+    }
+
+    #HeadContent
+    {/* head content*/
+        position:fixed;width:100%;height:60px;z-index:190;
+        background-color:$bkColor;
+        #HeadCtr
+        {/* 功能列*/
+            width:95%;position:relative;margin-left:auto;margin-right:auto;min-width:300px;height:60px;
+
+            .LangSelect
+            {/* 語系切換 */
+                font-size:12px;
+                border-radius: 10px;
+                border:1px solid #006000;
+                color:#009100;
+            }
+
+            #headTooltitle
+            {/* mobile title name */
+                position:fixed;width:40%;left:30%;text-align:center;color:#00754A;font-weight:bold;top:15px;font-size:20px;
+            }
+
+            #headToolImg
+            {/* mobile menu img panel */
+                float:right;width:50px;text-align:center;
+                #headToolImgContent
+                {/* mobile內容框架 */
+                    width:100%;height:2px;position:relative;
+                    #content
+                    {/* 內容panel */
+                        width:100%;position:fixed;height:100vh;background-color:#FFF;top:60px;z-index:199;left:0px;
+                        #HeadloginPanel
+                        {/* 登入後資訊panel */
+                            position:relative;width:95%;margin-left:auto;margin-right:auto;
+
+                            #HeadUser
+                            {/* 資訊panel */
+                                width:100%;height:40px;background-color:#FF8800;text-align:center;border-radius:10px;padding-top:10px;
+                                span
+                                {/* 資訊 label*/
+                                    color:#FFF;font-size:18px;font-weight:bold;padding-top:15px;
+                                }
+                            }
+                        }
+
+                        #HeadLoginBottom
+                        {/* mobile bootom panel info */
+                            position:fixed;width:100%;padding-top:2px;border-top:1px solid #FF8800;
+                            bottom:0px;background-color:#FFF;
+                            height:50px;
+                            #loginMes
+                            {/*登入後資訊*/
+                                width:100%;
+                                padding-top:10px;
+                                padding-bottom:10px;
+                                #HeadPoint
+                                {/* 點數 */
+                                    float:left;
+                                    width:34%;
+                                    font-size:15px;
+                                    font-weight:bold;
+                                    text-align:right;
+                                    img
+                                    {
+                                        width:20px;
+                                        position:relative;
+                                        top:5px;
+                                        left:-5px;
+                                    }
+                                }
+                                
+                                #HeadDaylight
+                                {/* 使用期限 */
+                                    float:left;
+                                    width:34%;
+                                    color:#FF8800;
+                                    font-size:15px;
+                                    font-weight:bold;
+                                    img
+                                    {
+                                        width:20px;
+                                        position:relative;
+                                        top:5px;
+                                        left:-5px;
+                                    }
+                                }
+
+                                #HeadLang
+                                {/* 語系 */
+                                    float:right;
+                                    width:30%;
+                                }
+
+                                #HeadPoint:after,#HeadDaylight:after,#HeadLang:after
+                                {
+                                    clear:both;
+                                }
+                            }
+                        }
+
+                        #HeadItem
+                        {/* 導覽menu */
+                            position:relative;width:90%;margin-left:auto;margin-right:auto;
+                            #HeadMobilePanel
+                            {
+                                position:relative;width:100%;overflow-y:auto;padding-top:20px;
+                                .headMenuMobile{
+                                    position:relative;
+                                    width:100%;color:#666;font-size:15px;text-align:center;cursor:pointer;padding-top:13px;padding-bottom:5px;
+                                    .dr
+                                    {
+                                        width:10px;
+                                        position:relative;
+                                        opacity:0.3;
+                                        top:0px;
+                                        padding-left:6px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                #HeadMobileOpen
+                {/* mobile model menu open button panel */
+                    position:relative;width:100%;height:40px;border-radius:20px;padding:3px;top:10px;
+                    cursor:pointer;
+                    img
+                    {/* img button*/
+                        width:40px;position:relative;
+                    }
+                }
+            }
+
+            #headTool
+            {/* 桌機版 web model */
+                float:right;min-width:500px;
+                width:80vw;
+                #HeadItem
+                {/* menu資料 content */
+                    width:100%;font-size:15px;color:#FFF;cursor:pointer;text-align:right;
+                    .dr
+                    {
+                        width:10px;
+                        position:relative;
+                        opacity:0.3;
+                    }
+                    #headToolPath
+                    {/* 工具menu */
+                        position:relative;margin-left:auto;width:90%;text-align:right;right:90px;
+                        .dr
+                        {
+                            width:10px;
+                            position:relative;
+                            opacity:0.3;
+                            top:0px;
+                        }
+
+                        img
+                        {
+                            position:relative;
+                            cursor:pointer;
+                            width:15px;
+                            top:6px;
+                        }
+                    }
+                }
+
+                #HeadLangPanel
+                {/* 語系 框架panel */
+                    position:absolute;width:100px;text-align:right;top:30px;right:-10px;
+                    font-size:12px;
+                }
+            }
+
+            #HeadGoHomeBt
+            {/* 反回首頁button panel */
+                font-size:12px;font-weight:bold;color:#006030;text-decoration:none;cursor:pointer;
+                position:absolute;
+                #homebt
+                {/* home 鈕 */
+                    width:40px;position:relative;top:10px;
+                }
+
+                #homebt2
+                {/* home 鈕 */
+                    height: 30px;position:relative;top:15px;
+                }
+            }
+
+
+            @media screen and (min-width:651px) {
+
+                #headToolImg,#headTooltitle
+                {
+                    display:none;
+                }
+            }
+            
+            @media screen and (max-width:650px) {
+                #headTool{
+                    display:none;
+                }
+            }
+        }
+
+        #tagbag
+        {/* 書籤背包 */
+            position:fixed;
+            right:-5px;
+            width:25px;
+            background-color:#FFF;
+            padding:6px;
+            text-align:center;
+            border-bottom-left-radius:30px;border-top-left-radius:30px;
+            cursor:pointer;
+            border:1px solid #EEE;
+            img
+            {
+                position:relative;width:20px;top:3px;left:3px;
+            }
+            .markNu
+            {/* 數字點提醒 */
+                position:absolute;opacity:0.9;top:-3px;left:-10px;width:30px;height:28px;border-radius:70px;background-color:#666;color:#FFF;font-size:12px;font-weight:bold;text-align:center;padding-top:2px;
+            }
+        }
+
+        #HeadPointCtr
+        {/* 點數增加減少動畫 */
+            position:fixed;
+            z-index:199;
+            opacity:0;
+            width:10px;
+            height:10px;
+            background-color:#FFF;
+            border:1px solid #EEE;
+            border-radius:100px;
+            padding:5px;
+            box-shadow: 2px 2px 1px rgba(117, 91, 4, 0.3);
+            text-align:center;
+            right:-200px;
+            img
+            {
+               position:absolute;
+               left:20px;
+               opacity:1;
+               width:10px;
+            }
+            #HeadPointchar
+            {
+                position:relative;
+                width:100px;
+                top:25%;
+                text-align:left;
+                #HeadPointCtrAdd
+                {/*增符號*/
+                    color:#FF8800;
+                    font-size:20px;
+                    font-weight:bold;
+                }
+
+                #HeadPointCtrDes
+                {/*減符號*/
+                    color:#00BB00;
+                    font-size:20px;
+                    font-weight:bold;
+                }
+
+                #CatchPoint
+                {/* 數值*/
+                    font-weight:bold;
+                    font-size:20px;
+                    color:#FFF;
+                    padding:1px;
+                    background-color:#FF8800;
+                    border-radius:50px;
+                }
+            }
+        }
+
+        #HeadMBMes
+        {/* 使用者 額度及使用權限 web 位置*/
+            position:relative;width:140px;margin-left:auto;min-height:30px;top:0px;
+            #HeadMBMesPanel
+            {/*使用者 額度及使用權限 panel*/
+                border-bottom-left-radius:20px;font-weight:bold;border:1px solid #EEE;background-color:#FFF;width:140px;text-align:center;color:#FFF;
+                padding-left:10px;
+                
+                #HeadPoint
+                {/* 使用點數panel */
+                    position:relative;left:10px;width:140px;text-align:left;height:30px;font-size:15px;
+                    font-weight:bold;
+                    img
+                    {
+                        width:20px;
+                        position:relative;
+                        top:5px;
+                        left:-5px;
+                    }
+                }
+
+                #HeadDaylight
+                {/* 使用期限 */
+                    position:relative;left:10px;width:140px;color:#FF8800;text-align:left;height:30px;font-size:15px;
+                    font-weight:bold;
+                    img
+                    {
+                        width:20px;
+                        position:relative;
+                        top:5px;
+                        left:-5px;
+                    }
+                }
+            }
+        }
+
+        #headPayCarBoxShowBt
+        {/*購物清單 show button*/
+            position:relative;margin-left:auto;width:25px;background-color:#FFF;padding:10px;text-align:center;top:20px;border-bottom-left-radius:30px;border-top-left-radius:30px;cursor:pointer;
+            .markNu
+            {/* 購物車提醒數字紅點 */
+                position:absolute;top:-3px;left:-10px;width:30px;height:28px;border-radius:70px;background-color:#FF3300;color:#FFF;font-size:12px;font-weight:bold;text-align:center;padding-top:2px;
+            }
+        }
+
+        #serTxtBoxAn
+        {/* 關鍵字 動畫*/
+            position:absolute;
+            width:200px;
+            top:180px;
+            padding:5px;
+            border:1px solid #EEE;
+            color:#AAA;
+            background-color:#FFF;
+            border-radius:9px;
+            font-size:20px;
+            opacity:0;/*移出畫面*/
+            right: -700px;/*移出畫面*/
+        }
+        #headSerBox
+        {/*搜尋 textbox*/
+            position:relative;margin-left:auto;top:30px;background-color:#FFF;padding:10px;text-align:center;border-bottom-left-radius:30px;border-top-left-radius:30px;cursor:pointer;
+            #tbBox
+            {/* 搜尋功能 框架 */
+                width:270px;background-color:#EEE;position:relative;margin-left:auto;margin-right:auto;border-top-left-radius:20px;border-bottom-left-radius:20px;
+
+                #closeBt
+                {/* 關閉 搜尋 view panel */
+                    width:30px;text-align:left;
+                    img
+                    {/* 關閉鈕 img */
+                        opacity:0.5;width:30px;position:relative;top:3px;cursor:pointer;
+                    }
+                }
+
+                #serBox
+                {/* 搜尋欄位 panel */
+                    width:160px;text-align:right;
+                    input
+                    {/* 搜尋input */
+                        font-size:16px;height:25px;width:150px;
+                    }
+                }
+
+                #serBt
+                {/* 搜尋button panel */
+                    width:40px;text-align:center;color:#FFF;font-size:16px;font-weight:bold;background-color:#FFF;cursor:pointer;
+                    img
+                    {/* img button */
+                        width:15px;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:650px) {
+            #headSerBox,#headPayCarBoxShowBt
+            {/* 搜尋 textbox, 購物清單 show button-mobile*/
+                opacity:0.5;
+                border:1px solid #AAA;
+            }
+
+            #HeadMBMes
+            {/* 登入訊息 */
+                display:none;
+            }
+            #tagbag
+            {/* 標籤背包 */
+                top:210px;
+            }
+        }
+
+        @media screen and (min-width:651px) and (max-width:1070px)  {
+            #headSerBox,#headPayCarBoxShowBt
+            {/* 搜尋 textbox, 購物清單 show button*/
+                border:1px solid #AAA;
+                opacity:0.6;
+            }
+
+            #tagbag
+            {/* 標籤背包 */
+                top: 270px;
+            }
+        }
+
+        @media screen and (min-width:1071px){
+            #headSerBox,#headPayCarBoxShowBt
+            {/* 搜尋 textbox, 購物清單 show button*/
+                border:1px solid #AAA;
+            }
+
+            #tagbag
+            {/* 標籤背包 */
+                top: 270px;
+            }
+        }
+    }
+
+    #HeadPanelLoad
+    {/*login ajax load 紅線*/
+        position:fixed;width:100%;height:3px;background-color:#01B468;top:60px;z-index:190;
+    }
+}

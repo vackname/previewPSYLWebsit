@@ -1,0 +1,75 @@
+﻿#mbPreview
+{/* 作者資訊 */
+    position:fixed;
+    width:100%;
+    top:0px;
+    left:0px;
+    z-index:199;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+
+    #mbPreviewPB
+    {/* 背景遮罩*/
+        position:absolute;
+        background-color:#000;
+        opacity:0.9;
+        width:100%;
+        height:2000px;
+    }
+
+    #MBprotalContent
+    {/* 作者簡介面 panel*/
+        position:relative;
+        margin-left:auto;
+        margin-right:auto;
+        top:60px;
+        width:480px;
+        background-color:#FFF;
+        border:1px solid #EEE;
+        border-radius: 6px;
+        min-height:200px;
+        max-height:600px;
+        padding:9px;
+
+        #closembPreview
+        {/* 關閉視窗鈕 */
+            position:absolute;
+            width:30px;
+            top:-10px;
+            right:-10px;
+            img
+            {
+                cursor:pointer;
+                width:100%;
+            }
+        }
+        #PreviewMBtakePhotoPanel
+        {
+            float:left;
+            padding-right:19px;
+            padding-bottom:19px;
+            #PreviewMBtakePhoto
+            {/* 個人照 */
+                width:200px;
+                border:3px solid #EEE;
+                padding:9px;
+                border-radius:6px;
+                float:left;
+            }
+        }
+
+        #mbContent
+        {/* 作者簡介 */
+            position:relative;margin-left:auto;margin-right:auto;
+            width:95%;overflow-y:auto;
+            max-height:450px;
+            top:30px;
+            padding-bottom:20px;
+            color:#555;
+        }
+
+    }
+    
+}

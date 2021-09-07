@@ -1,0 +1,18 @@
+﻿<div id="hPanel">
+        <div style="width:100%;" v-show="!openCheckOut">
+                <component v-bind:is="v.serToolView"></component>
+                <div id="panel">
+                        <div v-show="list.length==0" id="emptyrow">--{{getLang('OderNuHistory').unknow}}--</div>
+                        <div v-for="(val,nu) in list" class="row" v-bind:style="((val.display==0)?'text-decoration:line-through;':'')" v-on:click="$m.main.checkOut(val)">
+                                <img v-show="val.display==0" v-bind:src="main.pub.lib.src('cancel.png')" style="width:15px;position:absolute;left:0px;top:26px;"/><!--取消單據 mark img-->
+                                <div class="date">{{pb.reunixDate(val.date)}}&nbsp;&nbsp;
+                                        <img v-bind:src="main.pub.lib.src('dr.png')" style="height:20px;position:realtive;top:-15px;" /><!--detail 提示鈕鍵img-->
+                                </div>
+                                <span class="nu">No.{{((nu+1+pageTagetNu*20>=10 )?"":"0")}}{{(nu+1+pageTagetNu*20)}}</span>
+                                {{val.key}}
+                        </div>
+                </div>
+                <div style="position:fixed;bottom:60px;width:100%;left:0px;"><component v-bind:is="v.pagetool" ></component></div>
+        </div>
+        <component v-bind:is="v.checkoutView" v-show="openCheckOut"></component><!--結帳 menu-->
+</div>

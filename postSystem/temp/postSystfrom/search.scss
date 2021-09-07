@@ -1,0 +1,65 @@
+﻿#postSystemPanel
+{/*main 框架*/
+    #psf
+    {/*post system panel*/
+        #p_psf_choose
+        {/* 商品選單 */
+            position:fixed;
+            margin-top:3px;
+            padding:8px;
+            font-size:12px;
+            color:#DDD;
+            width:200px;
+            background-color:#642100;
+            z-index:190;
+    
+            #p_psf_serPanel
+            {/* 搜尋輸入欄位 panel */
+            background-color:#FFF;padding:3px;float:right;border-top-left-radius:10px;border-bottom-left-radius:10px;
+            }
+            #onuEditBt
+            {/*訂單號 歷史查詢*/
+                color:#555;
+                text-align:center;background-color:#FFF;cursor:pointer;
+                color:#AAA;
+                width:70px;
+                position:absolute;
+                left:217px;
+                top:33px;
+                border:3px solid #EEE;
+                border-bottom-right-radius: 50px;
+            }
+            
+            .note
+            {/*類別選單 提示*/
+                font-size:12px;
+                color:#AAA;
+            }
+
+            #classLab
+            {/* 商品分類所屬提示 標題 */
+                position:absolute;top:-3px;left:216px;width:100px;text-align:center;background-color:#FFF;padding:5px;
+                border-bottom-right-radius:50px;
+                opacity:0.7;
+                color:#9F5000;
+                font-size:15px;
+                font-weight:bold;
+                border-right:3px solid 	#EEE;
+                border-bottom:3px solid 	#EEE;
+            }
+
+            #serBt
+            {/*類別選單搜尋*/
+                width:50px;text-align:center;background-color:#FFA042;
+                border-top-right-radius:20px;
+                border-bottom-right-radius:20px;
+                border:1px solid #FFBB77;
+                cursor:pointer;
+                #serachIcon
+                {/*搜尋鈕ICON*/
+                    position:relative;width:15px;left:0px;top:5px;
+                }
+            }
+        }
+    }
+  }

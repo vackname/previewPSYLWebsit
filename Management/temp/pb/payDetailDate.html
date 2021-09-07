@@ -1,0 +1,61 @@
+﻿<div id="MGpayPanel">
+    <div class="MGpay_rowtb" id="paylTitle" v-show="showUser">
+        <div class="MGpay_rowtb_left" style="width:50%;">
+            <span class="MGpay_title" style="color:#AAA;">{{getLang("user")}}({{((val.account!=null)?val.account.substr(0,6):"")}}***)</span>&nbsp;<span class="MGpay_label" style="color:#FFBB00;">{{val.name}}</span>
+        </div>
+        <div class="MGpay_rowtb_right" style="width:40%;text-align:right;padding-right:6px;" v-if="val.bankImgBt!=null">
+            <!--show 客戶銀行資訊鈕 退款/進貨用-->
+            <span v-on:click="val.bankImgBt()" id="showBankInfo" v-show="val.perInfo.BankPhoto.length==0"><img v-bind:src="main.pub.lib.src('info.png')" style="width:12px;position:relative;top:1px;padding-right:3px;" />bank-info</span>
+        </div>
+    </div>
+    <img v-if="val.bankImgBt!=null" v-bind:src="((val.perInfo.BankPhoto.length>0)?val.perInfo.objImg.src(val.perInfo.BankPhoto[0]):'')" v-show="val.perInfo.BankPhoto.length>0" style="padding-top:20px;;width:100%;padding-bottom:20px;" />
+    <!--show 客戶銀行資訊鈕 退款/進貨用-image-->
+    <div class="MGpay_rowtb_line"></div>
+    <div class="MGpay_rowtb">
+        <div class="MGpay_rowtb_left" style="width:45%;"><span class="MGpay_title">{{getLang("handshaking")}}</span> 
+            <div id="PayRecode">
+                <span class="MGpay_label">{{((val.bankMark!=null)?val.bankMark:"-")}}</span>
+            </div>
+        </div>
+        <div class="MGpay_rowtb_right" style="width:45%;"> <span class="MGpay_title">{{getLang("mark")}}</span>
+            <div id="payMark">
+                <span v-show="val.uid!=mainTemp.head.mbdata.uid"><span class="MGpay_label">system:{{val.mark}}</span><br/></span><span v-show="val.umark!='' && val.umark!=null" class="MGpay_label">me:{{val.umark}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="MGpay_rowtb" v-show="val.pe">
+        <!--個資-->
+        <div class="MGpay_rowtb_left" style="width:90%;"><img v-bind:src="main.pub.lib.src('info.png')" style="width:12px;position:relative;top:3px;" />&nbsp; <span class="MGpay_label">&nbsp;{{getLang("stepper")}}:
+                {{ val.perInfo.name}}/id:{{val.perInfo.id}}/birthday:{{birthday(val.perInfo)}}/{{getLang((( val.perInfo.gender)?'mr':'ms'))}}<br/>
+                →&nbsp;phone:{{val.perInfo.phone}}/tel:{{val.perInfo.tel}}
+        </span>
+        </div>
+    </div>
+    <div class="MGpay_rowtb" v-show="val.am">
+            <!--聯絡人-->
+            <div class="MGpay_rowtb_left" style="width:90%;"><img v-bind:src="main.pub.lib.src('info.png')" style="width:12px;position:relative;top:3px;" />&nbsp;  <span class="MGpay_label">&nbsp;{{getLang("stepames")}}:
+                    {{val.amesInfo.name}}/{{getLang(((val.amesInfo.gender)?'mr':'ms'))}}/{{val.amesInfo.title}}<br/>
+                    →&nbsp;phone:{{val.amesInfo.phone}}/tel:{{val.amesInfo.tel}}
+                    </span>
+            </div>
+    </div>
+    <div class="MGpay_rowtb" v-show="val.adr && !val.shfeecancel">
+        <!--寄送地址-->
+       <div class="MGpay_rowtb_left" style="width:90%;"><img v-bind:src="main.pub.lib.src('info.png')" style="width:12px;position:relative;top:3px;" />&nbsp;<span class="MGpay_label">&nbsp;{{getLang("stepadr")}}:
+        {{val.adrInfo.country}}/{{val.adrInfo.city}}/{{val.adrInfo.area}}({{val.adrInfo.zip}})/{{val.adrInfo.address}}<br/>
+        →&nbsp;{{val.adrInfo.name}}/{{getLang(((val.adrInfo.gender)?'mr':'ms'))}}/phone:{{val.adrInfo.phone}}/tel:{{val.adrInfo.tel}}/{{getLang("DeliveryTime")}}:{{main$m.Dtime(val.adrInfo.dtime)}}
+        </span>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="MGpay_rowtb_line"></div>
+    <div class="MGpay_rowtb" v-show="val.payDate*1==0 && val.limitDate*1!=0">
+        <div class="MGpay_rowtb_left"><span class="MGpay_title">{{getLang("lpayment")}}</span> &nbsp;<span class="MGpay_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')">{{val.limitDate|fdate}}</span></div>
+    </div>
+    <div class="MGpay_rowtb" v-show="val.payDate*1!=0">
+        <div class="MGpay_rowtb_left"><span class="MGpay_title">{{getLang("pdate")}}</span> &nbsp;<span class="MGpay_label">{{val.payDate|fdate}}</span></div>
+    </div>
+    <div class="MGpay_rowtb_line" v-show="val.payDate*1!=0 || val.limitDate*1!=0"></div>
+    <div class="clear"></div>
+</div>

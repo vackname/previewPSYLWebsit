@@ -1,0 +1,84 @@
+﻿#turnwebPanel
+{/** 入口panel */
+    .registerPage
+    {/* 註冊頁 */
+        #regConsent{
+            position:fixed;
+            width:100%;
+            top:0px;
+            left:0px;
+            z-index:199;
+            .modelBg
+            {/* 背景遮罩 */
+                position: fixed;
+                width: 100%;
+                height: 2000px;
+                opacity: 0.75;
+                background-color: #000;
+            }
+            .privacyBox 
+            {/* 保護聲名文章 container */
+                position:relative;
+                width: 95%;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 13px;
+                top: 30px;
+                background-color: #FFF;
+
+                @media screen and (max-width: 700px)
+                {
+                    .boxContent {
+                        height: 60vh;
+                    }
+                }
+
+                .boxTitle 
+                {/* view head titel */
+                    position: relative;
+                    width: 100%;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    p {
+                        width: 100%;
+                        line-height: 40px;
+                        margin: 0px;
+                        font-size: 15px;
+                        font-weight: bold;
+                        border-radius: 10px 0 0 0;
+                        text-align: center;
+                        color: #FFF;
+                        background-color: #FFB037;
+                        z-index: 190;
+                    }
+            
+                    .closeBtn
+                    {/* 關閉鈕 */
+                        position: absolute;
+                        width: 40px;
+                        right: -11px;
+                        top: -9px;
+                        cursor: pointer;
+                    }
+                }
+    
+                .boxContent 
+                {/* 文章  框架 panel */
+                    width: 100%;
+                    height: 550px;
+                    overflow-y: auto;
+                }
+            }
+
+            @media screen and (max-width: 700px)
+            {
+                .privacyBox 
+                {/* 保護聲名文章 container */
+                    width: 85%;
+                    top: 30px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "src": "animateModel/MGWatch/tsconfig.json",
+    "modelName": "Management_animateModel_MGWatch_tscm"
+  },
+  {
+    "src": "animateModel/MGNewscc/tsconfig.json",
+    "modelName": "Management_animateModel_MGNewscc_tscm"
+  },
+  {
+    "src": "animateModel/MGProtal/tsconfig.json",
+    "modelName": "Management_animateModel_MGProtal_tscm"
+  },
+  {
+    "src": "animateModel/MGPDStsc/tsconfig.json",
+    "modelName": "Management_animateModel_MGPDStsc_tscm"
+  },
+  {
+    "src": "animateModel/MGNews/tsconfig.json",
+    "modelName": "Management_animateModel_MGNews_tscm"
+  },
+  {
+    "src": "model/MGMBtsc/tsconfig.json",
+    "modelName": "Management_model_MGMBtsc_tscm"
+  },
+  {
+    "src": "model/MGPDtsc/tsconfig.json",
+    "modelName": "Management_model_MGPDtsc_tscm"
+  },
+  {
+    "src": "model/MGWatch/tsconfig.json",
+    "modelName": "Management_model_MGWatch_tscm"
+  },
+  {
+    "src": "model/MGNewscc/tsconfig.json",
+    "modelName": "Management_model_MGNewscc_tscm"
+  },
+  {
+    "src": "model/MGProtal/tsconfig.json",
+    "modelName": "Management_model_MGProtal_tscm"
+  },
+  {
+    "src": "model/MGPDStsc/tsconfig.json",
+    "modelName": "Management_model_MGPDStsc_tscm"
+  },
+  {
+    "src": "model/MGNews/tsconfig.json",
+    "modelName": "Management_model_MGNews_tscm"
+  },
+  {
+    "src": "model/MGLog/tsconfig.json",
+    "modelName": "Management_model_MGLog_tscm"
+  },
+  {
+    "src": "model/MGActivity/tsconfig.json",
+    "modelName": "Management_model_MGActivity_tscm"
+  },
+  {
+    "src": "animateModel/MGActivity/tsconfig.json",
+    "modelName": "Management_animateModel_MGActivity_tscm"
+  }
+]

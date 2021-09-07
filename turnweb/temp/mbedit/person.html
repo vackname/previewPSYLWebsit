@@ -1,0 +1,38 @@
+﻿<div id="per">
+    <!--申請權限單for normal Lelvel 轉換-->
+    <div id="gotoApply" ><span v-on:click="applyShow=!applyShow"><img v-bind:src="main.pub.lib.src(((applyShow)?'dr.png':'ur.png'))"/>{{langGet('apply')}}</span></div>
+    <div id="perDataPanel" v-show="applyShow">
+        <div id="perTitle"><span>{{langGet('stepper')}}</span></div>
+        <table id="perPanel">
+            <tr><th>{{langGet('name')}}</th><td><input type="text" v-model="main$m.perData.name" /><img v-bind:src="main.pub.lib.src('close.png')" v-show="(main$m.perData.name=='')" /></td></tr>
+            <tr><th>{{langGet('passid')}}</th><td><input type="text" v-model="main$m.perData.id" /><img v-bind:src="main.pub.lib.src('close.png')" v-show="(main$m.perData.id=='')" /></td></tr>
+            <tr><th>{{langGet('gender')}}</th><td>
+                    <label for="genderAinInfo"><input type="radio" v-model="main$m.perData.gender" value="1" id="genderAinInfo" />{{langGet('mr')}} </label>
+                    <label for="genderAinInfo1"><input type="radio" v-model="main$m.perData.gender" value="0" id="genderAinInfo1" />{{langGet('ms')}}</label>
+            </td></tr>
+            <tr><th>{{langGet('birthday')}}</th><td>
+                    <select v-model="main$m.perData.inputY" v-on:change="main$m.$m.pe.run_year(main$m.perData);">
+                            <option value="0">{{langGet('choose')}}</option>
+                            <option v-for="(val2,nu2) in  main$m.perData.runYear" v-bind:value="val2">{{val2}}</option>
+                    </select><span style="color:#CCC;">/</span>
+                    <select v-model="main$m.perData.inputM" v-on:change="main$m.$m.pe.run_Month(main$m.perData);" style="width:60px;">
+                            <option value="0">Month</option>
+                            <option v-for="(val2,nu2) in main$m.perData.runMonth" v-show="main$m.perData.inputY>0" v-bind:value="val2">{{val2}}</option>
+                    </select><span style="color:#CCC;">/</span>
+                    <select v-model="main$m.perData.inputD"  style="width:60px;">
+                            <option value="0">Day</option>
+                            <option v-for="(val2,nu2) in new Array(main$m.perData.runMonthDay[0])"  v-bind:value="nu2+main$m.perData.runMonthDay[1]">{{nu2+main$m.perData.runMonthDay[1]}}</option>
+                    </select>&emsp;
+                <img v-bind:src="main.pub.lib.src('close.png')" v-show="(main$m.perData.inputY==0 || main$m.perData.inputM==0 || main$m.perData.inputD==0)" />
+            </td></tr>
+            <tr><th>{{langGet('phone')}}</th><td><input type="text" v-model="main$m.perData.phone" /><img v-bind:src="main.pub.lib.src('close.png')" v-show="(main$m.perData.phone.length<=5 && main$m.perData.tel.length<=5)" /></td></tr>
+            <tr><th>{{langGet('tel')}}</th><td><input type="text" v-model="main$m.perData.tel" /><img v-bind:src="main.pub.lib.src('close.png')" v-show="(main$m.perData.phone.length<=5 && main$m.perData.tel.length<=5)" /></td></tr>
+            <tr><td colspan="2" id="applyCheckBtn">
+                    <select v-model="apply">
+                        <option v-bind:value="val.val" v-for="(val,nu) in main$m.$m.pe.leveName()">{{val.nameAry[main.pub.langNu]}}</option>
+                    </select>
+                    <input type="button" v-bind:value="langGet('submit')" v-show="main$m.load" v-bind:class="((main$m.$m.pe.perCk())?'mb_ok_sub':'mb_error_sub')" v-on:click="main$m.$m.pe.save()" />
+            </td></tr>
+        </table>
+    </div>
+</div>

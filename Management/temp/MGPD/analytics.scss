@@ -1,0 +1,83 @@
+﻿#Management_main
+{/* Management project */
+    #MGPD_panel
+    {/*結帳日主要樣版*/
+        #Any_canvasPanel
+        {/* 限析canvas 主要 panel 框架 */
+            position:relative;margin-left:auto;margin-right:auto;width:600px;min-height:450px;
+            padding-top:20px;
+            #errorAnyImg
+            {
+                position:relative;margin-left:auto;margin-right:auto;
+                width:180px;
+                img{
+                    width:60px;padding:60px;border:1px dashed #AAA;
+                }
+            }
+            #PayDayMain 
+            {/* svg chart panel定位*/
+                width: 100%;
+                #PayDaysequence {
+                    width: 100%;;
+                    height: 70px;
+                  }
+                  
+                  #PayDaysequence text
+                  {
+                      font-weight: 300;
+                      fill: #fff;
+                  }
+                  
+                 #PayDayChart {
+                    position: relative;
+                    cursor:pointer;
+                  }
+                  
+                  #PayDayChart path {
+                    fill: #fff;
+                    stroke: #fff;
+                  }
+                  
+                  #PayDayexplanation {
+                    position: absolute;
+                    top: 130px;
+                    left: 205px;
+                    width: 200px;
+                    text-align: center;
+                    color: #666;
+                    z-index: -1;
+                  }
+                  
+                  #PayDaypercentage {
+                    font-size: 2.5em;
+                  }
+            }
+
+            #PayDaySidebar 
+            {/* 註1 */
+                position:relative;
+                margin-left:auto;
+                top:-60px;
+                width: 120px;
+                color:#333;
+                label{
+                    cursor:pointer;
+                }
+                #PayDaylegend 
+                {
+                    width:100%;
+                    font-size:12px;
+                    padding:1px;
+                    border-radius: 3px;
+                    div
+                    {
+                        width:100%;
+                        color:#FFF;
+                        text-align:center;
+                    }
+                }
+            }
+
+        }
+    }
+}

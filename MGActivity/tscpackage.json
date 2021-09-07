@@ -1,0 +1,18 @@
+[
+  {
+    "src": "model/index/tsconfig.json",
+    "modelName": "MGActivity_model_index_tscm"
+  },
+  {
+    "src": "animateModel/index/tsconfig.json",
+    "modelName": "MGActivity_animateModel_index_tscm"
+  },
+  {
+    "src": "model/pay/tsconfig.json",
+    "modelName": "MGActivity_model_pay_tscm"
+  },
+  {
+    "src": "animateModel/pay/tsconfig.json",
+    "modelName": "MGActivity_animateModel_pay_tscm"
+  }
+]

@@ -1,0 +1,104 @@
+﻿<div id="clientProductEditPanel">
+        <div v-show="!load" id="productloadprogress" ></div>
+        <component v-bind:is="v.ctrToolView"></component>
+        <div class="MGPSTitleBT">
+                <span class="MGPSTitleMark" v-for="(val,nu) in langP('setMark')"><br/>{{val}}</span>
+                <span v-show="mainTemp.head.mbdata.level==2">
+                        <!--謹店主等級需扣款(說明)-->
+                         <span class="MGPSTitleMark"><br/>1.{{langP("addProduct")}}<img v-bind:src="main.pub.lib.src('coin.png')" style="width:15px;position:realtive;top:10px;" />-29,000/<img v-bind:src="main.pub.lib.src('delete.png')" style="width:15px;position:realtive;top:10px;"  />{{langP("return")}}<img v-bind:src="main.pub.lib.src('coin.png')" style="width:15px;position:realtive;top:10px;" />+25,000</span>
+                         <span class="MGPSTitleMark"><br/>2.{{langP("addImg")}}<img v-bind:src="main.pub.lib.src('coin.png')" style="width:15px;position:realtive;top:10px;" />-8,000/<img v-bind:src="main.pub.lib.src('delete.png')" style="width:15px;position:realtive;top:10px;"  />{{langP("return")}}<img v-bind:src="main.pub.lib.src('coin.png')" style="width:15px;position:realtive;top:10px;" />+6,000</span>
+                </span>
+                <br/><span class="profit">
+                        <!--營業站成-->
+                        ※<img v-bind:src="main.pub.lib.src('cashout.png')"/><span>{{Math.round((mainTemp.head.mbdata.profit)*100)}}&nbsp;%({{langP("profit")}})</span>
+                </span>
+       </div>
+       <div id="MGPSContentPanel" >
+                <div id="prEmptyMark" v-show="dataList.length==0 && load">-{{langP("empty")}}-</div>
+                <div class="MGPS_rowtb"></div>
+                <div id="MGPSListPanel" v-for="(val,nu) in dataList" v-show="load || dataList.length!=0">
+                        <div id="MGPSProductTool"><span id="sNu">&nbsp;{{((nu+1 >=100)?'':'0')+((nu+1 >=10)?'':'0')+(nu+1)}}&nbsp;</span>
+                                <span v-show="val.codekey!=''" class="MGPSpublishMes"><img v-bind:src="main.pub.lib.src('publish.png')" />{{langM(((val.codekey!='runfail' && val.codekey!='')?"publish":((val.codekey=='run')?"Audit":"cpublish")))}}</span>
+                                <span id="publishMarkError" v-on:click="$m.main.editF(val,true)" v-show="val.codekey=='runfail'"><img v-bind:src="main.pub.lib.src('errorMes.png')" /></span>
+                                <div class="MGPSProductPanel">
+                                        <button class="MGPSMoveBT" v-show="nu>0" v-on:click="$m.main.productPre(val)">▲</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button class="MGPSMoveBT" v-show="pageCount > nu+1 && nu+1 != dataList.length" v-on:click="$m.main.productNext(val)">▼</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <img v-bind:src="main.pub.lib.src('edit.png')" class="ctrBt" v-on:click="$m.main.editF(val)"  />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <img v-bind:src="main.pub.lib.src(((val.type>=0)?'display_on.png':'display_off.png'))" class="ctrBt" v-bind:style="((val.type>=0)?'':'opacity:0.5')" v-on:click="$m.main.CancelF(val)" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <img v-bind:src="main.pub.lib.src('delete.png')" v-show="val.codekey==''" class="ctrBt" v-bind:style="(([0,1].indexOf(val.class*1)>-1)?'opacity:0.3':'')" v-on:click="(([0,1].indexOf(val.class*1)==-1)?$m.main.RemoveF(val):false)" />&nbsp;
+                                </div>
+                        </div>
+                        <div id="MGPSProductContent">
+                                <div class="MGPS_rowtb_line"  v-show="val.codekey!='chiefadmin'"></div>
+                                <div class="MGPS_rowtb" style="height:210px;">
+                                        <div class="MGPS_rowtb_left" v-bind:id="'productDatali'+val.key" style="position:relative;width:20%;">
+                                                <div class="MGPSIMG">
+                                                        <span v-show="val.imgAry.length == 0" style="color:#999;font-size:12px;">img Null</span><img v-bind:id="'productExsit'+val.key" v-bind:src="((val.imgAry.length != 0)?productImg.src(val.imgAry[0]):'')" style="width:80px;" v-show="val.imgAry.length != 0" />
+                                                </div>
+                                                <div class="MGPSIMGCount">&nbsp;{{val.imgAry.length}}&nbsp;ps&nbsp;</div>
+                                        </div>
+                                        <div class="MGPS_rowtb_right" style="position:relative;width:75%;">
+                                                <div class="itemPanel"><div class="MGPS_rowtb_left" style="width:40%;text-align:right;"><span class="MGPS_title">{{langP("pname")}}</span></div>
+                                                <div class="MGPS_rowtb_right" style="width:55%;"><span class="MGPS_label" > {{main.pub.catchLangName(val.nameAry)}}</span></div></div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel"><div class="MGPS_rowtb_left" style="width:40%;text-align:right;"><span class="MGPS_title">{{langP("class")}}</span></div>
+                                                <div class="MGPS_rowtb_right" style="width:55%;"><span class="MGPS_label" v-bind:style="'color:#'+((val.pctkey!=null && val.pctkey!='')?'555;':'FF3300;')" > {{((val.pctkey!=null && val.pctkey!="")?getClassname(val):"("+langP("notset")+")")}}</span></div></div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel"><div class="MGPS_rowtb_left"style="width:40%;text-align:right;"><span class="MGPS_title">{{langP("inventoryTp")}}</span></div>
+                                                <div class="MGPS_rowtb_right" style="width:55%;"><span class="MGPS_label" > {{val.type|typeFilter}}</span></div></div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel">
+                                                        <div class="MGPS_rowtb_left" style="width:40%;text-align:right;"><span class="MGPS_title">{{langP("unitprice")}}/{{langP("shipping")}}</span></div>
+                                                        <div class="MGPS_rowtb_right"style="width:55%;"><span class="MGPS_label">{{val.cash|cashFormat}}/<span style="text-decoration:line-through;">{{val.fee|cashFormat}}</span></span></div>
+                                                </div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel">
+                                                        <div class="MGPS_rowtb_left" style="width:40%;text-align:right;"><span class="MGPS_title">{{langP("profit")}}</span></div>
+                                                        <div class="MGPS_rowtb_right"style="width:55%;"><span class="MGPS_label">{{(val.cash * mainTemp.head.mbdata.profit) |cashFormat}}</span></div>
+                                                </div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel">
+                                                        <div class="MGPS_rowtb_left" style="width:40%;text-align:right;"><span class="MGPS_title">{{langP("Volume")}}</span></div>
+                                                        <div class="MGPS_rowtb_right" style="width:55%;"><span class="MGPS_label" > {{pb.MoneyFormat(val.shunit)}}</span></div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="MGPS_rowtb_line"></div>
+                                <div class="MGPS_rowtb">
+                                        <div class="MGPS_rowtb_left" style="position:relative;">
+                                                <div class="MGPS_rowtb_left"style="width:40%;text-align:right;"><span class="MGPS_title">{{langP("QuantityUnit")}}</span></div>
+                                                <div class="MGPS_rowtb_right"style="width:55%;"><span class="MGPS_label"> {{main.pub.catchLangName(val.unitAry)}}</span></div>
+                                        </div>
+                                        <div class="MGPS_rowtb_right" style="position:relative;"> 
+                                                <div class="MGPS_rowtb_left"style="width:40%;text-align:right;"><span class="MGPS_title">{{langP("inventory")}}</span></div>
+                                                <div class="MGPS_rowtb_right"style="width:55%;"><span class="MGPS_label" v-show="[1,-2].indexOf(val.type*1)>-1"> {{val.Count|nuFormat}}</span><span class="MGPS_label" v-show="[1,-2].indexOf(val.type*1)==-1">-</span></div>
+                                        </div>
+                                </div>
+                                <div class="MGPS_rowtb_line"></div>
+                                <div class="MGPS_rowtb" style="height:180px;">
+                                        <div class="MGPS_rowtb_left" style="width:53%;">
+                                                <div id="MGPS_DPanel">
+                                                        <div class="discount" v-show="discountFun(val)!=1 && discountFun(val)!=0">{{discountFun(val)*((main.pub.langNu==0)?10:100)}}&nbsp;{{((main.pub.langNu==0)?"折優惠":"off %")}}</div>
+                                                </div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                        </div>
+                                        <div class="MGPS_rowtb_right" style="width:40%;"> <span class="MGPS_title">{{langP("mark")}}</span>
+                                                <div class="MGPSMark">
+                                                <span class="MGPS_label">{{((val.mark!=null && val.mark!="")?val.mark:'(Null)')}}</span>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="MGPS_rowtb"></div>
+                        <div class="MGPS_row"></div>
+                </div>
+
+                <div id="MGPSLoad" v-show="!load && dataList.length==0">Loading...<img v-bind:src="main.pub.lib.src('ajaxSearc.gif')" style="width:15px;"/></div>
+                <div id="MGPSMorePage" v-on:click="$m.main.productListSer()" v-show="pageCount > dataList.length && load">
+                        more&nbsp;<img v-bind:src="main.pub.lib.src('add.png')"/>
+                </div>
+        </div>
+        <component v-bind:is="v.editview"></component>
+</div>

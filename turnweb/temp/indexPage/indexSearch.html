@@ -1,0 +1,119 @@
+﻿<div id="serWebPanel">
+    <div class="serTitle" v-show="main$m.pcarList.length>0"><img v-bind:src="main.pub.lib.src('product.png')" style="width:20px;" />&nbsp;{{LangTitle('productTemp')}}</div>
+    <div class="docSerPanel" v-for="(val,nu) in main$m.pcarList">
+        <span id="nu">top{{nu+1}}&nbsp;</span>
+        <span class="docTitle" v-on:click="main$m.$m.main.toPage(val.key,6);">
+            <span v-html="reContent(val,val.nameAry)"></span><br/>
+            <img v-show="val.imgAry.length != 0 && main$m.pcarImg!=null" style="width:120px;" v-bind:id="'serproductCityExsit'+val.key" v-bind:src="((val.imgAry.length != 0 && main$m.pcarImg!=null)?main$m.pcarImg.src(val.imgAry[0]):'')"/>
+        </span>
+       <div style="position:relative;padding-top:5px;padding-bottom:5px;" > <span v-bind:id="'pcarser'+val.key" v-on:click="copyUrl('pcarser',val)" style="font-size:12px;color:#AAA;cursor:pointer;user-select:all;" ><img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:20px;padding-right:6px;position:realtive;top:3px;"/>{{window.location.protocol.split(':')[0]+"://"+window.location.host+"/u/6/"+val.key}}</span></div>
+        <img  v-show="mainTemp.NormalLevel() || mainTemp.SysLevel() || mainTemp.editLevel()" v-bind:src="main.pub.lib.src(((pcarTagBag(val))?'tagbag.png':'tagtouch.png'))" v-on:click="((!pcarTagBag(val))?mainTemp.addTag(6,val.key,reContent(val,val.nameAry)):mainTemp.delTag(6,val.key))" id="SERtagAddLabel" />
+    </div> 
+    <!--市集-->
+
+    <div class="serTitle" v-show="main$m.acList.length>0"><img v-bind:src="main.pub.lib.src('mesing.png')" style="width:20px;" />&nbsp;亻<span style="color:#006030;">半</span>{{LangTitle('space')}}</div>
+    <div class="docSerPanel" v-for="(val,nu) in main$m.acList">
+        <span id="nu">top{{nu+1}}&nbsp;</span>
+        <span class="docTitle" v-on:click="main$m.$m.main.toPage(val.key,5);">
+            {{reTitle(val)}<br/>
+            <img  style="width:200px;" v-bind:id="'serMGACInPhoto'+((val.imgAry.length>0)?val.imgAry[0]:'').split('.')[0]+val.key" v-bind:src="val.objImg.src(((val.imgAry.length>0)?val.imgAry[0]:''))"/>
+        </span>
+        <div style="position:relative;padding-top:5px;padding-bottom:5px;" > <span v-bind:id="'acser'+val.key" v-on:click="copyUrl('acser',val)" style="font-size:12px;color:#AAA;cursor:pointer;user-select:all;" ><img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:20px;padding-right:6px;position:realtive;top:3px;"/>{{window.location.protocol.split(':')[0]+"://"+window.location.host+"/u/5/"+val.key}}</span></div>
+        <img  v-show="mainTemp.NormalLevel() || mainTemp.SysLevel() || mainTemp.editLevel()" v-bind:src="main.pub.lib.src(((acTagBag(val))?'tagbag.png':'tagtouch.png'))" v-on:click="((!acTagBag(val))?mainTemp.addTag(5,val.key,reTitle(val)):mainTemp.delTag(5,val.key))" id="SERtagAddLabel" />
+    </div>
+     <!--半空間活動-->
+
+    <div class="serTitle" v-show="main$m.productList.length>0"><img v-bind:src="main.pub.lib.src('tag.png')" style="width:20px;" />&nbsp;{{LangTitle("pnews")}}</div>
+    <div class="docSerPanel" v-for="(val,nu) in main$m.productList">
+        <span id="nu">top{{nu+1}}&nbsp;</span>
+        <span class="docTitle" v-show="val.tag.content!=null" v-bind:style="((val.tag.show)?'opacity:0.6;':'')" v-html="main.pub.catchLangName(val.titleAry).replace(/</g,'&lt;').replace(/>/g,'&gt;')" v-on:click="val.tag.show=!val.tag.show;"></span>
+        <span class="docTitle" v-show="val.tag.content==null" v-html="main.pub.catchLangName(val.titleAry).replace(/</g,'&lt;').replace(/>/g,'&gt;')" v-on:click="main$m.$m.main.getLabel(val.tag,'','serProductLabelTag'+val.key+nu,0)"></span>
+        <img  v-show="(val.tag.content==null || (!val.tag.show && val.tag.content!=null)) && (mainTemp.NormalLevel() || mainTemp.SysLevel() || mainTemp.editLevel() )" v-bind:src="main.pub.lib.src(((PPckTagBag(val))?'tagbag.png':'tagtouch.png'))" v-on:click="((!PPckTagBag(val))?mainTemp.addTag(3,val.key,main.pub.catchLangName(val.titleAry)):mainTemp.delTag(3,val.key))" id="SERtagAddLabel" />
+        <div id="docContent" v-show="val.tag.content!=null && !val.tag.show">...</div>
+        <div id="docContent" v-show="val.tag.content==null">
+            <span v-html="main.pub.catchLangName(val.title2Ary).replace(/</g,'&lt;').replace(/>/g,'&gt;').substr(0,9)"></span>...<span v-html="main.pub.catchLangName(val.descriptionAry).replace(/</g,'&lt;').replace(/>/g,'&gt;').substr(0,9).substr(0,9)"></span>
+            <div class="photo"  v-for="(val2,nu2) in val.imgAry" v-on:click="main$m.$m.main.getLabel(val.tag,'','serProductLabelTag'+val.key+nu,0)">
+                <img v-bind:src="val.objImg.src(val2)" v-bind:id="'pDMPhoto'+val2.split('.')[0]+val.key" />
+            </div>
+        </div>
+        <div style="position:relative;padding-top:5px;padding-bottom:5px;" > <span v-bind:id="'pnser'+val.key" v-on:click="copyUrl('pnser',val)" style="font-size:12px;color:#AAA;cursor:pointer;user-select:all;" ><img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:20px;padding-right:6px;position:realtive;top:3px;"/>{{window.location.protocol.split(':')[0]+"://"+window.location.host+"/u/3/"+val.key}}</span></div>
+        <div style="position:relative;width:100%;" v-show="val.tag.show"><img v-bind:src="main.pub.lib.src('tag.png')" v-on:click="val.tag.show=!val.tag.show;" v-bind:id="'serProductLabelTag'+val.key+nu" class="tagLabel" /><component v-bind:is="((val.tag.show || val.tag.content!=null)?v.pDMliVue:'')" v-bind:page="val.tag.content"></component></div><!-- 標籤文章 -->
+    </div> <!--最新消息-->
+    
+    <div class="serTitle" v-show="main$m.storyList.length>0"><img v-bind:src="main.pub.lib.src('tag.png')" style="width:20px;" />&nbsp;{{LangTitle("acnews")}}</div>
+    <div class="docSerPanel" v-for="(val,nu) in main$m.storyList">
+        <span id="nu">top{{nu+1}}&nbsp;</span>  
+        <span class="docTitle" v-show="val.tag.content!=null" v-bind:style="((val.tag.show)?'opacity:0.6;':'')" v-html="main.pub.catchLangName(val.titleAry).replace(/</g,'&lt;').replace(/>/g,'&gt;')" v-on:click="val.tag.show=!val.tag.show;"></span>
+        <span class="docTitle" v-show="val.tag.content==null" v-html="main.pub.catchLangName(val.titleAry).replace(/</g,'&lt;').replace(/>/g,'&gt;')" v-on:click="main$m.$m.main.getLabel(val.tag,'','serStoryLabelTag'+val.key+nu,0)"></span>
+        <img  v-show="(val.tag.content==null || (!val.tag.show && val.tag.content!=null)) && (mainTemp.NormalLevel() || mainTemp.SysLevel() || mainTemp.editLevel())"  v-bind:src="main.pub.lib.src(((STckTagBag(val))?'tagbag.png':'tagtouch.png'))" v-on:click="((!STckTagBag(val))?mainTemp.addTag(2,val.key,main.pub.catchLangName(val.titleAry)):mainTemp.delTag(2,val.key))" id="SERtagAddLabel" />
+        <div id="docContent" v-show="val.tag.content!=null && !val.tag.show">...</div>
+        <div id="docContent" v-show="val.tag.content==null">
+            <span v-html="main.pub.catchLangName(val.title2Ary).replace(/</g,'&lt;').replace(/>/g,'&gt;').substr(0,9)"></span>...<span v-html="main.pub.catchLangName(val.descriptionAry).replace(/</g,'&lt;').replace(/>/g,'&gt;').substr(0,9).substr(0,9)"></span>
+            <div class="photo"  v-for="(val2,nu2) in val.imgAry" v-on:click="main$m.$m.main.getLabel(val.tag,'','serStoryLabelTag'+val.key+nu,0)">
+                <img v-bind:src="val.objImg.src(val2)" v-bind:id="'pDMPhoto'+val2.split('.')[0]+val.key" />
+            </div>
+        </div>
+        <div style="position:relative;padding-top:5px;padding-bottom:5px;" > <span v-bind:id="'acnser'+val.key" v-on:click="copyUrl('acnser',val)" style="font-size:12px;color:#AAA;cursor:pointer;user-select:all;" ><img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:20px;padding-right:6px;position:realtive;top:3px;"/>{{window.location.protocol.split(':')[0]+"://"+window.location.host+"/u/2/"+val.key}}</span></div>
+        <div style="position:relative;width:100%;" v-show="val.tag.show"><img v-bind:src="main.pub.lib.src('tag.png')" v-on:click="val.tag.show=!val.tag.show;" v-bind:id="'serStoryLabelTag'+val.key+nu" class="tagLabel" /><component v-bind:is="((val.tag.show || val.tag.content!=null)?v.storyliVue:'')" v-bind:page="val.tag.content"></component></div><!-- 標籤文章 -->
+    </div>
+     <!--活動消息-->
+
+    <div class="serTitle" v-show="main$m.newsList.length>0"><img v-bind:src="main.pub.lib.src('tag.png')" style="width:20px;" />&nbsp;{{LangTitle('newsvue')}}</div>
+    <div class="newsSerPanel" v-for="(val,nu) in main$m.newsList">
+        <span id="nu">top{{nu+1}}&nbsp;</span>
+        <span class="newsTitle" v-show="val.tag.content!=null" v-bind:style="((val.tag.show)?'opacity:0.6;':'')" v-html="main.pub.catchLangNameNu(val.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu)).replace(/</g,'&lt;').replace(/>/g,'&gt;')" v-on:click="val.tag.show=!val.tag.show;"></span>
+        <span class="newsTitle" v-show="val.tag.content==null" v-html="main.pub.catchLangNameNu(val.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu)).replace(/</g,'&lt;').replace(/>/g,'&gt;')" v-on:click="main$m.$m.main.getLabel(val.tag,'serEventLabel'+val.key+'loadPhoto','serNewsabelTag'+val.key+nu,0)"></span>
+        <img   v-show="(val.tag.content==null  || mainTemp.SysLevel() || mainTemp.editLevel() || (!val.tag.show && val.tag.content!=null)) && mainTemp.NormalLevel()"  v-bind:src="main.pub.lib.src(((NewsckTagBag(val))?'tagbag.png':'tagtouch.png'))" v-on:click="((!NewsckTagBag(val))?mainTemp.addTag(0,val.key,main.pub.catchLangNameNu(val.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))):mainTemp.delTag(0,val.key))" id="SERtagAddLabel" />
+        <div style="position:relative;padding-top:5px;padding-bottom:5px;" > <span v-bind:id="'newsser'+val.key" v-on:click="copyUrl('newsser',val)" style="font-size:12px;color:#AAA;cursor:pointer;user-select:all;" ><img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:20px;padding-right:6px;position:realtive;top:3px;"/>{{window.location.protocol.split(':')[0]+"://"+window.location.host+"/u/0/"+val.key}}</span></div>
+        <div id="newsContent" v-show="val.tag.content!=null && !val.tag.show">...</div>
+        <div id="newsContent" v-show="val.tag.content==null">
+           <span v-for="(val1,nu1) in val.readPathAry">
+            #<span id="label">{{main.pub.catchLangNameNu(val1.nameAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))}}</span>
+           </span>
+           <span v-for="(val1,nu1) in val.mdocAry">
+            #<span  v-show="val1.content==null" id="label">{{main.pub.catchLangNameNu(val1.nameAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))}}</span>
+           </span>
+        </div>
+        <div id="NewsDate" v-show="val.tag.content==null">{{pb.reunixDate(val.publish)}}</div>
+        <div style="position:relative;width:100%;" v-show="val.tag.show"><img v-bind:src="main.pub.lib.src('tag.png')" v-on:click="val.tag.show=!val.tag.show;" v-bind:id="'serNewsabelTag'+val.key+nu" class="tagLabel" /><component v-bind:is="((val.tag.show || val.tag.content!=null)?v.newslivue:'')" v-bind:page="val.tag.content"></component></div><!-- 標籤文章 -->
+    </div> 
+    <!-- 新聞 -->
+
+    <div class="serTitle" v-show="main$m.newsccList.length>0"><img v-bind:src="main.pub.lib.src('tag.png')" style="width:20px;" />&nbsp;{{LangTitle('newsccvue')}}</div>
+    <div class="newsSerPanel" v-for="(val,nu) in main$m.newsccList">
+        <span id="nu">top{{nu+1}}&nbsp;</span>
+        <span class="newsTitle" v-show="val.tag.content!=null" v-bind:style="((val.tag.show)?'opacity:0.6;':'')" v-html="main.pub.catchLangNameNu(val.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu)).replace(/</g,'&lt;').replace(/>/g,'&gt;')" v-on:click="val.tag.show=!val.tag.show;"></span>
+        <span class="newsTitle" v-show="val.tag.content==null" v-html="main.pub.catchLangNameNu(val.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu)).replace(/</g,'&lt;').replace(/>/g,'&gt;')" v-on:click="main$m.$m.main.getLabel(val.tag,'serEventLabel'+val.key+'loadPhoto','serNewsabelTag'+val.key+nu,0)"></span>
+        <img   v-show="(val.tag.content==null || (!val.tag.show && val.tag.content!=null)) && (mainTemp.NormalLevel()  || mainTemp.SysLevel() || mainTemp.editLevel() )"  v-bind:src="main.pub.lib.src(((NewsccckTagBag(val))?'tagbag.png':'tagtouch.png'))" v-on:click="((!NewsccckTagBag(val))?mainTemp.addTag(4,val.key,main.pub.catchLangNameNu(val.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))):mainTemp.delTag(4,val.key))" id="SERtagAddLabel" />
+        <div style="position:relative;padding-top:5px;padding-bottom:5px;" > <span v-bind:id="'newsccser'+val.key" v-on:click="copyUrl('newsccser',val)" style="font-size:12px;color:#AAA;cursor:pointer;user-select:all;" ><img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:20px;padding-right:6px;position:realtive;top:3px;"/>{{window.location.protocol.split(':')[0]+"://"+window.location.host+"/u/4/"+val.key}}</span></div>
+        <div id="newsContent" v-show="val.tag.content!=null && !val.tag.show">...</div>
+        <div id="newsContent" v-show="val.tag.content==null">
+           <span v-for="(val1,nu1) in val.readPathAry">
+            #<span id="label">{{main.pub.catchLangNameNu(val1.nameAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))}}</span>
+           </span>
+           <span v-for="(val1,nu1) in val.mdocAry">
+            #<span  v-show="val1.content==null" id="label">{{main.pub.catchLangNameNu(val1.nameAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))}}</span>
+           </span>
+        </div>
+        <div id="NewsDate" v-show="val.tag.content==null">{{pb.reunixDate(val.publish)}}</div>
+        <div style="position:relative;width:100%;" v-show="val.tag.show"><img v-bind:src="main.pub.lib.src('tag.png')" v-on:click="val.tag.show=!val.tag.show;" v-bind:id="'serNewsabelTag'+val.key+nu" class="tagLabel" /><component v-bind:is="((val.tag.show || val.tag.content!=null)?v.newslivue:'')" v-bind:page="val.tag.content"></component></div><!-- 標籤文章 -->
+    </div> 
+    <!-- 採踩 -->
+    
+    <div class="dataList" v-for="(val,nu) in main$m.searchResult">
+        <span class="title">
+            <img v-bind:src="((img!=null)?img.src(((val.browser!='content')?val.browser:'google')+'.png'):'')" v-show="val.browser!='content'" />
+            <span v-show="val.browser=='content'"id="myWeb" >Me</span> &nbsp;{{((val.inWeb.length>0 && val.content!="0")?"Search:"+val.content:"Result...")}}
+            <a v-bind:href="val.searchUrl+main$m.searchTxt" v-show="val.inWeb.length>0" target="_blank" id="hrefBrowser" v-show="val.browser!='content'">→go</a>
+        </span>
+        <div id="hrefEmpty" v-show="val.inWeb.length==0">not find...</div>
+        <div class="hrefDetail"v-for="(val2,nu2) in val.inWeb">
+            <span id="nu">top{{nu2+1}}&nbsp;</span> <a v-bind:href="val2.url" target="_blank" id="href" v-html="val2.title"></a>
+            <img  v-show="mainTemp.NormalLevel() || mainTemp.SysLevel() || mainTemp.editLevel()" v-bind:src="main.pub.lib.src(((ckTagBag(val2))?'tagbag.png':'tagtouch.png'))" v-on:click="((!ckTagBag(val2))?mainTemp.addTag(1,val2.url,val2.title):mainTemp.delTag(1,val2.url))" id="SERtagAddLabel" />
+            <div id="description" v-html="((val2.descript!='')?val2.descript:'...')"></div>
+            <div id="splitLine"></div>
+        </div>
+        <div id="browserSplitLine"></div>
+    </div>
+    <!---外部網址搜尋-->
+</div>

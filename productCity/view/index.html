@@ -1,0 +1,48 @@
+﻿<div id="pcIndexPanel">
+        <div id="PCheadTool">
+                <div id="pc_i_sertemp" v-show="showSerBar">
+                        <div v-bind:class="((filter)?'ChooseSetSerBt':'setSerBt')"><label v-for="carPCsetBt"><input type="checkbox" id="carPCsetBt" v-model="filter" />{{getLang('set')}}</label></div>
+                        <div id="ctr">
+                                <div id="classFirstPanel">
+                                    <div v-on:click="selfclassmain=333;$m.main.productListSer(true);" v-bind:class="((selfclassmain=='333')?'choose':'nochoose') || productcsSec.length==0">{{getLang('pcp')}}</div>
+                                    <div v-on:click="selfclassmain=val.key;$m.main.productListSer(true);" v-for="(val,nu) in productcs" v-bind:class="((selfclassmain==val.key)?'choose':'nochoose')">{{main.pub.catchLangName(val,val.nameAry)}}</div>
+                                    <div class="clear">&nbsp;</div> <!--float 阻隔-->
+                                </div>
+                                <div id="classSecPanel" v-show="selfclassmain!='333'">
+                                    <div style="color:#DDD;float:left;"><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(-90deg);"/></div>
+                                    <div v-on:click="selfclass=999;$m.main.productListSer(true);" v-bind:class="((selfclass=='999')?'choose':'nochoose')">{{getLang('pcs')}}</div>
+                                    <div v-on:click="selfclass=val.key;$m.main.productListSer(true);" v-for="(val,nu) in productcsSec" v-bind:class="((selfclass==val.key)?'choose':'nochoose')">{{main.pub.catchLangName(val,val.nameAry)}}</div>
+                                    <div class="clear">&nbsp;</div> <!--float 阻隔-->
+                                </div>
+                                <div class="clear">&nbsp;</div> <!--float 阻隔-->
+                        </div>
+                        <div class="clear">&nbsp;</div> <!--float 阻隔-->
+                </div>
+                <div v-on:click="showSerBar=!showSerBar" id="serBtDroup"><img v-bind:src="main.pub.lib.src(((showSerBar)?'ur.png':'dr.png'))" style="width:15px;"/></div>
+        </div>
+        <div id="pcContent">
+                <div style="text-align:center;width:100%;color:#AAA;font-size:15px;" v-show="dataList.length==0">...not find</div>
+                <div class="PC_i_pool" v-for="(val,nu) in dataList">
+                        <div class="productPanel" v-bind:id="'productCityDatali'+val.key" >
+                                <div id="openPCImgBt" v-bind:style="((val.imgAry.length != 0)?'background-color:#FFF;border:1px solid #EEE;':'')" v-on:click="goProduct(val)">
+                                        <img v-show="val.imgAry.length != 0" v-bind:id="'productCityExsit'+val.key" v-bind:src="((val.imgAry.length != 0)?productImg.src(val.imgAry[0]):'')"/>
+                                        <div class="discount" v-show="discountFun(val)!=1 && discountFun(val)!=0">{{discountFun(val)*((main.pub.langNu==0)?10:100)}}&nbsp;{{((main.pub.langNu==0)?"折優惠":"off %")}}</div>
+                                </div>
+                                <div id="pcName" class="PC_i_text">{{main.pub.catchLangName(val.nameAry)}}</div>
+                                <div id="pcStatusPanel" v-show="mainTemp.NormalLevel() || !mainTemp.head.singCK">
+                                        <div id="setMarkPanel" v-show="val.set" ><span>&nbsp;{{getLang('set')}}&nbsp;</span></div>
+                                        <div id="pcCarBt" v-on:click="$m.main.getProductCar(val)" v-bind:style="((!val.ck)?'border:1px solid #AAA;':'')">
+                                                <!-- 購物鈕 -->
+                                                <img v-bind:src="main.pub.lib.src('product.png')" id="btIcon" v-bind:style="((!val.ck)?'opacity:0.6':'')" />
+                                                <img v-bind:src="main.pub.lib.src('ck.png')" id="chooseIcon" v-show="val.ck"/>
+                                                <div id="ChooseCount" v-show="val.ck" >+&nbsp;{{val.count}}</div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="clear">&nbsp;</div> <!--float 阻隔-->
+        </div>
+        <div id="pcBottomPageTool" >
+                <component v-bind:is="v.pagetool" ></component>
+        </div>
+</div>

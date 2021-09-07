@@ -1,0 +1,38 @@
+﻿#Management_main
+{/* Management project */
+    #MGWatchPanel
+    {/* 監控系統 panel */
+        width:100%;position:relative;
+        #MGWatchHeadPanel
+        {/*選擇模式 panel*/
+            position:relative;
+            width:100%;
+            padding-bottom:20px;
+            #chooseModel
+            {/* 定位panel*/
+                position:relative;
+                width:400px;
+                margin-left:auto;
+                margin-right:auto;
+                padding-top:20px;
+                padding-bottom:10px;
+                border-bottom:1px solid #CCC;
+                font-size:15px;
+                color:#CCC;
+                .choose
+                {/* 被選擇模式 */
+                    font-size:15px;
+                    font-weight:bold;
+                    color:#555;
+                }
+                .normal
+                {/* 未選擇模式 */
+                    font-size:12px;
+                    color:#AAA;
+                    cursor:pointer;
+                }
+
+            }
+        }
+    }
+}

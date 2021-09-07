@@ -1,0 +1,40 @@
+﻿<div id="setClassPanel"  v-bind:style="'background-color:#'+((!load)?'FFF;opacity:1;':'FFEEDD;opacity:0.7;')">
+    <span id="setMark">※備註:欄位key Entner 為儲存、顯不顯示謹限商城搜尋下拉式欄位list功能</span>
+    <div v-for="(val,nu) in main$m.productcs" id="listPnael">
+        <img v-bind:src="main.pub.lib.src('close.png')" class="closeImg" v-show="!val.firstinput && main.pub.catchLangName(val.nameAry).replace(/ /g,'')=='(null)'"/>
+        <span class="setClNu" v-show="nu!=0">&nbsp;{{((nu >=100)?'':'0')+((nu >=10)?'':'0')+(nu)}}&nbsp;</span>&nbsp;
+        <span v-show="val.key!=''"  style="cursor:pointer;">
+            <img v-bind:src="main.pub.lib.src('delete.png')" class="ctrBtImg"  v-on:click="main$m.$m.cl.classDelF(val)" />&nbsp;
+            <img v-bind:src="main.pub.lib.src(((val.display)?'display_on.png':'display_off.png'))" class="ctrBtImg"  v-on:click="main$m.$m.cl.classDisplayF(val)"/>&nbsp;
+        </span> 
+        <select v-model="val.store" style="width:90px;"  v-show="nu!=0" v-on:change="main$m.$m.cl.classEditF(val)" >
+            <option v-bind:value="val2.val" v-for="(val2,nu2) in main$m.storedatalist" >{{main.pub.catchLangName(val2.nameAry)}}</option>
+        </select>
+         <input type="text" v-model="val.nameAry[main.pub.langNu]" style="width:100px;" v-on:keyup.enter="main$m.$m.cl.classEditF(val)" v-on:keyup = "val.firstinput=false" v-on:keydown = "val.firstinput=false"  placeholder=" 請輸入分類名" />&nbsp;<img v-bind:src="main.pub.lib.src('add.png')" class="ctrBtImg" v-show="val.key==''"/>
+        <span v-show="val.key!=''">
+            <button v-on:click="main$m.$m.cl.classSeList(val)" v-bind:style="'border-radius:5px;background-color:#FFF;opacity:'+((val.opencl)?1:0.5)+';'"><img v-bind:src="main.pub.lib.src('indexMenu.png')" class="ctrBtImg" /></button>&nbsp;&nbsp;&nbsp;
+            <button class="moveBt"v-show="nu>1" v-on:click="main$m.$m.cl.classFirstPre(val)">▲</button>&nbsp;&nbsp;
+            <button class="moveBt" v-show="main$m.productcs.length > nu+1" v-on:click="main$m.$m.cl.classFirstNext(val)">▼</button>
+        </span>
+        <div v-show="val.opencl" class="clPanel">
+            <div class="clTemp">
+                <div v-for="(val2,nu2) in val.cl" class="clListPanel">
+                    <img v-bind:src="main.pub.lib.src('close.png')" class="closeImg" v-show="!val2.firstinput && main.pub.catchLangName(val2.nameAry).replace(/ /g,'')=='(null)'"/>
+                    <span class="setClNu" v-show="nu2!=0">&nbsp;{{((nu2 >=100)?'':'0')+((nu2 >=10)?'':'0')+(nu2)}}&nbsp;</span>&nbsp;
+                    <span v-show="val2.key!=''" style="cursor:pointer;" >
+                        <img v-bind:src="main.pub.lib.src('delete.png')" class="ctrBtImg" v-on:click="main$m.$m.cl.classSeDel(val2)"  />&nbsp;
+                        <img v-bind:src="main.pub.lib.src(((val2.display)?'display_on.png':'display_off.png'))" class="ctrBtImg" v-on:click="main$m.$m.cl.classSedisplay(val2)"/>&nbsp;
+                    </span>
+                    <select v-model="val2.store"  style="width:90px;" v-show="nu2!=0"  v-on:change="main$m.$m.cl.classSeEdit(val2)" >
+                        <option v-bind:value="val3.val" v-for="(val3,nu3) in main$m.storedatalist" >{{main.pub.catchLangName(val3.nameAry)}}</option>
+                    </select>
+                    <input type="text" v-model="val2.nameAry[main.pub.langNu]" style="width:100px;" v-on:keyup.enter="main$m.$m.cl.classSeEdit(val2)"  v-on:keyup = "val2.firstinput=false" v-on:keydown = "val2.firstinput=false" placeholder=" 請輸入細項名" />&nbsp;<img v-bind:src="main.pub.lib.src('add.png')" class="ctrBtImg" v-show="val2.key==''"/>
+                    <span v-show="val2.key!=''">
+                        <button class="moveBt" v-show="nu2>1" v-on:click="main$m.$m.cl.classSePre(val2)">▲</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="moveBt" v-show="val.cl.length > nu2+1" v-on:click="main$m.$m.cl.classSeNext(val2)">▼</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿<div id="newsIMGAryPreview" v-show="imgAry[nu].path!='' && closeView">
+    <div id="newsIMGAryPreviewPB"></div>
+    <div id="closePreview"><img v-bind:src="main.pub.lib.src('close2.png')" v-on:click="close()" /></div>
+    <div id="newsImgContent">
+        <div v-show="((imgAry[nu].path!='')?objImg.src(imgAry[nu].path)==null:false)" id="imgLoad">loading...</div>
+        <div v-show="((imgAry[nu].path!='')?objImg.src(imgAry[nu].path)!=null:false)" id="imgContent">
+            <!--文章圖片-->
+            <div id="container">
+                <img v-bind:src="((imgAry[nu].path!='')?objImg.src(imgAry[nu].path):'')" class="photo" id="preViewNewsImg" />
+            </div>
+        </div>
+    </div>
+    <div id="NppPanel">
+        <div id="NewsPreviewPhotodescription" v-show="imgAry[nu].titleAry[main.pub.langNu]!='' && imgAry[nu].titleAry[main.pub.langNu]!=null">
+            <!--照片描述-->
+            <span v-html="main.pub.catchLangName(imgAry[nu].titleAry).replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+        </div>
+    </div>
+    <div id="newsAryRight" v-on:click="right()"><img v-bind:src="main.pub.lib.src('arrbt.png')" style="transform:rotate(180deg);"  /></div>
+    <div id="newsAryLeft" v-on:click="left()"><img v-bind:src="main.pub.lib.src('arrbt.png')" /></div>
+</div>

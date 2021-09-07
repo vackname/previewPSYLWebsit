@@ -1,0 +1,29 @@
+﻿<div id="p_psf_payMenuPanel" v-show="((floatModel())?open && main$m.pObj().chooseList.length>0:true)">
+    <div id="panel">
+        <div id="BG" v-show="((floatModel())?open && main$m.pObj().chooseList.length>0:false)"></div>
+        <div style="background-color:#FFF;" v-bind:class="((floatModel())?'chooseModel':'checkOut')">
+            <div v-for="(val,nu) in main$m.pObj().chooseList" class="menuli" v-on:click="((floatModel())?main$m.$m.main.chooseProduct({key:val.pkey},nu,false):false)" v-bind:name="'productnameMenu'+nu">
+                <div style="float:left;color:#AAA;font-size:12px;font-weight:bold;"> No.{{nu+1}}</div> {{main.pub.catchLangName(val.nameAry)}}
+                <div style="float:right;width:180px;">×&nbsp;{{val.count}} <div style="float:right;width:80px;" v-show="!floatModel()">{{main.pub.catchLangName(val.unitAry)}}</div></div>
+                <div class="cash" style="text-align:left;width:90%;margin-right:auto;padding:5px;border-bottom:3px solid #CCC;" v-show="!floatModel()">
+                    <input type="button" v-bind:value="main$m.getLang('gift')" v-bind:class="((val.gifts)?'giftCK':'gift')" v-on:click="giftChange(val)" />
+                    <span v-show="!val.gifts" v-on:click="addAllowancesShowFun(val)">&nbsp;<input type="button" v-bind:value="main$m.getLang('allowances')" v-bind:class="((val.allowances!=0)?'allowancesCK':'allowances')" />&nbsp;<span v-show="val.allowances!=0">{{val.allowances|cashFormat}}</span></span>
+                    <div class="setEditBt" v-show="val.set" v-on:click="main$m.$m.set.setList(val,nu)"><!--前往套餐選購確認鈕--><img v-bind:src="main.pub.lib.src('product.png')" style="width:25px;" /></div>
+                </div>
+                <div class="cash" style="border-bottom:1px solid #EEE;" v-show="!floatModel()">
+                    <div class="cashPanel" style="width:35%;text-align:left;font-size:12px;" v-show="val.sfee!=0 && !val.gifts" >{{main$m.getLang('difference')}}&nbsp;{{val.sfee|cashFormat}}</div><!--補差價-->
+                    <div class="cashPanel" style="width:35%;text-align:left;font-size:12px;text-decoration:line-through;opacity:0.5;" v-show="val.fee!=0">{{(val.fee*val.count) | cashFormat}}/{{main$m.getLang('shipping')}}</div><!--稅額-->
+                </div>
+                <div class="cash" v-show="!floatModel()">
+                    <div class="cashPanel" style="width:55%;color:#555;font-weight:bold;"><span style="color:#2894FF;font-size:12px;" v-show="main$m.discountFun(val)!=1 && !val.gifts">&nbsp;({{main$m.discountFun(val)*100}}%)</span>{{ ((!val.gifts)?sum(val):0) | cashFormat }}</div><!--總額計算-->
+                    <div class="cashPanel" style="width:5%;text-align:center;">=</div>
+                    <div class="cashPanel" style="width:35%;text-align:right;font-size:12px;opacity:0.5;">{{val.cash | cashFormat}}/{{main.pub.catchLangName(val.unitAry)}}</div><!--單價-->
+                </div>
+            </div>
+        </div>
+        <div id="productcar" v-on:click="main$m.$m.set.addSet()" v-show="main$m.stepPanel==4"><button id="productcarAddBt"><img v-bind:src="main.pub.lib.src('product.png')" style="width:90%;" /></button></div>
+        <div id="closeBt" v-show="floatModel()" v-on:click="open=false" > <img v-bind:src="main.pub.lib.src('closeB.png')" style="width:100%;" /> </div>
+    </div>
+    <component v-bind:is="v.setMenuToolView" v-show="main$m.stepPanel!=4 && openSetView" ></component>
+    <component v-bind:is="v.addAllowancesToolView"></component>
+</div>

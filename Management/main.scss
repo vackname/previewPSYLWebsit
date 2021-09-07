@@ -1,0 +1,23 @@
+﻿#Management_main
+{/*管理者系統*/
+    width:100%;position:relative;
+    #returnLog
+    {/* 反回Log審核 Panel */
+        position:fixed;width:100px;text-align:left;
+        z-index:195;
+        top:70px;
+        span
+        {/* clcik button */
+            cursor:pointer;
+            font-size:12px;
+            color:#005AB5;
+            img
+            {
+                width:15px;
+                position:relative;
+                top:5px;
+                padding:3px;
+            }
+        }
+    }
+}

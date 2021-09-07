@@ -1,0 +1,23 @@
+﻿<div id="tagBagPanel">
+    <div v-on:click="close()" id="toIndex"><img v-bind:src="main.pub.lib.src('dr.png')" style="transform:rotate(90deg);position:relative;"  class="goto" /><span>{{LangInput("return")}}</span></div>
+    <div v-for="(val,nu) in mainTemp.tagbag" class="bagData">
+        <div id="bagContent">
+            <div id="tool">
+                <img v-bind:src="main.pub.lib.src('delete.png')" v-on:click="mainTemp.$m.t.del(val,true)" />
+            </div>
+            <div id="imgTag"><img v-bind:src="main.pub.lib.src('tagbag.png')" v-on:click="mainTemp.$m.t.opeTag(val)" />
+            
+            </div>
+            <div id="nu" >
+                <div id="char">{{val.nu}}</div>
+            </div>
+            <div  id="namePanel" >
+                <img v-bind:src="main.pub.lib.src('edit.png')"  v-on:click="mainTemp.$m.t.edit(val)" />
+                <span v-show="!val.edit">{{((val.name.replace(/ /g,'')!='')?val.name:"No."+val.nu)}}</span>
+                <input type="text" v-model="val.name" v-show="val.edit" />
+            </div>
+        </div>
+        <div style="font-size:12px;width:100%;color:#DDD;text-align:center;">{{pb.reunixDate(val.date)}}</div>
+    </div>
+    <div class="clear">&nbsp;</div> <!--float 阻隔-->
+</div>

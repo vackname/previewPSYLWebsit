@@ -1,0 +1,276 @@
+﻿#Management_main
+{/* Management project */
+    #MGPD_panel
+    {/*結帳日主要樣版*/
+        position:relative;margin-left:auto;margin-right:auto;width:100%;padding-bottom:50px;
+        #MGPDEMptyMark
+        {/* 無單據狀態提示 label */
+            width:100%;text-align:center;color:#AAA;padding-top:20px;border-top:1px solid #EEE;
+        }
+
+        #tagacButton
+        {/* tag 活動模式 */
+            padding:3px;font-size:12px;color:#FFF;background-color:#999;cursor:pointer;border-radius:6px;
+        }
+        .excelCtr
+        {/* excel 匯入 匯出 */
+            width:360px;cursor:pointer;padding-top:30px;position:relative;
+            padding-bottom:20px;
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            font-size:12px;
+            color:#666;
+            #tagacButton
+            {/* tag 活動模式 */
+                padding:3px;font-size:12px;color:#FFF;background-color:#999;cursor:pointer;border-radius:6px;
+            }
+            img
+            {
+                positioN:relative;
+                top:-15px;
+                padding-right:20px;
+            }
+            #dealBall
+            {/*未處理計數*/
+                position:absolute;
+                top:40px;
+                right:10px;
+                padding-top:1px;padding-bottom:1px;color:#FFF;background-color:#FF3300;border-radius:120px;font-size:12px;width:30px;text-align:center;
+            }
+        }
+
+        #MGPDchart
+        {/* 分析圖表 定位panel */
+            position:relative;padding-top:20px;border-top:1px solid #ddd;
+            #openSerPage
+            {
+                width:100%;
+                position:absolute;
+                text-align:center;
+                top:1px;
+                img
+                {
+                    cursor:pointer;
+                    width:10px;
+                    padding:3px;
+                    position:relative;
+                    top:3px;
+                }
+                span
+                {
+                    cursor:pointer;
+                    color:#AAA;font-size:12px;
+                }
+            }
+        }
+
+        .MGPD_row{
+            border-top:5px solid #CCC;
+            width:100%;
+            height:30px;
+        }
+        
+        .MGPD_bt{
+            background-color:#555;
+            color:#FFF;
+            font-size:12px;
+            box-shadow:2px 2px 5px #888888;
+        }
+        
+        .MGPD_StopBt{
+            background-color:#FF8800;
+            color:#FFF;
+            font-size:12px;
+            box-shadow:2px 2px 5px #888888;
+        }
+        
+        .MGPD_rowtb
+        {
+            text-align:left;width:100%;
+            padding-top:10px;
+            padding-bottom:30px;
+            .MGPD_title{
+                color:#AAA;
+                font-size:12px;
+            }
+            
+            .MGPD_label{
+                color:#555;
+                font-size:15px;
+            }
+            .MGPD_rowtb_left
+            {
+                float:left;
+                padding-left:2%;
+            }
+            
+            .MGPD_rowtb_right
+            {
+                float:right;width:50%;
+            }
+
+            .MGPD_rowtb_left:after,.MGPD_rowtb_right:after
+            {/*阻斷 清除float*/
+                clear:both;
+            }
+        }
+
+        .clear
+        {/*阻斷 清除float*/
+            width:100%;
+            clear:both;
+            padding-bottom:9px;
+        }
+        
+        .MGPD_rowtb_line{
+            clear:both;
+            position:relative;margin-left:auto;margin-right:auto;width:90%;border-top:1px solid #EEE;
+        }
+        
+        .MGPD_editBt{
+            position:relative;left:10px;top:5px;width:20px;cursor:pointer;
+            box-shadow:2px 2px 5px #888888;
+        }
+        
+        .MGPD_searchbt{
+            background-color:#555;
+            color:#FFF;
+            font-size:12px;
+            width:70px;
+            box-shadow:2px 2px 5px #888888;
+        }
+        
+        .MGPD_searchtitle{
+                width:100%;font-size:12px;
+                
+        }
+        
+        .MGPD_tbth{
+            text-align:center;
+            border-top:1px solid #555;
+            background-color:#999;font-size:12px;color:#FFF;
+        }
+        
+        #MGPD_MorePage
+        {/*更多 資料按鈕(page)*/
+            width:90%;height:30px;cursor:pointer;text-align:center;position:relative;margin-left:auto;margin-right:auto;max-width:500px;
+            color:#AAA;
+        }
+
+        #MGPD_Detail
+        {/* 訂單 商品明細 */
+            width:100%;
+            #MGPDOpen
+            {/* 訂單 商品明細 view button */
+                width:100%;font-size:12px;text-align:center;cursor:pointer;
+            }
+        }
+
+        .rowTemp
+        {/*單據 item content list 樣版*/
+            position:relative;width:95%;margin-left:auto;margin-right:auto;text-align:left;max-width:500px;
+            #MGPDPanel
+            {/* 單據框架*/
+                width:100%;border:1px solid #eee;
+                .purchase
+                {/* 客戶為出貨單mark */
+                    color:#FFF;
+                    background-color:#FFAD86;
+                    padding:3px;
+                    border-radius:6px;
+                    font-size:12px;
+                }
+                .MGPD_SUMsplit
+                {/* 總額分隔線 */
+                    position:relative;margin-left:auto;margin-right:auto;width:95%;border-top:1px solid #CCC;
+                }
+            }
+        }
+        
+        #ctrPanel
+        {/*控項panl */
+            position:relative;width:100%;
+            padding-top:20px;
+            #MGPD_totalPanel
+            {/*月結單panel*/
+                position:relative;width:95%;margin-left:auto;margin-right:auto;text-align:left;max-width:500px;cursor:pointer;
+                padding-top:10px;
+                #MGPDTotalTitle
+                {/*月結單 title laebl*/
+                    color:#00BBFF;font-size:15px;font-weight:bold;
+                    img
+                    {/* 開合提示img */
+                        position:relative;top:2px;width:15px;
+                    }
+                }
+                #MGPD_totalContent
+                {/*結單統計內容 panel*/
+                    width:100%;padding-bottom:20px;
+                    #payTotalDetailTB
+                    {/* 運算總合TB */
+                        position:relative;margin-left:auto;margin-right:auto;border:1px solid #AAA;width:100%;
+                        padding-bottom:10px;
+                        #cel1
+                        {/* 廢單、成功立單 計數 panel */
+                            text-align:center;
+                            .countPanel
+                            {/* 計數panel */
+                                width:100%;height:30px;
+                                #CPcel1
+                                {/*提示圖 panel*/
+                                    float:left;width:20%;text-align:right;
+                                    img
+                                    {/*提示圖*/
+                                        width:12px;opacity:0.7;
+                                    }
+                                }
+                                #CPcel2
+                                {/*計數label*/
+                                    float:right;width:75%;text-align:left;
+                                }
+                            }
+                        }
+                        #cel2
+                        {/*交易額度總合label */
+                            background-color:#FFF;color:#555;font-size:15px;font-weight:bold;text-align:left;
+                            #cel2title
+                            {/* title */
+                                color:#0022AA;font-size:12px;font-weight:bold;
+                            }
+
+                            #TypeDataList
+                            {/* 結單分類 data Count list panel */
+                                position:relative;margin-left:auto;margin-right:auto;width:90%;border-bottom:1px solid #555;height:30px;
+            
+                                #MGPDtcel1
+                                {/* 交易狀態分類名label */
+                                    float:left;width:60%;text-align:right;color:#AAA;
+                                }
+                                #MGPDtcel2
+                                {/* 交易狀態分類額度 label */
+                                    float:right;width:35%;text-align:left;color:#777;
+                                }
+                            }
+                        }
+
+                        #cel3
+                        {/* 交易量總額 cel */
+                            background-color:#FFF;color:#555;font-size:15px;font-weight:bold;text-align:right;
+                        }
+                    }
+
+                    .MGPD_tCMark
+                    {/*單據備註*/
+                        width:100%;color:#AAA;font-size:12px;
+                        img
+                        {/* 被說明 提示圖*/
+                            width:12px;opacity:0.5;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

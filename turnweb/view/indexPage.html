@@ -1,0 +1,35 @@
+<!-- 搜尋結果 -->
+<div id="indexPage">
+  <!--    <br/><br/>
+   <span v-on:click="$m.NotificationAdd()">strat subscribe</span><br/><br/><br/><br/> 
+-->
+    <!-- 搜尋首頁 -->
+    <div class="indexSearchArea" v-show="searchResult.length==0 && newsList.length==0 && productList.length==0&& storyList.length==0 && acList.length==0  && pcarList.length==0 && !openBag && !openDoc">
+        <component v-bind:is="v.imgBG" v-show="!load"></component>
+        <component v-bind:is="v.protalVue" v-show="load"></component>
+        <component v-bind:is="v.pdmVue" v-show="load"></component>
+        <div style="width:100%;height:20px;"></div>
+        <component v-bind:is="v.storyVue" v-show="load"></component>
+        <div id="psylMessage" v-show="load">
+            <div><a href="https://g.page/guabaotw?share" target="top">701&nbsp;臺南市&nbsp;東區裕農路621巷25號</a></div>
+            <div><a href="tel:0906655216" target="top">0906-655-216</a></div>
+            <div><a href="mailto:psyltw@gmail.com" target="top">psyltw@gmail.com</a></div>
+            <table>
+                <tr>
+                    <td><a href="https://www.facebook.com/psyltw/" target="top"><img v-bind:src="((inviteimgload)?inviteImg.src('facebook.png'):'')" /></a></td>
+                    <td><a href="https://www.instagram.com/hochiholi/" target="top"><img v-bind:src="((inviteimgload)?inviteImg.src('ig.png'):'')" /></a></td>
+                    <td><a href="https://page.line.me/col1008a" target="top"><img v-bind:src="((inviteimgload)?inviteImg.src('line.png'):'')" /></a></td>
+                    <td><a href="mailto:psyltw@gmail.com"  target="top"><img v-bind:src="((inviteimgload)?inviteImg.src('google.png'):'')" /></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div v-show="openDoc || openBag" v-on:click="toIndex()" id="toIndex"><img v-bind:src="main.pub.lib.src('dr.png')" style="transform:rotate(90deg);position:relative;"  class="goto" /><span>{{LangInput("return")}}</span></div>
+    <!--返回訊息頁button-->
+    <component v-bind:is="((openBag || openDoc)?v.docVue:'')"></component>
+    <!--文章bag Tag-->
+    <div style="width:100%;" v-show="!openBag && !openDoc">
+        <component v-bind:is="((searchResult.length>0 || newsList.length>0 || productList.length>0 || storyList.length>0 || acList.length>0  || pcarList.length>0)?v.indexSearch:'')"></component>
+        <!--搜尋menu list-->
+    </div>
+</div>

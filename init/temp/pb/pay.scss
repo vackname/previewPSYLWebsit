@@ -1,0 +1,38 @@
+﻿#psylPay
+{//支付銀端選擇器
+    position:relative;
+    width:95%;
+    text-align:center;
+    padding:20px;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:250px;
+    border-bottom:1px solid #EEE;
+    line-height: 266%;
+    text-align:left;
+    #chooseTitel
+    {/* 支付選擇title */
+        width:100%;
+        padding-bottom:0px;
+        text-align:center;
+        color:#FF8800;
+    }
+    span
+    {/* 支付選擇器 */
+        padding:20px;
+        cursor:pointer;
+        border-radius:9px;
+        input
+        {
+            cursor:pointer;
+            position:relative;
+        }
+        img
+        {
+            cursor:pointer;
+            height:40px;
+            position:relative;
+            top:15px;
+        }
+    }
+}

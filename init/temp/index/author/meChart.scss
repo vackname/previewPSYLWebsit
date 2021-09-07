@@ -1,0 +1,73 @@
+﻿
+#myDataPanel
+{
+    #author_canvasPanel
+    {/* 限析canvas 主要 panel 框架 */
+        position:relative;margin-left:auto;margin-right:auto;width:450px;min-height:450px;
+
+        #authorMain 
+        {/* svg chart panel定位*/
+            width: 100%;
+            #authorsequence {
+                width: 100%;;
+                height: 70px;
+            }
+            
+            #authorsequence text
+            {
+                font-weight: 300;
+                fill: #fff;
+            }
+            
+            #authorChart {
+                position: relative;
+                cursor:pointer;
+            }
+            
+            #authorChart path {
+                fill: #fff;
+                stroke: #fff;
+            }
+            
+            #authorexplanation {
+                position: absolute;
+                top: 170px;
+                left: 125px;
+                width: 200px;
+                text-align: center;
+                color: #666;
+                z-index: -1;
+            }
+            
+            #authorpercentage {
+                font-size: 2.5em;
+            }
+        }
+
+        #authorSidebar 
+        {/* 註1 */
+            position:relative;
+            margin-left:auto;
+            top:-10px;
+            width: 120px;
+            color:#333;
+            label{
+                cursor:pointer;
+            }
+            #authorlegend 
+            {
+                width:100%;
+                font-size:12px;
+                padding:1px;
+                border-radius: 3px;
+                div
+                {
+                    width:100%;
+                    color:#FFF;
+                    text-align:center;
+                }
+            }
+        }
+
+    }
+}

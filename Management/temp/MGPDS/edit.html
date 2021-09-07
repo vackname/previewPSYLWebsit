@@ -1,0 +1,80 @@
+﻿<div id="MGPSEPanel" v-show="open">
+    <div id="MGPSE_bg"></div>
+    <div id="MGPSE_edit_panel">
+        <div id="MGPSE_title_edit_panel">
+            <div id="closeBt">
+                <img v-bind:src="main.pub.lib.src('close.png')"  v-on:click="close()"/>
+            </div>
+            &emsp;編緝、設定&nbsp;商品<span v-show="val.set">(套餐)</span>-{{main.pub.catchLangName(val.nameAry)}}
+        </div>
+        <div style="width:100%;height:20px;">
+        <div id="ProductEditLoad" v-show="load"></div>
+        </div>
+        <div v-show="val.codekey!='chiefadmin'" class="MGPSETemp" >
+            <div id="uid"><span v-on:click="main$m.$m.main.gotoMB(val.uid)"><img v-bind:src="main.pub.lib.src('mb.png')"  />{{val.uid}}</span></div>
+        </div>
+        <div class="MGPSETemp">
+            <select v-model="main.pub.lang" v-on:change="main.pub.langFun()" class="LangSelect">
+                <option v-for="(val,nu) in main.pub.langAry" v-bind:value="val.val">{{val.key}}</option>
+            </select>&emsp;
+            <select v-model="showPage">
+                <option value="product">商品設定</option>
+                <option value="productde">商品描述</option>
+                <option value="set" v-show="val.set">商品套餐設定</option>
+                <option value="discount">折扣設定</option>
+                <option value="approve" v-show="val.approve!=''">審核失敗提示</option>
+            </select>
+            <input type="button" class="MGPSE_bt" v-show="val.codekey=='run'" value="審核通過" v-on:click="main$m.$m.a.appck(val)" />
+            <input type="button" class="MGPSE_bt" v-show="val.codekey=='run'" value="審核失格" v-on:click="main$m.$m.a.appfail(val)" />
+            <span id="publishMarkError" v-show="val.codekey=='runfail'" v-on:click="showPage='approve'"><img v-bind:src="main.pub.lib.src('errorMes.png')" /></span>
+            <div style="width:100%;height:20px;"></div>
+            <div class="MGPSE_row"></div>
+            <div id="langPanel">
+                <span id="notLang">
+                    <img v-bind:src="main.pub.lib.src('lang.png')" id="l"/>
+                    <img v-bind:src="main.pub.lib.src('close.png')" id="c" v-show="val.langAry.length==0"/>
+                </span>&nbsp;
+                <span v-for="(val1,nu1) in main.pub.langAry" class="langInput" v-show="val.codekey=='chiefadmin'">
+                    <!--語系開發選擇-編緝-->
+                    <input type="checkbox" v-bind:checked="val.langAry.indexOf(nu1)>-1" v-on:click="main$m.$m.main.chooseLang(val,nu1)"/><label v-on:click="main$m.$m.main.chooseLang(val,nu1)" >{{val1.key}}</label>
+                </span>
+                <span v-for="(val1,nu1) in main.pub.langAry" class="langKey" v-show="val.langAry.indexOf(nu1)>-1 && val.codekey!='chiefadmin'">
+                    {{val1.key}}&nbsp;
+                </span>
+            </div>
+            <div style="width:100%;height:5px;"></div>
+            <component v-bind:is="v.productset" v-show="showPage=='product'"></component>
+            <!--商品資訊設定-->
+            <div v-show="val.set" style="width:100%;">
+                <!--套餐-->
+                <component v-bind:is="((val.set)?v.addPSOP:'')" v-show="showPage=='set'"></component>
+            </div>
+            <div id="failApprove" v-show="showPage=='approve'">
+                <!-- 商品審核失敗描述 -->
+                <span v-html="val.approve.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+            </div>
+            <div id="descroptionPanel" v-show="showPage=='productde'">
+                <div class="videoTool" >
+                    <img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:15px;padding-right:6px;"/>Video&nbsp;
+                    <span class="urlCath" v-show="val.ybe.length>0" v-on:click="cancelYoutube(val)">{{main$m.$an.char.YoutubeChar(val.ybe)}}<img v-bind:src="main.pub.lib.src('close2.png')" /></span>
+                    <input type="text" v-show="val.ybe.length==0" placeholder="Youtube url/code" v-model="val.ybeInput" />
+                    <input type="button" v-show="val.ybe.length==0" value="OK" v-on:click="getYoutube(val)" />
+                </div>
+                <div style="position:relative;margin-left:auto;margin-right:auto;width:90%;" v-if="val.ybe!='' && val.ybe!=null && open">
+                    <!-- video -->
+                    <iframe style="width:100%;height:20vh;" v-bind:src="'https://www.youtube.com/embed/'+val.ybe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div style="width:100%;height:5px;"></div>
+                <!-- 商品描述 -->
+                <textarea style="width:95%;height:260px;" placeholder="content" v-model = "val.descriptionAry[main.pub.langNu]"></textarea>
+                <input type="button" class="MGPSE_bt" v-show="val.codekey=='chiefadmin'" value="確認" v-on:click="main$m.$m.main.editProductDescription(val)" />
+            </div>
+            <div class="MGPSETemp">
+                <!--折扣-->
+                <component v-bind:is="v.discounteditcreatetool" v-show="showPage=='discount'"></component>
+                <div class="MGPSE_rowtb_line"></div>
+                <div style="width:100%;text-align:center;font-size:12px;color:#999;" v-show="discountlist.length>2">▼</div>
+            </div>
+        </div>
+    </div>
+</div>

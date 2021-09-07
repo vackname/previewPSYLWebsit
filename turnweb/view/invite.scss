@@ -1,0 +1,360 @@
+﻿#turnwebPanel
+{/** 入口panel */
+    #invitePanel
+    {/* 邀約 */
+        width: 100%;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        user-select:none;
+        padding-bottom:80px;
+        #title
+        {
+            width:100%;
+            font-size:20px;
+            font-weight:bold;
+            padding-top:80px;
+            text-align:center;
+            color:#006241;
+            padding-bottom:80px;
+        }
+
+        #getPanel{
+            width:100%;
+            position:relative;
+            border-top:1px solid #FF8800;
+            #leftPanel
+            {/* 輪播定位 panel*/
+                position:relative;
+                width:100%;
+                #imgList
+                {/* 輪播陣列框架 */
+                    position:relative;
+                    width:100%;
+                    text-align:center;
+                    overflow:hidden;
+                    background-color:#000;
+                    #turInviatePanlelImg
+                    {/* 圖片 */
+                        position:relative;
+                    }
+                    #TouchPanel
+                    {/* 選頁鈕 */
+                        width:100%;
+                        position:absolute;
+                        bottom:49%;
+                        .left,.right
+                        {
+                            cursor:pointer;
+                            width:30px;
+                            background-color:#FFF;
+                            opacity:0.8;
+                            text-align:center;
+                            img
+                            {
+                                height:20px;
+                                position:relative;
+                                top:3px;
+                            }
+                        }
+
+                        .left
+                        {
+                            float:left;
+                            border-top-right-radius:20px;
+                            border-bottom-right-radius:20px;
+                        }
+                        .right
+                        {
+                            float:right;
+                            border-top-left-radius:20px;
+                            border-bottom-left-radius:20px;
+                        }
+                    }
+                }
+            }
+
+            #rightPanel
+            {/* 內容定位panel */
+                position:relative;
+                width:100%;
+                padding-bottom:20px;
+                table
+                {
+                    position:relative;
+                    width:95%;
+                    margin-left:auto;
+                    margin-right:auto;
+                    #Righttitle
+                    {
+                        font-size:25px;
+                        color:#006030;
+                        text-align:center;
+                        position:relative;
+                        padding-top:60px;
+                        padding-bottom:40px;
+                        line-height: 166%;
+                    }
+                    #imgtd
+                    {
+                        text-align:center;
+                        position:relative;
+                        padding-bottom:40px;
+                        img
+                        {
+                            width:19%;
+                            padding:6px;
+                            max-width:80px;
+                            outline : none;
+                        }
+                    }
+                    #content
+                    {
+                        font-size:15px;
+                        color:#333;
+                        padding:9px;
+                        .cf{
+                            float:left;
+                            padding:3px;
+                        }
+                        .clear:after
+                        {/*照片牆 阻斷 清除float*/
+                            clear: both;
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width:800px) {
+                #leftPanel
+                {
+                    #imgList
+                    {/* 輪播陣列框架 */
+                        height:400px;
+                        #turInviatePanlelImg
+                        {/* 圖片位移 */
+                            position:relative;
+                            left:-15%;
+                            width:130%;
+                            top:0vw;
+                        }
+                    }
+                }
+            }
+
+            @media screen and (min-width:801px) and (max-width:1070px)  {
+                #leftPanel
+                {
+                    width:48%;
+                    #imgList
+                    {/* 輪播陣列框架 */
+                        height:600px;
+                        #turInviatePanlelImg
+                        {/* 圖片位移 */
+                            position:relative;
+                            left:-50%;
+                            width:200%;
+                            top:0vw;
+                        }
+                    }
+                }
+                #rightPanel
+                {
+                    width:50%;
+                }
+
+                #leftPanel,#rightPanel
+                {
+                    float:left;
+                }
+                #leftPanel:after,#rightPanel:after
+                {
+                    clear: both;
+                }
+
+                .clear:after
+                {/*照片牆 阻斷 清除float*/
+                    clear: both;
+                }
+
+            }
+
+            @media screen and (min-width:1071px) and (max-width:1200px)  {
+                #leftPanel
+                {
+                    width:58%;
+                    #imgList
+                    {/* 輪播陣列框架 */
+                        height:600px;
+                        #turInviatePanlelImg
+                        {/* 圖片位移 */
+                            position:relative;
+                            left:-20%;
+                            width:140%;
+                            top:0vw;
+                        }
+                    }
+                }
+                #rightPanel
+                {
+                    width:40%;
+                }
+
+                #leftPanel,#rightPanel
+                {
+                    float:left;
+                }
+                #leftPanel:after,#rightPanel:after
+                {
+                    clear: both;
+                }
+
+                .clear:after
+                {/*照片牆 阻斷 清除float*/
+                    clear: both;
+                }
+            }
+
+            @media screen and (min-width:1201px) and (max-width:1300px)  {
+                #leftPanel
+                {
+                    width:58%;
+                    #imgList
+                    {/* 輪播陣列框架 */
+                        height:600px;
+                        #turInviatePanlelImg
+                        {/* 圖片位移 */
+                            position:relative;
+                            left:-15%;
+                            width:130%;
+                            top:0vw;
+                        }
+                    }
+                }
+                #rightPanel
+                {
+                    width:40%;
+                }
+
+                #leftPanel,#rightPanel
+                {
+                    float:left;
+                }
+                #leftPanel:after,#rightPanel:after
+                {
+                    clear: both;
+                }
+
+                .clear:after
+                {/*照片牆 阻斷 清除float*/
+                    clear: both;
+                }
+            }
+
+            @media screen and (min-width:1301px) and (max-width:1400px)  {
+                #leftPanel
+                {
+                    width:53%;
+                    #imgList
+                    {/* 輪播陣列框架 */
+                        height:600px;
+                        #turInviatePanlelImg
+                        {/* 圖片位移 */
+                            position:relative;
+                            left:-15%;
+                            width:130%;
+                            top:0vw;
+                        }
+                    }
+                }
+                #rightPanel
+                {
+                    width:45%;
+                }
+
+                #leftPanel,#rightPanel
+                {
+                    float:left;
+                }
+                #leftPanel:after,#rightPanel:after
+                {
+                    clear: both;
+                }
+
+                .clear:after
+                {/*照片牆 阻斷 清除float*/
+                    clear: both;
+                }
+            }
+
+            @media screen and (min-width:1401px)
+            {
+                #leftPanel
+                {
+                    width:68%;
+                    #imgList
+                    {/* 輪播陣列框架 */
+                        height:600px;
+                        #turInviatePanlelImg
+                        {/* 圖片位移 */
+                            position:relative;
+                            left:0%;
+                            width:100%;
+                            top:0vw;
+                        }
+                    }
+                }
+                #rightPanel
+                {
+                    width:30%;
+                }
+
+                #leftPanel,#rightPanel
+                {
+                    float:left;
+                }
+
+                #leftPanel:after,#rightPanel:after
+                {
+                    clear: both;
+                }
+
+                .clear:after
+                {/*照片牆 阻斷 清除float*/
+                    clear: both;
+                }
+            }
+        }
+
+        #psylMessage:after
+        {
+            clear:both;
+        }
+
+        #psylMessage
+        {/*組織資訊*/
+            background-color:#333;
+            float:left;
+            width:100%;
+            padding-top:30px;
+            padding-bottom:80px;
+            top:60px;
+            div
+            {
+                width:240px;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                padding-top:3px;
+                padding-bottom:3px;
+                text-align:left;
+                a{
+                    color:#EEE;
+                    font-size:15px;
+                    outline : none;
+                    text-decoration:none;
+                }
+            }
+        }
+    }
+}

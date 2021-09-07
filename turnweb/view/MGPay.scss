@@ -1,0 +1,100 @@
+﻿#turnwebPanel
+{/** 入口panel */
+    #MGPayPanel
+    {/** 登入帳戶單據歷史panel */
+        width:100%;
+        #MGPayMainPanel
+        {/** 登入帳戶單據歷史 框架 panel */
+            width:100%;position:relative;margin-left:auto;margin-right:auto;max-width:500px;padding-bottom:20px;
+            #MGPayMain
+            {/** 功能主要框架 */
+                width:100%;padding-top:20px;padding-bottom:20px;
+                
+                #MGPayListPanel
+                {/** 單據list */
+                    position:relative;margin-left:auto;margin-right:auto;width:95%;
+                    .purchase
+                    {/* 客戶為出貨單mark */
+                        color:#FFF;
+                        background-color:#FFAD86;
+                        padding:3px;
+                        border-radius:6px;
+                        font-size:12px;
+                    }
+                    .TMGP_title
+                    {
+                        color:#AAA;
+                        font-size:12px;
+                    }
+                    
+                    .TMGP_label{
+                        color:#555;
+                        font-size:15px;
+                    }
+                    
+                    .TMGP_row{
+                        border-top:5px solid #CCC;
+                        width:100%;
+                        height:30px;
+                    }
+                    
+                    
+                    .TMGP_rowtb
+                    {
+                        text-align:left;width:100%;
+                        border-top-right-radius:10px;
+                        border-top-left-radius:10px;
+                        padding-top:10px;
+                        padding-bottom:30px;
+                        .TMGP_rowtb_left
+                        {
+                            float:left;
+                            padding-left:3%;
+                        }
+                        
+                        .TMGP_rowtb_right
+                        {
+                            float:right;width:50%;
+                        }
+                        .TMGP_rowtb_left:after,.TMGP_rowtb_right:after
+                        {/*阻斷 清除float*/
+                            clear:both;
+                        }
+                    }
+                    
+
+                    .clear
+                    {/*阻斷 清除float*/
+                        width:100%;
+                        clear:both;
+                        padding-bottom:9px;
+                    }
+                    .TMGP_rowtb_line
+                    {
+                        clear:both;
+                        position:relative;margin-left:auto;margin-right:auto;width:90%;border-top:1px solid #EEE;
+                    }
+                    .sumLinePanel
+                    {/* 總合計算分隔線 */
+                        position:relative;margin-left:auto;margin-right:auto;width:95%;border-top:1px solid #CCC;
+                    }
+
+                    .openDetailBT
+                    {/* 顯示 歷史明細 panel */
+                        width:100%;font-size:12px;text-align:center;cursor:pointer;
+                    }
+
+                    #nu
+                    {/*流水號*/
+                        font-size:12px;color:#FFF;background-color:#333;font-weight:bold;
+                    }
+                }
+            }
+
+            #pageTool
+            {/* 選頁功能 panel 定位 */
+                position:fixed;bottom:60px;width:100%;left:0px;
+            }
+        }
+    }
+}

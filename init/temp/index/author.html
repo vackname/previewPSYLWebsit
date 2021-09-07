@@ -1,0 +1,316 @@
+﻿<div id="myDataPanel">
+    <div id="AAPanel">
+        <div v-show="load" id="meAn">
+            <img v-bind:src="((load)?img.src('bk.png'):'')" id="meAn_bk" />
+            <!--背景-->
+            <img v-bind:src="((load)?img.src('bk_wav.png'):'')" id="meAn_bk_wav" />
+            <!--背景 生命數-->
+            <img v-bind:src="((load)?img.src('bk_369.png'):'')" id="meAn_369" />
+            <!--背景 369字符-->
+
+            <img v-bind:src="((load)?img.src('body.png'):'')" id="meAn_body" />
+            <!--背景人物身體-->
+            <img v-bind:src="((load)?img.src('me.png'):'')" id="meAn_me" />
+            <!--背景臉-->
+
+            <img v-bind:src="((load)?img.src('book.png'):'')" id="meAn_book" />
+            <!--大查帳-->
+            <img v-bind:src="((load)?img.src('bookname.png'):'')" id="meAn_bookname" />
+            <!--大查帳-psyl標籤-->
+
+            <img v-bind:src="((load)?img.src('car.png'):'')" id="meAn_car" />
+            <!--四驅車-->
+
+            <img v-bind:src="((load)?img.src('dog_1.png'):'')" id="meAn_dog_1" />
+            <!--狗狗 碰柑-臘長-->
+            <img v-bind:src="((load)?img.src('dog_2.png'):'')" id="meAn_dog_2" />
+            <!--狗狗 阿金-狐里-->
+            <img v-bind:src="((load)?img.src('dog_3.png'):'')" id="meAn_dog_3" />
+            <!--狗狗 木柚-約克夏-->
+
+            <img v-bind:src="((load)?img.src('dagamon_gx_bk.png'):'')"  id="meAn_dgx_bk"/>
+            <!--數碼寶貝 傑斯獸-gx-背景-->
+            <img v-bind:src="((load)?img.src('dagamon_gx.png'):'')" id="meAn_dgx" />
+            <!--數碼寶貝 傑斯獸-gx-->
+
+            <img v-bind:src="((load)?img.src('mark.png'):'')" id="meAn_mark" />
+            <!--程式 三角涵數-斜率-->
+
+            <img v-bind:src="((load)?img.src('vio.png'):'')" id="meAn_vio" />
+            <!--小提琴-->
+        </div>
+    </div>
+    <div id="myStoryContent">
+        <div style="float:left;width:100%;border-bottom:1px solid #DDD;text-align:center;">
+            <div style="font-size:15px;width:100%;font-weight:bold;padding-bottom:20px;cursor:pointer;" v-on:click="openClick(0)">路途上一直巧遇幫助我的人，是我前進的動力。<img style="width:15px;padding-left:9px;position:relative;" v-bind:src="main.pub.lib.src(((openAry[0])?'dr.png':'ur.png'))"/></div>
+            <div style="width:100%;" v-show="!openAry[0]">
+                2021年之未來可能性&nbsp;<span style="color:#FF8800;">psyltw.com</span>&nbsp;誕生！ 
+                <div style="color:#AAA;width:100%;">已建置許多非程式理解的商業知識及<br/>自家系統的loading blance演算、DB Master slave 系統、<br/> Token 非對稱性加密登入系統、離散式載入前後端資訊、<br/>後端運算API化、多國語系系統、靜態檔負載載入...，<br/>這個世界很精彩！</div>
+            </div>
+        </div>
+        <!-- psyl 說明動畫-->
+        <div style="width:100%;" v-show="openAry[0]">
+            <div style="float:left;width:100%;">
+                <div style="width:100%;border-top:1px solid #DDD;padding-bottom:9px;border-bottom:1px solid #DDD;">
+                    <div style="width:100%;text-align:center;">您好！我是CHUGN:<br/>學生時代第一次有用途的代碼是PHP 的oop概念專案，<br/>為了練習 MSsql 2008&nbsp;證照考試，<br/>而創建的出題系統，朋友/同學一起練習題型！<br/>如果沒有創造力開端，何為創造力？</div>
+                    <div style="width:100%;text-align:center;"><img v-bind:src="((MYimgAry.indexOf('a1.png')>-1)?MYimg.src('a1.png'):'')" style="width:300px;padding:1%;" /></div>
+                    <div style="width:100%;text-align:center">初步就業的那時代還在使用yii。<br/>而我接下了開發一家醫美連鎖企業的線上購物系統，<br/>那時間點這個企業也才剛起步。<br/>後來完善系統，心裡想怎老是PHP？<br/>我離開這家顧主還不錯的工作場域。<br/>想起研究程式的最初願望！<br/>應該要有能力開發遊戲，
+                    就裁入了flash，<br/>最早開始設計我獻給了雲科數媒動畫工作室，<br/>而邱教授於2021年往光的世界出發了！</div>
+                    <div style="width:100%;text-align:center;border-bottom:1px solid #ddd;"><a href="https://www.yiiframework.com/" target="_blank"><img v-bind:src="((MYimgAry.indexOf('yii.png')>-1)?MYimg.src('yii.png'):'')" style="width:60px;padding:1%;" />(yii官網)</a></div>
+                    <br/><br/>在這段國家專案日子裡不斷的進出教育部和師範大學開會，<br/>最有印像是電子學的結案，著來自全國各個高中老師群，<br/>開始北中南各一場的講解/教育課程。
+                    <br/>初來職位的老師有著火熱的想法，<br/>熟成的老師經驗老道的默默注視在台上的我。<br/>而最耐勞的一場，會場位於台中高工，<br/>演示及放手實作花了6個小時才散會，<br/>原來那是我在2018年時間線種下的緣份。<br/><br/>
+                    想著如果沒高中老師群的專業助攻，<br/>我能達到自己精算電子學的算式嗎？<br/>
+                    相信大家知道歐姆定律？串聯電阻吧？...<br/>花了不少時間抱著算式參考書及針對教育部在這年度的準則課程內容，<br/>校正正確性。<br/>
+                    <div style="width:100%;text-align:center;color:#AAA;"><img v-bind:src="((MYimgAry.indexOf('u.jpg')>-1)?MYimg.src('u.jpg'):'')" style="width:100px;padding:1%;" />(歐姆/電阻)</div>
+                    發現程式以外的體悟，只可以學程式就好了嗎？<br/><br/>不對！<br/><br/>也是後一年發生動畫界大事，flash將不再更新！<br/>我想想幸運值就是這樣點的！<br/>而程式裡是沒有時間線性的只有時間輪回概念無法蹤向思考，<br/>而後不採用的技術flash action script 3，<br/>這個語言卻是讓我過程中理解時間軸概念發始地。
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/ewgzibckPow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <br/>現今的Adoube animate cc 功能強大，<br/>但多執行一些無用程序,在程式魔人面前就是不夠乾淨！<br/>想改善這個問題，也是我後來開發前端特效工具，<br/>PSYL aniamte 套件的起源！
+                    <br/><br/><a href="https://zh.wikipedia.org/wiki/Adobe_Flash_Player" target="_blank"><img v-bind:src="((load)?img.src('ww.png'):'')" style="width:20px;" />&nbsp;註:Flash為一種web軟件，通用功能為2D動畫/遊戲</a>
+                </div>
+                進入路跑活動圈，<br/>開始建置另一種語言專案C#，我最熟的是卻是VB，<br/>但在C#的強列靈感下，採用Lamda Linq，<br/>開始dynamic ctrol of create，而Web From設計生活，<br/>途中更是有一些小專案<br/>例如:2021年還在就職的柯市長，早期任職時的拉拉熊GPS定位系統，<br/>是台灣老闆的企業體運動品牌361度...等，一邊完善系統一邊出隊，<br/>
+                <div style="float:left;width:50%;"><img v-bind:src="((MYimgAry.indexOf('a1.jpg')>-1)?MYimg.src('a1.jpg'):'')" style="width:90%;padding:5%;"  /></div>回憶2015年路跑活動上的往事，<br/>最驚人的事件發生了！<br/>發電機無法正常運作，<br/>心想RFID的資料訊息發不出去，<br/>該是使用備案了"存檔"！！<br/>就是剛好出現一位好心大叔。<br/>
+                事過境遷仍然記得這個巧遇！<br/>
+                他拉出家裡工地用的電覽線，<br/>我架設著wifi、電力網路、<br/>攝影機、RFID裝置，<br/>直到第一名選手進場！順利！
+                <br/><br/><a href="https://zh.wikipedia.org/wiki/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB" target="_blank"><img v-bind:src="((load)?img.src('ww.png'):'')" style="width:20px;" />&nbsp;註:RFID是一種高頻的反射回傳資訊磁波，<br/>最早用於二戰的設備識別敵我</a>
+            </div>
+            <div style="float:left;width:100%;color:#666;border-top:1px solid #DDD;">
+                在假日出隊的日子裡，想起幾年前，<br/>一起處理農博的雲林縣新聞處徐科長，<br/>我們那時候也是這樣一直在處理活動/寫code！<br/>他常跟我說老大又要找他了(那時候任職的縣長)，<br/>
+                我也是傻笑！畢竟雲林縣真的很少有大型活動，縣長真的注重，<br/>農博案子終於快結束，那時候跟來視察徐科長，常聊一些有趣的事，<br/>聊著聊著就談到我會去農博看看，他立即說不用買票，我給你！<br/>回想後覺得人生，應該要有多重身份，<br/>才能遇見不同世界的翹楚，至此心寬的接受大量的挑戰！<br/>
+                <div style="float:right;width:50%;"><img v-bind:src="((MYimgAry.indexOf('a9.jpg')>-1)?MYimg.src('a9.jpg'):'')" style="width:90%;padding:5%;" /></div>
+                <br/>
+                但往往Engineer一直埋在程式碼，<br/>很少接觸網管實際操作，<br/>而活動出隊的日子裡，<br/>轉折了一些人生屬性，<br/>2016年萬金石馬拉松更是超越極限,<br/>剪接約40條的網路線，<br/>及測試線路通道訊號工作，
+                <br/>這份經驗及力量成長，<br/>也難以忘懷，<br/>往後的日子也成就了維運基礎。
+            </div>
+            <div style="float:left;width:100%;border-top:1px solid #DDD;">
+                <div style="float:left;width:50%;"><img v-bind:src="((MYimgAry.indexOf('a5.jpg')>-1)?MYimg.src('a5.jpg'):'')" style="width:50%;padding:5%px;" /><img v-bind:src="((MYimgAry.indexOf('a6.jpg')>-1)?MYimg.src('a6.jpg'):'')" style="width:35%;padding:5px;" /></div>
+                在2016年也完成未曾想過的事，<br/>讀寫NFC裝置!<br/>那個時代Apple還未開放NFC，<br/>只能開發Android。<br/>為了讓台灣法拉利拉力賽能順利，<br/>而傾進全力的測試及開發，<br/>
+                回憶中需出活動任務3天，<br/>助理一路開著車及測試，<br/>定點排除程式上的異常，有開心也有刺激，<br/>
+                在最後一個晚上那麼剛好看見旅館上的窗戶發出微微紅光，<br/>於是乎回車上睡了。
+                <br/><br/><a href="https://zh.wikipedia.org/wiki/%E8%BF%91%E5%A0%B4%E9%80%9A%E8%A8%8A" target="_blank"><img v-bind:src="((load)?img.src('ww.png'):'')" style="width:20px;" />&nbsp;註:NFC是低頻的反射回傳資訊磁波，<br/>常態於這個時代的信用卡實體結帳/手機實體結帳/門禁...</a>
+            </div>
+            <div style="float:left;width:100%;color:#666;border-top:1px solid #DDD;">
+                <div style="float:right;width:50%;"><img v-bind:src="((MYimgAry.indexOf('a7.jpg')>-1)?MYimg.src('a7.jpg'):'')" style="width:90%;padding:5%;" /></div>
+                <br/>那3天曬黑及變瘦，<br/>是意外成果！<br/>而印象最深是在最後一天的彰濱，<br/>看著窗外的人一直被風<br/>及砂子打擊，<br/>心中默默的想我真的太幸福了，<br/>能看看窗外！
+                <br/>但也觀察到一幕感動人的畫面，<br/>女賽車手搖下法拉利的車窗，<br/>貼心的詢問著女性工作人員，<br/>需不需要進車子裡整理一下儀容。<br/>
+                這一刻覺得還蠻好的一件事！
+            </div>
+            <div style="float:left;width:100%;border-top:1px solid #DDD;">
+                <div style="float:left;width:50%;"><img v-bind:src="((MYimgAry.indexOf('a3.jpg')>-1)?MYimg.src('a3.jpg'):'')" style="width:90%;padding:5%;" /></div>
+                <br/>也在那些活動的日子裡，<br/>遇到百年難得一遇的北極震盪，<br/>2015年泰生活一個月，<br/>都待在泰國首都，<br/>卻發生了曼谷爆炸案，<br/>那時候我們常在這些地方生活，<br/>一直幸運的走過每個階段，<br/>事後回想只有光芒來到我的身上，<br/>我想我還有未完成的事吧！
+            </div>
+            <div style="float:left;width:100%;color:#666;border-top:1px solid #DDD;"> 
+                在旅程上很多的困難需要克服，往往都是覺得麻煩的事，<br/>當一件一件完成，事後會發現，付出最多的是給你困難的人，<br/>想當初雲科資訊中心主任教授，於2017年把我送進去SGS，<br/>
+                <div style="float:right;;width:50%;"><img v-bind:src="((MYimgAry.indexOf('a4.jpg')>-1)?MYimg.src('a4.jpg'):'')" style="width:90%;padding:5%;" /></div>那時候掌握全國的2百多所，<br/>大學/專科畢業生得薪資<br/>及機敏性資料，<br/>更有追蹤3年的就業動向<br/>及薪資分析資料，<br/>這時候開始精深SQL類分析演算，<br/>而在資安思維上種下小種子！<br/>來到2021年的時間線上發了芽，<br/>開創自己sha非對稱加密演算！<br/>也是這個時代談論的token加密！
+            </div>
+            <div style="float:left;width:100%;border-top:1px solid #DDD;">
+                而後來到台中七期上班族生活的時間線，<br/>本來以為離開了活動圈，受邀幫忙於台中歌劇院歌劇音樂會，<br/>看見了那熟悉的線槽，<br/>也犯了佈場思考面向的症狀，<br/>開始觀察動線！<br/>而坐到了播放室準備著，前一天因為準備著需要使用的ppt，<br/>還沒睡覺呢！
+                <img v-bind:src="((MYimgAry.indexOf('a2.jpg')>-1)?MYimg.src('a2.jpg'):'')" style="width:100%;padding-top:9px;padding-bottom:9px;" />
+                <br/>這意外一筆讓我覺得是困難的前奏，ppt素材也是昨天才剛拿到，<br/>ppt隔天就要產出了呢！<br/>果不其然在經驗不足及勞累下，<br/>魅影橋段的聲光一晃神未打開，唯一的敗筆，
+                也重新認識一個思維，<br/>SOP就算是完美，只要前一個禮拜沒準備好，<br/>出狀況的機率就大很多，但這是完美表演的歌劇！
+            </div>
+            <div style="float:left;width:100%;border-top:1px solid #DDD;">
+                <div style="width:100%;background-color:#000;text-align:center;" >
+                    <img v-bind:src="((MYimgAry.indexOf('a8.jpg')>-1)?MYimg.src('a8.jpg'):'')" style="width:24%;padding-top:9px;padding-bottom:9px;padding:1%;" />
+                    <img v-bind:src="((MYimgAry.indexOf('a11.jpg')>-1)?MYimg.src('a11.jpg'):'')" style="width:24%;padding-top:9px;padding-bottom:9px;padding:1%;" />
+                    <img v-bind:src="((MYimgAry.indexOf('a12.jpg')>-1)?MYimg.src('a12.jpg'):'')" style="width:43%;padding-top:9px;padding-bottom:9px;padding:1%;" />
+                </div>
+                2019年也是特別的一年，開始的每個假日、下班研發時間就全掌握！<br/>沒日沒夜codeing，也多了一種coffee品味！<br/>想起在泰國帶我們爬山的教授舅舅，<br/>就那麼剛好，要組隊的打羽球下班族！<br/>打球啦！
+                <br/>也開始看一些心裡學...等較柔軟的書藉。
+                <div style="width:100%;"><img v-bind:src="((load)?img.src('book.png'):'')"style="width:90%;padding-top:9px;padding-bottom:9px;padding:5%;" /></div>
+            </div>
+            <div style="float:left;width:100%;border-top:1px solid #DDD;">
+                <div style="float:right;width:30%;"><img v-bind:src="((MYimgAry.indexOf('a10.jpg')>-1)?MYimg.src('a10.jpg'):'')" style="width:90%;padding-top:9px;padding-bottom:9px;padding:5%;" /></div>
+                過程中也發現了一些有趣的研究，<br/>這是四驅車的結構力學、重力學、反震原理、<br/>電子學、磁效應...等思維，
+                <br/>也許我的作品能讓你/妳，<br/>有不同的看法！<br/><br/>
+                <div style="width:100%;"><img v-bind:src="((load)?img.src('car.png'):'')" style="width:90%;padding-top:9px;padding-bottom:9px;padding:5%;" /></div>
+                <div style="width:100%;text-align:center;">
+                    2021年之未來可能性&nbsp;<span style="color:#FF8800;">psyltw.com</span>&nbsp;誕生！ 
+                    <div style="color:#AAA;width:100%;">已建置許多非程式理解的商業知識及<br/>自家系統的loading blance演算、DB Master slave 系統、<br/> Token 非對稱性加密登入系統、離散式載入前後端資訊、<br/>後端運算API化、多國語系系統、靜態檔負載載入...，<br/>這個世界很精彩！</div>
+                </div>
+            </div>
+        </div>
+        <div class="clear">&nbsp;</div> <!--float 阻隔-->
+    </div>
+    <div id="myStoryContent" style="padding-top:9px;">
+        <component v-bind:is="v.meAnVue" ></component>
+        <div id="meTitle" v-on:click="openClick(9)"><img v-bind:src="main.pub.lib.src('logo.png')" style="padding:3px;width:20px;background-color:#333;border-radius:200px;" />&nbsp;什麼是PSYL Vue.js?<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[9])?'dr.png':'ur.png'))"/></div>
+        <div class="MyLi" v-show="openAry[9]">
+            他是一款透過與Vue.js結合的MVVM架構開發模式，<br/>並且擁有與net core 加密型的Ajax的傳輸方法，<br/>也擁有嚮應客戶端相對應的封裝載入功能，並擁有與server端匹次載入靜態檔功能。<br/>
+            因此載入時間快速，並且共用開發樣版之開發模式，大大減少開版時程。<br/>又因架構開發優勢！還可以創建更簡單的而功能複雜Source code。
+            <div class="Mycontent">
+                <div id="meTitle" style="font-size:12px;" v-on:click="openClick(8)"><img v-bind:src="main.pub.lib.src('logo.png')" style="padding:3px;width:20px;background-color:#333;border-radius:200px;" />&nbsp;初始化自動渲染樣版/更簡潔的First(PSYL Vue.js)<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[8])?'dr.png':'ur.png'))"/></div>
+                <div class="MyLi" v-show="openAry[8]">
+                    <div style="width:95%;padding:2%;border:1px solid #DDD;">
+                        <img v-bind:src="main.pub.lib.src('logo.png')" style="padding:6px;width:30px;background-color:#333;border-radius:200px;" />&nbsp;Frontend初始化設定<br/>
+                        <img v-bind:src="((openAry[8])?imgPsyl.src('psylJoin.png'):'')" style="width:100%;" />
+                    </div>
+                    <div style="width:100%;height:6px;"></div>
+                    <div style="width:95%;padding:2%;border:1px solid #DDD;">
+                        <img v-bind:src="((openAry[8])?imgPsyl.src('netcore.png'):'')" style="width:40px;" />&nbsp;Backend初始化設定<br/>
+                        Controllers:<br/><img v-bind:src="((openAry[8])?imgPsyl.src('NetControl.png'):'')" style="width:40%;" /><br/><br/>
+                        Layout:<br/><img v-bind:src="((openAry[8])?imgPsyl.src('netCoreLayout.png'):'')" style="width:100%;" /><br/><br/>
+                        Include for layout of index:<br/><br/><img v-bind:src="((openAry[8])?imgPsyl.src('netCoreIndex.png'):'')" style="width:20%;" />
+                    </div>
+                </div>
+            </div>
+            <div class="Mycontent">
+                <a href="https://www.youtube.com/watch?v=V_gi5mhQ_pE" target="_blank"><img style="width:30px;padding-right:9px;position:relative;top:3px;" v-bind:src="((load)?img.src('youtube.png'):'')"/>PSYL Vue.js系統開發者模組工具原理範例</a><br/>
+                <a href="https://vuejs.org" target="_blank"><img style="width:30px;padding-right:9px;position:relative;top:3px;" v-bind:src="((imgPsyl!=null)?imgPsyl.src('vue.png'):'')"/>Vue.js 官網</a>
+            </div>
+        </div>
+        
+        <div id="meTitle" v-on:click="openClick(10)"><img v-bind:src="main.pub.lib.src('logo.png')" style="padding:3px;width:20px;background-color:#333;border-radius:200px;" />&nbsp;什麼是PSYL DBConfig?<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[10])?'dr.png':'ur.png'))"/></div>
+        <div class="MyLi" v-show="openAry[10]">
+            他是一款與Microsoft C#/Net Core的Json相結合的SDK，<br/>特色為整並資料庫開發及序列化Table Rename Key資安防護之強大的序列化模組，<br/>Class方式簡化DB開發時程及減化及Request、Response之資安API過濾功能，<br/>因此MVC架構下的Controller，可以大大減少開發時程/及大大提升維護品質，<br/>
+            並且擁有強大的Key Name設計與PSYL Vue.js塔配下，<br/>前端偶合API大大減少前端開發時程及提升Key Name正確性之開發品質！
+            <div class="Mycontent">
+                擁有靜態檔載出權限設定功能/不同開發API專案整合的Proxy功能(部件更新)/<br/>加密登入型式Token驗證/Middle Ware的資安阻擋/<br/>與相結合PSYL Vue.js開發模式及Server memnory Catch快速載出server...等功能。
+            </div>
+            <div class="Mycontent"><a href="https://docs.microsoft.com/zh-tw/dotnet/standard/serialization/system-text-json-how-to?pivots=dotnet-5-0" target="_blank"><img style="width:30px;padding-right:9px;position:relative;top:3px;" v-bind:src="((imgPsyl!=null)?imgPsyl.src('netcore.png'):'')"/>序列化概述/microsoft官網</a></div>
+        </div>
+        <component v-bind:is="v.psylModelVue" ></component>
+    </div>
+    <div class="myCtrPanel">
+        <div id="meTitle" v-on:click="openClick(7)"><img class="timg" v-bind:src="((load)?img.src('educa.png'):'')"/>教育部-雲科/2D動畫作品<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[7])?'dr.png':'ur.png'))"/></div>
+        <div style="width:100%;" v-show="openAry[7]">
+            <div class="MyLi"><a href="https://www.media.yuntech.edu.tw/pages/design/index.html" target="_blank">99年度設計學教案</a>
+                <div class="Mycontent">技術flash AS3<br/>意外踏入設計領域的序曲</div>
+            </div>
+            <div class="MyLi"><a href="https://www.media.yuntech.edu.tw/pages/tcivs.html" target="_blank">99年度電子學教案</a>
+                <div class="Mycontent">技術flash AS3<br/>可惜絕大部份的人應該不能看到成品，時代的眼淚</div>
+            </div>
+        </div>
+    </div>
+    <div style="width:100%;" v-show="openAry[7]">
+        <div id="MyVideo">
+            <div class="title">(電子學4-1-1元件教學重點-無聲演示)<img v-bind:src="myVideo[3].play" v-on:click="PlayTouch(myVideo[3])"/><img v-bind:src="myVideo[3].sound" v-on:click="soundTouch(myVideo[3])"/>&nbsp;<span class="timeStr" v-html="mediaTimeUnit(myVideo[3])"></span></div>
+            <div class="bar"><div v-bind:style="'width:'+myVideo[3].percentage*100+'%;'"></div></div>
+            <div id="hls-video">
+                <video v-bind:id="myVideo[3].id" width="100%;"  muted="muted"
+                autoplay="autoplay" loop="loop"
+                x-webkit-airplay="true" x5-video-player-fullscreen="true"
+                preload="auto" playsinline="true" webkit-playsinline
+                x5-video-player-typ="h5" >
+                 <source  type="application/x-mpegURL" v-if="myVideo[3].url!=''" v-bind:src="myVideo[3].url" />
+                </video>
+            </div>
+        </div>
+        <div style="width:100%;height:20px;"></div>
+        <div id="MyVideo">
+            <div class="title">(電子學6-3-1元件腳本-無聲演示)<img v-bind:src="myVideo[4].play" v-on:click="PlayTouch(myVideo[4])"/><img v-bind:src="myVideo[4].sound" v-on:click="soundTouch(myVideo[4])"/>&nbsp;<span class="timeStr" v-html="mediaTimeUnit(myVideo[4])"></span></div>
+            <div class="bar"><div v-bind:style="'width:'+myVideo[4].percentage*100+'%;'"></div></div>
+            <div id="hls-video">
+                <video v-bind:id="myVideo[4].id" width="100%;"  muted="muted"
+                autoplay="autoplay" loop="loop"
+                x-webkit-airplay="true" x5-video-player-fullscreen="true"
+                preload="auto" playsinline="true" webkit-playsinline
+                x5-video-player-typ="h5" >
+                <source  type="application/x-mpegURL" v-if="myVideo[4].url!=''" v-bind:src="myVideo[4].url" />
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="myCtrPanel">
+        <div id="meTitle" v-on:click="openClick(1)"><img class="timg" v-bind:src="((load)?img.src('yu.jpg'):'')"/>2014年農業博覽會-電影幕後人生插曲<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[1])?'dr.png':'ur.png'))"/></div>
+        <div style="width:100%;" v-show="openAry[1]">
+            <div class="MyLi">
+                <a href="https://www.yunlin.gov.tw/News_Content.aspx?n=1244&s=210338" target="_blank">103年-68電影館計畫</a>
+                <div class="Mycontent">68cinema.yunlin.gov.tw(已移除相關連接):網站 技術asp建置/DB Access，導入Google analytics、Google內站搜尋</div>
+                <div style="text-align:left;width:100%;"><img v-bind:src="((MYimgAry.indexOf('a14.png')>-1)?MYimg.src('a14.png'):'')" style="width:100%;max-width:600px;padding:6px;" /></div>
+            </div>
+        </div>
+    </div>
+    <div class="myCtrPanel">
+        <div id="meTitle" v-on:click="openClick(2)"><img class="timg" v-bind:src="((load)?img.src('youtube.png'):'')"/>我的研發Side project供獻<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[2])?'dr.png':'ur.png'))"/></div>
+        <div style="width:95%;position:relative;margin-left:auto;" v-show="openAry[2]">
+            <div class="myDataTitle">AWS 維運/loading blance之路</div>
+            <div class="MyLi"><a href="https://www.youtube.com/watch?v=owtIxZfeRI8" target="_blank">亞馬遜VPC及Jenkins之配置概述</a>
+                <div class="Mycontent">負載技術/DB 採用aws aurora</div>
+            </div>
+            <div class="myDataTitle">Python 爬蟲/圖片解析演算之路</div>
+            <div class="MyLi"><a href="https://www.youtube.com/watch?v=wyyEq4VDks8" target="_blank">Pythone於centos7下之解析環境建置概述(備註:音量特小)</a>
+                <div class="Mycontent">影象辨識</div>
+            </div>
+            <div class="myDataTitle">C#/Typescript研發個人系統開發套件之路</div>
+            <div class="MyLi"><a href="https://www.youtube.com/watch?v=V_1Y8rtT61o" target="_blank">前端-psyl bundle for develop 概述</a></div>
+            <div class="MyLi"><a href="https://www.youtube.com/watch?v=_nyc-Om6A04" target="_blank">前端-psyl bundle code架構下之注解方向/離散檔聚散設計</a>
+                <div class="Mycontent">檔案載入離合演算</div>
+            </div>
+            <div class="MyLi"><a href="https://www.youtube.com/watch?v=oxgF3ItoZnA" target="_blank">前端-psyl bundle 實例</a></div>
+            <div class="MyLi"><a href="https://www.youtube.com/watch?v=ewgzibckPow" target="_blank">前端-psyl Animate(動畫/特效) 套件</a>
+                <div class="Mycontent">for Vue.js Animate-style</div>
+            </div>
+            <div class="MyLi"><a href="https://www.youtube.com/watch?v=qpTR653bAPs" target="_blank">後端-PSYL DBConfig C# 序列化處理(備註:音量特小)</a>
+                <div class="Mycontent">for net Core 3.1 DB-Mysql之資安性開發者模式思維-套件 </div>
+            </div>
+            <div class="MyLi"><a href="https://www.youtube.com/watch?v=oFo8F7nIm6g" target="_blank">前端:psyl bundle/後端:psyl DB-Config 研發2020總結</a>
+                <div class="Mycontent">負載技術/程式語言開發階段之架構模型/資安</div>
+            </div>
+        </div>
+    </div>
+    <div class="myCtrPanel">
+        <div id="meTitle" v-on:click="openClick(3)">其它系統建置型作品<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[3])?'dr.png':'ur.png'))"/></div>
+        <div style="width:100%;" v-show="openAry[3]">
+            <div class="MyLi">
+                <a href="http://www.focusline.com.tw/" target="_blank">2014年路跑活動思維人生</a>
+                <div class="Mycontent">建置技術aspx(web from)/Jquery/賽事報名系統/DB MSSql/Linq<br/>及dynamic ctrol input create</div>
+            </div>
+        </div>
+    </div>
+    <div class="myCtrPanel">
+        <div id="meTitle" >silde project</div>
+        <div class="MyLi" v-on:click="openClick(4)"><span>Loading blance研發(維運思維)<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[4])?'dr.png':'ur.png'))"/></span>
+            <div class="Mycontent">透過VM 自動生成所需環境及自動安裝所需之應用程並自動啟用。<br/>作業系統環境centos7/Xos/windows/MarriaDB/net core 3.1/Vagrant</div>
+        </div>
+    </div>
+    <div id="MyVideo" v-show="openAry[4]">
+        <div class="title">(請點擊按鈕控項)<img v-bind:src="myVideo[1].play" v-on:click="PlayTouch(myVideo[1])"/><img v-bind:src="myVideo[1].sound" v-on:click="soundTouch(myVideo[1])" />&nbsp;<span class="timeStr" v-html="mediaTimeUnit(myVideo[1])" v-show="myVideo[1].d>0"></span></div>
+        <div class="bar"><div v-bind:style="'width:'+myVideo[1].percentage*100+'%;'"></div></div>
+        <div id="hls-video">
+            <video v-bind:id="myVideo[1].id" width="100%;"  muted="muted"
+            autoplay="autoplay" loop="loop"
+            x-webkit-airplay="true" x5-video-player-fullscreen="true"
+            preload="auto" playsinline="true" webkit-playsinline
+            x5-video-player-typ="h5" >
+            <source  type="application/x-mpegURL" v-if="myVideo[1].url!=''" v-bind:src="myVideo[1].url" />
+            </video>
+        </div>
+    </div>
+    <div class="myCtrPanel" style="padding-top:0px;">
+        <div class="MyLi" v-on:click="openClick(5)"><span>Loading blance server 專案更新(維運思維)<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[5])?'dr.png':'ur.png'))"/></span>
+            <div class="Mycontent">取代Jenkins因語系底層無法共通缺點，<br/>作業系統環境centos7/Xos/windows/MarriaDB/net core 3.1/Vagrant</div>
+        </div>
+    </div>
+    <div id="MyVideo" v-show="openAry[5]">
+        <div class="title">(請點擊按鈕控項)<img v-bind:src="myVideo[2].play" v-on:click="PlayTouch(myVideo[2])"/><img v-bind:src="myVideo[2].sound" v-on:click="soundTouch(myVideo[2])"/>&nbsp;<span class="timeStr" v-html="mediaTimeUnit(myVideo[2])" v-show="myVideo[2].d>0"></span></div>
+        <div class="bar"><div v-bind:style="'width:'+myVideo[2].percentage*100+'%;'"></div></div>
+        <div id="hls-video">
+            <video v-bind:id="myVideo[2].id" width="100%;"  muted="muted"
+            autoplay="autoplay" loop="loop"
+            x-webkit-airplay="true" x5-video-player-fullscreen="true"
+            preload="auto" playsinline="true" webkit-playsinline
+            x5-video-player-typ="h5" >
+            <source  type="application/x-mpegURL" v-if="myVideo[2].url!=''" v-bind:src="myVideo[2].url" />
+            </video>
+        </div>
+    </div>
+    <div class="myCtrPanel">
+        <div id="meTitle" v-on:click="openClick(6)">跨國其它作品<img class="clickimg" v-bind:src="main.pub.lib.src(((openAry[6])?'dr.png':'ur.png'))"/></div>
+        <div class="MyLi" v-on:click="openClick(6)"><span>越南銀行資訊調包回補系統專案演示(備註:音量特小)</span>
+            <div class="Mycontent">透過python節點爬蟲再由C#解析資料回補資料正確性。<br/>作業系統環境centos7<br/>技術Dapper/Linq/MarriaDB/net core 3.1/pythone 3.9/psyl bulde Vue.js</div>
+        </div>
+    </div>
+    <div id="MyVideo" v-show="openAry[6]">
+        <div class="title">(請點擊按鈕控項)<img v-bind:src="myVideo[0].play" v-on:click="PlayTouch(myVideo[0])"/><img v-bind:src="myVideo[0].sound" v-on:click="soundTouch(myVideo[0])"/>&nbsp;<span class="timeStr" v-html="mediaTimeUnit(myVideo[0])" v-show="myVideo[0].d>0"></span></div>
+        <div class="bar"><div v-bind:style="'width:'+myVideo[0].percentage*100+'%;'"></div></div>
+        <div id="hls-video">
+            <video v-bind:id="myVideo[0].id" width="100%;"  muted="muted"
+            autoplay="autoplay" loop="loop"
+            x-webkit-airplay="true" x5-video-player-fullscreen="true"
+            preload="auto" playsinline="true" webkit-playsinline
+            x5-video-player-typ="h5" >
+            <source  type="application/x-mpegURL" v-if="myVideo[0].url!=''" v-bind:src="myVideo[0].url" />
+            </video>
+        </div>
+    </div>
+</div>

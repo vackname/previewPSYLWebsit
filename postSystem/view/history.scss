@@ -1,0 +1,56 @@
+﻿#postSystemPanel
+{/*main 框架*/
+    #hPanel
+    {/* 單據歷史名細 main panel */
+        position:relative;
+        margin-left:auto;
+        margin-right:auto;
+        width:95%;
+        max-width:500px;
+    
+        #panel
+        {/*功能主要樣版*/
+            position:relative;
+            width:100%;
+            padding-top:120px;
+            padding-bottom:90px;
+            .row
+            {/* 單據編號列 */
+                    position:relative;
+                    padding:20px;
+                    border-bottom:2px solid #EEE;
+                    color:#555;
+                    font-size:18px;
+                    font-weight:bold;
+                    width:90%;
+                    cursor:pointer;
+            }
+
+            .date
+            {/* 單據編號列 create time */
+                    float:right;
+                    font-size:18px;
+                    color:#AAA;
+                    font-weight:bold;
+
+            }
+
+            .nu
+            {/* 單據編號列 row number */
+                    font-size:15px;
+                    color:#AAA;
+                    font-weight:bold;
+
+            }
+
+            #emptyrow
+            {/*資料列為空值 label*/
+                    width:95%;
+                    padding:10px;
+                    font-size:18px;
+                    color:#AAA;
+                    text-align:center;
+            }
+        }
+    }
+}

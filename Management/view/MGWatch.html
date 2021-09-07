@@ -1,0 +1,15 @@
+﻿
+<div id="MGWatchPanel" >
+        <div id="MGWatchHeadPanel">
+                <div id="chooseModel">
+                        <span  v-show="ctr" >
+                                <span v-on:click="showName='watchVue'" v-bind:class="((showName=='watchVue')?'choose':'normal')">監控CP System</span>&nbsp;|&nbsp;
+                                <span v-on:click="showName='slaveVue'" v-bind:class="((showName=='slaveVue')?'choose':'normal')">server負載平衡管理</span>&nbsp;|&nbsp;
+                        </span>
+                        <span v-on:click="showName='ipVue'" v-bind:class="((showName=='ipVue')?'choose':'normal')">IP管理</span>
+                </div>
+        </div>
+        <component v-bind:is="((recode.indexOf('watchVue')>-1)?v.watchVue:'')" v-show="showName=='watchVue'"></component>
+        <component v-bind:is="((recode.indexOf('ipVue')>-1)?v.ipVue:'')" v-show="showName=='ipVue'"></component>
+        <component v-bind:is="((recode.indexOf('slaveVue')>-1)?v.slaveVue:'')" v-show="showName=='slaveVue'"></component>
+</div>

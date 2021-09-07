@@ -1,0 +1,36 @@
+﻿<div id="pcCarSidePanel">
+    <div id="pccsBG" v-on:click="close()"></div>
+    <div id="pccsContent">
+        <div id="pccsBody">
+            <div class="pccsRow" v-bind:id="'pcPrviewDatali'+val.key" v-for="(val,nu) in productCar">
+                <table style="width:100%;">
+                    <tr>
+                        <td v-on:click="removePC(val)" style="width:40px;cursor:pointer;opacity:0.8">
+                            <img v-bind:src="main.pub.lib.src('delete.png')" style="width:20px;position:relative;top:3px;left:3px;"/>
+                        </td>
+                        <td id="pccsPhoto">
+                            <span v-show="((val.imgAry.length>0)?val.imgAry[0] == '':true)" style="color:#999;font-size:12px;">img</span>
+                            <img v-show="((val.imgAry.length>0)?val.imgAry[0]!= '':false)" v-bind:id="((val.imgAry.length>0)?'pcPrviewExsit'+val.imgAry[0].split('.')[0]:'')" v-bind:src="((val.imgAry.length>0)?productImg.src(val.imgAry[0]):'')" />
+                        </td>
+                        <td id="pccsTitle">
+                            {{reContent(val,val.nameAry)}}
+                            <div id="pccsCount">&nbsp;×&nbsp;{{pb.MoneyFormat(val.count)}}<span style="color:#AAA;font-size:12px;" v-show="['b'].indexOf(val.key)>-1">&nbsp;{{reContent(val,val.unitAry)}}</span>
+                                <div style="float:right;width:15px;height:15px;background-color:#FFF;"></div>
+                                <div v-on:click="decrease(val)">-</div>
+                                <div style="float:right;width:10px;height:15px;background-color:#FFF;"></div>
+                                <div v-on:click="increase(val)" v-bind:style="((val.countLimit> val.count ||val.countLimit==0 )?'':'opacity:0.5')">+</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="pccsmiddle">
+            <div></div>
+        </div>
+        <div id="pccstoPay" v-show="productCar.length>0" v-on:click="gotoPay()">{{LangInput("checkout")}}&nbsp;<img v-bind:src="main.pub.lib.src('product.png')" style="width:20px;position:relative;top:3px;left:3px;opacity:0.8;"/><img v-bind:src="main.pub.lib.src('dr.png')" style="width:15px;transform:rotate(-90deg);"/></div>
+        <div id="pccsClose">
+            <img v-bind:src="main.pub.lib.src('close2.png')" v-on:click="close()"/>
+        </div>
+    </div>
+</div>

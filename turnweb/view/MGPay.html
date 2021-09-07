@@ -1,0 +1,68 @@
+﻿<div id="MGPayPanel" v-if="loadImg">
+        <div id="MGPayMainPanel">
+                <div id="MGPayMain">
+                        <div style="width:100%;text-align:center;" v-show="history.length==0 && load">-{{getLang("dataempty")}}-</div>
+                        <div id="MGPayListPanel" v-for="(val,nu) in history">
+                                <div style="width:100%;">
+                                        <div style="width:100%;">
+                                        <div class="TMGP_rowtb" v-bind:style="'background-color:'+((val.status*1!=0 || val.display*1==0)?'#EEE;':'#FF8800;')">
+                                                <div class="TMGP_rowtb_left"><span id="nu">&nbsp;{{((nu+pageTagetNu*6+1>=10)?'':'0')+(nu+pageTagetNu*6+1)}}&nbsp;</span><span class="TMGP_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')">&nbsp;{{val.key}}</span>&nbsp;<span v-show="val.shtp" class="purchase">{{getLang("Shipment")}}</span></div>
+                                                <div class="TMGP_rowtb_right" style="width:33%;text-align:right;padding-right:10px;color:#999;"><span class="TMGP_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')">  {{val.date|fdate}}</span></div>
+                                        </div>
+                                        <div style="width:100%;height:10px;"></div>
+                                        <div class="TMGP_rowtb">
+                                                <div class="TMGP_rowtb_left">  <span class="TMGP_title">{{getLang("pclass")}}&nbsp;{{val.type|fpaytype}}</span></div>
+                                        </div>
+                                        <div class="TMGP_rowtb_line"></div>
+                                        <div class="TMGP_rowtb">
+                                                <div class="TMGP_rowtb_left"> <span class="TMGP_title">{{getLang("bank")}}</span>&nbsp; <span class="TMGP_label"><img v-bind:src="$m.bankImg(val.bank)" style="height:20px;position:relative;top:5px;"/>&nbsp;<span v-bind:style="((val.status<0)?'text-decoration:line-through;':'')">{{bankName(val.bank)}}</span></span></div>
+                                                <div class="TMGP_rowtb_right" v-show="val.bank!=-1">  <span class="TMGP_title">{{getLang("paccount")}}</span><br/><span class="TMGP_label" v-bind:style="((val.limitDate > pb.unixReNow() && val.display*1!=0 && val.status==0)?'background-color:#555;color:#FFF;border-radius:6px;padding:2px;':'')"> {{val.account}}</span></div>
+                                        </div>
+                                        <div class="TMGP_rowtb_line"></div>
+                                        <div class="TMGP_rowtb">
+                                                <div class="TMGP_rowtb_left"><span class="TMGP_title" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')">{{getLang("paystatus")}}</span>&nbsp;<span class="MGPMBH_label" v-bind:style="statusColor(val.status)+((val.display*1==0)?'text-decoration:line-through;':'')"> {{val.status|fpaystatus}}</span></div>
+                                                <div class="TMGP_rowtb_right" v-show="val.limitDate > pb.unixReNow() && val.display*1!=0 && val.status==0"><span class="TMGP_title">{{getLang("lpayment")}}</span> <br/><span class="MGPMBH_label" style="background-color:#FF3300;color:#FFF;border-radius:6px;padding:2px;">{{val.limitDate|fdate}}</span></div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="TMGP_rowtb" v-show="val.akey!=null">
+                                                <!--報名活動-->
+                                                <div class="TMGP_rowtb_left" style="width:50%;text-align:right;"><span class="TMGP_title"><span v-show="((val.ac.titleAry.length>0)?val.acimg:'')==''" style="background-color:#333;padding:3px;color:#FFF;border-radius:20px;">亻<span style="color:#00BB00;">半</span>{{LangTitle('space')}}</span><img v-bind:src="((val.ac.titleAry.length>0)?val.acimg:'')" v-show="((val.ac.titleAry.length>0)?val.acimg:'')!=''" style="width:99%;" /></div>
+                                                <div class="TMGP_rowtb_right" style="width:38%;"><span class="TMGP_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')" > {{val.acash|cashFormat}}</span>
+                                                        <br/>(<span v-html="reTitle(val.ac).substr(0,8)+'...'" style="color:#AAA;"></span>)
+                                                </div>
+                                        </div>
+                                        <div class="TMGP_rowtb_line" v-show="val.akey!=null"></div>
+                                        <div style="width:100%;">
+                                                <div class="openDetailBT" v-on:click="openDetail(val)" v-show="!val.open"><input type="button" value="▲"/></div>
+                                                <component v-bind:is="((val.open)?v.detailDate:'')" v-bind:val="val"></component> 
+                                                <component v-bind:is="((val.open)?v.detail:'')" v-bind:val="val" v-bind:detail="$m.detail"></component> 
+                                        </div>
+                                        <div class="TMGP_rowtb_line"></div>
+                                        <div class="TMGP_rowtb" v-show="val.shfeecancel || val.shfee>0 || val.adr">
+                                                <div class="TMGP_rowtb_left" style="width:90%;"><span class="TMGP_title">&nbsp;{{getLang(((val.shfee>0)?'shfee':'shfree'))}}</span><span class="TMGP_label" v-show="!val.shfeecancel && val.shfee>0" >&nbsp;+{{val.shfee|cashFormat}}</span>
+                                                        <span class="TMGP_label"style="color:#AAA;font-size:12px;" >&nbsp;<img v-bind:src="main.pub.lib.src('package.png')" style="width:15px;" /><span v-show="val.sfname!=''">({{val.sfname}})</span></span>
+                                                        <span v-show="!val.shfeecancel" style="color:#FF8800;font-size:12px;">&nbsp;/<img v-bind:src="main.pub.lib.src('sh.png')" style="width:20px;position:relative;top:5px;" />&nbsp;{{shName(val.sttype)}}</span>
+                                                </div>
+                                        </div>
+                                        <!--運費-->
+                                        <div class="TMGP_rowtb">
+                                                <div class="TMGP_rowtb_right" style="width:60%;"><span class="TMGP_title">+&nbsp;{{getLang("payment")}}</span>&nbsp;<span class="TMGP_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')"> {{val.amount|cashFormat}}</span></div>
+                                                <div class="TMGP_rowtb_left" style="width:35%;">
+                                                        <span class="TMGP_title">{{getLang("shipping")}}</span>&nbsp;<span class="TMGP_label" style="text-decoration:line-through;"> {{(val.fee+val.afee)|cashFormat}}</span>
+                                                </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="sumLinePanel"></div>
+                                        <div class="TMGP_rowtb">
+                                                <div class="TMGP_rowtb_right" style="width:38%;"><span class="TMGP_title">{{getLang("sum")}}</span>&nbsp;<span class="TMGP_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')"> {{(val.amount)|cashFormat}}</span></div>
+                                        </div>
+                                        </div>
+                                        <div class="TMGP_row"></div>
+                                        <div style="width:100%;height:20px;"></div>
+                                </div>
+                                <div class="clear"></div>
+                        </div>
+                </div>
+                <div id="pageTool" v-show="load"><component v-bind:is="v.pagetool" ></component></div>
+        </div>
+</div>

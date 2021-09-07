@@ -1,0 +1,129 @@
+﻿#tagBagPanel
+{/* 標籤背包 */
+    position:relative;
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:700px;
+    padding-top:80px;
+    #toIndex
+    {/* 關閉bag */
+        position:fixed;
+        left:0px;
+        top:90px;
+        width:150px;
+        z-index:190;
+        cursor:pointer;
+        font-size:15px;
+        color:#FFF;
+        span
+        {
+            padding:3px;
+            background-color:#555;
+            border-radius: 9px;
+        }
+        .goto
+        {
+            position:relative;
+            top:3px;
+            width:15px;
+        }
+    }
+    .bagData
+    {/* 標籤內容 定位*/
+        float:left;
+        width:153px;
+        padding:20px;
+        #bagContent
+        {/* 資料 panel */
+            position:relative;
+            width:100%;
+            border:1px solid #EEE;
+            border-radius:6px;
+            #tool
+            {/* 工具欄位 */
+                width:98%;
+                position:relative;
+                text-align:right;
+                padding-top:3px;
+                img
+                {/* 移除tagbag */
+                    width:20px;
+                    cursor:pointer;
+                    opacity:0.3;
+                }
+            }
+
+            #imgTag
+            {/* 標籤示意 panel */
+                width:100%;
+                position:relative;
+                padding-top:9px;
+                padding-bottom:9px;
+                text-align:center;
+                img
+                {
+                    position:relative;
+                    width:30%;
+                    cursor:pointer;
+                }
+            }
+            #nu
+            {/* 標籤號碼 */
+                position:absolute;
+                top:40px;
+                width:30%;
+                left:15%;
+                font-size:12px;
+                font-weight:bold;
+                color:#FFF;
+                opacity:0.6;
+                #char
+                {/*字*/
+                    position:relative;
+                    margin-left:auto;
+                    margin-right:auto;
+                    width:5%;
+                    background-color:#000;
+                    border-radius:66px;
+                    padding-left:3px;
+                    padding-right:3px;
+                    min-width:15px;
+                    text-align:center;
+                }
+            }
+
+            #namePanel
+            {/* 標籤命名 */
+                color:#AAA;
+                font-size:13px;
+                font-weight:bold;
+                width:95%;
+                position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                text-align:center;
+                padding-bottom:9px;
+                overflow : hidden;
+                text-overflow : ellipsis;
+                white-space : nowrap;
+                input
+                {/* 輸入欄位 */
+                    border:1px solid #EEE;
+                    border-radius:6px;
+                    width:80px;
+                }
+                img
+                {/*編緝欄位控項*/
+                    position:relative;top:3px;width:15px;cursor:pointer;
+                    opacity:0.6;
+                }
+            }
+        }
+    }
+    .clear
+    {/*照片牆 阻斷 清除float*/
+        width:100%;
+        clear: left;
+    }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "/Users/chiwenchung/Projects/psylProject/psylProtal/psylProtal/wwwroot/libjs/MGActivity.min",
+    "inputFiles": [
+      "/MGActivity/view/index.js",
+      "/MGActivity/view/index.html",
+      "/MGActivity/controllers/index.js",
+      "/MGActivity/view/index.scss",
+      "/MGActivity/view/pay.scss",
+      "/MGActivity/view/pay.html",
+      "/MGActivity/view/pay.js",
+      "/MGActivity/controllers/pay.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

@@ -1,0 +1,129 @@
+﻿<div id="productSet" v-bind:style="((pdType=='product')?'padding-top:150px;':'')">
+        <div v-show="!load" id="productloadprogress" ></div>
+       <component v-bind:is="v.ctrToolView" v-show="pdType=='product'"></component>
+       <div style="width:100%;text-align:center;color:#AAA;padding-top:20px;padding-bottom:20px;border-bottom:1px solid #EEE;">
+                Tool:
+                <select v-model="pdType">
+                        <option value="sf">運費級距設定</option>
+                        <option value="class">顯示商品分類設定</option>
+                        <option value="gift">商品推薦設定</option>
+                        <option value="product">商品設定</option>
+                </select>
+                
+        </div>
+        <div class="MGPSContent" v-show="pdType=='sf'">
+                <div class="MGPSCpanel"><component v-bind:is="((pdType=='sf')?v.sfView:'')" ></component></div>
+                <!--運費設定-->
+        </div>
+
+       <div class="MGPSContent" v-show="pdType=='class'">
+                <div class="MGPSCpanel"><component v-bind:is="v.classview" ></component></div>
+                <!--商品分類設定-->
+       </div>
+
+
+       <div class="MGPSContent" v-show="pdType=='gift'">
+               <div class="MGPSCpanel"><component v-bind:is="((pdType=='gift')?v.GiftView:'')" ></component></div>
+                <!--商品推薦設定-->
+       </div>
+
+       <div class="MGPSTitleBT" v-show="pdType=='product'">
+                <br/><span class="MGPSTitleMark">※備註1:顯示或不顯示功能包涵商城不能購入及顯示於搜尋上</span>
+                <br/><span class="MGPSTitleMark">※備註2:容積為出貨時體積(運算包裝金額使用)</span>
+                <br/><span class="MGPSTitleMark">※備註3:排序位移謹能同類商品</span>
+                <br/><span class="MGPSTitleMark">※備註4:庫存限制為阻擋購買，非實存數量</span>
+      </div>
+       <div id="MGPSContentPanel" v-show="pdType=='product'" >
+                <div id="prEmptyMark" v-show="dataList.length==0 && load">-目前無搜尋商品項目-</div>
+                <div class="MGPS_rowtb"></div>
+                <div id="MGPSListPanel" v-for="(val,nu) in dataList" v-show="load || dataList.length!=0">
+                        <div id="MGPSProductTool"><span id="sNu">&nbsp;{{((nu+1 >=100)?'':'0')+((nu+1 >=10)?'':'0')+(nu+1)}}&nbsp;</span>&nbsp;<span id="sTitle">{{val.class|filterClass}}</span>&nbsp;<span id="sSet" v-show="val.set">&nbsp;套餐&nbsp;</span><span id="sStoreUs">-({{val.store|storeName}})</span>
+                                <span id="publishMark" v-show="val.codekey!='chiefadmin'" v-bind:style="'background-color:'+((val.codekey!='run' && val.codekey!='runfail')?'#999':'')+';'" ><img v-bind:src="main.pub.lib.src('publish.png')" />{{((val.codekey!='run' && val.codekey!="runfail")?"審核通過":"客戶Publish")}}</span>
+                                <span id="publishMarkError" v-on:click="$m.main.editF(val,true)" v-show="val.codekey=='runfail'"><img v-bind:src="main.pub.lib.src('errorMes.png')" /></span>
+                                <span v-show="!val.appck" style="color:#FF3300;font-size:12px;">(異動)</span>
+                                <div class="MGPSProductPanel">
+                                        <button class="MGPSMoveBT" v-show="nu>0" v-on:click="$m.main.productPre(val)">▲</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button class="MGPSMoveBT" v-show="pageCount > nu+1 && nu+1 != dataList.length" v-on:click="$m.main.productNext(val)">▼</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <img v-bind:src="main.pub.lib.src('edit.png')" class="ctrBt" v-on:click="$m.main.editF(val)"  />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <img v-bind:src="main.pub.lib.src(((val.type>=0)?'display_on.png':'display_off.png'))" class="ctrBt" v-bind:style="((val.type>=0)?'':'opacity:0.5')" v-on:click="$m.main.CancelF(val)" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <img v-bind:src="main.pub.lib.src('delete.png')" v-show="val.codekey=='chiefadmin'" class="ctrBt" v-bind:style="(([0,1].indexOf(val.class*1)>-1)?'opacity:0.3':'')" v-on:click="(([0,1].indexOf(val.class*1)==-1)?$m.main.RemoveF(val):false)" />&nbsp;
+                                </div>
+                        </div>
+                        <div id="MGPSProductContent">
+                                <div class="MGPS_rowtb" style="height:150px;">
+                                        <div class="MGPS_rowtb_left" v-bind:id="'productDatali'+val.key" style="position:relative;width:30%;">
+                                                <div class="MGPSIMG">
+                                                        <span v-show="val.imgAry.length == 0" style="color:#999;font-size:12px;">img Null</span><img v-bind:id="'productExsit'+val.key" v-bind:src="((val.imgAry.length != 0)?productImg.src(val.imgAry[0]):'')" style="width:80px;" v-show="val.imgAry.length != 0" />
+                                                </div>
+                                                <div class="MGPSIMGCount">&nbsp;{{val.imgAry.length}}&nbsp;ps&nbsp;</div>
+                                        </div>
+                                        <div class="MGPS_rowtb_right" style="position:relative;width:65%;">
+                                                <div class="itemPanel"><div class="MGPS_rowtb_left" style="width:30%;text-align:right;"><span class="MGPS_title">商品名稱</span></div>
+                                                <div class="MGPS_rowtb_right" style="width:65%;"><span class="MGPS_label" > {{main.pub.catchLangName(val.nameAry)}}</span></div></div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel"><div class="MGPS_rowtb_left" style="width:30%;text-align:right;"><span class="MGPS_title">商品分類</span></div>
+                                                <div class="MGPS_rowtb_right" style="width:65%;"><span class="MGPS_label" v-bind:style="'color:#'+((val.pctkey!=null && val.pctkey!='')?'555;':'FF3300;')" > {{((val.pctkey!=null && val.pctkey!="")?getClassname(val):"(未設定)")}}</span></div></div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel"><div class="MGPS_rowtb_left"style="width:30%;text-align:right;"><span class="MGPS_title">庫存狀態</span></div>
+                                                <div class="MGPS_rowtb_right" style="width:65%;"><span class="MGPS_label" > {{val.type|typeFilter}}</span></div></div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel">
+                                                        <div class="MGPS_rowtb_left" style="width:30%;text-align:right;"><span class="MGPS_title">單價/稅</span></div>
+                                                        <div class="MGPS_rowtb_right"style="width:65%;"><span class="MGPS_label">{{val.cash|cashFormat}}/<span style="text-decoration:line-through;">{{val.fee|cashFormat}}</span></span></div>
+                                                </div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div class="itemPanel">
+                                                        <div class="MGPS_rowtb_left" style="width:30%;text-align:right;"><span class="MGPS_title">容積</span></div>
+                                                        <div class="MGPS_rowtb_right" style="width:65%;"><span class="MGPS_label" > {{pb.MoneyFormat(val.shunit)}}</span></div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="MGPS_rowtb_line"></div>
+                                <div class="MGPS_rowtb">
+                                        <div class="MGPS_rowtb_left" style="position:relative;">
+                                                <div class="MGPS_rowtb_left"style="width:40%;text-align:right;"><span class="MGPS_title">數量單位</span></div>
+                                                <div class="MGPS_rowtb_right"style="width:55%;"><span class="MGPS_label"> {{main.pub.catchLangName(val.unitAry)}}</span></div>
+                                        </div>
+                                        <div class="MGPS_rowtb_right" style="position:relative;"> 
+                                                <div class="MGPS_rowtb_left"style="width:40%;text-align:right;"><span class="MGPS_title">庫存</span></div>
+                                                <div class="MGPS_rowtb_right"style="width:55%;"><span class="MGPS_label" v-show="[1,-2].indexOf(val.type*1)>-1"> {{val.Count|nuFormat}}</span><span class="MGPS_label" v-show="[1,-2].indexOf(val.type*1)==-1">-</span></div>
+                                        </div>
+                                </div>
+                                <div class="MGPS_rowtb_line"></div>
+                                <div class="MGPS_rowtb" style="height:180px;">
+                                        <div class="MGPS_rowtb_left" style="width:53%;">
+                                                <div id="MGPS_DPanel">
+                                                        <div id="MGPSdataList" v-for="(val2,nu2) in showdiscountList(val.key)">
+                                                                <span class="nu">&nbsp;{{((nu2+1 >=10)?'':'0')+(nu2+1)}}&nbsp;</span>&nbsp;
+                                                                <span class="MGPS_title" style="font-weight:bold;">{{val2.discount*10}}折&nbsp;=&nbsp;<span style="color:#FF8800;">{{val2.discount|discountFilter}}</span></span>
+                                                                <div class="dateArea">
+                                                                        <span class="MGPS_title" style="font-weight:bold;">{{val2.start|fdate}}</span>
+                                                                        <span class="MGPS_title">&nbsp;~&nbsp;</span>
+                                                                        <span class="MGPS_title" style="font-weight:bold;">{{val2.end|fdate}}</span>
+                                                                </div>
+                                                                <div class="MGPS_rowtb_line"></div>
+                                                        </div>
+                                                </div>
+                                                <div class="MGPS_rowtb_line"></div>
+                                                <div id="MGPS_DPage" v-show="showdiscountList(val.key).length>3">▼</div>
+                                        </div>
+                                        <div class="MGPS_rowtb_right" style="width:40%;"> <span class="MGPS_title">備註</span>
+                                                <div class="MGPSMark">
+                                                <span class="MGPS_label">{{((val.mark!=null && val.mark!="")?val.mark:'(無)')}}</span>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="MGPS_rowtb"></div>
+                        <div class="MGPS_row"></div>
+                </div>
+
+                <div id="MGPSLoad" v-show="!load && dataList.length==0">載入中...<img v-bind:src="main.pub.lib.src('ajaxSearc.gif')" style="width:15px;"/></div>
+                <div id="MGPSMorePage" v-on:click="$m.main.productListSer()" v-show="pageCount > dataList.length && load">
+                        more&nbsp;<img v-bind:src="main.pub.lib.src('add.png')"/>
+                </div>
+        </div>
+        <component v-bind:is="v.editview"></component>
+</div>

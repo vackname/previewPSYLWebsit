@@ -1,0 +1,217 @@
+﻿#postSystemPanel
+{/*main 框架*/
+    #psf
+    {/*post system panel*/
+        position:relative;
+        font-size:12px;
+        color:#AAA;
+        width:100%;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+
+        #addPointButton
+        {/* 客戶充值 button open view*/
+            width:200px;
+            position:absolute;
+            top:-5px;
+            left:335px;
+            span{
+                background-color:#FFF;
+                color:#333;
+                cursor:pointer;
+                border:1px solid #666;
+                border-radius:6px;
+                padding:6px;
+                img
+                {
+                    width:20px;
+                    padding:5px;
+                    position:relative;
+                    top:10px;
+                }
+            }
+        }
+
+        #closeSetBt
+        {/* 關閉套餐選餐模式 */
+            position:fixed;
+            width:40px;
+            font-size:15px;
+            font-weight:bold;
+            cursor:pointer;
+            right:3px;
+            top:65px;
+            text-align:center;
+            border:3px solid #EEE;
+            background-color:#FFF;
+            opacity:0.9;
+            border-radius:20px;
+            padding-right:10px;
+            z-index:190;
+        }
+
+        #StepButtomTool
+        {/* step buttom bar tool */
+            width:100%;padding-top:30px;padding-bottom:30px;background-color:#EEE;position:fixed;bottom:30px;text-align:center;
+        }
+        
+        .bt
+        {/* 打單按鈕 */
+            font-size:18px;color:#FFF;background-color:#555;
+        }
+
+        #chooseBall
+        {/* 選擇項目 計數球 */
+            position:fixed;
+            top:240px;
+            width:30px;
+            cursor:pointer;
+            color:#FFF;
+            font-size:18px;
+            font-weight:bold;
+            text-align:center;
+            border-radius:60px;
+            padding:3px;
+            background-color:#FF3300;
+            z-index:190;
+            -webkit-box-shadow: 0 0 15px 5px #f3d42e;
+            -moz-box-shadow: 0 0 15px 5px #f3d42e;
+            box-shadow: 0 0 15px 5px #f3d42e;
+            right:10px;
+
+            #productAddName
+            {/* 選擇項目 計數球 項目新增提示樣版*/
+                position:absolute;border:5px solid #555;border-radius:20px;text-align:center;
+                font-weight:bold;
+                color:#555;
+                z-index:190;
+                background-color:#FFF;
+                top:-20px;
+                right:-200px;
+            }
+        }
+
+        #chooseBallItem
+        {/* 選擇項目 子項計數球 */
+            position:fixed;
+            top:265px;
+            width:25px;
+            cursor:pointer;
+            color:#FFF;
+            font-size:12px;
+            font-weight:bold;
+            text-align:center;
+            border-radius:60px;
+            padding:2px;
+            background-color:	#FF8800;
+            z-index:190;
+            right:10px;
+        }
+
+        #productChoosePanel
+        {/*商品選擇欄*/
+            width:100%;
+            padding-top:20px;
+
+            .panelFloatLeft
+            {/*商品選擇欄-float*/
+                padding-top:80px;
+                width:212px;
+                border:2px solid #EEE;
+                border-bottom-right-radius:20px;
+            }
+    
+            .panelFloatLeft:after,.panelFloatRight:after
+            {/*商品選擇欄-容器 clear*/
+                position:relative;
+                content: "";
+                display: block;
+                clear: both;
+            }
+        }
+
+        .bottomPayDetail
+        {/* 打單總合試算 */
+            position:absolute;top:20px;font-size:15px;font-weight:bold;
+        }
+    }
+}
+
+@media screen  and (max-width: 550px){
+    #postSystemPanel{
+        #psf {
+            #productChoosePanel
+            {
+                .panelFloatRight
+                {/*商品選擇欄-float-right  平板*/
+                    width:60%;
+                    float:left;
+                }
+
+                .panelFloatLeft
+                {/*商品選擇欄-float*/
+                    float:left;
+                }
+            }
+
+            .bottomPayDetail
+            {/* 打單總合試算 */
+                width:30%;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 550px) and (max-width: 750px){
+    #postSystemPanel{
+        #psf {
+            #productChoosePanel
+            {
+                .panelFloatRight
+                {/*商品選擇欄-float-right  平板*/
+                    width:60%;
+                    float:left;
+                }
+
+                .panelFloatLeft
+                {/*商品選擇欄-float*/
+                    float:left;
+                }
+            }
+            .bottomPayDetail
+            {/* 打單總合試算 */
+                width:35%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 750px) {
+
+    #postSystemPanel
+    {
+        #psf
+        {
+            #productChoosePanel
+            {
+                .panelFloatRight
+                {/* 商品選擇欄-float-right 超大營幕 */
+                    width:70%;
+                    max-width:700px;
+                    float:left;
+                }
+
+                .panelFloatLeft
+                {/*商品選擇欄-float*/
+                    float:left;
+                }
+            }
+            .bottomPayDetail
+            {/* 打單總合試算 */
+                width:40%;
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+﻿#Management_main
+{/* Management project */
+    #MGPTPanel
+    {/* 首頁文宣*/
+        position:relative;
+        width:100%;
+        #saveBG
+        {/* 儲存遮罩 */
+            position:fixed;top:0px;left:0px;width:100%;height:2000px;background-color:#000;opacity:0.6;color:#FFF;z-index:199;padding-top:60px;padding-left:60px;font-size:20px;font-weight:bold;
+        }
+        #MGPTHeadPanel
+        {/*選擇模式 panel*/
+            position:relative;
+            width:100%;
+            padding-bottom:20px;
+            #chooseModel
+            {/* 定位panel*/
+                position:relative;
+                width:400px;
+                margin-left:auto;
+                margin-right:auto;
+                padding-top:20px;
+                padding-bottom:10px;
+                border-bottom:1px solid #CCC;
+                font-size:15px;
+                color:#CCC;
+                .choose
+                {/* 被選擇模式 */
+                    font-size:15px;
+                    font-weight:bold;
+                    color:#555;
+                }
+                .normal
+                {/* 未選擇模式 */
+                    font-size:12px;
+                    color:#AAA;
+                    cursor:pointer;
+                }
+
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+﻿<div id="regConsent" v-show="open">
+  <div class="modelBg"></div>
+  <!--隱私條款-->
+  <div class="privacyBox">
+    <div class="boxTitle">
+      <p>隱私政策/privacy policy</p>
+      <!-- 關閉視窗按鈕 -->
+      <div class="closeBtn">
+        <img v-bind:src="main.pub.lib.src('close.png')" v-on:click="openView()" style="width: 40px;" />
+      </div>
+    </div>
+    <div class="boxContent">
+      <component v-bind:is="v.regConsent"></component>
+    </div>
+  </div>
+</div>

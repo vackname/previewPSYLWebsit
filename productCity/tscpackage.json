@@ -1,0 +1,30 @@
+[
+  {
+    "src": "animateModel/index/tsconfig.json",
+    "modelName": "productCity_animateModel_index_tscm"
+  },
+  {
+    "src": "model/index/tsconfig.json",
+    "modelName": "productCity_model_index_tscm"
+  },
+  {
+    "src": "model/productDetail/tsconfig.json",
+    "modelName": "productCity_model_productDetail_tscm"
+  },
+  {
+    "src": "animateModel/productDetail/tsconfig.json",
+    "modelName": "productCity_animateModel_productDetail_tscm"
+  },
+  {
+    "src": "model/pay/tsconfig.json",
+    "modelName": "productCity_model_pay_tscm"
+  },
+  {
+    "src": "model/MGPDS/tsconfig.json",
+    "modelName": "productCity_model_MGPDS_tscm"
+  },
+  {
+    "src": "animateModel/MGPDS/tsconfig.json",
+    "modelName": "productCity_animateModel_MGPDS_tscm"
+  }
+]

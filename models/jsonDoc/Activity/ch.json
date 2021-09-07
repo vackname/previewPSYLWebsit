@@ -1,0 +1,29 @@
+{
+    "signup":"報名",
+    "signupstop":"停止報名",
+    "opentime":"開放時間",
+    "stoptime":"報名剩於",
+    "wait":"未開放",
+    "after":"之後",
+    "agree":"已閱讀",
+    "stepper":"個資",
+    "stepames":"聯絡人",
+    "stepadr":"收件地址",
+    "stepcomplete":"完成報名",
+    "name":"姓名",
+    "passid":"身份證/護照",
+    "birthday":"生日",
+    "cperson":"聯絡人",
+    "relationship":"關係",
+    "limit":"限制報名人數",
+    "rfee":"報名費",
+    "amis":"年齡不符",
+    "LimitA":"年齡限制",
+    "error":{
+        "re":"已報名!!",
+        "full":"已額滿！！"
+    },
+    "next":"下一步",
+    "prev":"上一步",
+    "additional":"加購"
+}

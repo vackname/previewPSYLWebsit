@@ -1,0 +1,185 @@
+﻿
+#newsPJPanel
+{/* 新聞專案*/
+    #newsMBMGPanel
+    {/*新聞稿 寫手 框架 panel*/
+        #mgNewsUplad
+        {/* 匹次載入*/
+            position:fixed;
+            width:100%;
+            z-index:199;
+            top:0px;
+            left:0px;
+            #bgUpload
+            {/* 背景遮罩 */
+                position:fixed;
+                width:100%;
+                top:0px;
+                left:0px;
+                height:2000px;
+                background-color:#000;
+                opacity:0.8;
+            }
+
+            #saveContent
+            {/* 儲存資料運行資訊 定位 panel */
+                position:relative;
+                top:30px;
+                margin-left:auto;
+                margin-right:auto;
+                width:95%;
+                max-width:500px;
+                background-color:#FFF;
+                height:600px;
+                border-radius:20px;
+                overflow-y:auto;
+
+
+                .detail
+                {/* 儲存陣列表 */
+                    position:relative;
+                    width:85%;
+                    margin-left:auto;
+                    margin-right:auto;
+                    color:#AAA;
+                    padding-top:20px;
+                    padding-bottom:10px;
+                    img
+                    {/* 完成勾勾*/
+                        width:15px;
+                    }
+                }
+
+                #mesPanel
+                {/* 運行進度 定位panel */
+                    position:fixed;z-index:199;left:0px;top:150px;width:100%;
+                    #uploadSaveOKmessaveOKPanel
+                    {/* 儲存OK message */
+                        position:relative;
+                        width:500px;
+                        margin-left:auto;
+                        margin-right:auto;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                        background-color:#FFF;
+                        text-align:center;
+                        opacity:0;
+                        -webkit-user-select:none;
+                        -moz-user-select:none;
+                        -o-user-select:none;
+                        user-select:none;
+                        img
+                        {
+                            width:200px;
+                        }
+                    }
+
+                    #savePg
+                    {/* 儲存進度 */
+                        position:relative;
+                        width:400px;
+                        margin-left:auto;
+                        margin-right:auto;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                        background-color:#FFF;
+                        opacity:0.9;
+                        font-size:18px;
+                        color:#555;
+                        font-weight:bold;
+                        padding-left:100px;
+
+                        #savePgBG
+                        {/* 進度條背景 */
+                            position:absolute;
+                            top:31px;
+                            right:90px;
+                            height:5px;
+                            width:250px;
+                            border-radius: 50px;;
+                            background-color:#AAA;
+                            border:1px solid #333;
+                            #savePgDegress
+                            {/* 進度條 */
+                                height:5px;
+                                width:1%;
+                                background-color:#FFD306;
+                            }
+
+                        }
+                    }
+
+                    #imgUploadPanel
+                    {/* 圖片上傳定位pnale */
+                        position:relative;
+                        width:500px;
+                        margin-left:auto;
+                        margin-right:auto;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                        background-color:#FFF;
+                        opacity:0.9;
+                        #imgSavePanel
+                        {/* 圖片上傳 進度 panel */
+                            position:relative;
+                            width:97%;
+                            margin-left:auto;
+                            margin-right:auto;
+                            .uploadPrivew
+                            {/* 上傳圖片預覽 */
+                                position:relative;
+                                width:99%;
+
+                                padding-top:20px;
+                                padding-bottom:20px;
+                                text-align:center;
+                                #uPhoto
+                                {/* 預覽圖片 */
+                                    width:95%;
+                                    max-width:400px;
+                                    padding-bottom:20px;
+                                }
+                                .row
+                                {/* 內容 */
+                                    position:relative;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    text-align:left;
+                                    width:90%;
+                                    max-width:200px;
+                                    padding-top:10px;
+                                    font-size:15px;
+                                    color:#AAA;
+
+                                    #imgNote
+                                    {/* 圖片資訊 金額提示 */
+                                        background-color:#000;color:#FFF;border-radius:66px;padding-right:5px;padding-top:3px;padding-left:5px;
+                                        font-size:16px;
+                                    }
+                                }
+
+                                #uploadProgressBG
+                                {/*上傳功能進度條 background*/
+                                    position:relative;
+                                    margin-left:auto;
+                                    margin-right:auto;
+                                    width:90%;
+                                    max-width:200px;
+                                    border-radius:20px;
+                                    height:5px;
+                                    background-color:#999;
+                                    #uploadPline
+                                    {
+                                        border-radius:20px;
+                                        background-color:#FF8800;
+                                        height:5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+﻿<div id="ipPanel">
+    <div id="ipWatchDataList" >
+        <img v-bind:src="main$m.img.src('iplock.png')" class="icon" v-show="main$m.ipLockList.length>0" />
+        <div class="dataList" v-for="(val,nu) in main$m.ipLockList">
+            <img v-bind:src="main.pub.lib.src('delete.png')" v-on:click="main$m.$m.ip.RemoveIpSet(val.ip)" class="delAPIbt"  />&nbsp;<span id="nu" style="color:#FF3300;" v-show="nu==0">TOP&nbsp;</span><span id="nu">No.{{nu+1}}</span>&nbsp;{{val.ip}}&nbsp;<span class="lab">/</span>&nbsp;404 request {{pb.MoneyFormat(val.preCount)}}
+            <div id="useragent">{{val.mark}}</div>
+            <div  id="recentTime" >create&nbsp;{{pb.reunixDate(val.date)}}
+                <div id="locakbtPanel" v-on:click="main$m.$m.ip.ipSet(val.ip)" >
+                    <img v-bind:src="main.pub.lib.src(((val.lock)?'lock.png':'unlock.png'))" />
+                </div>
+            </div>
+        </div>
+        <div style="width:100%;height:70px;" v-show="main$m.ipLockList.length>0">
+            <div style="width:100%;height:33px;border-bottom:2px solid #DDD;"></div>
+        </div>
+        <img v-bind:src="main$m.img.src('ip.png')" class="icon"  />&nbsp;<span class="lab">on line {{pb.MoneyFormat(main$m.IPtotal)}}</span>
+        <div class="dataList" v-for="(val,nu) in main$m.ipList">
+            <span id="nu" style="color:#FF3300;" v-show="nu==0">TOP&nbsp;</span><span id="nu">No.{{nu+((main$m.ipLockList.length>0)?main$m.ipLockList.length:1)}}</span>&nbsp;{{val.ip}}&nbsp;<span class="lab">({{val.lang}})&nbsp;/</span>&nbsp;request&nbsp;{{pb.MoneyFormat(val.attk)}}
+            <div id="useragent">
+                <img v-bind:src="val.redata.OS" v-show="val.redata.OS.toLowerCase().indexOf('data:image')==0" class="iconIP"  />
+                <span v-show="val.redata.OS.toLowerCase().indexOf('data:image')!=0">({{val.redata.OS}})</span>
+                →
+                <img v-bind:src="val.redata.browser" class="iconIP" />&nbsp;<span style="color:#555;">version&nbsp;{{val.redata.version}}</span>&nbsp;→
+                {{val.useragent}}
+            </div>
+            <div id="recentTime" >{{existTime(val.exist)}}
+                <div id="locakbtPanel" v-on:click="main$m.$m.ip.ipSet(val.ip)">
+                    <img v-bind:src="main.pub.lib.src('unlock.png')"  />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿<div class="pdMMliPanel">
+    <table id="document">
+        <tr v-show ="reContent(page,page.titleAry)!='' && reContent(page,page.titleAry)!='(null)'">
+            <td>
+                <div class="contentTitle">
+                    <div id="colorArea" v-show="page.showt"></div>
+                    <span v-html="reContent(page,page.titleAry)"></span>
+                    <img v-show="mainTemp.NormalLevel() || mainTemp.SysLevel() || mainTemp.editLevel() " v-bind:src="main.pub.lib.src(((ckTagBag(page))?'tagbag.png':'tagtouch.png'))" v-on:click="((!ckTagBag(page))?mainTemp.addTag(3,page.key,reContent(page,page.titleAry)):mainTemp.delTag(3,page.key))" id="tagAddLabel" />
+                </div>
+            </td>
+        </tr>
+        <tr v-show="reContent(page,page.title2Ary)!='' && reContent(page,page.title2Ary)!='(null)'"><td>
+            <div class="contentTitle2">
+                <span v-html="reContent(page,page.title2Ary)"></span>
+            </div>
+        </td></tr>
+        <tr v-show="reContent(page,page.descriptionAry)!='' && reContent(page,page.descriptionAry)!='(null)'"><td>
+            <div class="content">
+                <span v-html="reContent(page,page.descriptionAry)"></span>
+            </div>
+        </td></tr>
+        <tr>
+            <td>
+                <div class="contentIMG">
+                    <div v-bind:id="((!page.imgwp)?'photo':'photoWallpaper')"  v-for="(val2,nu2) in page.imgAry">
+                        <img v-bind:src="page.objImg.src(val2)" v-bind:id="'pDMPhoto'+val2.split('.')[0]+page.key" class="pimg" v-on:click="openImgView(page,nu2)" />
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr v-show="page.url!=null && page.url!=''">
+            <td>
+                <div id="gotoUrl" v-on:click="gotoUrl(page.url)">
+                    <img v-bind:src="main.pub.lib.src('mesing.png')"/>&nbsp;<span class="clickBt">前往/Goto</span>
+                 </div>
+            </td>
+        </tr>
+    </table>
+    <component v-bind:is="((openImgPreview)?v.protalIMGvue:'')"></component> 
+    <!--圖片大圖預覽-->
+</div>

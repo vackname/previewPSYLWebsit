@@ -1,0 +1,80 @@
+﻿<div id="discountPanel">
+    <div style="width:100%;height:20px;"></div>
+    <div class="rowtemp">
+        <span class="MGPSE_title">註1:如多重設定同期起動，將購入時採用最小折扣。例:[8折、7折]=>選取8折</span><br/>
+        <span class="MGPSE_title">註2:單據表式法為discount例:7折=70%</span><br/><br/>
+        <select v-model="EditData.inputDiscount" >
+            <option value="0">請選擇折扣</option>
+            <option value="0.7">7折(70%)</option>
+            <option value="0.75">7.5折(75%)</option>
+            <option value="0.8">8折(80%)</option>
+            <option value="0.85">8.5折(85%)</option>
+            <option value="0.9">9折(90%)</option>
+            <option value="0.95">9.5折(95%)</option>
+        </select><img v-bind:src="main.pub.lib.src('close.png')" class="btImgIcon" v-show="EditData.inputDiscount*1==0 && EditData.inputFirst" />
+    </div>
+    <div class="rowtemp">
+        <span class="MGPSE_title">時間區間A:</span><br/>
+        <select v-model="EditData.inputDate.startYear">
+            <option value="0">請選擇年</option>
+            <option v-for="(val2,nu2) in nowYear" v-bind:value="val2">{{val2}}年</option>
+        </select>
+        <select v-model="EditData.inputDate.startMonth">
+            <option value="0">請選擇月</option>
+            <option v-for="(val2,nu2) in nowMonth[0]" v-bind:value="val2">{{val2}}月</option>
+        </select>
+        <select v-model="EditData.inputDate.startDay">
+            <option value="0">請選擇日</option>
+            <option v-for="(val2,nu2) in new Array(nowMonthDay[0][0])" v-bind:value="nu2+nowMonthDay[0][1]">{{nu2+nowMonthDay[0][1]}}日</option>
+        </select>&emsp;
+        <select v-model="EditData.inputDate.startHour">
+            <option v-for="(val2,nu2) in new Array(24)" v-bind:value="nu2">{{nu2}}時</option>
+        </select><img v-bind:src="main.pub.lib.src('close.png')" class="btImgIcon" v-show="(EditData.inputDate.startYear*1==0 || EditData.inputDate.startMonth*1==0 || EditData.inputDate.startDay*1==0) && EditData.inputFirst" />
+    </div>
+    <div class="rowtemp"> 
+        <span class="MGPSE_title">時間區間B:</span><br/>
+        <select v-model="EditData.inputDate.endYear">
+            <option value="0">請選擇年</option>
+            <option v-for="(val2,nu2) in nowYear" v-bind:value="val2">{{val2}}年</option>
+        </select>
+        <select v-model="EditData.inputDate.endMonth">
+            <option value="0">請選擇月</option>
+            <option v-for="(val2,nu2) in nowMonth[1]" v-bind:value="val2">{{val2}}月</option>
+        </select>
+        <select v-model="EditData.inputDate.endDay">
+            <option value="0">請選擇日</option>
+            <option v-for="(val2,nu2) in new Array(nowMonthDay[1][0])" v-bind:value="nu2+nowMonthDay[1][1]">{{nu2+nowMonthDay[1][1]}}日</option>
+        </select>&emsp;
+        <select v-model="EditData.inputDate.endHour">
+            <option v-for="(val2,nu2) in new Array(24)" v-bind:value="nu2">{{nu2}}時</option>
+        </select><img v-bind:src="main.pub.lib.src('close.png')" class="btImgIcon" v-show="(EditData.inputDate.endYear*1==0 || EditData.inputDate.endMonth*1==0 || EditData.inputDate.endDay*1==0) && EditData.inputFirst" />
+    </div>
+    <div style="width:100%;height:10px;"></div>
+    <div class="MGPSE_rowtb_line"></div>
+    <div style="width:100%;height:40px;text-align:center">  <input type="button" class="MGPSE_bt" value="建立" v-on:click="main$m.$m.maind.allowanInsert()" /></div>
+    <!--折設定list-->
+    <div id="dataPanel">
+        <div v-show="EditData.discountlist.length==0" id="dataEmpty">--尚無任何折扣設定--</div>
+        <div v-for="(val2,nu2) in EditData.discountlist" id="dataList">
+            <img v-bind:src="main.pub.lib.src('delete.png')" class="btImgIcon" style="cursor:pointer;" v-on:click="main$m.$m.maind.del_allance(val2.key,nu2)"  />&nbsp;<span v-bind:style="'font-size:12px;color:#FFF;background-color:#'+((val2.display)?'555':'AAA')+';'">&nbsp;{{((nu2+1 >=10)?'':'0')+(nu2+1)}}&nbsp;</span>
+            &nbsp;<span class="MGPSE_title" style="font-weight:bold;">{{val2.discount*10}}折&nbsp;=&nbsp;<span style="color:#FF8800;">{{val2.discount|discountFilter}}</span></span>
+            <div style="float:right;"><span v-bind:style="'color:#'+((val2.display)?'00AA00':'AAA')+';font-size:15px;text-shadow: black 0.1em 0.1em 0.2em'">●</span>&emsp;<input type="button" v-bind:class="((val2.display)?'MGPSE_bt':'MGPSE_displaybt')" v-bind:value="((val2.display)?'on':'off')" v-on:click="main$m.$m.maind.display_allance(val2,nu2)" /></div>
+            <div style="width:100%;text-align:center;">
+                <span v-bind:style="((!val2.display || !(val2.start<EditData.systemdate && EditData.systemdate<=val2.end))?'text-decoration:line-through;':'')"><span class="MGPSE_label" style="color:#999;font-weight:bold;">{{val2.start|fdate}}</span>
+                <span class="MGPSE_title">&nbsp;~&nbsp;</span>
+                <span class="MGPSE_label" style="color:#999;font-weight:bold;">{{val2.end|fdate}}</span></span>
+            </div>
+            <div class="rowtemp">
+                <div class="MGPSE_rowtb_line"></div>
+                <span class="MGPSE_title">備註:</span>
+                <div class="markContent">
+                    <span class="MGPSE_label">{{val2.mark}}</span>
+                </div>
+            </div>
+            <div style="width:100%;height:30px;text-align:right;">
+                <span class="MGPSE_title">建置日期:{{val2.date|fdate}}</span>&nbsp;
+            </div>
+            <div class="MGPSE_row"></div>
+        </div>
+    </div>
+</div>

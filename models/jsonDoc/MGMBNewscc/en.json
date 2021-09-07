@@ -1,0 +1,36 @@
+{
+    "error":
+    {
+        "limitDay":"Over late time for edit!",
+        "nottranslate":"not support of translate",
+        "onlysupport":"only support"
+    },
+    "mes":
+    {
+        "delns":"Confirm for delete of article？",
+        "delnscontent":"Confirm for detelt of content,photo/image？",
+        "dellabel":"Confirm for remove(not save) of label?",
+        "delnscontentimg":"Confirm for delete of photo/image？",
+        "resavestart":"Confirm for save？",
+        "publish":"Confirm for reset of publish？",
+        "createTrace":"Confirm for create trace of article?"
+    },
+    "input":
+    {
+        "approve":"Approve",
+        "extendlabel":"Extend Label",
+        "eventlabel":"Event Label",
+        "pagemore":"Read",
+        "clickmore":"Click me/more",
+        "unknow":"unknow",
+        "notchoose":"not choose",
+        "detailnotchoose":"unknow",
+        "allcontent":"All content",
+        "allcontentclass":"All class",
+        "createarticle":"CRE Art.",
+        "wallpaper":"Wall paper",
+        "createcontent":"CRE Content",
+        "add":"Add",
+        "empty":"not find"
+    }
+}

@@ -1,0 +1,36 @@
+﻿#Management_main
+{/* Management project */
+    #MGNewsPanel
+    {/* 新聞 panel*/
+        width:100%;position:relative;
+        .MGNSTitleBT
+        {/* 分類ctr介面項設定介面開合鈕 */
+            position:relative;margin-left:auto;margin-right:auto;max-width:500px;width:95%;color:#00BBFF;font-size:15px;font-weight:bold;cursor:pointer;
+            padding-bottom:10px;
+            
+            img
+            {/*提示mark*/
+                position:relative;top:2px;width:15px;
+            }
+
+            .MGNSTitleMark
+            {/*提示說明*/
+                color:#999;font-size:12px;
+            }
+        }
+        .MGNSContent
+        {/* 分類ctr介面項 content */
+            position:relative;margin-left:auto;margin-right:auto;max-width:450px;width:100%;
+            .MGNSCpanel
+            {/* component  */
+                padding:20px;border:1px solid #EEE;width:90%;
+            }
+        }
+
+        #toolhead
+        {/* 文章審核工具 head panel */
+            width:100%;
+            height:120px;
+        }
+    }
+}

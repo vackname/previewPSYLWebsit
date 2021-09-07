@@ -1,0 +1,36 @@
+{
+    "error":
+    {
+        "limitDay":"編集時間が経過しました!",
+        "nottranslate":"翻訳はサポートされていません",
+        "onlysupport":"サポートのみ"
+    },
+    "mes":
+    {
+        "delns":"記事を削除するかどうか？",
+        "delnscontent":"段落や写真/写真を削除しますか？",
+        "dellabel":"是否移除(未儲存) 標籤？",
+        "delnscontentimg":"（保存されていない）ラベルを削除しますか？",
+        "resavestart":"アクションを保存し続けますか？",
+        "publish":"リリースをリセットしますか？",
+        "createTrace":"この記事の追跡を作成しますか？"
+    },
+    "input":
+    {
+        "approve":"監査",
+        "extendlabel":"拡張読書",
+        "eventlabel":"その他のラベル",
+        "pagemore":"読み続けて",
+        "clickmore":"より多くのコンテンツ",
+        "unknow":"わからない",
+        "notchoose":"まだ選択されてい",
+        "detailnotchoose":"まだ選択されてい分類",
+        "allcontent":"すべての記事",
+        "allcontentclass":"すべての分類",
+        "createarticle":"記事作成",
+        "wallpaper":"フォトウォール",
+        "createcontent":"コンテンツを作成する",
+        "add":"追加",
+        "empty":"関連情報を照会しない"
+    }
+}

@@ -1,0 +1,30 @@
+﻿<div id="MGPayPDD_rowPanel" v-show="dataList.length>0">
+    <div id="MGPayPDDPanel">
+        <div id="MGPDD_dataListPanel" v-for="(val,nu) in dataList">
+            <div class="MGPDD_rowtb" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')">
+                <img class="productIcon" v-bind:src="((['a','b'].indexOf(val.pkey)>-1)?main.pub.lib.src('coin'+((val.pkey=='b')?'Date':'')+'.png'):'')" v-show="['a','b'].indexOf(val.pkey)>-1" />
+                <div class="MGPDD_rowtb_left" style="width:20%;">
+                    <span class="MGPD_title">{{main.pub.catchLangName(val.nameAry)}}</span></div>
+                <div class="MGPDD_rowtb_left"  style="width:40%;" v-show="!val.del  && !val.gifts && val.refundCash==0"><span class="MGPDD_label" style="font-size:12px;">{{val.cash|cashFormat}}</span><span class="MGPD_title" style="font-size:15px;color:#AAA;">&nbsp;({{getLang("unitprice")}})</span></div>
+                <div class="MGPDD_rowtb_right"  style="width:30%;text-align:center;" v-on:click="setOpen(val)" v-show="val.set"><div id="MGPDD_rowtb_right_setBt"><!--套餐鈕--><img v-bind:src="main.pub.lib.src('product.png')" style="width:20px;"/></div></div>
+            </div>
+            <div class="MGPDD_rowtb" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')">
+                <div class="MGPDD_rowtb_right"  style="width:27%;" v-show="!val.del  && !val.gifts"> <span class="MGPD_title" >=</span> &nbsp;<span class="MGPDD_label">{{(((val.refundCash*1==0)?val.cash*val.count*((val.count>0)?val.discount:1) : val.refundCash*(-1)))|cashFormat}}</span></div>
+                <div class="MGPDD_rowtb_right"  style="width:27%;" v-show="val.del  || val.gifts"> <span class="MGPD_title" v-bind:style="'color:#'+((val.del)?'FF3300':'55AA00')+';'">({{((val.del)?getLang("obsolete"):getLang("gift"))}})</span></div>
+                <div class="MGPDD_rowtb_right"  style="width:27%;" v-show="val.refundCash > 0"> <span class="MGMBPH_title" style="color:#FF3300">({{getLang("return")}})</span></div>
+                <div class="MGPDD_rowtb_right"  style="width:32%;" > <span class="MGPD_title">X</span> &nbsp;<span class="MGPDD_label">{{val.count}}</span><span class="MGPD_title">&nbsp;{{main.pub.catchLangName(val.unitAry)}}</span>  </div>
+                <div class="MGPDD_rowtb_right"  style="width:30%;" v-show="!val.del  && !val.gifts && val.discount-1!=0"> <span class="MGPD_title" >X&nbsp;</span> &nbsp;<span class="MGPDD_label">{{Math.ceil(val.discount*100)}}%</span></div>
+            </div>
+            <div class="MGPDD_rowtb" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')" v-show="val.allowances!=0">
+                <div class="MGPDD_rowtb_right"  style="width:24%;text-align:left" ><span class="MGPDD_label">{{(val.allowances)|cashFormat}}</span></div>
+                <div class="MGPDD_rowtb_right"  style="width:50%;text-align:right;padding-right:10px;" > <span class="MGPD_title">&nbsp;-&nbsp;<span style="color:#FF8800">{{getLang("allowances")}}</span></span></div>
+            </div>
+            <div class="MGPDD_rowtb">
+                <div class="MGPDD_rowtb_left" style="width:10%;"> <span class="MGPD_title">{{getLang("mark")}}</span></div>
+                <div class="MGPDD_rowtb_right" style="width:85%;text-align:left;"><span class="MGPDD_label">{{((val.mark!='')?val.mark:'-')}}</span></div>
+            </div>
+            <div class="MGPDD_rowtb_line"></div>
+        </div>
+    </div>
+    <component v-bind:is="v.setMenuListView"></component>
+</div>

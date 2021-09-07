@@ -1,0 +1,112 @@
+﻿<div id="pDMPanel">
+    <div id="searchTool"> 
+        <input type="text" v-model="main$m.pDM.ser" /><input type="button" class="MG_bt" v-on:click="main$m.$m.dm.serData(true)" value="搜尋" />
+    </div>
+    <div id="insertPanel"><button v-on:click="main$m.$m.dm.insert()" id="insertBt">新增文章<img v-bind:src="main.pub.lib.src('add.png')"/></button></div>
+    <div class="dataListPanel" v-for="(val,nu) in main$m.pDM.list">
+        <table id="document">
+            <tr>
+                <td id="toolHead">
+                    <img v-bind:src="main.pub.lib.src('edit.png')" class="ctrBtImg" v-on:click="setContent(val)" />&nbsp;<span id="nu">No.{{nu+1}}&nbsp;</span>
+                    <img v-bind:src="main.pub.lib.src(((val.display)?'display_on.png':'display_off.png'))" class="ctrBtImg"  v-show="val.langAry.length>0" v-on:click="main$m.$m.dm.display(val)"/>&nbsp;
+                    <input type="button" v-on:click="main$m.$m.dm.showt(val)" v-bind:class="((val.showt)?'choose':'normal')" v-bind:value="'特顯色塊標題'+((val.showt)?'ν':'')" />&nbsp;
+                    <img v-bind:src="main.pub.lib.src('delete.png')" class="ctrBtImg"  v-on:click="main$m.$m.dm.del(val)" />&nbsp;
+                    <img v-bind:src="main.pub.lib.src('save.png')" id="savectrBt" v-show="val.update" v-on:click="main$m.$m.dm.save(val)" />&nbsp;|&nbsp;
+                    <span id="langPanel">
+                        <span id="notLang">
+                            <img v-bind:src="main.pub.lib.src('lang.png')" id="l"/>
+                            <img v-bind:src="main.pub.lib.src('close.png')" id="c" v-show="val.langAry.length==0"/>
+                        </span>&nbsp;
+                        <span v-for="(val1,nu1) in main.pub.langAry" class="langInput" v-show="!val.display">
+                            <!--語系開發選擇-編緝中-->
+                            <input type="checkbox" v-bind:checked="val.langAry.indexOf(nu1)>-1" v-on:click="main$m.$m.dm.chooseLang(val,nu1)"/><label v-on:click="main$m.$m.dm.chooseLang(val,nu1)" >{{val1.key}}</label>
+                        </span>
+                        <span v-for="(val1,nu1) in main.pub.langAry" class="langKey" v-show="val.langAry.indexOf(nu1)>-1 && val.display">
+                            {{val1.key}}&nbsp;
+                        </span>
+                    </span>
+                    <div id="tool">
+                        <img v-bind:src="main.pub.lib.src('ur.png')" class="moveBt" v-show="nu>0" v-on:click="main$m.$m.dm.preDocument(val)" />
+                        <img v-bind:src="main.pub.lib.src('dr.png')" class="moveBt" v-show="main$m.pDM.list.length > nu+1" v-on:click="main$m.$m.dm.nextDocument(val)" />
+                    </div>
+                </td>
+            </tr>
+            <tr v-show="val.openEdit" ><td><div class="logmark" >前往URL<input type="text" v-model="val.url"  v-on:keypress="updateMark(val)" v-on:keyup="updateMark(val)" v-on:keydown="updateMark(val)" />(不設置擇無功能)</div></td></tr>
+            <tr v-show="val.openEdit" ><td><div class="logmark" >log:{{val.mark}}</div></td></tr>
+            <tr v-show ="reContent(val.titleAry)!='' && reContent(val.titleAry)!='(null)'  || val.openEdit">
+                <td>
+                    <div class="contentTitle">
+                        <div id="colorArea" v-show="val.showt"></div>
+                        <span v-show="!val.openEdit" v-html="reContent(val.titleAry)"></span>
+                        <textarea class="textBox" v-show="val.openEdit" v-model="val.titleAry[main.pub.langNu]" v-on:keypress="updateMark(val)" v-on:keyup="updateMark(val)" v-on:keydown="updateMark(val)"></textarea>
+                    </div>
+                </td>
+            </tr>
+            <tr v-show="reContent(val.title2Ary)!='' && reContent(val.title2Ary)!='(null)'  || val.openEdit"><td>
+                <div class="contentTitle2">
+                    <span v-show="!val.openEdit" v-html="reContent(val.title2Ary)"></span>
+                    <textarea class="textBox" v-show="val.openEdit" v-model="val.title2Ary[main.pub.langNu]" v-on:keypress="updateMark(val)" v-on:keyup="updateMark(val)" v-on:keydown="updateMark(val)"></textarea>
+                </div>
+            </td></tr>
+            <tr v-show="reContent(val.descriptionAry)!='' && reContent(val.descriptionAry)!='(null)'  || val.openEdit"><td>
+                <div class="content">
+                    <span v-show="!val.openEdit" v-html="reContent(val.descriptionAry)"></span>
+                    <textarea class="textBox" v-show="val.openEdit" v-model="val.descriptionAry[main.pub.langNu]" v-on:keypress="updateMark(val)" v-on:keyup="updateMark(val)" v-on:keydown="updateMark(val)"></textarea>
+                </div>
+            </td></tr>
+            <tr>
+                <td>
+                    <div class="editTool"><span id="labelPhoto">&nbsp;(建議39X26)img&nbsp;{{val.imgAry.length}}&nbsp;ps&nbsp;</span><input type="button" v-on:click="main$m.$m.dm.imgwp(val)" v-bind:class="((val.imgwp)?'choose':'normal')" v-bind:value="'照片牆'+((val.imgwp)?'ν':'')" /></div>
+                    <div class="contentIMG">
+                    <!--照片 陣列 模式鈕-->
+                    <div class="contentIMG">
+                        <div id="imgUpload" v-show="val.openEdit">
+                            <!--upload tool-->
+                            <div id="takePotoPanel" >
+                                <img v-bind:src="main.pub.lib.src('savenoteleft.png')" v-bind:id="val.key+'PDMdocphoto'" style="top:0px;left:100px;transform:rotate(-20deg);" v-show="val.IMGupdate" v-on:click="main$m.$m.dm.save(val)" class="savenote" />
+                                <img v-bind:src="main.pub.lib.src('close.png')" v-show="val.imgfile!=null && val.IMGupdate" class="del" v-on:click="main$m.$m.dm.imguploadCancel(val,nu)"  /><!---cancel upload-->
+                                <img v-bind:src="main.pub.lib.src('add.png')" v-show="val.imgfile==null && val.imgfileAry.length==0"  class="del" v-on:click="opeImageFile(val.key)" /><!---open upload-->
+                                <img v-bind:src="main.pub.lib.src('takephoto.png')" v-bind:id="'IUtakephotoPDM'+val.key" v-show="(val.IMGupdate || val.imgfileAry.length==0)" class="ctrBt" v-on:click="((val.imgfile!=null)?main$m.$m.dm.imguploadCancel(val):opeImageFile(val.key))" />
+                                <input type="file" multiple="multiple" accept="image/jpeg, image/png" style="display:none;" v-bind:id="'newofilePDM_'+val.key" v-on:change="main$m.$m.dm.imgupload(val,event)"/>
+                                <span v-show="val.imgfile!=null" class="photoLength">&nbsp;({{((val.imgfileAry.length!=((val.imgfile!=null)?val.imgfile.length:0) && !val.IMGupdate)?((val.imgfileAry.length/val.imgfile.length)*100).toFixed(2):val.imgfileAry.length)}}&nbsp;{{((val.imgfileAry.length!=((val.imgfile!=null)?val.imgfile.length:0)&& !val.IMGupdate)?"%..open file":"ps")}})</span>
+                                <!--照片 陣列 模式鈕-->
+                            </div>
+                            <div v-bind:id="'IUtakephotoAllPDM'+val.key" style="width:100%;"> <!--預覽上傳photo-->
+                                <div v-bind:id="'newsUPimgPDM'+nu1+val.key" v-for="(val1,nu1) in val.imgfileAry" class="uploadPrivew">
+                                    <img v-bind:src="val1.base64" class="upPhoto" v-bind:style="((val1.over)?'opacity:0.3':'')" />
+                                    <div id="CancelIconPanel" v-show="val1.over" ><img v-bind:src="main.pub.lib.src(((Number(val1.size)>2)?'lock.png':'unlock.png'))" v-on:click="main$m.$m.dm.impguploadReSize(val1);" /></div>
+                                    <div class="row">
+                                        <div id="delPanel" v-show ="val1.upsize==0 && val.IMGupdate"><img v-bind:src="main.pub.lib.src('delete.png')" v-on:click="main$m.$m.dm.imguploadDel(val,nu1)" /></div>
+                                        {{val1.filename.substring(0,16)}}...
+                                    </div>
+                                    <div class="row">
+                                        size:&nbsp;<span v-bind:style="((val1.over)?'color:#FF3300':'')" >{{val1.size}}&nbsp;{{val1.sizeName}}</span>
+                                        <span v-show="val1.over" style="color:#FF8800;" >&gt;2&nbsp;MB</span>
+                                    </div>
+                                    <div class="row" v-bind:style="((val1.uploadmes.indexOf('error')>-1 || 3 > val1.restart)?'color:#FF8800;':'')">
+                                        {{((3 > val1.restart)?'retry':'')+val1.uploadmes}}
+                                    </div>
+                                    <div id="uploadProgressBG" v-bind:style="((val1.over)?'opacity:0.3':'')"><div id="uploadPline" v-bind:style="'width:'+((val1.upsize/val1.uptotalsize)*100)+'%'"></div></div>
+                                    <!--上傳圖片進度條-->
+                                </div>
+                            </div>
+                        </div>
+                        <div v-bind:id="((!val.imgwp)?'photo':'photoWallpaper')"  v-for="(val2,nu2) in val.imgAry">
+                            <div v-show="val.openEdit" id="imgToolBT">
+                                <div id="moveImgBT">
+                                    <img v-bind:src="main.pub.lib.src('ur.png')" v-show="nu2>0" v-on:click="main$m.$m.dm.preContentImgDoc(val,val2)" v-bind:style="((val.imgwp)?'transform:rotate(-90deg);':'')" />
+                                    <img v-bind:src="main.pub.lib.src('dr.png')" v-show="val.imgAry.length > nu2+1 && nu2+1 != val.imgAry.length" v-on:click="main$m.$m.dm.nextContentImgDoc(val,val2)" v-bind:style="((val.imgwp)?'transform:rotate(-90deg);':'')" />
+                                </div>
+                                <img v-bind:src="main.pub.lib.src('close.png')" class="ctrBtImg"  v-on:click="main$m.$m.dm.delImg(val,val2)" />
+                            </div>
+                            <img v-bind:src="val.objImg.src(val2)" v-bind:id="'MGpDMPhoto'+val2.split('.')[0]+val.key" class="pimg" v-bind:style="((val.openEdit)?'border:1px solid #EEE;':'')" v-on:click="openImgView(val,nu2)"  />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="splitline"></div>
+    </div>
+    <div v-on:click="main$m.$m.dm.serData(false)" id="btMore">More<span style="color:#CCC;">...</span></div>
+    <component v-bind:is="((openImgPreview)?v.protalIMGvue:'')"></component> <!--圖片大圖預覽-->
+</div>

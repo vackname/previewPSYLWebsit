@@ -1,0 +1,53 @@
+﻿#postSystemPanel
+{/*main 框架*/
+    #psf
+    {/*post system panel*/
+        #productChoosePanel
+        {/*商品選擇欄*/
+            #classPanel
+            {
+                position:relative;
+                width:100%;
+                #turnFirst
+                {/*返回 first Menu*/
+                    font-size:12px;
+                    font-weight:bold;
+                    color:#FF8800;
+                    width: 30px;
+                    padding:5px;
+                    cursor:pointer;
+                    border-bottom-right-radius:20px;
+                    position:relative;
+                    left:0px;
+                    top:-11px;
+                    border: 3px solid #FF8800;
+                    text-align: center;
+                    -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.3));
+                    filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.3));
+                    opacity:0.8;
+
+                }
+
+                .chooseM,.classM
+                {/* 選擇器 */
+                    width:100%;
+                    cursor:pointer;
+                    padding:25px;
+                }
+
+                .chooseM
+                {/* 選擇器-已選 */
+                    font-weight:bold;
+                    font-size:20px;
+                    color:	#9F5000;
+                }
+
+                .classM
+                {/* 選擇器-未選 */
+                    font-size:17px;
+                    color:	#AAA;
+                }
+            }
+        }
+    }
+}

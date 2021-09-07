@@ -1,0 +1,52 @@
+﻿#Management_main
+{/* Management project */
+    #MGNewsPanel
+    {/* 新聞 panel*/
+        #nssetClassPanel
+        {/* 主要樣版 */
+            width:100%;position:relative;
+            #setMark
+            {/* 備註資訊 */
+                color:#999;font-size:12px;
+            }
+            #listPnael
+            {/* list */
+                width:100%;position:relative;padding-top:10px;
+                .setClNu
+                {/* 序號style css */
+                    font-size:12px;color:#FFF;background-color:#99DD00;
+                }
+                .closeImg
+                {/* close img */
+                    width:15px;position:absolute;top:6px;left:-18px;
+                }
+
+                .moveBt
+                {/* row move data*/
+                    position:relative;top:-3px;border-radius:5px;cursor:pointer;background-color:#FFF;box-shadow:2px 2px 5px #888888;
+                }
+
+                .ctrBtImg
+                {/* 功能鈕Img mark */
+                    width:15px;position:relative;top:3px;
+                }
+
+                .clPanel
+                {/* 次項目 框架*/
+                    width:100%;
+                    padding-bottom:50px;
+                    padding-top:10px;
+
+                    .clTemp
+                    {/* 主要板版 */
+                        padding:20px;border:1px solid #CCC;width:90%;position:relative;margin-left:auto;
+                        .clListPanel
+                        {/* list panel */
+                            width:90%;position:relative;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

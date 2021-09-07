@@ -1,0 +1,29 @@
+{
+    "signup":"登録",
+    "signupstop":"登録を停止します",
+    "opentime":"開始時間",
+    "stoptime":"登録残り",
+    "wait":"開いていない",
+    "after":"後",
+    "agree":"読んだ",
+    "stepper":"個人情報",
+    "stepames":"連絡窓口",
+    "stepadr":"お届け先の住所",
+    "stepcomplete":"完全な登録",
+    "name":"名前",
+    "passid":"IDカード/パスポート",
+    "birthday":"誕生日",
+    "cperson":"連絡窓口",
+    "relationship":"関係",
+    "limit":"応募者数を制限",
+    "rfee":"登録料",
+    "amis":"年齢の不一致",
+    "LimitA":"年齢制限",
+    "error":{
+        "re":"登録済み!!",
+        "full":"割り当てなし!!"
+    },
+    "next":"次の一歩",
+    "prev":"前の一歩",
+    "additional":"購入を追加"
+}

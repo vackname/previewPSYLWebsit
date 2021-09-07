@@ -1,0 +1,15 @@
+﻿
+<div id="MGPTPanel" >
+        <div id="MGPTHeadPanel">
+                <div id="chooseModel">
+                        <span v-on:click="showName='pdmVue'" v-bind:class="((showName=='pdmVue')?'choose':'normal')">最新消息</span>&nbsp;|&nbsp;
+                        <span v-on:click="showName='storyVue'" v-bind:class="((showName=='storyVue')?'choose':'normal')">活動消息</span>
+                        
+                </div>
+        </div>
+        <component v-bind:is="((recode.indexOf('storyVue')>-1)?v.storyVue:'')" v-show="showName=='storyVue'"></component>
+        <component v-bind:is="((recode.indexOf('pdmVue')>-1)?v.pdmVue:'')" v-show="showName=='pdmVue'"></component>
+        <div id="saveBG" v-show="saveRun">
+                &nbsp;儲存中...請等候....
+         </div>
+</div>

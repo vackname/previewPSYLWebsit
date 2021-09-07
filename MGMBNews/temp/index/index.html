@@ -1,0 +1,91 @@
+﻿<div id="newsserPanel">
+    <div class="newsDataListPanel" v-for="(val,nu) in main$m.datalist" >
+        <component  v-bind:is="((val.bshow)?v[main$m.$m.main.showTemp(val.btp)]:'')" v-bind:page="val.bContent"></component>
+        <!-- 前往 之前文章  -->
+        <div style="width:100%;text-align:center;" v-show="val.bkey!='' &&  val.codekey!=''" >
+            <!-- 前往 之前文章 鈕-->
+            <img v-show="val.bContent == null" v-bind:src="main.pub.lib.src('tracenextprev.png')" class="newsnextprev"  v-on:click="main$m.$m.main.catchShowTemp(val,'b')" />
+            <img v-show="val.bContent != null" v-bind:src="main.pub.lib.src('tracenextprev.png')" class="newsnextprev"  v-bind:style="((val.bshow)?'opacity:0.3;':'')" v-on:click="val.bshow=!val.bshow" />
+        </div>
+        <div id="dateDoc">
+            <span  v-on:click="copyUrl('newsDoc',val)" style="font-size:12px;color:#AAA;cursor:pointer;user-select:all;" >
+                <!--copy url-->
+                <span style="opacity:0;" v-bind:id="'newsDoc'+val.key">{{window.location.protocol.split(':')[0]+"://"+window.location.host+"/u/0/"+val.key}}</span>
+                <img v-bind:src="main.pub.lib.src('copyurl.png')" style="width:20px;padding-right:6px;position:realtive;top:3px;"/>
+            </span>
+            {{pb.reunixDate(val.publish)}}<img  v-show="mainTemp.NormalLevel() || mainTemp.SysLevel() || mainTemp.editLevel() " v-bind:src="main.pub.lib.src(((ckTagBag(val))?'tagbag.png':'tagtouch.png'))" v-on:click="((!ckTagBag(val))?mainTemp.addTag(0,val.key,main.pub.catchLangNameNu(val.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu)).replace(/</g,'&lt;')):mainTemp.delTag(0,val.key))" id="tagAddLabel" />
+        </div>
+        <!--發佈日期/create日期-->
+        <div id="docTitle"><div id="markpanel"></div><span v-on:click="val.show=!val.show" style="cursor:pointer;"  v-html="main.pub.catchLangNameNu(val.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu)).replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span></div>
+        <div style="position:realtive;margin-left:auto;width:95%;color:#AAA;font-weight:bold;font-size:15px;cursor:pointer;" v-on:click="val.show=!val.show" v-show="!val.show">...</div>
+        <div style="width:100%;" v-show="val.show">
+            <div class="newsContent" v-bind:id="'docConnection'+val.key+nu1" v-for="(val1,nu1) in getContent(val.docAry)" v-show="!val.loadDoc[main.pub.lang] && nu1==0 || val.loadDoc[main.pub.lang]">
+                <div id="textContent">
+                    <!--段落內容-->
+                    <div id="title" v-show="val1.content[main.pub.lang].title!='' &&  val.langAry.indexOf(main.pub.langNu)>-1 && (nu1 ==0 ||  val.loadDoc[main.pub.lang] )" >
+                        <span  v-html="((val1.content[main.pub.lang].title!='')?val1.content[main.pub.lang].title:'...').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+                    </div>
+                    <div class="videoPanel" v-if="val1.ybe !='' && val1.ybe!=null">
+                        <!-- video -->
+                        <iframe v-bind:src="'https://www.youtube.com/embed/'+val1.ybe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div id="content" v-show="val.loadDoc[main.pub.lang]">
+                        <span v-show="val.langAry.indexOf(main.pub.langNu)>-1" style="font-size:22px;font-weight:bold;color:#000;">{{((val.loadDoc[main.pub.lang])?((val1.content[main.pub.lang].content!='')?val1.content[main.pub.lang].content.substring(0,1):''):"")}}</span>
+                        <span v-show="val.langAry.indexOf(main.pub.langNu)>-1" v-html="((val.loadDoc[main.pub.lang])?((val1.content[main.pub.lang].content!='')?val1.content[main.pub.lang].content.substring(1):''):'').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+                        <span v-show="val.langAry.indexOf(main.pub.langNu)==-1" style="color:#BBB;">
+                            <!--無翻譯提示-->
+                            {{main$m.getLang('error').nottranslate}}!!
+                            <span v-for="(val2,nu2) in main.pub.langAry" class="langKey" v-show="main.pub.lang==val2.val">
+                                ({{val2.key}})
+                            </span>
+                            <div style="width:100%;padding-top:10px;color:#408080">
+                                {{main$m.getLang('error').onlysupport}}:
+                                <span v-for="(val2,nu2) in main.pub.langAry" class="langKey" v-show="val.langAry.indexOf(nu2)>-1" style="color:#5CADAD;font-size:16px;font-weight:bold;cursor:pointer;text-decoration:underline;" v-on:click="main.pub.lang=val2.val;main.pub.langFun();">
+                                    {{val2.key}}
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <div id="photoPanel" v-show="val.loadDoc[main.pub.lang]" v-bind:style="((val1.WallPaper)?'width:90%;':'')">
+                        <div v-bind:class="((!val1.WallPaper)?'contentImg':'contentImgWP')" v-show="val1.objImg.src(val2.path)!=null" v-for="(val2,nu2) in val1.imgAry">
+                            <!--文章圖片-->
+                            <div id="container">
+                                <img v-bind:src="val1.objImg.src(val2.path)" v-bind:id="'SeRloadPhoto'+val.key+'_'+val1.path+'_'+val2.path.split('.')[0]" class="photo"  v-on:click="openImgView(val1,nu2)" />
+                            </div>
+                            <div class="Photodescription"  v-bind:id="'dSeRloadPhoto'+val.key+'_'+val1.path+'_'+val2.path.split('.')[0]" v-show="main.pub.catchLangNameNu(val2.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))!='(null)'">
+                                <!--照片描述-->
+                                <span v-html="((!val1.WallPaper)?main.pub.catchLangNameNu(val2.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu)):main.pub.catchLangNameNu(val2.titleAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu)).substring(0,9)+'...').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>')"></span>
+                            </div>
+                        </div>
+                        <div class="clear">&nbsp;</div> <!--float 阻隔-->
+                    </div>
+                </div>
+            </div>
+            <div v-on:click="main$m.$m.main.moreData(val)" id="newsContentOpen" v-show="val.docAry.length>0 && !val.loadDoc[main.pub.lang]"><span style="color:#DDD;">...(</span>{{main$m.getLang('input').pagemore}}<span style="color:#DDD;">)</span></div>
+            <div class="markTitle" v-show="val.readPathAry.length>0 ">{{main$m.getLang('input').extendlabel}}</div>
+            <div class="readPathContent" v-for="(val1,nu1) in val.readPathAry">
+                <div class="labelPanel">
+                    #<span v-on:click="main$m.$m.main.getLabel(val1,'idLabel'+nu1+'loadPhoto','idLabelTag'+val.key+nu1,0)" v-show="val1.content==null" id="label">{{main.pub.catchLangNameNu(val1.nameAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))}}</span>
+                    <span v-show="val1.content!=null" v-on:click="val1.show=!val1.show;" v-bind:style="((val1.show)?'color:#ACD6FF;font-size:12px;':'')" id="label">{{main.pub.catchLangNameNu(val1.nameAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))}}<img v-bind:src="main.pub.lib.src('lock.png')" v-show="val1.lock" class="LabelTagLock" /></span>
+                </div>
+                <div style="position:relative;width:100%;" v-show="val1.show"><img v-bind:src="main.pub.lib.src('tag.png')" v-on:click="val1.show=!val1.show;" v-bind:id="'idLabelTag'+val.key+nu1" class="tagLabel" /><component v-bind:is="((val1.show || val1.content!=null)?v[main$m.$m.main.showTemp(val1.tp)]:'')" v-bind:page="val1.content"></component></div><!-- 標籤文章 -->
+            </div>
+            <div class="markTitle" v-show="val.mdocAry.length>0">{{main$m.getLang('input').eventlabel}}</div>
+            <div class="eventContent" v-for="(val1,nu1) in val.mdocAry"><!--其它標籤-->
+                <div class="labelPanel"> 
+                    #<span v-on:click="main$m.$m.main.getLabel(val1,'ideventLabel'+nu1+'loadPhoto','ideventLabelTag'+val.key+nu1,0)" v-show="val1.content==null" id="label">{{main.pub.catchLangNameNu(val1.nameAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))}}</span>
+                    <span v-show="val1.content!=null" v-on:click="val1.show=!val1.show;" v-bind:style="((val1.show)?'color:#ACD6FF;font-size:12px;':'')" id="label">{{main.pub.catchLangNameNu(val1.nameAry,((val.langAry.indexOf(main.pub.langNu)==-1)?val.langAry[0]:main.pub.langNu))}}<img v-bind:src="main.pub.lib.src('lock.png')" v-show="val1.lock" class="LabelTagLock" /></span>
+                </div>
+                <div style="position:relative;width:100%;" v-show="val1.show"><img v-bind:src="main.pub.lib.src('tag.png')" v-on:click="val1.show=!val1.show;" v-bind:id="'ideventLabelTag'+val.key+nu1" class="tagLabel" /><component v-bind:is="((val1.show || val1.content!=null)?v[main$m.$m.main.showTemp(val1.tp)]:'')" v-bind:page="val1.content"></component></div><!-- 標籤文章 -->
+            </div>
+        </div>
+        <div style="width:100%;text-align:center;padding-top:20px;" v-show="val.fkey!='' && val.fkey.indexOf('c_')==-1" >
+            <!-- 前往 追蹤文章 鈕-->
+            <img v-show="val.afContent == null" v-bind:src="main.pub.lib.src('tracenextprev.png')" class="newsnextprev" style="transform:rotate(180deg);" v-on:click="main$m.$m.main.catchShowTemp(val,'af')" />
+            <img v-show="val.afContent != null" v-bind:src="main.pub.lib.src('tracenextprev.png')" class="newsnextprev" v-bind:style="'transform:rotate(180deg);'+((val.afshow)?'opacity:0.3;':'')" v-on:click="val.afshow = !val.afshow" />
+        </div>
+        <component v-bind:is="((val.afshow)?v[main$m.$m.main.showTemp(val.ftp)]:'')" v-bind:page="val.afContent" ></component>
+    </div>
+    <div v-on:click="main$m.$m.main.serData(false);" id="SeRmoreDocPage">{{main$m.getLang('input').clickmore}}<span style="color:#DDD;">...</span></div>
+    <component v-bind:is="((openImgPreview)?v.newsliIMGvue:'')"></component><!--圖片大圖預覽-->
+</div>

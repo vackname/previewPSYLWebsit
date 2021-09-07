@@ -1,0 +1,16 @@
+﻿<div id="MBMGpanel" >
+     <div id="searchTool"> 
+          <select v-model="appckser" v-show="((headPortal!=null)?headPortal.SysLevel():false)">
+               <option value="1">異動</option>
+               <option value="0">一般</option>
+          </select>
+          <input type="text" v-model="InputSer" /><input type="button" class="MBMG_bt" v-on:click="$m.mb.MBList(true)" value="搜尋" />
+     </div>
+     <div id="emptyMark" v-show="mbList.length==0">目前無資料...</div>
+     <div class="MBrowSplit"></div>
+     <component v-bind:is="v.mgmb" v-show="mbList.length>0"></component>
+     <div class="MBrowSplit"></div>
+     <div id="MBMGPage"><component v-bind:is="v.pagetool" ></component></div>
+     <component v-bind:is="v.AccountSet" ></component>
+     <component v-bind:is="v.payHY"></component>
+</div>

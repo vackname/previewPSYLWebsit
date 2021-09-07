@@ -1,0 +1,35 @@
+﻿<div id="p_psf_AddPointPanel">
+    <div id="bg"></div>
+    <div id="scContent">
+        <div id="ToolPanel">
+            <div id="panel">
+                <video id="AddPointPreview" autoplay playsinline></video>
+                <div id="scQR" v-on:click="ChangeScreen()"><img v-bind:src="main.pub.lib.src('qr.png')" /></div>
+                <span class="AddP_bt" v-on:click="ChangeScreen()"><img v-bind:src="main.pub.lib.src('reverse_camera.png')" /></span>
+            </div>
+            <div id="AddP_Tool">
+                <div style="width:100%;padding-bottom:9px;">
+                    <span class="AddP_bt">
+                        <select style="width:100px;" v-model="cash">
+                            <option value="500">{{500| cashFormat}}</option>
+                            <option value="1000">{{1000| cashFormat}}</option>
+                            <option value="2000">{{2000| cashFormat}}</option>
+                            <option value="4000">{{4000| cashFormat}}</option>
+                        </select>
+                        +
+                        <select style="width:90px;" v-model="allowances">
+                            <option value="6">{{main$m.getLang('allowances')}}6%</option>
+                            <option value="9">{{main$m.getLang('allowances')}}9%</option>
+                            <option value="13">{{main$m.getLang('allowances')}}13%</option>
+                            <option value="16">{{main$m.getLang('allowances')}}16%</option>
+                            <option value="19">{{main$m.getLang('allowances')}}19%</option>
+                        </select>
+                    </span>=<span class="AddP_bt" style="color:#AAA;">{{(cash*(allowances/100)+Number(cash)) | cashFormat}}<img v-bind:src="main.pub.lib.src('dr.png')" style="width:10px;transform:rotate(-90deg);position:relative;top:6px;"/><img v-bind:src="main.pub.lib.src('coin.png')" /></span>
+                </div>
+                
+                <span class="AddP_bt" v-on:click="Close" ><img v-bind:src="main.pub.lib.src('logout.png')" /></span>&nbsp;
+                <span class="AddP_bt" ><span style="color:#666;">{{main$m.getLang('sum')}}&nbsp;</span><span style="color:#FF8800;">{{Number(cash)|cashFormat}}</span></span>
+            </div>
+        </div>
+    </div>
+</div>

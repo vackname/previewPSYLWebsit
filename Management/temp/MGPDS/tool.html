@@ -1,0 +1,37 @@
+﻿
+<div id="pSetTool">
+        <div id="classPanel">
+                <div id="cpPanel">
+                        <div id="productSetErrorBorder">
+                                <select v-model="main$m.selfclassmain">
+                                        <option value="333">商品分類全部</option>
+                                        <option v-bind:value="val.key" v-for="(val,nu) in main$m.productcs"  v-show="nu!=0">{{main.pub.catchLangName(val.nameAry)}}</option>
+                                </select><span v-show="main$m.selfclassmain=='333'" style="color:#AAA;font-size:12px;">→(未知)</span>
+                                <select v-model="main$m.selfclass" v-show="main$m.selfclassmain!='333'">
+                                        <option value="999">商品分類細項全部</option>
+                                        <option v-bind:value="val.key" v-for="(val,nu) in main$m.productcsSec"  v-show="nu!=0">{{main.pub.catchLangName(val.nameAry)}}</option>
+                                </select>
+                        </div>
+                        <select v-model="main$m.InputClass">
+                                <option value="999">商品屬性全部</option>
+                                <option v-bind:value="val.val" v-for="(val,nu) in main$m.productClassList">{{main.pub.catchLangName(val.nameAry)}}</option>
+                        </select>&nbsp;
+                        <select v-model="main$m.InputType">
+                                <option value="999">庫存狀態全部</option>
+                                <option v-bind:value="val.val" v-for="(val,nu) in main$m.productTypeList"  v-show="val.val>-1">{{main.pub.catchLangName(val.nameAry)}}</option>
+                        </select>
+                        &nbsp;
+                        <span v-on:click="main$m.appck=!main$m.appck" id="catchPublish" v-bind:style="'background-color:'+((!main$m.appck)?'#AAA':'#FF8800')+';'">
+                                <img v-bind:src="main.pub.lib.src('publish.png')" />未審發佈搜尋
+                        </span>
+                </div>
+        </div>
+        <div id="ctr">
+               <div class="ctrLi"> 
+                       <span class="MGPS_title">商品:</span>&nbsp;<button class="insertBt" v-on:click="main$m.$m.main.AddProduct(false)"><img v-bind:src="main$m.main.pub.lib.src('add.png')" />&nbsp;&nbsp;新增</button>&nbsp;
+                        <button class="insertBt" v-on:click="main$m.$m.main.AddProduct(true)"><img v-bind:src="main$m.main.pub.lib.src('add.png')"/>&nbsp;&nbsp;新增-套餐</button>
+                </div>
+
+                <div class="ctrLi"><input type="text" v-model="main$m.InputSer" style="width:100px;"/><input type="button" class="MGPS_searchbt" v-on:click="main$m.$m.main.productListSer(true)" value="搜尋" /></div>
+        </div>
+</div>

@@ -1,0 +1,214 @@
+﻿#Management_main
+{/* Management project */
+    #MBMGpanel
+    {/* 帳戶設定 框架 panel*/
+        #MGMBASetPanel
+        {/* 帳戶設定 視窗框架定位 */
+            position:fixed;width:100%;top:0px;left:0px;z-index:199;
+            #MGMBASetBG
+            {/*背景遮罩*/
+                position:fixed;height:2000px;opacity:0.5;width:100%;background-color:#000;top:0px;left:0px;
+            }
+            #MGMBASetContent
+            {/* 視窗content */
+                position:relative;margin-left:auto;margin-right:auto;max-width:500px;background-color:#FFF;top:70px;width:95%;border-radius:10px;
+                #MGMBAsetTitle
+                {/* 視窗title*/
+                    width:100%;height:30px;background-color:#555;color:#FFF;border-top-left-radius:10px;border-top-right-radius:10px;
+                }
+                #MGMBAsetCloseBt
+                {/* 關閉視窗 button*/
+                    float:right;
+                    img
+                    {/*關閉視窗 img*/
+                        width:10%;opacity:0.9;min-width:30px;max-width:50px;position:relative;left:10px;cursor:pointer;
+                    }
+                }
+                #MGMBASetContentPanel
+                {/* 內容顯示 */
+                    position:relative;margin-left:auto;margin-right:auto;width:95%;padding-top:20px;
+                    .MGMBAS_title{
+                        color:#AAA;
+                        font-size:12px;
+                    }
+                
+                    .MGMBAS_label{
+                        color:#555;
+                        font-size:15px;
+                    }
+                
+                    .MGMBAS_row{
+                        border-top:1px solid #DDD;
+                        width:100%;
+                        height:30px;
+                    }
+                
+                    .MGMBAS_bt{
+                        background-color:#555;
+                        color:#FFF;
+                        font-size:12px;
+                        box-shadow:2px 2px 5px #888888;
+                    }
+                
+                    .MGMBAS_StopBt{
+                        background-color:#FF8800;
+                        color:#FFF;
+                        font-size:12px;
+                    }
+                
+                    .MGMBAS_DisBt{
+                
+                        background-color:#BBB;
+                        color:#FFF;
+                        font-size:12px;
+                    }
+
+                    #row1
+                    {/*匿稱 panel */
+                        width:100%;
+                        #content
+                        {
+                            width:100%;height:30px;
+                            #cel1{
+                                text-align:right;float:left;width:25%;
+                            }
+                            #cel2{
+                                text-align:right;float:right;width:30%;height:30px;
+                            }
+                            #cel3{
+                                text-align:left;float:right;width:40%;
+                            }
+                        }
+                    }
+
+                    #row2
+                    {/*權限設定panel */
+                        width:100%;
+                        #content
+                        {
+                            position:relative;
+                            width:100%;min-height:30px;
+                            #cel1{
+                                text-align:right;float:left;width:25%;
+                            }
+                            #cel2{
+                                text-align:right;float:right;width:20%;height:30px;
+                            }
+                            #cel3{
+                                text-align:left;float:right;width:50%;
+                            }
+                            #row
+                            {
+                                width:100%;text-align:right;padding-top:30px;
+                                .splitline
+                                {/*分隔線*/
+                                    width:100%;height:5px;border-top:1px solid #DDD;position:realtive;width:180px;margin-left:auto;
+                                }
+                            }
+                        }
+                    }
+                    #row3
+                    {/*購入商品使用點數或期限  panel */
+                        width:100%;
+                        padding-bottom:30px;
+                        .profitbt
+                        {/* 占成更動鈕 */
+                            cursor:pointer;
+                            img
+                            {
+                                position:relative;
+                                top:10px;
+                                padding:6px;
+                                width:20px;
+                            }
+                        }
+                        .profit
+                        {/* 營業站成設定 panel*/
+                            font-size:12px;
+                            span
+                            {
+                                color:#FFF;padding:6px;border-radius:250px;background-color:#666;
+                            }
+                            img
+                            {
+                                width:15px;
+                                padding-right:6px;
+                                position:relative;
+                                top:3px;
+                            }
+                        }
+                        .splitline
+                        {/* 分隔線 */
+                            width:70%;height:1px;border-top:1px #EEE solid;position:relative;margin-left:auto;
+                        }
+
+                        .splitEmpty
+                        {/* 分隔線 分隔空間*/
+                            width:100%;height:4px;
+                        }
+
+                        #row1,#row2
+                        {//綁定帳號數,app期限
+                            width:100%;
+                            #cel1{
+                                text-align:right;float:left;width:25%;
+                            }
+                            #cel2{
+                                text-align:right;float:right;width:45%;height:30px;
+                            }
+                            #cel3
+                            {/*贈讓 退款計算*/
+                                text-align:right;float:right;width:45%;height:60px;
+                                .label
+                                {
+                                    width:100%;font-size:12px;color:#999;
+                                    img
+                                    {/* 錯誤提示 img */
+                                        width:15px;opacity:0.9;position:relative;top:3px;
+                                    }
+                                }
+                            }
+                            #cel4
+                            {
+                                text-align:left;float:right;width:25%;
+                            }
+                        }
+
+                        #detail
+                        {/*線費狀態detail*/
+                            width:100%;text-align:right;height:60px;
+                            .label
+                            {/* 提示狀態 label */
+                                color:#AAA;font-size:12px;
+                            }
+                        }
+                    }
+                    #row4
+                    {/*更定帳戶密碼 panel */
+                        width:100%;height:100px;text-align:center;
+                        .row
+                        {
+                            width:100%;
+                        }
+                    }
+                    #row5
+                    {/*帳戶被修改記錄(管理者操作記錄) panel */
+                        width:100%;
+                        .row
+                        {/*資料列*/
+                            width:100%;height:30px;
+                            .cel1
+                            {
+                                text-align:right;float:left;width:25%;
+                            }
+                            .cel2
+                            {
+                                text-align:left;float:right;width:70%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

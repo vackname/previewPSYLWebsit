@@ -1,0 +1,29 @@
+﻿#Management_main
+{/* Management project */
+    #MGWatchPanel
+    {/* 監控系統 panel */
+        #MGWtachSlave
+        {/* Slave Server 監控 panel */
+            width:500px;position:relative;
+            padding-top:20px;
+            padding-bottom:50px;
+            margin-left:auto;
+            margin-right:auto;
+            .WatchSlaveRow
+            {/* host ip */
+                font-size:15px;
+                font-weight:bold;
+                color:#555;
+                padding-bottom:5px;
+                padding-top:5px;
+                border-bottom:1px #EEE solid;
+                img
+                {/* lock 開關 bt */
+                    cursor:pointer;
+                    width:30px;
+                }
+            }
+        }
+
+    }
+}

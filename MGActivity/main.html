@@ -1,0 +1,4 @@
+﻿<div style="width:100%;position:relative;" id="MGActivity_main">
+        <component v-bind:is="v[VueName]" v-show="!toPay"></component>
+        <component v-bind:is="((toPay)?v.AcPayVue:'')"></component>
+</div>

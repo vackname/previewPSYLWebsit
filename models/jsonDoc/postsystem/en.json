@@ -1,0 +1,45 @@
+{
+    "class":{
+        "unknow":"unknow",
+        "item":"item(unknow)",
+        "note":"product(class)"
+    },
+    "error":
+    {
+        "uncash":"Uncollected",
+        "fail":"fail",
+        "iq":"Insufficient quantity",
+        "enablePD":"enable product",
+        "cancelFrom":"Confirm for Cancel？",
+        "cancel":"cancel",
+        "notcancel":"can't cancel!(over for 3 day)",
+        "verToken":"Recharge for verification"
+    },
+    "OderNuHistory":
+    {
+        "serHoldPlace":"Oder Number",
+        "AllDate":"All Date",
+        "Date3":"Recent 3 day",
+        "Date7":"Recent 1 week",
+        "Today":"Tody",
+        "month1":"Recent 1 month",
+        "month2":"Recent 2 month",
+        "month3":"Recent 3 month",
+        "unknow":"nil data"
+    },
+    "serHoldPlace":"search",
+    "set":"Set",
+    "checkout":"Checkout",
+    "keyfrom":"Document",
+    "turnout":"return",
+    "item":"Item",
+    "sum":"Subtotal",
+    "shipping":"Shipping/Fee",
+    "paystatus":"Pay-status",
+    "allowances":"allowances",
+    "gift":"gift",
+    "cashchange":"Change",
+    "difference":"Difference",
+    "history":"history",
+    "Recharge":"Recharge for client"
+}

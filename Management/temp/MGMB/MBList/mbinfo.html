@@ -1,0 +1,23 @@
+﻿<div class="per">
+    <div id="perTitle"><span>{{langGet('stepper')}}</span><span v-show="per.id==''" style="background-color:#FF3300;">not exist</span></div>
+    <table id="perPanel" v-show="per.id!=''">
+        <tr><th>{{langGet('name')}}</th><td>{{per.name}}</td></tr>
+        <tr><th>{{langGet('passid')}}</th><td>{{per.id}}</td></tr>
+        <tr>
+            <th>{{langGet('gender')}}</th>
+            <td>
+                {{((per.gender==1)?langGet('mr'):langGet('ms'))}}
+            </td>
+        </tr>
+        <tr>
+            <th>{{langGet('birthday')}}</th>
+            <td>
+                {{birthday(per.birthday)}}
+            </td>
+        </tr>
+        <tr><th>{{langGet('phone')}}</th><td>{{per.phone}}</td></tr>
+        <tr><th>{{langGet('tel')}}</th><td>{{per.tel}}</td></tr>
+    </table>
+    <div  id="perTitle"><span>{{langGet('bankinfo')}}</span><span v-show="per.BankPhoto.length==0" style="background-color:#FF3300;">not exist</span></div>
+    <img v-bind:src="((per.BankPhoto.length>0)?per.objImg.src(per.BankPhoto[0]):'')" v-show="per.BankPhoto.length>0" style="padding-top:6px;width:100%;" />
+</div>

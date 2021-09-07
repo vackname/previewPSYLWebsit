@@ -1,0 +1,36 @@
+{
+    "error":
+    {
+        "limitDay":"已超过编缉时间!",
+        "nottranslate":"未支持翻译",
+        "onlysupport":"谨支持"
+    },
+    "mes":
+    {
+        "delns":"是否删除 文章？",
+        "delnscontent":"是否删除 段落及照片/图片？",
+        "dellabel":"是否移除(未储存) 标签？",
+        "delnscontentimg":"是否删除 照片/图片？",
+        "resavestart":"是否继续储存动作？",
+        "publish":"是否重新设定发布？",
+        "createTrace":"是否建立此文章追踪?"
+    },
+    "input":
+    {
+        "approve":"审核",
+        "extendlabel":"延申阅读",
+        "eventlabel":"其它标签",
+        "pagemore":"继续阅读",
+        "clickmore":"点击我更多内容",
+        "unknow":"未知",
+        "notchoose":"未选取",
+        "detailnotchoose":"未选取分类",
+        "allcontent":"全部文章",
+        "allcontentclass":"全部分类",
+        "createarticle":"创建文章",
+        "wallpaper":"照片墙",
+        "createcontent":"创建内容",
+        "add":"新增",
+        "empty":"查询无相关资料"
+    }
+}

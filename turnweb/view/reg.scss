@@ -1,0 +1,157 @@
+﻿#turnwebPanel
+{/** 入口panel */
+    .registerPage
+    {/* 註冊頁 */
+        width: 100%;
+        padding-top: 40px;
+
+        #regPage {
+            width: 90%;
+            position: relative;
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 400px;
+            border: 1px solid #EEE;
+            border-radius: 10px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.216);
+            background-color: #FFF;
+            z-index: 5;
+
+            .regPage_title
+            {/** 樣版 標題 panel */
+                position: relative;
+                width: 100%;
+                height: 40px;
+                margin-bottom: 5px;
+                font-size: 15px;
+                border-bottom: 1px solid #555;
+                p
+                {/** titel label */
+                    width: 100px;
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px;
+                    padding-top: 5px;
+                    text-align: center;
+                    font-weight: bold;
+                    border-radius: 10px 0 0 0;
+                    background-color: #222;
+                    color: #FFF;
+                }
+            }
+
+            .container
+            {/** 輸入資料欄位 panel */
+                width: 100%;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid #EEE;
+                table 
+                {
+                    th
+                    {
+                        text-align: right;
+                        width: 100px;
+                        font-size: 14px;
+                    }
+
+                    td
+                    {
+                        padding-left: 7px;
+                        font-size: 15px;
+                        input[type="text"],input[type="password"]
+                        {
+                            width: 75%;
+                            font-size: 15px;
+                            height: 20px;
+                            border: 1px solid #ccc;
+                        }
+                    }
+                }
+            }
+
+            .bottomArea 
+            {
+                width: 100%;
+                margin-top: 5px;
+                padding: 15px 0 20px 0;
+                text-align: center;
+                border-radius: 0 0 10px 10px;
+                background-color: #EEE;
+                input[type="button"] {
+                    width: 88px;
+                    line-height: 21px;
+                    font-size: 14px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    box-shadow: 0 0 2px #ccc;
+                    color: #f7f7f7;
+                    border: 1px solid #5d5d5d;
+                    background: #D26900;
+                }
+
+                .agreeCheck 
+                {/** 同意書確認欄 pnael */
+                    width: 100%;
+                    margin-bottom: 15px;
+                    span {
+                        font-size: 15px;
+                        color: #222;
+                    }
+                    .readText 
+                    {/** 閱讀條款確認 panel label */
+                        text-decoration: underline;
+                        color: #0044BB;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .ok_reg
+            {/* 無錯誤 */
+                color: #555;
+            }
+
+            .error_reg
+            {/* 錯誤提示 */
+                color: #FF3300;
+            }
+
+            .ok_sub
+            {/** 確認送出鈕 無錯誤 */
+                background-color: #555;
+            }
+
+            .error_sub
+            {/** 確認送出鈕 錯誤提示 */
+                background-color: #DDD;
+            }
+
+            .description
+            {/* 錯誤label 提示 */
+                position: relative;
+                width: 200px;
+                line-height: 18px;
+                margin-left: 107px;
+                color: #AAA;
+                font-size: 12px;
+            }
+
+            @media screen and (max-width: 350px)
+            {
+                .description
+                {/* 錯誤label 提示 */
+                    width: 160px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 700px)
+    {
+        .registerPage
+        {/* 註冊頁 */
+            padding: 25px 0;
+        }
+    }
+}

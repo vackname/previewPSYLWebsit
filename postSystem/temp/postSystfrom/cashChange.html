@@ -1,0 +1,19 @@
+﻿<div id="p_psf_changeＣashPanel">
+    <div id="bg"></div>
+    <div id="edit_panel">
+        <div id="title_edit_panel">
+            <div style="float:right;"><img v-bind:src="main.pub.lib.src('close.png')" id="close" v-on:click="close()"/></div>
+            &emsp;{{main$m.getLang('cashchange')}}
+        </div>
+        <div style="width:100%;height:20px;">
+            <div id="checkoutLoad"><!--結帳動畫--></div>
+        </div>
+        <div id="content">
+            <div style="padding:10px;"><div id="ansPanel">{{ getMoney*1}}</div></div>
+            <div v-on:click="getVal(val+'')" class="nu"  v-for="(val,nu) in [6000,1000,500,200,100,50,10,5,1,-1,-2]">
+                <div class="val" v-bind:id="'nuCashChangePanel'+val" v-bind:style="((val==-1)?'width:80px;':((val==-2)?'width:150px;':''))">{{((val==-1)?"←":((val==-2)?main$m.getLang('checkout'):val))}}</div>
+            </div>
+        </div>
+        <div style="padding:20px;"><span style="color:#AAA;font-size:20px;">{{main$m.getLang('cashchange')}}&nbsp;</span><span id="sumCashVal">{{(main$m.cash-main$m.sum()) | cashFormat}}</span></div>
+    </div>
+</div>

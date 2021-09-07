@@ -1,0 +1,40 @@
+[
+  {
+    "outputFileName": "/Users/chiwenchung/Projects/psylProject/psylProtal/psylProtal/wwwroot/libjs/productCity.min",
+    "inputFiles": [
+      "/productCity/view/index.js",
+      "/productCity/view/pay.js",
+      "/productCity/view/index.scss",
+      "/productCity/view/pay.scss",
+      "/productCity/view/index.html",
+      "/productCity/view/pay.html",
+      "/productCity/controllers/index.js",
+      "/productCity/controllers/pay.js",
+      "/productCity/view/productDetail.html",
+      "/productCity/view/productDetail.js",
+      "/productCity/controllers/productDetail.js",
+      "/productCity/view/productDetail.scss",
+      "/productCity/view/MGProductSet.html",
+      "/productCity/view/MGProductSet.js",
+      "/productCity/controllers/MGProductSet.js",
+      "/productCity/view/MGProductSet.scss",
+      "/productCity/temp/MGPDS/tool.html",
+      "/productCity/temp/MGPDS/tool.js",
+      "/productCity/temp/MGPDS/tool.scss",
+      "/productCity/temp/MGPDS/edit.html",
+      "/productCity/temp/MGPDS/edit.js",
+      "/productCity/temp/MGPDS/edit.scss",
+      "/productCity/temp/MGPDS/edit/productedit.html",
+      "/productCity/temp/MGPDS/edit/productedit.js",
+      "/productCity/temp/MGPDS/edit/productedit.scss",
+      "/productCity/temp/MGPDS/edit/productedit/imgEdit.html",
+      "/productCity/temp/MGPDS/edit/productedit/imgEdit.js",
+      "/productCity/temp/MGPDS/edit/productedit/imgEdit.scss"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

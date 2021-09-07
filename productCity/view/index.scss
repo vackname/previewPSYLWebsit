@@ -1,0 +1,298 @@
+﻿
+#pcPanel
+{/* 商城框架 */
+   #pcIndexPanel
+   {/* 商城主頁面 */
+        width:100%;position:relative;user-select:none;
+
+        #PCheadTool
+        {/* 檔頭工具 */
+            position:fixed;width:100%;background-color:#FFF;z-index:189;padding:5px;box-shadow:2px 2px 5px #888888;
+            top:50px;
+            #pc_i_sertemp
+            {/* choose project model Panel */
+                text-align:left;position:relative;cursor:pointer;height:30px;padding-top:20px;
+                width:100%;
+                .ChooseSetSerBt,.setSerBt
+                {/* 套餐鈕 */
+                    width:100px;
+                    position:relative;
+                    left:1%;
+                    text-align:center;
+                    cursor:pointer;
+                }
+
+                .ChooseSetSerBt
+                {/* 套餐鈕已選 */
+                    label{
+                        font-size:18px;
+                        font-weight:bold;
+                        color:#333;
+                    }
+                }
+
+                .setSerBt
+                {/* 套餐鈕未選 */
+                    label
+                    {
+                        font-size:12px;
+                        font-weight:bold;
+                        color:#AAA;
+                    }
+                }
+
+                #ctr{/*設定、搜尋 控制項l panel*/
+                    position:relative;margin-top:5px;margin-left:auto;margin-right:auto;width:100%;
+                    padding:3px;
+                    #classFirstPanel
+                    {/* 選擇分類 第一層*/
+                        width:90%;
+                        .choose
+                        {
+                            float:left;
+                            font-size:17px;
+                            font-weight:bold;
+                            color:#888;
+                            padding-left:20px;
+                            cursor:pointer;
+                        }
+
+                    }
+
+                    #classSecPanel
+                    {/* 選擇分類 第二層*/
+                        width:85%;
+                        padding-top:30px;
+                        padding-left:60px;
+                        .choose
+                        {
+                            float:left;
+                            font-size:17px;
+                            font-weight:bold;
+                            color:#333;
+                            padding-left:20px;
+                            cursor:pointer;
+                        }
+
+                    }
+                    #classFirstPanel,#classSecPanel
+                    {/* 選擇分類*/
+                        position:relative;
+                        padding-bottom:6px;
+                        margin-left:auto;
+                        margin-right:auto;
+                        .choose
+                        {
+                            float:left;
+                            font-size:17px;
+                            font-weight:bold;
+                            padding-left:20px;
+                            cursor:pointer;
+                        }
+
+                        .nochoose
+                        {
+                            float:left;
+                            font-size:15px;
+                            color:#AAA;
+                            padding-left:20px;
+                            cursor:pointer;
+                        }
+
+                        .nochoose:after,.choose:after
+                        {/*阻斷 清除float*/
+                            clear:both;
+                        }
+                    }
+                }
+                .clear:after
+                {/*阻斷 清除float*/
+                    width:100%;
+                    clear:both;
+                }
+            }
+
+            #serBtDroup
+            {/* 顯示搜尋bar */
+                position:absolute;bottom:-40px;left:0px;width:30px;padding:6px;text-align:center;background-color:#FFF;border:1px solid #EEE;
+                border-bottom-right-radius:9px;cursor:pointer;
+            }
+
+            @media screen and (min-width:1001px) 
+            {
+                #PC_i_SearchMenu
+                {
+                    left:37%;
+                }
+            }
+
+            @media screen and (max-width:1000px) 
+            {
+                #PC_i_SearchMenu
+                {
+                    left:5px;
+                }
+            }
+        }
+
+        #pcContent
+        {/* 商品 data list content */
+            width:95%;position:relative;margin-left:auto;margin-right:auto;padding-top:80px;padding-bottom:60px;
+            .PC_i_pool
+            {
+                padding:2.5%;
+                width:95%;
+                max-width:330px;
+                height:390px;
+                .productPanel
+                {/* 商品 li 主要框架 */
+                    position:relative;margin-left:auto;margin-right:auto;width:98%;color:#555;border-radius:10px;
+                    box-shadow:1px 1px 3px #AAA;
+                    padding:3px;
+                    #pcName
+                    {/* 商品名稱 */
+                        width:100%;padding:10px;color:#555;font-weight:bold;opacity:0.6;
+                    }
+
+                    #openPCImgBt
+                    {/* 開起商品圖 預覽 39*26*/
+                        position:relative;margin-left:auto;margin-right:auto;
+                        width:312px;height:208px;overflow:hidden;
+                        text-align:center;overflow:hidden;background-color:#EEE;border-radius:10px;cursor:pointer;
+                    
+                        img
+                        {  /* 商品圖片 */
+                            width:100%;cursor:pointer;
+                        }
+                        .discount
+                        {/* 折顯示 */
+                            position:absolute;
+                            text-align:center;
+                            top:13px;
+                            right:-26px;
+                            padding:3px;
+                            width:120px;
+                            font-size:15px;
+                            color:#FFF;
+                            background-color: #BB5500;
+                            transform:rotate(40deg);
+                            opacity:0.8;
+                        }
+                    }
+
+                    #pcStatusPanel
+                    {/* 商品狀態內容 panel */
+                        position:relative;margin-right:auto;margin-left:auto;width:98%;color:#BB5500;font-size:18px;font-weight:bold;opacity:0.8;padding:5px;height:20px;top:-15px;
+                        #setMarkPanel
+                        {/* 是否為套餐提示 panel */
+                            position:absolute;top:5px;left:15px;width:100px;opacity:0.7;
+                            span
+                            {/* 字符提示label */
+                                background-color:#000;font-size:15px;color:#EEE;border-radius:9px;
+                            }
+                        }
+                        #pcCarBt
+                        {/* 放入購物車 按鈕 */
+                            float:right;width:33px;height:30px;padding-top:2px;border-radius:50px;border:1px solid #BB5500;text-align:center;opacity:0.7;
+                            cursor:pointer;
+                            #chooseIcon
+                            {/* 已被選擇 mark icon img */
+
+                                width:20px;position:absolute;top:4px;right:-5px;
+                            }
+                            #ChooseCount
+                            {/* 已被選擇數量 */
+                                position:absolute;top:10px;right:30px;width:30px;height:28px;border-radius:70px;background-color:#222;color:#FFF;font-size:12px;font-weight:bold;text-align:center;padding-top:2px;opacity:0.7;
+                            }
+                            #btIcon
+                            {/* 放入購物車 按鈕 icon img */
+                                width:20px;position:relative;top:4px;
+                            }
+                        }
+                    }
+                }
+            }
+            .clear
+            {/*照片牆 阻斷 清除float*/
+                width:100%;
+                clear: both;
+            }
+        }
+
+        #pcBottomPageTool
+        {/* 商品 page choose tool */
+            width:100%;position:fixed;bottom:0px;height:60px;z-index:185;box-shadow:2px 2px 5px #888888;background-color:#FFF;opacity:0.8;padding-top:10px;
+        }
+
+        @media screen and (min-width:1401px)
+        {
+            .PC_i_text
+            {
+                font-size:20px;
+            }
+
+            .PC_i_pool
+            {
+                width:33%;
+                float:left;
+            }
+
+            #pcContent{
+                max-width:1400px;
+                min-width:1400px;
+            }
+        }
+        
+        
+        @media screen and (max-width:1400px) and (min-width:1001px)
+        {
+            .PC_i_text
+            {
+                font-size:16px;
+            }
+
+            .PC_i_pool
+            {
+                width:33%;
+                float:left;
+            }
+
+            #pcContent{
+                min-width:980px;
+                max-width:1000px;
+            }
+        }
+        
+        @media screen and (min-width:700px) and (max-width:1001px) 
+        {
+            .PC_i_text
+            {
+                font-size:18px;
+            }
+
+            .PC_i_pool
+            {
+                 width:98%;
+                 position:relative;
+                 margin-left:auto;
+                 margin-right:auto;
+            }
+        }
+
+        @media screen and (max-width:699px)
+        {
+            .PC_i_text
+            {
+                font-size:22px;
+            }
+
+            .PC_i_pool
+            {
+                 width:100%;
+                 position:relative;
+                 margin-left:auto;
+                 margin-right:auto;
+            }
+        }
+    }
+}

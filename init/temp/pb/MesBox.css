@@ -1,0 +1,71 @@
+﻿.MesBox_titleBar
+{
+    width:100%;
+    height:30px;
+    background-color:#1E3942;
+    color:#FFF;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
+
+.MesBox_contentImg
+{/* 訊息小圖 */
+    width:100%;
+    padding-top:0px;
+    padding-bottom:10px;
+    text-align:center;
+}
+
+.MesBox_contentImg img
+{/* 訊息小圖 */
+    height:50px;
+}
+
+.MesBox_container
+{
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    width:320px;
+    background-color:#FFF;
+    top:70px;
+    border-radius:10px;
+}
+
+.MesBox_CloseBT
+{
+    width:10%;opacity:0.9;min-width:30px;max-width:50px;position:relative;left:30px;top:-5px;cursor:pointer;
+}
+
+.MesBox_btBar
+{
+    padding-top:20px;
+    padding-bottom:20px;
+    width:100%;text-align:center;
+    letter-spacing:30px;
+}
+
+.MesBox_content
+{
+    padding-top:20px;
+    position:relative;margin-left:auto;margin-right:auto;
+    width:290px;
+    min-height:50px;
+    word-wrap:break-word;
+    font-size:20px;
+    color:#333;
+    text-align:center;
+}
+
+.MesBox_btBar input
+ {
+    font-size: 15px;
+    margin-left: 5px;
+    padding: 2px 5px 3px 5px;
+    border-radius: 39px;
+    vertical-align: middle;
+    color: #666;
+    background-color: #FFF;
+    border: 2px solid #DDD;
+    width:50px;
+}

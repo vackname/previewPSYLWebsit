@@ -1,0 +1,14 @@
+﻿<div id="storyPanel">
+    <div id="mainTitle">{{LangTitle("acnews")}}</div>
+    <div  id="catchPanel">
+        <div class="cardPanel" v-for="(val,nu) in main$m.story.list"> 
+            <div class="dataListPanel" v-on:click="main$m.$m.st.opeTag(val)">
+                <div id="pDMDate" ><span class="month">{{month(pb.reunixDate(val.date).split('/')[1])}}</span><span class="day">{{pb.reunixDate(val.date).split('/')[2].split(' ')[0]}}<span v-show="main.pub.langNu==0">日</span></span><span style="color:#AAA;"><span style="color:#CCC;">&nbsp;,</span>{{pb.reunixDate(val.date).split('/')[0]}}</span><div style="float:right;font-size:12px;color:#AAA;">{{ week(val.date).w}}</div></div>
+                <div id="imgContent"><img class="imgIcon" v-bind:src="((val.imgAry.length>0)?val.objImg.src(val.imgAry[0]):'')" /></div>
+                <div v-html="reContent(val,val.titleAry)" id="content"></div>
+            </div>
+        </div>
+    <div>
+    <div class="clear">&nbsp;</div> <!--float 阻隔-->
+    <div v-on:click="main$m.$m.st.serData(false)" style="border-bottom:1px solid #EEE;width:100%;padding-top:40px;padding-bottom:50px;cursor:pointer;text-align:center;color:#999;font-size:20px;">More<span style="color:#CCC;">...</span></div>
+</div>

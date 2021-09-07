@@ -1,0 +1,87 @@
+﻿<div id="phPanel" v-show="open">
+    <div id="BG"></div>
+    <div id="phFixedPanel">
+        <div id="phFixedTitle">
+            <div id="phCloseBt"><img v-bind:src="main.pub.lib.src('close.png')" v-on:click="close()"/></div>
+            &emsp;歷史支付({{mb.mbid}})&nbsp;{{mb.name}}
+        </div>
+        <div id="MGMB_PHTB">
+            <div id="emptyMark" v-show="history.length==0"><span class="MGPDSE_title" >-{{getLang("dataempty")}}-</span></div>
+            <div id="MGMB_PHdataList" v-for="(val,nu) in history">
+                <div id="MGMBPanel">
+                    <div id="MGMBPanelConent">
+                        <div class="MGMBPH_rowtb" v-bind:style="'background-color:'+((val.status*1!=0 || val.display*1==0)?'#EEE;':'#FF8800;')">
+                            <div class="MGMBPH_rowtb_left"><span style="font-size:12px;color:#FFF;background-color:#555;">&nbsp;<span style="color:#FF3300;font-size:12px;" v-show="!val.appck">(異動)</span>&nbsp;{{((nu+pageTagetNu*6+1>=10)?'':'0')+(nu+pageTagetNu*6+1)}}&nbsp;</span><span class="MGMBPH_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')">&nbsp;{{val.key}}</span>&nvap;<span v-show="val.shtp" class="purchase">{{getLang("Shipment")}}</span></div>
+                            <div class="MGMBPH_rowtb_right" style="width:33%;text-align:right;padding-right:10px;color:#999;"><span class="MGMBPH_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')"><img v-bind:src="main.pub.lib.src('excelimport.png')" v-show="val.ck" v-on:click="main$m.$m.ph.cancelMark(val);" style="width:20px;position:relative;top:5px;cursor:pointer;" />{{val.date|fdate}}</span></div>
+                        </div>
+                        <div style="width:100%;height:10px;"></div>
+                        <div class="MGMBPH_rowtb">
+                            <div class="MGMBPH_rowtb_left">  <span class="MGMBPH_title">{{getLang("pclass")}}&nbsp;{{val.type|fpaytype}}</span></div>
+                        </div>
+                        <div class="MGMBPH_rowtb_line"></div>
+                        <div class="MGMBPH_rowtb">
+                            <div class="MGMBPH_rowtb_left"> <span class="MGMBPH_title">{{getLang("bank")}}</span>&nbsp; <span class="MGMBPH_label"><img v-bind:src="main$m.$m.ph.bankImg(val.bank)" style="height:20px;position:relative;top:5px;"/>&nbsp;{{bankName(val.bank)}}</span></div>
+                            <div class="MGMBPH_rowtb_right" v-show="val.bank!=-1">  <span class="MGMBPH_title">{{getLang("paccount")}}</span><br/><span class="MGMBPH_label" v-bind:style="((val.limitDate > pb.unixReNow() && val.display*1!=0 && val.status==0)?'background-color:#555;color:#FFF;border-radius:6px;padding:2px;':'')"> {{val.account}}</span></div>
+                        </div>
+                        <div class="MGMBPH_rowtb_line"></div>
+                        <div class="MGMBPH_rowtb">
+                            <div class="MGMBPH_rowtb_left"><span class="MGMBPH_title" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')">{{getLang("paystatus")}}</span>&nbsp;<span class="MGPMBH_label" v-bind:style="statusColor(val.status)+((val.display*1==0)?'text-decoration:line-through;':'')"> {{val.status|fpaystatus}}</span>
+                               <div style="position:relative;width:100%;" v-show="val.display*1==1" >
+                                    <span v-show="!val.appck && !mainTemp.SysLevel()">已送審</span>
+                                    <select v-model = "val.dealType" v-show="main$m.$m.ph.payStatusLimit(val)">
+                                        <option value="--">null</option>
+                                        <option v-bind:value="val1.val" v-show="val.status!=val1.val" v-for="(val1,nu2) in ((main$m.$m.ph.payStatusLimit(val))?main$m.$m.ph.payStatusSelect(val):[])" >{{main.pub.catchLangName(val1.nameAry)}}</option>
+                                    </select><br/>
+                                    <input type="text"  placeholder="新增備註"  v-model="val.dealMark" style="width:150px;" v-show="main$m.$m.ph.payStatusLimit(val)" /><img  v-bind:src="main.pub.lib.src('edit.png')" class="MGMBPH_editBt" v-show="main$m.$m.ph.payStatusLimit(val)" v-on:click="main$m.$m.ph.payStatusEdit(val)" />
+                                </div>
+                            </div>
+                            <div class="MGMBPH_rowtb_right"> <span class="MGMBPH_title">{{getLang("cancel")}}</span>&nbsp;<span class="MGMBPH_label"> {{((val.display*1==1)?"NO":"YES")}}</span>
+                                <div style="position:relative;width:100%;">
+                                    <input type="text" v-model="val.displayMark" placeholder="新增備註" style="width:150px;"/><img v-bind:src="main.pub.lib.src('edit.png')" class="MGMBPH_editBt" v-on:click="main$m.$m.ph.payDisplayEdit(val)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="MGMBPH_rowtb" v-show="val.limitDate > pb.unixReNow() && val.display*1!=0 && val.status==0">
+                            <div class="MGMBPH_rowtb_right"><span class="MGMBPH_title">{{getLang("lpayment")}}</span><br/><span class="MGMBPH_label" style="background-color:#FF3300;color:#FFF;border-radius:6px;padding:2px;">{{val.limitDate|fdate}}</span></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="MGMBPH_rowtb" v-show="val.akey!=null">
+                            <!--報名活動-->
+                            <div class="MGMBPH_rowtb_left" style="width:50%;text-align:right;"><span class="MGMBPH_title"><span v-show="((val.ac.titleAry.length>0)?val.acimg:'')==''" style="background-color:#333;padding:3px;color:#FFF;border-radius:20px;">亻<span style="color:#00BB00;">半</span>{{LangTitle('space')}}</span><img v-bind:src="((val.ac.titleAry.length>0)?val.acimg:'')" v-show="((val.ac.titleAry.length>0)?val.acimg:'')!=''" style="width:90%;" /></div>
+                            <div class="MGMBPH_rowtb_right" style="width:38%;"><span class="MGMBPH_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')" > {{val.acash|cashFormat}}</span>
+                                <br/>(<span v-html="reTitle(val.ac).substr(0,8)+'...'" style="color:#AAA;"></span>)
+                            </div>
+                        </div>
+                        <div class="MGMBPH_rowtb_line" v-show="val.akey!=null"></div>
+                        <div style="width:100%;">
+                            <div style="width:100%;font-size:12px;text-align:center;cursor:pointer;" v-on:click="openDetail(val)" v-show="!val.open"><input type="button" value="▲"/></div>
+                            <component v-bind:is="((val.open)?v.detailDate:'')" v-bind:val="val" ></component> 
+                             <component v-bind:is="((val.open)?v.detail:'')" v-bind:val="val" v-bind:detail="main$m.$m.ph.detail"></component> 
+                        </div>
+                        <div class="MGMBPH_rowtb_line"></div>
+                        <div class="MGMBPH_rowtb" v-show="val.shfeecancel || val.shfee>0 || val.adr">
+                              <!--運費-->
+                            <div class="MGMBPH_rowtb_left" style="width:90%;"><span class="MGMBPH_title">&nbsp;{{getLang(((val.shfee>0)?'shfee':'shfree'))}}</span><span class="MGMBPH_title" v-show="!val.shfeecancel && val.shfee>0" >&nbsp;+{{val.shfee|cashFormat}}</span>
+                                    <span class="MGMBPH_title"style="color:#AAA;font-size:12px;" >&nbsp;<img v-bind:src="main.pub.lib.src('package.png')" style="width:15px;"  /><span v-show="val.sfname!=''">({{val.sfname}})</span></span>
+                                    <span v-show="!val.shfeecancel" style="color:#FF8800;font-size:12px;">&nbsp;/<img v-bind:src="main.pub.lib.src('sh.png')" style="width:20px;position:relative;top:5px;" />&nbsp;{{shName(val.sttype)}}</span>
+                            </div>
+                        </div>
+                        <div class="MGMBPH_rowtb">
+                            <div class="MGMBPH_rowtb_right" style="width:60%;"><span class="MGMBPH_title">+&nbsp;{{getLang("payment")}}</span>&nbsp;<span class="MGMBPH_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')"> {{val.amount|cashFormat}}</span></div>
+                            <div class="MGMBPH_rowtb_left" style="width:35%;"><span class="MGMBPH_title">{{getLang("shipping")}}</span>&nbsp;<span class="MGMBPH_label" style="text-decoration:line-through;"> {{(val.fee+val.afee)|cashFormat}}</span></div>
+                        </div>
+                        <div style="position:relative;margin-left:auto;margin-right:auto;width:95%;border-top:1px solid #CCC;"></div>
+                        <div class="MGMBPH_rowtb">
+                            <div class="MGMBPH_rowtb_right" style="width:38%;"><span class="MGMBPH_title">{{getLang("sum")}}</span>&nbsp;<span class="MGMBPH_label" v-bind:style="((val.display*1==0)?'text-decoration:line-through;':'')"> {{(val.amount)|cashFormat}}</span></div>
+                        </div>
+                    </div>
+                    <div class="MGMBPH_row"></div>
+                    <div style="width:100%;height:20px;"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+             <div style="width:100%;height:20px;"></div>
+        </div>
+        <div id="MGMBPH_page" v-show="load"><component v-bind:is="v.pagetool" ></component></div>
+    </div>
+</div>

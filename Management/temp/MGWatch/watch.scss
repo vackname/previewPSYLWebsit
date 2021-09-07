@@ -1,0 +1,376 @@
+﻿
+#Management_main
+{/* Management project */
+    #MGWatchPanel
+    {/* 監控系統 panel */
+        #watchPanel
+        {/* 監控 panel */
+            width:100%;position:relative;
+            padding-top:20px;
+            padding-bottom:50px;
+            .appPanel
+            {/* server panel 定位框架 */
+                width:95%;position:relative;
+                margin-left:auto;
+                margin-right:auto;
+                padding-bottom:50px;
+                padding-top:20px;
+                max-width:700px;
+                #markColor{
+                    padding-bottom:10px;
+                    padding-top:10px;
+                    width:98%;
+                    border-left:3px solid #E6E6F2;
+                    padding-left:10px;
+                    .icon
+                    {/* 圖示標籤 */
+                        width:50px;
+                        opacity:0.7;
+                    }
+                    .delAPIbt
+                    {/* 移除圖示 button */
+                        width:20px;
+                        cursor:pointer;
+                    }
+                    .displayAPI
+                    {
+                        width:20px;
+                        cursor:pointer;
+                    }
+                    .iconAPI
+                    {/* API圖示標籤 */
+                        width:70px;
+                        cursor:pointer;
+                    }
+                    .apiListMark
+                    {
+                        color:#FF8800;
+                        font-size:12px;
+                    }
+
+                    .iconMaintain
+                    {/* 進入維護狀態IMG Mark */
+                        position:absolute;
+                        top:53px;
+                        left:-15px;
+                        width:50px;
+                    }
+
+                    #watchTitle
+                    {/* 站台 title */
+                        font-size:20px;
+                        font-weight:bold;
+                        padding-bottom:20px;
+                        color:#555;
+                        width:100%;
+                        position:relative;
+                        cursor:pointer;
+                    }
+
+                    #appTool
+                    {/* 開關listen panel */
+                        width:200px;
+                        position:absolute;
+                        right:10px;
+                        top:5px;
+                        text-align:right;
+                        z-index:180;
+                        div{
+                            width:100%;
+                            padding-bottom:8px;
+                            span
+                            {/* wait close 提示*/
+                                color:#FF8800;
+                                font-size:15px;
+                                font-weight:bold;
+                            }
+
+                            input[type="button"]
+                            {/* 開關鈕 */
+                                background-color:#555;
+                                color:#FFF;
+                                width:120px;
+                                border:2px solid #EEE;
+                            }
+                        }
+                    }
+
+                    #row1
+                    {/* 機器運行資訊 panel */
+                        width:100%;position:relative;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                        border-bottom: 1px solid #EEE;
+                        #cp
+                        {/* 機器 名 panel*/
+                            position:relative;
+                            margin-left:auto;
+                            width:95%;
+                            font: size 13px;
+                            font-weight:bold;
+                            padding-bottom:20px;
+                            color: #AAA;
+                            span
+                            {/* 名 label*/
+                                font: size 15px;
+                                font-weight:bold;
+                                color: #FF8800;
+                            }
+                        }
+                        #wcontent
+                        {/* 資訊 panel*/
+                            position:relative;
+                            margin-left:auto;
+                            margin-right:auto;
+                            width:500px;
+                            th
+                            {
+                                width:90px;
+                                text-align:right;
+                            }
+                            td
+                            {
+                                font-size:18;
+                                color:#999;
+                                text-align:left;
+                                padding-left:10px;
+                                .loadrow
+                                {/* 負載 panel */
+                                    position:relative;
+                                    margin-left:auto;
+                                    width:90%;
+                                    text-align:left;
+                                    padding-bottom:20px;
+                                    .loadtitle
+                                    {/* 負載 title */
+                                        font: size 12px;
+                                        font-weight:bold;
+                                        color: #CCC;
+                                    }
+
+
+                                    
+                                }
+                                #loadrowTitle
+                                {
+                                    position:relative;
+                                    margin-left:auto;
+                                    width:90%;
+                                    text-align:left;
+                                    padding-bottom:20px;
+                                    padding-top:30px;
+                                    border-top:1px solid #EEE;
+                                    text-align:center;
+                                    font-size:18px;
+                                    font-weight:bold;
+                                }
+                            }
+                        }
+                    }
+
+                    #row2
+                    {/* Api process panel */
+                        width:100%;position:relative;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                        border-bottom: 1px solid #EEE;
+                    }
+
+
+                    #row2 #APIPanel,#sysrow1 #APIPanel
+                    {/* API panel 定位框架 */
+                        position:relative;
+                        margin-left:auto;
+                        width:95%;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                        .apilist
+                        {/* API 資料 panel */
+                            position:relative;
+                            margin-left:auto;
+                            width:95%;
+                            padding-bottom:20px;
+                            #api
+                            {/* api label*/
+                                font-size:15px;
+                                font-weight:bold;
+                                color:#004B97;
+                            }
+                            #data
+                            {/* mark label */
+                                position:relative;
+                                margin-left:auto;
+                                width:90%;
+                                text-align:right;
+                                color:#AAA;
+                                padding-top:10px;
+                                font-size:12px;
+                            }
+
+                            #content
+                            {/* 計數 */
+                                position:relative;
+                                margin-left:auto;
+                                width:500px;
+                                th
+                                {
+                                    width:70px;
+                                    color:#AAA;
+                                    font-size:15px;
+                                    text-align:right;
+                                }
+                                td
+                                {
+                                    width:96px;
+                                    color:#555;
+                                    font-size:15px;
+                                    font-weight:bold;
+                                    text-align:left;
+                                }
+                            }
+                        }
+                    }
+
+                    #row3
+                    {/* App process panel */
+                        width:100%;position:relative;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                    }
+
+
+                    #row3 #appTtitle,#row4 .apList #sysrow2 #appTtitle
+                    {/*App us- title label*/
+                        font-size:16px;
+                        font-weight:bold;
+                        padding-bottom:20px;
+                        color:#555;
+                        width:95%;
+                        position:relative;
+                        padding-bottom:20px;
+                        margin-left:auto;
+                    }
+
+                    #row3 .applist,#row4 .apList #sysrow2 .applist
+                    {/* App us-偵聽內容 框架 */
+                        position:relative;
+                        margin-left:auto;
+                        width:90%;
+                        padding-bottom:20px;
+                        border-bottom: 1px solid #EEE;
+                        #appContent
+                        {/* 偵聽內容 框架 */
+                            position:relative;
+                            width:100%;
+                            th
+                            {/* 所屬APP icon */
+                                width:60px;
+                                text-align:center;
+                            }
+                            td
+                            {
+                                .approw
+                                {/* detail */
+                                    position:relative;
+                                    margin-left:auto;
+                                    width:95%;
+                                    padding-bottom:10px;
+                                    font-size:15px;
+                                    color:#555;
+                                    .aptitle
+                                    {
+                                        font-size:12px;
+                                        color:#CCC;
+                                        font-weight:bold;
+                                    }
+                                }
+                                .approwtitle
+                                {/* app name label */
+                                    position: absolute;
+                                    top:50px;
+                                    left:10px;
+                                    width:100%;
+                                    font-size:15px;
+                                    font-weight:bold;
+                                    color:#005AB5;
+                                }
+                            }
+                        }
+                    }
+
+                    #row4
+                    {/* 同環境站台 */
+                        width:100%;position:relative;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                        .apList
+                        {/* 站台生成panel {list*/
+                            width:100%;position:relative;
+                            padding-left:10px;
+                            padding-top:20px;
+                            padding-bottom:20px;
+                            #APmarkColor
+                            {
+                                width:98%;position:relative;
+                                border-left:3px solid#C4E1E1;
+                                #sysTitle
+                                {/* 站台 名 label panel */
+                                    color:#2894FF;
+                                    font-size:12px;
+                                    font-weight:bold;
+                                    width:95%;
+                                    position:relative;
+                                    margin-left:auto;
+
+                                    #appTool
+                                    {/* 開關listen panel */
+                                        width:200px;
+                                        position:absolute;
+                                        right:10px;
+                                        top:5px;
+                                        text-align:right;
+                                        z-index:180;
+                                        div{
+                                            width:100%;
+                                            padding-bottom:8px;
+                                            span
+                                            {/* wait close 提示*/
+                                                color:#FF8800;
+                                                font-size:15px;
+                                                font-weight:bold;
+                                            }
+
+                                            input[type="button"]
+                                            {/* 開關鈕 */
+                                                background-color:#555;
+                                                color:#FFF;
+                                                width:120px;
+                                                border:2px solid #EEE;
+                                            }
+                                        }
+                                    }
+                                }
+                                #sysrow1
+                                {/* api process panel */
+                                    width:90%;position:relative;
+                                    margin-left:auto;
+                                    padding-top:20px;
+                                    padding-bottom:20px;
+                                    border-bottom: 1px solid #EEE;
+                                }
+                                #sysrow2
+                                {/* App process panel */
+                                    width:90%;position:relative;
+                                    margin-left:auto;
+                                    padding-top:20px;
+                                    padding-bottom:20px;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
